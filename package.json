@@ -1,0 +1,43 @@
+{
+    "name": "fireworks-js",
+    "version": "1.0.0",
+    "description": "A simple fireworks library!",
+    "main": "./dist/fireworks.js",
+    "types": "./dist/fireworks.d.ts",
+    "scripts": {
+        "dev": "cross-env NODE_ENV=development webpack-dev-server --config-name main --host localhost --watch-poll",
+        "build": "cross-env NODE_ENV=production webpack --progress"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/crashmax-off/fireworks-js.git"
+    },
+    "keywords": [
+        "fireworks"
+    ],
+    "author": {
+        "name": "Vitalij Ryndin",
+        "email": "sys@crashmax.ru",
+        "url": "https://crashmax.ru"
+    },
+    "license": "GPL-3",
+    "bugs": {
+        "url": "https://github.com/crashmax-off/fireworks-js/issues"
+    },
+    "homepage": "https://github.com/crashmax-off/fireworks-js#readme",
+    "devDependencies": {
+        "@types/webpack": "^4.41.22",
+        "@types/webpack-dev-server": "^3.11.0",
+        "@babel/core": "^7.12.10",
+        "@babel/preset-env": "^7.12.11",
+        "babel-loader": "^8.2.2",
+        "clean-webpack-plugin": "^3.0.0",
+        "copy-webpack-plugin": "^6.2.1",
+        "cross-env": "^7.0.3",
+        "ts-loader": "^8.0.14",
+        "typescript": "^4.1.3",
+        "webpack": "^4.44.2",
+        "webpack-cli": "^3.3.12",
+        "webpack-dev-server": "^3.11.0"
+    }
+}
