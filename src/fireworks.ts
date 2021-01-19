@@ -139,8 +139,8 @@ export class Fireworks {
         }
 
         this._ctx.fillStyle = '#FFF'
-        this._ctx.font = 'bold 16pt courier'
-        this._ctx.fillText(Math.round(this._fps) + ' fps', 16, 26)
+        this._ctx.font = 'bold 14pt monospace'
+        this._ctx.fillText(Math.round(this._fps) + ' fps', 10, 26)
     }
 
     private render() {
