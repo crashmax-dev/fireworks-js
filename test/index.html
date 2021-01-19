@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>fireworks-js</title>
-    <script src="fireworks.js"></script>
+    <script src="/fireworks.js"></script>
     <style>
         body {
             background-color: #000;
@@ -36,7 +36,7 @@
 <body>
     <canvas id="fireworks" width="1200" height="700"></canvas>
     <div class="fireworks-controls">
-        <button id="start-pause-resume">Pause</button>
+        <button id="start-pause-resume">Start</button>
         <button id="stop">Stop</button>
         <button id="clear">Clear</button>
     </div>
@@ -70,7 +70,8 @@
             fireworkAcceleration: 1.05,
             particleFriction: 0.9,
             particleGravity: 0.75,
-            particleCount: 60
+            particleCount: 75,
+            debug: true
         }
 
         const fireworks = new Fireworks(example2)
@@ -80,36 +81,36 @@
         let startPauseBtn = ge('start-pause-resume'),
             stopBtn = ge('stop'),
             clearBtn = ge('clear'),
-            isRunning = true
+            isPause = false
 
         startPauseBtn.addEventListener('click', () => {
-            if (!isRunning) {
-                isRunning = true
-            }
-
             if (fireworks.isRunning) {
                 startPauseBtn.textContent = 'Resume'
+                isPause = true
             } else {
                 startPauseBtn.textContent = 'Pause'
+                isPause = false
             }
 
             fireworks.pause()
         })
 
         stopBtn.addEventListener('click', () => {
-            fireworks.stop()
-
-            if (isRunning) {
+            if (fireworks.isRunning || isPause) {
                 startPauseBtn.textContent = 'Start'
-                isRunning = false
             }
+
+            fireworks.stop()
         })
 
         clearBtn.addEventListener('click', () => {
-            fireworks.clear()
+            if (isPause) {
+                startPauseBtn.textContent = 'Start'
+                fireworks.stop()
+            } else {
+                fireworks.clear()
+            }
         })
-
-        fireworks.start()
     </script>
 </body>
 

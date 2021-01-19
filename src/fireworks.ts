@@ -19,6 +19,7 @@ interface FireworksOptions {
     particleCount?: number
     particleFriction?: number
     particleGravity?: number
+    debug?: boolean
 }
 
 interface BoundariesOptions {
@@ -50,8 +51,15 @@ export class Fireworks {
     private _friction: number
     private _gravity: number
 
-    private _running = false
+    private _fps = 0
     private _tick = 0
+    private _running = false
+    private _debug: boolean
+    private _decimalPlaces = 2
+    private _updateEachSecond = 1
+    private _decimalPlacesRatio = Math.pow(10, this._decimalPlaces)
+    private _timeMeasurements: number[] = []
+
     private _fireworks: FireworksDraw[] = []
     private _particles: FireworksDraw[] = []
 
@@ -76,6 +84,7 @@ export class Fireworks {
         this._particleCount = params.particleCount || 50
         this._friction = params.particleFriction || 0.95
         this._gravity = params.particleGravity || 1.5
+        this._debug = params.debug || false
     }
 
     start() {
@@ -115,6 +124,25 @@ export class Fireworks {
         return this._running
     }
 
+    private showFPS() {
+        if (!this._ctx) {
+            return
+        }
+
+        this._timeMeasurements.push(performance.now())
+
+        const msPassed = this._timeMeasurements[this._timeMeasurements.length - 1] - this._timeMeasurements[0]
+
+        if (msPassed >= this._updateEachSecond * 1000) {
+            this._fps = Math.round(this._timeMeasurements.length / msPassed * 1000 * this._decimalPlacesRatio) / this._decimalPlacesRatio
+            this._timeMeasurements = []
+        }
+
+        this._ctx.fillStyle = '#FFF'
+        this._ctx.font = 'bold 16pt courier'
+        this._ctx.fillText(Math.round(this._fps) + ' fps', 16, 26)
+    }
+
     private render() {
         if (!this._ctx || !this._running) {
             return
@@ -122,7 +150,14 @@ export class Fireworks {
 
         let length: number
 
-        getRender(() => this.render())
+        getRender(() => {
+            this.render()
+
+            if (this._debug) {
+                this.showFPS()
+            }
+        })
+
         this._hue += 0.5
         this._ctx.globalCompositeOperation = 'destination-out'
         this._ctx.fillStyle = 'rgba(0, 0, 0, 0.5)'
