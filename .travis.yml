@@ -17,4 +17,4 @@ deploy:
     keep-history: true
     local_dir: dist
     on:
-        branch: gh-pages
+        branch: master
