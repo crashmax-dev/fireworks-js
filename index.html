@@ -5,10 +5,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>fireworks-js</title>
+    <link rel="stylesheet" href="https://necolas.github.io/normalize.css/latest/normalize.css">
     <script src="/fireworks.js"></script>
     <style>
         body {
             background-color: #000;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 14px;
+        }
+
+        button:focus {
+            outline: none;
+        }
+
+        button:hover {
+            background-color: #9E9E9E;
+            cursor: pointer;
         }
 
         #fireworks {
@@ -28,7 +40,11 @@
         }
 
         .fireworks-controls button {
-            margin: 6px;
+            border: none;
+            border-radius: 2px;
+            margin: 4px;
+            padding: 6px;
+            font-weight: 700;
         }
     </style>
 </head>
