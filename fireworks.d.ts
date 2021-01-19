@@ -10,6 +10,7 @@ interface FireworksOptions {
     particleCount?: number;
     particleFriction?: number;
     particleGravity?: number;
+    debug?: boolean;
 }
 interface BoundariesOptions {
     top: number;
@@ -32,8 +33,14 @@ export declare class Fireworks {
     private _particleCount;
     private _friction;
     private _gravity;
-    private _running;
+    private _fps;
     private _tick;
+    private _running;
+    private _debug;
+    private _decimalPlaces;
+    private _updateEachSecond;
+    private _decimalPlacesRatio;
+    private _timeMeasurements;
     private _fireworks;
     private _particles;
     constructor(params: FireworksOptions);
@@ -42,6 +49,7 @@ export declare class Fireworks {
     pause(): void;
     clear(): void;
     get isRunning(): boolean;
+    private showFPS;
     private render;
     private getCanvasElement;
 }
