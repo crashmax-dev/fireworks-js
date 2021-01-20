@@ -26,7 +26,7 @@ export class Trace {
         y1: number,
         x2: number,
         y2: number,
-        context: CanvasRenderingContext2D,
+        ctx: CanvasRenderingContext2D,
         hue: number,
         speed: number,
         acceleration: number
@@ -37,7 +37,7 @@ export class Trace {
         this._sy = y1
         this._dx = x2
         this._dy = y2
-        this._ctx = context
+        this._ctx = ctx
         this._hue = hue
         this._speed = speed
         this._acceleration = acceleration

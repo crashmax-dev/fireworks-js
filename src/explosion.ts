@@ -13,7 +13,7 @@ export class Explosion {
     private _speed = 0
     private _friction: number
     private _gravity: number
-    private _hue: string | number
+    private _hue: number
     private _brightness = 0
     private _alpha = 1
     private _decay = 0
@@ -21,14 +21,14 @@ export class Explosion {
     constructor(
         x: number,
         y: number,
-        context: CanvasRenderingContext2D | null,
+        ctx: CanvasRenderingContext2D | null,
         hue: number,
         friction: number,
         gravity: number
     ) {
         this._x = x
         this._y = y
-        this._ctx = context
+        this._ctx = ctx
         this._hue = hue
         this._friction = friction
         this._gravity = gravity
