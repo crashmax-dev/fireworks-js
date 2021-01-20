@@ -11,6 +11,7 @@ interface FireworksOptions {
     particleFriction?: number;
     particleGravity?: number;
     debug?: boolean;
+    sounds?: boolean;
 }
 interface BoundariesOptions {
     top: number;
@@ -33,8 +34,10 @@ export declare class Fireworks {
     private _particleCount;
     private _friction;
     private _gravity;
+    private _sounds;
     private _fps;
     private _tick;
+    private _version;
     private _running;
     private _debug;
     private _decimalPlaces;
