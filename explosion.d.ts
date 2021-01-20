@@ -12,7 +12,7 @@ export declare class Explosion {
     private _brightness;
     private _alpha;
     private _decay;
-    constructor(x: number, y: number, context: CanvasRenderingContext2D | null, hue: number, friction: number, gravity: number);
+    constructor(x: number, y: number, ctx: CanvasRenderingContext2D | null, hue: number, friction: number, gravity: number);
     update(callback: Function): void;
     draw(): void;
 }

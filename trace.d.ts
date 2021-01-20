@@ -15,7 +15,7 @@ export declare class Trace {
     private _acceleration;
     private _hue;
     private _brightness;
-    constructor(x1: number, y1: number, x2: number, y2: number, context: CanvasRenderingContext2D, hue: number, speed: number, acceleration: number);
+    constructor(x1: number, y1: number, x2: number, y2: number, ctx: CanvasRenderingContext2D, hue: number, speed: number, acceleration: number);
     update(callback: Function): void;
     draw(): void;
 }
