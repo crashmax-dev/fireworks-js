@@ -20,6 +20,7 @@ interface FireworksOptions {
     particleFriction?: number
     particleGravity?: number
     debug?: boolean
+    sounds?: boolean
 }
 
 interface BoundariesOptions {
@@ -50,9 +51,11 @@ export class Fireworks {
     private _particleCount: number
     private _friction: number
     private _gravity: number
+    private _sounds: boolean
 
     private _fps = 0
     private _tick = 0
+    private _version = '1.0.0'
     private _running = false
     private _debug: boolean
     private _decimalPlaces = 2
@@ -85,6 +88,7 @@ export class Fireworks {
         this._friction = params.particleFriction || 0.95
         this._gravity = params.particleGravity || 1.5
         this._debug = params.debug || false
+        this._sounds = params.sounds || false
     }
 
     start() {
@@ -171,7 +175,9 @@ export class Fireworks {
                 let count = this._particleCount
 
                 // TODO: Sound management
-                playSound(0, 2)
+                if (this._sounds) {
+                    playSound(0, 2)
+                }
 
                 while (count--) {
                     this._particles.push(new Explosion(

@@ -24,7 +24,7 @@
     "bugs": {
         "url": "https://github.com/crashmax-off/fireworks-js/issues"
     },
-    "homepage": "https://github.com/crashmax-off/fireworks-js#readme",
+    "homepage": "https://crashmax-off.github.io/fireworks-js/",
     "devDependencies": {
         "@types/webpack": "^4.41.22",
         "@types/webpack-dev-server": "^3.11.0",
