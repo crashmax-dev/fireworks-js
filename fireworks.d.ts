@@ -1,17 +1,16 @@
 interface FireworksOptions {
     id: string;
     hue?: number;
-    delay?: number;
+    startDelay?: number;
     minDelay?: number;
     maxDelay?: number;
     boundaries?: BoundariesOptions;
-    fireworkSpeed?: number;
-    fireworkAcceleration?: number;
-    particleCount?: number;
-    particleFriction?: number;
-    particleGravity?: number;
-    debug?: boolean;
-    sounds?: boolean;
+    speed?: number;
+    acceleration?: number;
+    particles?: number;
+    friction?: number;
+    gravity?: number;
+    sound?: SoundOptions;
 }
 interface BoundariesOptions {
     top: number;
@@ -19,13 +18,18 @@ interface BoundariesOptions {
     left: number;
     right: number;
 }
+interface SoundOptions {
+    enable: boolean;
+    min: number;
+    max: number;
+}
 export declare class Fireworks {
     private _canvas;
     private _width;
     private _height;
     private _ctx;
     private _hue;
-    private _delay;
+    private _startDelay;
     private _minDelay;
     private _maxDelay;
     private _boundaries;
@@ -34,16 +38,10 @@ export declare class Fireworks {
     private _particleCount;
     private _friction;
     private _gravity;
-    private _sounds;
-    private _fps;
+    private _sound;
     private _tick;
     private _version;
     private _running;
-    private _debug;
-    private _decimalPlaces;
-    private _updateEachSecond;
-    private _decimalPlacesRatio;
-    private _timeMeasurements;
     private _fireworks;
     private _particles;
     constructor(params: FireworksOptions);
@@ -52,7 +50,6 @@ export declare class Fireworks {
     pause(): void;
     clear(): void;
     get isRunning(): boolean;
-    private showFPS;
     private render;
     private getCanvasElement;
 }
