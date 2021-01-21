@@ -1,9 +1,14 @@
 {
     "name": "fireworks-js",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "A simple fireworks library!",
-    "main": "./dist/fireworks.js",
-    "types": "./dist/fireworks.d.ts",
+    "unpkg": "dist/fireworks.js",
+    "main": "dist/fireworks.js",
+    "types": "dist/fireworks.d.ts",
+    "files": [
+        "dist/fireworks.d.ts",
+        "dist/fireworks.js"
+    ],
     "scripts": {
         "dev": "cross-env NODE_ENV=development webpack-dev-server --config-name main --host localhost --watch-poll",
         "build": "cross-env NODE_ENV=production webpack --progress"

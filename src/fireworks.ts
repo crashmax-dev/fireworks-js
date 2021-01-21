@@ -59,7 +59,7 @@ export class Fireworks {
     private _sound: SoundOptions
 
     private _tick = 0
-    private _version = '1.0.0'
+    private _version = '1.0.1'
     private _running = false
 
     private _fireworks: FireworksDraw[] = []
