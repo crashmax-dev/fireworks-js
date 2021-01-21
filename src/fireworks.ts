@@ -10,17 +10,16 @@ import {
 interface FireworksOptions {
     id: string
     hue?: number
-    delay?: number
+    startDelay?: number
     minDelay?: number
     maxDelay?: number
     boundaries?: BoundariesOptions
-    fireworkSpeed?: number
-    fireworkAcceleration?: number
-    particleCount?: number
-    particleFriction?: number
-    particleGravity?: number
-    debug?: boolean
-    sounds?: boolean
+    speed?: number
+    acceleration?: number
+    particles?: number
+    friction?: number
+    gravity?: number
+    sound?: SoundOptions
 }
 
 interface BoundariesOptions {
@@ -28,6 +27,12 @@ interface BoundariesOptions {
     bottom: number
     left: number
     right: number
+}
+
+interface SoundOptions {
+    enable: boolean
+    min: number
+    max: number
 }
 
 interface FireworksDraw {
@@ -42,7 +47,7 @@ export class Fireworks {
     private _ctx: CanvasRenderingContext2D | null
 
     private _hue: number
-    private _delay: number
+    private _startDelay: number
     private _minDelay: number
     private _maxDelay: number
     private _boundaries: BoundariesOptions
@@ -51,17 +56,11 @@ export class Fireworks {
     private _particleCount: number
     private _friction: number
     private _gravity: number
-    private _sounds: boolean
+    private _sound: SoundOptions
 
-    private _fps = 0
     private _tick = 0
     private _version = '1.0.0'
     private _running = false
-    private _debug: boolean
-    private _decimalPlaces = 2
-    private _updateEachSecond = 1
-    private _decimalPlacesRatio = Math.pow(10, this._decimalPlaces)
-    private _timeMeasurements: number[] = []
 
     private _fireworks: FireworksDraw[] = []
     private _particles: FireworksDraw[] = []
@@ -73,7 +72,7 @@ export class Fireworks {
         this._ctx = this._canvas.getContext ? this._canvas.getContext('2d') : null
 
         this._hue = params.hue || 120
-        this._delay = params.delay || 30
+        this._startDelay = params.startDelay || 30
         this._minDelay = params.minDelay || 30
         this._maxDelay = params.maxDelay || 90
         this._boundaries = params.boundaries || {
@@ -82,13 +81,16 @@ export class Fireworks {
             left: 50,
             right: this._width - 50
         }
-        this._speed = params.fireworkSpeed || 2
-        this._acceleration = params.fireworkAcceleration || 1.05
-        this._particleCount = params.particleCount || 50
-        this._friction = params.particleFriction || 0.95
-        this._gravity = params.particleGravity || 1.5
-        this._debug = params.debug || false
-        this._sounds = params.sounds || false
+        this._speed = params.speed || 2
+        this._acceleration = params.acceleration || 1.05
+        this._particleCount = params.particles || 50
+        this._friction = params.friction || 0.95
+        this._gravity = params.gravity || 1.5
+        this._sound = params.sound || {
+            enable: false,
+            min: 4,
+            max: 8
+        }
     }
 
     start() {
@@ -128,25 +130,6 @@ export class Fireworks {
         return this._running
     }
 
-    private showFPS() {
-        if (!this._ctx) {
-            return
-        }
-
-        this._timeMeasurements.push(performance.now())
-
-        const msPassed = this._timeMeasurements[this._timeMeasurements.length - 1] - this._timeMeasurements[0]
-
-        if (msPassed >= this._updateEachSecond * 1000) {
-            this._fps = Math.round(this._timeMeasurements.length / msPassed * 1000 * this._decimalPlacesRatio) / this._decimalPlacesRatio
-            this._timeMeasurements = []
-        }
-
-        this._ctx.fillStyle = '#FFF'
-        this._ctx.font = 'bold 14pt monospace'
-        this._ctx.fillText(Math.round(this._fps) + ' fps', 10, 26)
-    }
-
     private render() {
         if (!this._ctx || !this._running) {
             return
@@ -154,13 +137,7 @@ export class Fireworks {
 
         let length: number
 
-        getRender(() => {
-            this.render()
-
-            if (this._debug) {
-                this.showFPS()
-            }
-        })
+        getRender(() => this.render())
 
         this._hue += 0.5
         this._ctx.globalCompositeOperation = 'destination-out'
@@ -175,8 +152,8 @@ export class Fireworks {
                 let count = this._particleCount
 
                 // TODO: Sound management
-                if (this._sounds) {
-                    playSound(0, 2)
+                if (this._sound.enable) {
+                    playSound(0, 2, this._sound.min, this._sound.max)
                 }
 
                 while (count--) {
@@ -201,7 +178,7 @@ export class Fireworks {
             })
         }
 
-        if (this._tick === this._delay) {
+        if (this._tick > (this._startDelay * 2)) {
             this._fireworks.push(new Trace(
                 this._width * 0.5,
                 this._height,
@@ -213,8 +190,12 @@ export class Fireworks {
                 this._acceleration
             ))
 
-            this._delay = randomInteger(this._minDelay, this._maxDelay)
+            this._startDelay = randomInteger(this._minDelay, this._maxDelay)
             this._tick = 0
+        }
+
+        if (this._hue > 345) {
+            this._hue = 0
         }
 
         this._tick++
