@@ -3,7 +3,7 @@ export declare class Explosion {
     private _y;
     private _ctx;
     private _coordinates;
-    private _coordinateCount;
+    private _explosionLength;
     private _angle;
     private _speed;
     private _friction;
@@ -12,7 +12,7 @@ export declare class Explosion {
     private _brightness;
     private _alpha;
     private _decay;
-    constructor(x: number, y: number, ctx: CanvasRenderingContext2D | null, hue: number, friction: number, gravity: number);
+    constructor(x: number, y: number, ctx: CanvasRenderingContext2D, hue: number, friction: number, gravity: number, explosion: number);
     update(callback: Function): void;
     draw(): void;
 }

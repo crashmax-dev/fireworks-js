@@ -1,15 +1,17 @@
 interface FireworksOptions {
-    id: string;
+    target: Element | HTMLElement;
     hue?: number;
     startDelay?: number;
     minDelay?: number;
     maxDelay?: number;
-    boundaries?: BoundariesOptions;
     speed?: number;
     acceleration?: number;
-    particles?: number;
     friction?: number;
     gravity?: number;
+    particles?: number;
+    trace?: number;
+    explosion?: number;
+    boundaries?: BoundariesOptions;
     sound?: SoundOptions;
 }
 interface BoundariesOptions {
@@ -20,24 +22,27 @@ interface BoundariesOptions {
 }
 interface SoundOptions {
     enable: boolean;
-    min: number;
-    max: number;
+    list?: string[];
+    min?: number;
+    max?: number;
 }
 export declare class Fireworks {
     private _canvas;
+    private _ctx;
     private _width;
     private _height;
-    private _ctx;
     private _hue;
     private _startDelay;
     private _minDelay;
     private _maxDelay;
-    private _boundaries;
     private _speed;
     private _acceleration;
-    private _particleCount;
     private _friction;
     private _gravity;
+    private _particleCount;
+    private _traceLength;
+    private _explosionLength;
+    private _boundaries;
     private _sound;
     private _tick;
     private _version;
@@ -51,6 +56,5 @@ export declare class Fireworks {
     clear(): void;
     get isRunning(): boolean;
     private render;
-    private getCanvasElement;
 }
 export {};
