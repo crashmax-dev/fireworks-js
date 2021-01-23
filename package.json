@@ -5,6 +5,10 @@
     "unpkg": "dist/fireworks.js",
     "main": "dist/fireworks.js",
     "types": "dist/fireworks.d.ts",
+    "files": [
+        "dist/fireworks.js",
+        "dist/fireworks.d.ts"
+    ],
     "scripts": {
         "dev": "cross-env NODE_ENV=development webpack-dev-server --config-name main --host localhost --watch-poll",
         "build": "cross-env NODE_ENV=production webpack --progress"
