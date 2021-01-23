@@ -73,7 +73,7 @@ export class Fireworks {
     }
 
     private _tick = 0
-    private _version = '1.0.2'
+    private _version = '1.0.3'
     private _running = false
 
     private _fireworks: FireworksDraw[] = []
