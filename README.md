@@ -41,12 +41,14 @@ const { Fireworks } = require('fireworks-js')
 ```
 
 ```html
-<script src="https://crashmax-off.github.io/fireworks-js/fireworks.js">
+<script src="https://unpkg.com/fireworks-js@latest/dist/fireworks.js"></script>
 ```
 
 ```js
+const container = document.querySelector('.fireworks-container')
+
 const fireworks = new Fireworks({
-    id: 'fireworks',
+    target: container,
     hue: 120,
     startDelay: 1,
     minDelay: 20,
@@ -55,8 +57,36 @@ const fireworks = new Fireworks({
     acceleration: 1.05,
     friction: 0.98,
     gravity: 1,
-    particles: 75
+    particles: 75,
+    trace: 3,
+    explosion: 5,
+    boundaries: {
+        top: 50,
+        bottom: container.clientHeight,
+        left: 50,
+        right: container.clientWidth
+    },
+    sound: {
+        enable: false,
+        list: [
+            'explosion0.mp3',
+            'explosion1.mp3',
+            'explosion2.mp3'
+        ],
+        min: 4,
+        max: 8
+    }
 })
 
+// start fireworks
 fireworks.start()
+
+// paused fireworks
+fireworks.pause()
+
+// cleared fireworks
+fireworks.clear()
+
+// stop and cleared fireworks
+fireworks.stop()
 ```

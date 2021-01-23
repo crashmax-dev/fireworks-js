@@ -11,15 +11,16 @@ export class Trace {
     private _dx: number
     private _dy: number
     private _ctx: CanvasRenderingContext2D
-    private _totalDistance = 0
-    private _currentDistance = 0
-    private _coordinates: [number, number][] = []
-    private _coordinateCount = 3
-    private _angle = 0
+    private _hue: number
     private _speed: number
     private _acceleration: number
-    private _hue: string | number
-    private _brightness = 0
+    private _traceLength: number
+
+    private _totalDistance: number
+    private _currentDistance = 0
+    private _coordinates: [number, number][] = []
+    private _angle: number
+    private _brightness: number
 
     constructor(
         x1: number,
@@ -29,7 +30,8 @@ export class Trace {
         ctx: CanvasRenderingContext2D,
         hue: number,
         speed: number,
-        acceleration: number
+        acceleration: number,
+        trace: number
     ) {
         this._x = x1
         this._y = y1
@@ -41,10 +43,11 @@ export class Trace {
         this._hue = hue
         this._speed = speed
         this._acceleration = acceleration
+        this._traceLength = trace
 
         this._totalDistance = getDistance(this._sx, this._sy, this._dx, this._dy)
 
-        while (this._coordinateCount--) {
+        while (this._traceLength--) {
             this._coordinates.push([x1, y1])
         }
 

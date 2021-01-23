@@ -3,22 +3,24 @@ import { Explosion } from './explosion'
 
 import {
     getRender,
-    playSound,
+    randomFloat,
     randomInteger
 } from './utils/index'
 
 interface FireworksOptions {
-    id: string
+    target: Element | HTMLElement
     hue?: number
     startDelay?: number
     minDelay?: number
     maxDelay?: number
-    boundaries?: BoundariesOptions
     speed?: number
     acceleration?: number
-    particles?: number
     friction?: number
     gravity?: number
+    particles?: number
+    trace?: number
+    explosion?: number
+    boundaries?: BoundariesOptions
     sound?: SoundOptions
 }
 
@@ -31,8 +33,9 @@ interface BoundariesOptions {
 
 interface SoundOptions {
     enable: boolean
-    min: number
-    max: number
+    list?: string[]
+    min?: number
+    max?: number
 }
 
 interface FireworksDraw {
@@ -42,55 +45,68 @@ interface FireworksDraw {
 
 export class Fireworks {
     private _canvas: HTMLCanvasElement
+    private _ctx: CanvasRenderingContext2D
     private _width: number
     private _height: number
-    private _ctx: CanvasRenderingContext2D | null
 
     private _hue: number
     private _startDelay: number
     private _minDelay: number
     private _maxDelay: number
-    private _boundaries: BoundariesOptions
     private _speed: number
     private _acceleration: number
-    private _particleCount: number
     private _friction: number
     private _gravity: number
-    private _sound: SoundOptions
+    private _particleCount: number
+    private _traceLength: number
+    private _explosionLength: number
+    private _boundaries: BoundariesOptions
+    private _sound = {
+        enable: false,
+        list: [
+            'explosion0.mp3',
+            'explosion1.mp3',
+            'explosion2.mp3'
+        ],
+        min: 4,
+        max: 8
+    }
 
     private _tick = 0
-    private _version = '1.0.1'
+    private _version = '1.0.2'
     private _running = false
 
     private _fireworks: FireworksDraw[] = []
     private _particles: FireworksDraw[] = []
 
     constructor(params: FireworksOptions) {
-        this._canvas = this.getCanvasElement(params.id)
-        this._width = this._canvas.width
-        this._height = this._canvas.height
-        this._ctx = this._canvas.getContext ? this._canvas.getContext('2d') : null
+        this._canvas = document.createElement('canvas')
+        this._ctx = this._canvas.getContext('2d') as CanvasRenderingContext2D
+        this._width = params.target.clientWidth
+        this._height = params.target.clientHeight
+        this._canvas.width = this._width
+        this._canvas.height = this._height
+        params.target.appendChild(this._canvas)
 
         this._hue = params.hue || 120
         this._startDelay = params.startDelay || 30
         this._minDelay = params.minDelay || 30
         this._maxDelay = params.maxDelay || 90
-        this._boundaries = params.boundaries || {
-            top: 50,
-            bottom: this._height * 0.5,
-            left: 50,
-            right: this._width - 50
-        }
         this._speed = params.speed || 2
         this._acceleration = params.acceleration || 1.05
-        this._particleCount = params.particles || 50
         this._friction = params.friction || 0.95
         this._gravity = params.gravity || 1.5
-        this._sound = params.sound || {
-            enable: false,
-            min: 4,
-            max: 8
+        this._particleCount = params.particles || 50
+        this._traceLength = params.trace || 3
+        this._explosionLength = params.explosion || 5
+        this._boundaries = {
+            top: 50,
+            bottom: this._height,
+            left: 50,
+            right: this._width,
+            ...params.boundaries
         }
+        this._sound = { ...this._sound, ...params.sound }
     }
 
     start() {
@@ -151,9 +167,13 @@ export class Fireworks {
             this._fireworks[length].update((x: number, y: number, hue: number) => {
                 let count = this._particleCount
 
-                // TODO: Sound management
-                if (this._sound.enable) {
-                    playSound(0, 2, this._sound.min, this._sound.max)
+                if (this._sound.enable && this._sound.list.length > 0) {
+                    let index = randomInteger(0, this._sound.list.length - 1)
+                    let volume = randomFloat(this._sound.min / 10, this._sound.max / 10)
+                    let audio = new Audio(this._sound.list[index])
+
+                    audio.volume = volume
+                    audio.play()
                 }
 
                 while (count--) {
@@ -163,9 +183,11 @@ export class Fireworks {
                         this._ctx,
                         hue,
                         this._friction,
-                        this._gravity
+                        this._gravity,
+                        this._explosionLength
                     ))
                 }
+
                 this._fireworks.splice(length, 1)
             })
         }
@@ -182,12 +204,13 @@ export class Fireworks {
             this._fireworks.push(new Trace(
                 this._width * 0.5,
                 this._height,
-                randomInteger(this._boundaries.left, this._boundaries.right),
-                randomInteger(this._boundaries.top, this._boundaries.bottom),
+                randomInteger(this._boundaries.left, this._boundaries.right - 50),
+                randomInteger(this._boundaries.top, this._boundaries.bottom * 0.5),
                 this._ctx,
                 this._hue,
                 this._speed,
-                this._acceleration
+                this._acceleration,
+                this._traceLength
             ))
 
             this._startDelay = randomInteger(this._minDelay, this._maxDelay)
@@ -199,16 +222,5 @@ export class Fireworks {
         }
 
         this._tick++
-    }
-
-    private getCanvasElement(id: string | null) {
-        const defaultId = 'fireworks-js'
-        const canvasElement = document.getElementById(id || defaultId)
-
-        if (canvasElement !== null) {
-            return (canvasElement as HTMLCanvasElement)
-        }
-
-        throw new Error(`Target canvas element #${id} is not found!`)
     }
 }

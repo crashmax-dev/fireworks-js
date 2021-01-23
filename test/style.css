@@ -1,7 +1,6 @@
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    background-size: cover;
-    background-position: 50% 50%;
+    line-height: 1;
 }
 
 .container {
@@ -16,7 +15,7 @@ body {
     border-radius: 4px;
     box-sizing: border-box;
     font-size: 20px;
-    z-index: 100;
+    z-index: 1;
     opacity: 0.9;
 }
 
@@ -25,6 +24,7 @@ body {
     font-weight: 700;
     text-align: center;
     color: #111;
+    margin: 0;
 }
 
 .container h2 {
@@ -55,6 +55,7 @@ body {
     font-size: 16px;
     font-weight: 500;
     transition-duration: 0.1s;
+    text-decoration: none;
 }
 
 .container a:hover {
@@ -63,7 +64,7 @@ body {
     color: #fff
 }
 
-#fireworks {
+.fireworks-container {
     position: fixed;
     left: 0;
     top: 0;
@@ -99,13 +100,10 @@ body {
 
 .dg.ac {
     opacity: 0.9;
+    z-index: 2 !important;
 }
 
 .dg.a {
     margin-right: 5px !important;
     margin-top: 5px;
-}
-
-.save-row {
-    display: none;
 }
