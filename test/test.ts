@@ -1,16 +1,47 @@
 import { Fireworks } from '../dist/fireworks'
 
+const BASE_PATH = 'https://crashmax-off.github.io/fireworks-js/'
+
 const container = document.querySelector('#fireworks-container')
-//const container = document.getElementById('fireworks-container')
+// const container = document.getElementById('fireworks-container')
 
 const fireworks = new Fireworks({
-    target: container
+    target: container,
+    hue: 120,
+    startDelay: 1,
+    minDelay: 20,
+    maxDelay: 30,
+    speed: 4,
+    acceleration: 1.05,
+    friction: 0.98,
+    gravity: 1,
+    particles: 75,
+    trace: 3,
+    explosion: 5,
+    boundaries: {
+        top: 50,
+        bottom: container.clientHeight,
+        left: 50,
+        right: container.clientWidth
+    },
+    sound: {
+        enable: true,
+        list: [
+            BASE_PATH + 'explosion0.mp3',
+            BASE_PATH + 'explosion1.mp3',
+            BASE_PATH + 'explosion2.mp3'
+        ],
+        min: 4,
+        max: 8
+    }
 })
 
 fireworks.start()
 
-fireworks.setSize(1000, 500)
+// fireworks.stop()
 
-setTimeout(() => fireworks.clear(), 10 * 1000)
+// fireworks.pause()
 
-fireworks.stop()
+// console.log(fireworks.isRunning)
+
+setTimeout(() => fireworks.stop(), 10 * 1000)
