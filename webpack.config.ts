@@ -15,6 +15,8 @@ module.exports = {
         umdNamedDefine: true
     },
     devServer: {
+        https: true,
+        port: 8080,
         writeToDisk: true,
         contentBase: outputPath
     },

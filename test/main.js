@@ -1,11 +1,8 @@
-let canvasFireworks = document.querySelector('#fireworks'),
-    containerVersion = document.querySelector('.container > span')
-
-canvasFireworks.setAttribute('width', window.screen.availWidth)
-canvasFireworks.setAttribute('height', window.screen.availHeight)
+let fireworksContainer = document.querySelector('.fireworks-container'),
+    versionContainer = document.querySelector('.container > span')
 
 const fireworksConfig = {
-    id: 'fireworks',
+    target: fireworksContainer,
     hue: 120,
     startDelay: 1,
     minDelay: 20,
@@ -15,21 +12,32 @@ const fireworksConfig = {
     friction: 0.98,
     gravity: 1,
     particles: 75,
+    trace: 3,
+    explosion: 5,
     boundaries: {
         top: 50,
-        bottom: canvasFireworks.height * 0.5,
+        bottom: fireworksContainer.clientHeight,
         left: 50,
-        right: canvasFireworks.width - 50
+        right: fireworksContainer.clientWidth
     },
     sound: {
-        enable: false,
+        enable: true,
+        list: [
+            document.location.href + 'explosion0.mp3',
+            document.location.href + 'explosion1.mp3',
+            document.location.href + 'explosion2.mp3'
+        ],
         min: 4,
         max: 8
     }
 }
 
 const backgroundConfig = {
-    color: '#111111',
+    backgroundColor: '#111111',
+    backgroundImage: '',
+    backgroundSize: 'cover',
+    backgroundPosition: '50% 50%',
+    backgroundRepeat: 'no-repear',
     container: false,
     fps: false,
 }
@@ -39,7 +47,7 @@ const fireworks = new Fireworks(fireworksConfig)
 fireworks.start()
 
 // version
-containerVersion.textContent = 'v' + fireworks._version
+versionContainer.textContent = 'v' + fireworks._version
 
 /**
  * stats.js
@@ -76,9 +84,7 @@ let fpsMonitor = document.querySelector('#stats'),
 
 
 const gui = new dat.GUI({
-    autoPlace: true,
-    closed: false,
-    width: 260
+    width: 300
 })
 
 window.export = () => {
@@ -139,6 +145,14 @@ folders.fireworks.add(fireworksConfig, 'particles', 1, 1000).step(1).onChange(va
     fireworks._particleCount = value
 })
 
+folders.fireworks.add(fireworksConfig, 'trace', 1, 10).step(1).onChange(value => {
+    fireworks._traceLength = value
+})
+
+folders.fireworks.add(fireworksConfig, 'explosion', 1, 10).step(1).onChange(value => {
+    fireworks._explosionLength = value
+})
+
 folders.fireworks.add(fireworks, '_running', true).name('enable').onChange(() => {
     fireworks.render()
 })
@@ -176,8 +190,24 @@ folders.sound.add(fireworksConfig.sound, 'max', 1, 10).step(1).onChange(value =>
 })
 
 // background
-folders.background.addColor(backgroundConfig, 'color').name('background-color').onChange(value => {
-    canvasFireworks.style.backgroundColor = value
+folders.background.addColor(backgroundConfig, 'backgroundColor').name('background-color').onChange(value => {
+    fireworksContainer.style.backgroundColor = value
+})
+
+folders.background.add(backgroundConfig, 'backgroundImage').name('background-image').onChange(value => {
+    fireworksContainer.style.backgroundImage = `url(${value})`
+})
+
+folders.background.add(backgroundConfig, 'backgroundSize').name('background-size').onChange(value => {
+    fireworksContainer.style.backgroundSize = value
+})
+
+folders.background.add(backgroundConfig, 'backgroundPosition').name('background-position').onChange(value => {
+    fireworksContainer.style.backgroundPosition = value
+})
+
+folders.background.add(backgroundConfig, 'backgroundRepeat').name('background-repeat').onChange(value => {
+    fireworksContainer.style.backgroundRepeat = value
 })
 
 folders.background.add(backgroundConfig, 'fps').name('hide fps').onChange(value => {

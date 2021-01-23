@@ -6,25 +6,26 @@ import {
 export class Explosion {
     private _x: number
     private _y: number
-    private _ctx: CanvasRenderingContext2D | null
+    private _ctx: CanvasRenderingContext2D
     private _coordinates: [number, number][] = []
-    private _coordinateCount = 5
-    private _angle = 0
-    private _speed = 0
+    private _explosionLength: number
+    private _angle: number
+    private _speed: number
     private _friction: number
     private _gravity: number
     private _hue: number
-    private _brightness = 0
+    private _brightness: number
     private _alpha = 1
-    private _decay = 0
+    private _decay: number
 
     constructor(
         x: number,
         y: number,
-        ctx: CanvasRenderingContext2D | null,
+        ctx: CanvasRenderingContext2D,
         hue: number,
         friction: number,
-        gravity: number
+        gravity: number,
+        explosion: number
     ) {
         this._x = x
         this._y = y
@@ -32,8 +33,9 @@ export class Explosion {
         this._hue = hue
         this._friction = friction
         this._gravity = gravity
+        this._explosionLength = explosion
 
-        while (this._coordinateCount--) {
+        while (this._explosionLength--) {
             this._coordinates.push([x, y])
         }
 
@@ -58,10 +60,6 @@ export class Explosion {
     }
 
     draw() {
-        if (!this._ctx) {
-            return
-        }
-
         let last = this._coordinates.length - 1
 
         this._ctx.beginPath()

@@ -5,10 +5,6 @@
     "unpkg": "dist/fireworks.js",
     "main": "dist/fireworks.js",
     "types": "dist/fireworks.d.ts",
-    "files": [
-        "dist/fireworks.d.ts",
-        "dist/fireworks.js"
-    ],
     "scripts": {
         "dev": "cross-env NODE_ENV=development webpack-dev-server --config-name main --host localhost --watch-poll",
         "build": "cross-env NODE_ENV=production webpack --progress"
@@ -18,7 +14,9 @@
         "url": "git+https://github.com/crashmax-off/fireworks-js.git"
     },
     "keywords": [
-        "fireworks"
+        "canvas",
+        "fireworks",
+        "animation"
     ],
     "author": {
         "name": "Vitalij Ryndin",
@@ -31,10 +29,10 @@
     },
     "homepage": "https://crashmax-off.github.io/fireworks-js/",
     "devDependencies": {
-        "@types/webpack": "^4.41.22",
-        "@types/webpack-dev-server": "^3.11.0",
         "@babel/core": "^7.12.10",
         "@babel/preset-env": "^7.12.11",
+        "@types/webpack": "^4.41.22",
+        "@types/webpack-dev-server": "^3.11.0",
         "babel-loader": "^8.2.2",
         "clean-webpack-plugin": "^3.0.0",
         "copy-webpack-plugin": "^6.2.1",
