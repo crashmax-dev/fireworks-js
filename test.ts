@@ -38,6 +38,18 @@ const fireworks = new Fireworks({
 
 fireworks.start()
 
+// fireworks.updateSize({
+//     height: 100,
+//     width: 300
+// })
+
+// fireworks.updateBoundaries({
+//     top: 30,
+//     left: 30,
+//     bottom: 30,
+//     right: 30
+// })
+
 // fireworks.stop()
 
 // fireworks.pause()

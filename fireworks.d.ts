@@ -11,6 +11,7 @@ interface FireworksOptions {
     particles?: number;
     trace?: number;
     explosion?: number;
+    autoresize?: boolean;
     boundaries?: BoundariesOptions;
     sound?: SoundOptions;
 }
@@ -26,7 +27,12 @@ interface SoundOptions {
     min?: number;
     max?: number;
 }
+interface UpdateSize {
+    width?: number;
+    height?: number;
+}
 export declare class Fireworks {
+    private _target;
     private _canvas;
     private _ctx;
     private _width;
@@ -42,6 +48,7 @@ export declare class Fireworks {
     private _particleCount;
     private _traceLength;
     private _explosionLength;
+    private _autoresize;
     private _boundaries;
     private _sound;
     private _tick;
@@ -54,6 +61,8 @@ export declare class Fireworks {
     stop(): void;
     pause(): void;
     clear(): void;
+    updateSize({ width, height }?: UpdateSize): void;
+    updateBoundaries(newBoundaries: Partial<BoundariesOptions>): void;
     get isRunning(): boolean;
     private render;
 }
