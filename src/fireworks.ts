@@ -20,6 +20,7 @@ interface FireworksOptions {
     particles?: number
     trace?: number
     explosion?: number
+    autoresize?: boolean
     boundaries?: BoundariesOptions
     sound?: SoundOptions
 }
@@ -38,6 +39,11 @@ interface SoundOptions {
     max?: number
 }
 
+interface UpdateSize {
+    width?: number
+    height?: number
+}
+
 interface FireworksDraw {
     draw: () => void
     update: (args: (x: number, y: number, hue: number) => void) => void
@@ -46,6 +52,7 @@ interface FireworksDraw {
 declare const version: string
 
 export class Fireworks {
+    private _target: HTMLElement | Element
     private _canvas: HTMLCanvasElement
     private _ctx: CanvasRenderingContext2D
     private _width: number
@@ -62,8 +69,14 @@ export class Fireworks {
     private _particleCount: number
     private _traceLength: number
     private _explosionLength: number
-    private _boundaries: BoundariesOptions
-    private _sound = {
+    private _autoresize: boolean
+    private _boundaries: BoundariesOptions = {
+        top: 50,
+        bottom: 0,
+        left: 50,
+        right: 0,
+    }
+    private _sound: Required<SoundOptions> = {
         enable: false,
         list: [
             'explosion0.mp3',
@@ -82,13 +95,12 @@ export class Fireworks {
     private _particles: FireworksDraw[] = []
 
     constructor(params: FireworksOptions) {
+        this._target = params.target
         this._canvas = document.createElement('canvas')
         this._ctx = this._canvas.getContext('2d') as CanvasRenderingContext2D
-        this._width = params.target.clientWidth
-        this._height = params.target.clientHeight
-        this._canvas.width = this._width
-        this._canvas.height = this._height
-        params.target.appendChild(this._canvas)
+
+        this.updateSize()
+        this._target.appendChild(this._canvas)
 
         this._hue = params.hue || 120
         this._startDelay = params.startDelay || 30
@@ -101,14 +113,15 @@ export class Fireworks {
         this._particleCount = params.particles || 50
         this._traceLength = params.trace || 3
         this._explosionLength = params.explosion || 5
-        this._boundaries = {
-            top: 50,
-            bottom: this._height,
-            left: 50,
-            right: this._width,
-            ...params.boundaries
-        }
+        this._autoresize = params.autoresize ?? true
+        this._boundaries = { ...this._boundaries, ...params.boundaries }
         this._sound = { ...this._sound, ...params.sound }
+
+        if (this._autoresize) {
+            window.addEventListener('resize', () => {
+                this.updateSize()
+            })
+        }
     }
 
     start() {
@@ -142,6 +155,23 @@ export class Fireworks {
         this._fireworks = []
         this._particles = []
         this._ctx.clearRect(0, 0, this._width, this._height)
+    }
+
+    updateSize({ width = this._target.clientWidth, height = this._target.clientHeight }: UpdateSize = {}) {
+        this._width = width
+        this._height = height
+
+        this._canvas.width = width
+        this._canvas.height = height
+
+        this.updateBoundaries({
+            right: width,
+            bottom: height
+        })
+    }
+
+    updateBoundaries(newBoundaries: Partial<BoundariesOptions>) {
+        this._boundaries = { ...this._boundaries, ...newBoundaries }
     }
 
     get isRunning() {

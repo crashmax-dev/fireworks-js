@@ -51,6 +51,13 @@ fireworks.start()
 
 versionContainer.textContent = 'v' + fireworks._version
 
+window.addEventListener('resize', () => {
+    fireworksConfig.boundaries = {
+        ...fireworksConfig.boundaries,
+        ...fireworks._boundaries
+    }
+})
+
 /**
  * stats.js
  */

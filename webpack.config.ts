@@ -21,6 +21,9 @@ module.exports = {
         writeToDisk: true,
         contentBase: outputPath
     },
+    optimization: {
+        minimize: true
+    },
     resolve: {
         extensions: ['.ts', '.js']
     },
