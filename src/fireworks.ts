@@ -43,6 +43,8 @@ interface FireworksDraw {
     update: (args: (x: number, y: number, hue: number) => void) => void
 }
 
+declare const version: string
+
 export class Fireworks {
     private _canvas: HTMLCanvasElement
     private _ctx: CanvasRenderingContext2D
@@ -73,7 +75,7 @@ export class Fireworks {
     }
 
     private _tick = 0
-    private _version = '1.0.3'
+    private _version = version
     private _running = false
 
     private _fireworks: FireworksDraw[] = []

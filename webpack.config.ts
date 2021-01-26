@@ -1,4 +1,5 @@
 const path = require('path')
+const webpack = require('webpack')
 const outputPath = path.resolve(__dirname, 'dist')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
@@ -44,6 +45,9 @@ module.exports = {
     },
     plugins: [
         new CleanWebpackPlugin(),
+        new webpack.DefinePlugin({
+            version: JSON.stringify(require('./package.json').version)
+        }),
         new CopyWebpackPlugin({
             patterns: [
                 {
