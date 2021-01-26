@@ -1,6 +1,9 @@
 let fireworksContainer = document.querySelector('.fireworks-container'),
     versionContainer = document.querySelector('.container > span')
 
+/**
+ * fireworks
+ */
 const fireworksConfig = {
     target: fireworksContainer,
     hue: 120,
@@ -21,7 +24,7 @@ const fireworksConfig = {
         right: fireworksContainer.clientWidth
     },
     sound: {
-        enable: true,
+        enable: false,
         list: [
             document.location.href + 'explosion0.mp3',
             document.location.href + 'explosion1.mp3',
@@ -46,7 +49,6 @@ const fireworks = new Fireworks(fireworksConfig)
 
 fireworks.start()
 
-// version
 versionContainer.textContent = 'v' + fireworks._version
 
 /**
