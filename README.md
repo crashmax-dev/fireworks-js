@@ -11,9 +11,9 @@
 <br/>
 
 <p align="center">
-    <img alt="Travis (.org)" src="https://img.shields.io/travis/crashmax-off/fireworks-js">
-    <img alt="npm" src="https://img.shields.io/npm/v/fireworks-js">
-    <img alt="npm bundle size" src="https://img.shields.io/bundlephobia/min/fireworks-js">
+    <a href="https://travis-ci.org/github/crashmax-off/fireworks-js" target="_blank"><img alt="Travis (.org)" src="https://img.shields.io/travis/crashmax-off/fireworks-js"></a>
+    <a href="https://www.npmjs.com/package/fireworks-js" target="_blank"><img alt="npm" src="https://img.shields.io/npm/v/fireworks-js"></a>
+    <a href="#"><img alt="npm bundle size" src="https://img.shields.io/bundlephobia/min/fireworks-js"></a>
 </p>
 
 ## Installation

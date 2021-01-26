@@ -1,11 +1,13 @@
 {
     "compilerOptions": {
         "moduleResolution": "node",
-        "module": "es2020",
-        "target": "es2020",
+        "module": "ES6",
+        "target": "ES6",
         "strict": true,
+        "sourceMap": true,
         "declaration": true,
         "noImplicitAny": true,
+        "strictPropertyInitialization": false,
         "rootDir": "src",
         "outDir": "dist"
     },

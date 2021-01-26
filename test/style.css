@@ -76,6 +76,7 @@ body {
 #stats {
     border-radius: 3px 3px 0 0;
     overflow: hidden;
+    z-index: 2 !important;
 }
 
 .fireworks-counters {
@@ -94,7 +95,7 @@ body {
     font-weight: bold;
     border-radius: 0 0 3px 3px;
     opacity: 0.9;
-    z-index: 9999;
+    z-index: 2;
     user-select: none;
 }
 
