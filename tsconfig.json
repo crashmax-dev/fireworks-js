@@ -16,7 +16,6 @@
     ],
     "exclude": [
         "dist",
-        "example",
         "node_modules"
     ]
 }
