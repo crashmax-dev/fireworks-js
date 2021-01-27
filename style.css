@@ -5,12 +5,12 @@ body {
 
 .container {
     position: fixed;
-    width: 260px;
+    width: 240px;
     height: 210px;
     background: #e9ecef;
     top: 50%;
     left: 50%;
-    margin: -120px 0 0 -130px;
+    margin: -120px 0 0 -120px;
     padding: 20px;
     border-radius: 4px;
     box-sizing: border-box;
@@ -70,7 +70,7 @@ body {
     top: 0;
     width: 100%;
     height: 100%;
-    background: #111;
+    background: #000000;
 }
 
 #stats {

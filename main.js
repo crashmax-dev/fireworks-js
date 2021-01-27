@@ -8,15 +8,15 @@ const fireworksConfig = {
     target: fireworksContainer,
     hue: 120,
     startDelay: 1,
-    minDelay: 20,
-    maxDelay: 30,
-    speed: 4,
-    acceleration: 1.05,
-    friction: 0.98,
+    minDelay: 14,
+    maxDelay: 26,
+    speed: 10,
+    acceleration: 1.1,
+    friction: 1,
     gravity: 1,
-    particles: 75,
+    particles: 90,
     trace: 3,
-    explosion: 5,
+    explosion: 6,
     boundaries: {
         top: 50,
         bottom: fireworksContainer.clientHeight,
@@ -36,11 +36,11 @@ const fireworksConfig = {
 }
 
 const backgroundConfig = {
-    backgroundColor: '#111111',
+    backgroundColor: '#000000',
     backgroundImage: '',
     backgroundSize: 'cover',
     backgroundPosition: '50% 50%',
-    backgroundRepeat: 'no-repear',
+    backgroundRepeat: 'no-repeat',
     container: false,
     fps: false,
 }
@@ -50,13 +50,6 @@ const fireworks = new Fireworks(fireworksConfig)
 fireworks.start()
 
 versionContainer.textContent = 'v' + fireworks._version
-
-window.addEventListener('resize', () => {
-    fireworksConfig.boundaries = {
-        ...fireworksConfig.boundaries,
-        ...fireworks._boundaries
-    }
-})
 
 /**
  * stats.js
@@ -90,7 +83,6 @@ requestAnimationFrame(update)
 let fpsMonitor = document.querySelector('#stats'),
     fireworksCounters = document.querySelector('.fireworks-counters'),
     container = document.querySelector('.container')
-
 
 const gui = new dat.GUI({
     width: 300
