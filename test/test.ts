@@ -1,6 +1,6 @@
 import { Fireworks } from '../dist/fireworks'
 
-const BASE_PATH = 'https://crashmax-off.github.io/fireworks-js/'
+const BASE_PATH = 'https://crashmax-dev.github.io/fireworks-js/'
 
 const container = document.querySelector('#fireworks-container')
 // const container = document.getElementById('fireworks-container')

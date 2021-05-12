@@ -11,7 +11,7 @@
 <br/>
 
 <p align="center">
-    <a href="https://travis-ci.org/github/crashmax-off/fireworks-js" target="_blank"><img alt="Travis (.org)" src="https://img.shields.io/travis/crashmax-off/fireworks-js"></a>
+    <a href="https://travis-ci.org/github/crashmax-dev/fireworks-js" target="_blank"><img alt="Travis (.org)" src="https://img.shields.io/travis/crashmax-dev/fireworks-js"></a>
     <a href="https://www.npmjs.com/package/fireworks-js" target="_blank"><img alt="npm" src="https://img.shields.io/npm/v/fireworks-js"></a>
     <a href="#"><img alt="npm bundle size" src="https://img.shields.io/bundlephobia/min/fireworks-js"></a>
 </p>
@@ -41,7 +41,7 @@ const { Fireworks } = require('fireworks-js')
 ```
 
 ```html
-<script src="https://crashmax-off.github.io/fireworks-js/fireworks.js"></script>
+<script src="https://crashmax-dev.github.io/fireworks-js/fireworks.js"></script>
 ```
 
 ```js
