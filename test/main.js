@@ -1,4 +1,4 @@
-let fireworksContainer = document.querySelector('.fireworks-container'),
+const fireworksContainer = document.querySelector('.fireworks-container'),
     versionContainer = document.querySelector('.container > span')
 
 /**
@@ -26,9 +26,9 @@ const fireworksConfig = {
     sound: {
         enable: false,
         list: [
-            document.location.href + 'explosion0.mp3',
-            document.location.href + 'explosion1.mp3',
-            document.location.href + 'explosion2.mp3'
+            document.location.origin + '/explosion0.mp3',
+            document.location.origin + '/explosion1.mp3',
+            document.location.origin + '/explosion2.mp3'
         ],
         min: 4,
         max: 8
@@ -42,14 +42,57 @@ const backgroundConfig = {
     backgroundPosition: '50% 50%',
     backgroundRepeat: 'no-repeat',
     container: false,
-    fps: false,
+    fps: false
+}
+
+document.addEventListener('keydown', e => {
+    if (e.code === 'F11') {
+        e.preventDefault()
+
+        if (fireworksContainer.requestFullscreen) {
+            fireworksContainer.requestFullscreen()
+        } else if (fireworksContainer.webkitRequestFullscreen) {
+            fireworksContainer.webkitRequestFullscreen()
+        } else if (fireworksContainer.msRequestFullscreen) {
+            fireworksContainer.msRequestFullscreen()
+        }
+    }
+})
+
+if (document.location.hash) {
+    try {
+        const hash = document.location.hash.slice(1)
+        const code = b64DecodeUnicode(hash).split(',').map(Number)
+
+        if (code.length === 12) {
+            Object.values(code).forEach((v, i) => {
+                switch (i) {
+                    case 0: fireworksConfig.hue = v; break
+                    case 1: fireworksConfig.startDelay = v; break
+                    case 2: fireworksConfig.minDelay = v; break
+                    case 3: fireworksConfig.maxDelay = v; break
+                    case 4: fireworksConfig.speed = v; break
+                    case 5: fireworksConfig.acceleration = v; break
+                    case 6: fireworksConfig.friction = v; break
+                    case 7: fireworksConfig.gravity = v; break
+                    case 8: fireworksConfig.particles = v; break
+                    case 9: fireworksConfig.trace = v; break
+                    case 10: fireworksConfig.explosion = v; break
+                    case 11: fireworksConfig.sound.enable = Boolean(v)
+                }
+            })
+        }
+    } catch (err) {
+        document.location.hash = ''
+        console.log(err)
+    }
 }
 
 const fireworks = new Fireworks(fireworksConfig)
 
 fireworks.start()
 
-versionContainer.textContent = 'v' + fireworks._version
+versionContainer.textContent = 'v' + fireworks.version
 
 /**
  * stats.js
@@ -80,7 +123,7 @@ requestAnimationFrame(update)
 /**
  * dat.gui.js
  */
-let fpsMonitor = document.querySelector('#stats'),
+const fpsMonitor = document.querySelector('#stats'),
     fireworksCounters = document.querySelector('.fireworks-counters'),
     container = document.querySelector('.container')
 
@@ -99,6 +142,48 @@ window.export = () => {
 
     a.click()
     a.remove()
+}
+
+/**
+ * base64 encode/decode
+ */
+function b64EncodeUnicode(str) {
+    return btoa(encodeURIComponent(str).replace(/%([0-9A-F]{2})/g,
+        function toSolidBytes(match, p1) {
+            return String.fromCharCode('0x' + p1)
+        }))
+}
+
+function b64DecodeUnicode(str) {
+    return decodeURIComponent(atob(str).split('').map((c) => {
+        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)
+    }).join(''))
+}
+
+/**
+ * share fireworks options
+ */
+window.share = () => {
+    const shareOptions = Object.values(fireworksConfig).map((v, i) => {
+        switch (i) {
+            case 0:
+            case 12:
+                break
+            case 13:
+                return Number(v.enable)
+            default:
+                return v
+        }
+    }).filter(v => v !== undefined)
+
+    document.location.hash = '#' + b64EncodeUnicode(shareOptions)
+
+    const i = document.createElement('input')
+    document.body.appendChild(i)
+    i.value = document.location.href
+    i.select()
+    document.execCommand('copy')
+    document.body.removeChild(i)
 }
 
 folders = {
@@ -159,6 +244,7 @@ folders.fireworks.add(fireworks, '_running', true).name('enable').onChange(() =>
 })
 
 folders.fireworks.add(window, 'export').name('export config (json)')
+folders.fireworks.add(window, 'share').name('share config (url)')
 
 // boundaries
 folders.boundaries.add(fireworksConfig.boundaries, 'top').onChange(value => {
@@ -221,7 +307,7 @@ folders.background.add(backgroundConfig, 'fps').name('hide fps').onChange(value 
     }
 })
 
-folders.background.add(backgroundConfig, 'container').name('hide panel').onChange(value => {
+folders.background.add(backgroundConfig, 'container').name('hide card').onChange(value => {
     if (value) {
         container.style.display = 'none'
     } else {

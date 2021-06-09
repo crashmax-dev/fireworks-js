@@ -12,8 +12,7 @@ module.exports = {
         path: outputPath,
         filename: 'fireworks.js',
         libraryTarget: 'umd',
-        globalObject: 'this',
-        umdNamedDefine: true
+        globalObject: 'this'
     },
     devServer: {
         https: true,

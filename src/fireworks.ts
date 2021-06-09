@@ -1,11 +1,6 @@
 import { Trace } from './trace'
 import { Explosion } from './explosion'
-
-import {
-    getRender,
-    randomFloat,
-    randomInteger
-} from './utils/index'
+import { getRender, randomFloat, randomInteger } from './utils'
 
 interface FireworksOptions {
     target: Element | HTMLElement
@@ -124,10 +119,16 @@ export class Fireworks {
         }
     }
 
+    get isRunning() {
+        return this._running
+    }
+
+    get version() {
+        return this._version
+    }
+
     start() {
-        if (this._running) {
-            return
-        }
+        if (this._running) return
 
         this._running = true
         this.clear()
@@ -148,16 +149,17 @@ export class Fireworks {
     }
 
     clear() {
-        if (!this._ctx) {
-            return
-        }
+        if (!this._ctx) return
 
         this._fireworks = []
         this._particles = []
         this._ctx.clearRect(0, 0, this._width, this._height)
     }
 
-    updateSize({ width = this._target.clientWidth, height = this._target.clientHeight }: UpdateSize = {}) {
+    updateSize({
+        width = this._target.clientWidth,
+        height = this._target.clientHeight
+    }: UpdateSize = {}) {
         this._width = width
         this._height = height
 
@@ -174,16 +176,8 @@ export class Fireworks {
         this._boundaries = { ...this._boundaries, ...newBoundaries }
     }
 
-    get isRunning() {
-        return this._running
-    }
-
     private render() {
-        if (!this._ctx || !this._running) {
-            return
-        }
-
-        let length: number
+        if (!this._ctx || !this._running) return
 
         getRender(() => this.render())
 
@@ -193,16 +187,16 @@ export class Fireworks {
         this._ctx.fillRect(0, 0, this._width, this._height)
         this._ctx.globalCompositeOperation = 'lighter'
 
-        length = this._fireworks.length
+        let length = this._fireworks.length
         while (length--) {
             this._fireworks[length].draw()
             this._fireworks[length].update((x: number, y: number, hue: number) => {
                 let count = this._particleCount
 
                 if (this._sound.enable && this._sound.list.length > 0) {
-                    let index = randomInteger(0, this._sound.list.length - 1)
-                    let volume = randomFloat(this._sound.min / 10, this._sound.max / 10)
-                    let audio = new Audio(this._sound.list[index])
+                    const index = randomInteger(0, this._sound.list.length - 1)
+                    const volume = randomFloat(this._sound.min / 10, this._sound.max / 10)
+                    const audio = new Audio(this._sound.list[index])
 
                     audio.volume = volume
                     audio.play()

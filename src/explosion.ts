@@ -1,7 +1,4 @@
-import {
-    randomFloat,
-    randomInteger
-} from './utils/index'
+import { randomFloat, randomInteger } from './utils'
 
 export class Explosion {
     private _x: number
@@ -60,12 +57,12 @@ export class Explosion {
     }
 
     draw() {
-        let last = this._coordinates.length - 1
+        const last = this._coordinates.length - 1
 
         this._ctx.beginPath()
         this._ctx.moveTo(this._coordinates[last][0], this._coordinates[last][1])
         this._ctx.lineTo(this._x, this._y)
-        this._ctx.strokeStyle = 'hsla(' + this._hue + ', 100%, ' + this._brightness + '%, ' + this._alpha + ')'
+        this._ctx.strokeStyle = `hsla(${this._hue}, 100%, ${this._brightness}%, ${this._alpha})`
         this._ctx.stroke()
     }
 }

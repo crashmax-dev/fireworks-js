@@ -1,4 +1,4 @@
-import { Fireworks } from '../dist/fireworks'
+import { Fireworks } from '../src/fireworks'
 
 const BASE_PATH = 'https://crashmax-dev.github.io/fireworks-js/'
 
@@ -37,6 +37,7 @@ const fireworks = new Fireworks({
 })
 
 fireworks.start()
+console.log(fireworks.version)
 
 // fireworks.updateSize({
 //     height: 100,
@@ -56,4 +57,4 @@ fireworks.start()
 
 // console.log(fireworks.isRunning)
 
-setTimeout(() => fireworks.stop(), 10 * 1000)
+// setTimeout(() => fireworks.stop(), 10 * 1000)

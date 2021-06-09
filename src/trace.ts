@@ -1,7 +1,4 @@
-import {
-    getDistance,
-    randomInteger
-} from './utils/index'
+import { getDistance, randomInteger } from './utils'
 
 export class Trace {
     private _x: number
@@ -60,8 +57,8 @@ export class Trace {
         this._coordinates.unshift([this._x, this._y])
         this._speed *= this._acceleration
 
-        let vx = Math.cos(this._angle) * this._speed,
-            vy = Math.sin(this._angle) * this._speed
+        const vx = Math.cos(this._angle) * this._speed
+        const vy = Math.sin(this._angle) * this._speed
 
         this._currentDistance = getDistance(this._sx, this._sy, this._x + vx, this._y + vy)
 
@@ -74,12 +71,12 @@ export class Trace {
     }
 
     draw() {
-        let last = this._coordinates.length - 1
+        const last = this._coordinates.length - 1
 
         this._ctx.beginPath()
         this._ctx.moveTo(this._coordinates[last][0], this._coordinates[last][1])
         this._ctx.lineTo(this._x, this._y)
-        this._ctx.strokeStyle = 'hsl(' + this._hue + ', 100%, ' + this._brightness + '%)'
+        this._ctx.strokeStyle = `hsl(${this._hue}, 100%, ${this._brightness}%)`
         this._ctx.stroke()
     }
 }
