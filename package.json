@@ -1,6 +1,6 @@
 {
     "name": "fireworks-js",
-    "version": "1.0.6",
+    "version": "1.0.7",
     "description": "A simple fireworks library!",
     "unpkg": "dist/fireworks.js",
     "main": "dist/fireworks.js",
