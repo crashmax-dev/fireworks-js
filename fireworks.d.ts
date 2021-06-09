@@ -57,13 +57,14 @@ export declare class Fireworks {
     private _fireworks;
     private _particles;
     constructor(params: FireworksOptions);
+    get isRunning(): boolean;
+    get version(): string;
     start(): void;
     stop(): void;
     pause(): void;
     clear(): void;
     updateSize({ width, height }?: UpdateSize): void;
     updateBoundaries(newBoundaries: Partial<BoundariesOptions>): void;
-    get isRunning(): boolean;
     private render;
 }
 export {};
