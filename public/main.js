@@ -62,25 +62,22 @@ document.addEventListener('keydown', e => {
 if (document.location.hash) {
     try {
         const hash = document.location.hash.slice(1)
-        const code = b64DecodeUnicode(hash).split(',').map(Number)
+        const code = b64DecodeUnicode(hash).split(',')
+            .map(Number)
+            .filter(v => typeof v === 'number')
 
-        if (code.length === 12) {
-            Object.values(code).forEach((v, i) => {
-                switch (i) {
-                    case 0: fireworksConfig.hue = v; break
-                    case 1: fireworksConfig.startDelay = v; break
-                    case 2: fireworksConfig.minDelay = v; break
-                    case 3: fireworksConfig.maxDelay = v; break
-                    case 4: fireworksConfig.speed = v; break
-                    case 5: fireworksConfig.acceleration = v; break
-                    case 6: fireworksConfig.friction = v; break
-                    case 7: fireworksConfig.gravity = v; break
-                    case 8: fireworksConfig.particles = v; break
-                    case 9: fireworksConfig.trace = v; break
-                    case 10: fireworksConfig.explosion = v; break
-                    case 11: fireworksConfig.sound.enable = Boolean(v)
-                }
-            })
+        if (code.length === 11) {
+            fireworksConfig.hue = code[0]
+            fireworksConfig.startDelay = code[1]
+            fireworksConfig.minDelay = code[2]
+            fireworksConfig.maxDelay = code[3]
+            fireworksConfig.speed = code[4]
+            fireworksConfig.acceleration = code[5]
+            fireworksConfig.friction = code[6]
+            fireworksConfig.gravity = code[7]
+            fireworksConfig.particles = code[8]
+            fireworksConfig.trace = code[9]
+            fireworksConfig.explosion = code[10]
         }
     } catch (err) {
         document.location.hash = ''
@@ -164,17 +161,18 @@ function b64DecodeUnicode(str) {
  * share fireworks options
  */
 window.share = () => {
-    const shareOptions = Object.values(fireworksConfig).map((v, i) => {
-        switch (i) {
-            case 0:
-            case 12:
-                break
-            case 13:
-                return Number(v.enable)
-            default:
-                return v
-        }
-    }).filter(v => v !== undefined)
+    const shareOptions = Object.values(fireworksConfig)
+        .map((v, i) => {
+            switch (i) {
+                case 0:
+                case 12:
+                case 13:
+                    break
+                default:
+                    return v
+            }
+        })
+        .filter(v => v !== undefined)
 
     document.location.hash = '#' + b64EncodeUnicode(shareOptions)
 
@@ -243,8 +241,8 @@ folders.fireworks.add(fireworks, '_running', true).name('enable').onChange(() =>
     fireworks.render()
 })
 
-folders.fireworks.add(window, 'export').name('export config (json)')
-folders.fireworks.add(window, 'share').name('share config (url)')
+folders.fireworks.add(window, 'export').name('export config (download json)')
+folders.fireworks.add(window, 'share').name('share config (copy url)')
 
 // boundaries
 folders.boundaries.add(fireworksConfig.boundaries, 'top').onChange(value => {
