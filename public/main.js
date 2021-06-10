@@ -26,9 +26,9 @@ const fireworksConfig = {
     sound: {
         enable: false,
         list: [
-            document.location.origin + '/explosion0.mp3',
-            document.location.origin + '/explosion1.mp3',
-            document.location.origin + '/explosion2.mp3'
+            document.location.origin + document.location.pathname + '/sounds/explosion0.mp3',
+            document.location.origin + document.location.pathname + '/sounds/explosion1.mp3',
+            document.location.origin + document.location.pathname + '/sounds/explosion2.mp3'
         ],
         min: 4,
         max: 8

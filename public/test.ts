@@ -1,6 +1,6 @@
 import { Fireworks } from '../src/fireworks'
 
-const BASE_PATH = 'https://crashmax-dev.github.io/fireworks-js/'
+const BASE_PATH = 'https://crashmax-dev.github.io/fireworks-js/sounds/'
 
 const container = document.querySelector('#fireworks-container')
 // const container = document.getElementById('fireworks-container')
@@ -31,8 +31,8 @@ const fireworks = new Fireworks({
             BASE_PATH + 'explosion1.mp3',
             BASE_PATH + 'explosion2.mp3'
         ],
-        min: 4,
-        max: 8
+        min: 1,
+        max: 1
     }
 })
 
