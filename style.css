@@ -108,3 +108,7 @@ body {
     margin-right: 5px !important;
     margin-top: 5px;
 }
+
+.cr.function>div>span {
+    width: 100%;
+}
