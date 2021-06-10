@@ -48,7 +48,7 @@ const { Fireworks } = require('fireworks-js')
 
 ```html
 <!-- including in your html page -->
-<script src="https://crashmax-dev.github.io/fireworks-js/fireworks.js"></script>
+<script src="https://unpkg.com/fireworks-js@latest/dist/fireworks.js"></script>
 ```
 
 ```js
