@@ -82,7 +82,11 @@ key | default
 `trace` | `3`
 `explosion` | `5`
 `autoresize` | `true`
-`hue` | `[0, 360]`
+<<<<<<< HEAD
+`hue` | `{ min: 0, max: 360 }`
+=======
+`hue` | `{min: 0, max: 360}`
+>>>>>>> 3ddf01da6f3a51590a1f0cf3d36c860417d1a6df
 `delay` | `{ min: 15, max: 30 }`
 `boundaries` | `{ top: 50, bottom: 0, left: 50, right: 0 }`
 `sound` | `{ enable: false, files: [ ... ], min: 1, max: 2 }`
