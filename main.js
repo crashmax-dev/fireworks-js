@@ -297,16 +297,17 @@ folders.sound.add(fireworksConfig.sound, 'max', 1, 10).step(1).onChange(value =>
 })
 
 // mouse
-folders.mouse.add(fireworksConfig.mouse, 'click', true).onChange(value => {
+folders.mouse.addFolder('click')
+folders.mouse.__folders.click.add(fireworksConfig.mouse, 'click', true).onChange(value => {
   fireworks._mouse.click = value
+})
+
+folders.mouse.__folders.click.add(fireworksConfig.mouse, 'max', 1, 10).step(1).onChange(value => {
+  fireworks._mouse.max = value
 })
 
 folders.mouse.add(fireworksConfig.mouse, 'move', false).onChange(value => {
   fireworks._mouse.move = value
-})
-
-folders.mouse.add(fireworksConfig.mouse, 'max', 1, 10).step(1).onChange(value => {
-  fireworks._mouse.max = value
 })
 
 // background
@@ -347,3 +348,6 @@ folders.background.add(backgroundConfig, 'container').name('hide card').onChange
     container.style.display = 'block'
   }
 })
+
+// костыль
+document.querySelectorAll('.property-name')[21].textContent = 'enable'
