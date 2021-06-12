@@ -1,21 +1,21 @@
 {
-    "compilerOptions": {
-        "moduleResolution": "node",
-        "module": "es6",
-        "target": "es6",
-        "strict": true,
-        "sourceMap": true,
-        "declaration": true,
-        "noImplicitAny": true,
-        "strictPropertyInitialization": false,
-        "rootDir": "src",
-        "outDir": "dist"
-    },
-    "include": [
-        "src/**/*"
-    ],
-    "exclude": [
-        "dist",
-        "node_modules"
-    ]
+  "compilerOptions": {
+    "moduleResolution": "node",
+    "module": "es6",
+    "target": "es6",
+    "strict": true,
+    "sourceMap": true,
+    "declaration": true,
+    "noImplicitAny": true,
+    "strictPropertyInitialization": false,
+    "rootDir": "src",
+    "outDir": "dist"
+  },
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "dist",
+    "node_modules"
+  ]
 }

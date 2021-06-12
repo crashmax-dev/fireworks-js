@@ -56,8 +56,8 @@ const { Fireworks } = require('fireworks-js')
 const container = document.querySelector('.fireworks-container')
 
 // default config
-const fireworks = new Fireworks({
-    target: container
+const fireworks = new Fireworks(container, {
+    // options
 })
 
 fireworks.start()
@@ -72,17 +72,18 @@ fireworks.stop()
 
 ## Options
 
-* **hue**: (default: `120`)
-* **startDelay**: (default: `30`)
-* **minDelay**: (default: `30`)
-* **maxDelay**: (default: `90`)
-* **speed**: (default: `2`)
-* **acceleration**: (default: `1.05`)
-* **friction**: (default: `0.95`)
-* **gravity**: (default: `1.5`)
-* **particles**: (default: `50`)
-* **trace**: (default: `3`)
-* **explosion**: (default: `5`)
-* **autoresize**: (default: `true`)
-* **boundaries**: (default: `{ top: 50, bottom: 0, left: 50, right: 0 }`)
-* **sound**: (default: `{ enable: false, { list: [ ... ], min: 4, max: 8 }`)
+key | default
+----|--------
+`speed` | `2`
+`acceleration` | `1.05`
+`friction` | `0.95`
+`gravity` | `1.5`
+`particles` | `50`
+`trace` | `3`
+`explosion` | `5`
+`autoresize` | `true`
+`hue` | `[0, 360]`
+`delay` | `{ min: 15, max: 30 }`
+`boundaries` | `{ top: 50, bottom: 0, left: 50, right: 0 }`
+`sound` | `{ enable: false, files: [ ... ], min: 1, max: 2 }`
+`mouse` | `{ click: false, move: false, max: 3 }`
