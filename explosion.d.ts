@@ -13,6 +13,6 @@ export declare class Explosion {
     private _alpha;
     private _decay;
     constructor(x: number, y: number, ctx: CanvasRenderingContext2D, hue: number, friction: number, gravity: number, explosion: number);
-    update(callback: Function): void;
+    update(callback: () => void): void;
     draw(): void;
 }

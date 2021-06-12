@@ -16,6 +16,7 @@ export declare class Trace {
     private _angle;
     private _brightness;
     constructor(x1: number, y1: number, x2: number, y2: number, ctx: CanvasRenderingContext2D, hue: number, speed: number, acceleration: number, trace: number);
-    update(callback: Function): void;
+    update(callback: (x: number, y: number, hue: number) => void): void;
     draw(): void;
+    private getDistance;
 }
