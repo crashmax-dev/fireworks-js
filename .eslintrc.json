@@ -1,0 +1,79 @@
+{
+  "env": {
+    "node": true
+  },
+  "parser": "@typescript-eslint/parser",
+  "extends": [
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "ignorePatterns": [
+    "dist/*",
+    "public/*"
+  ],
+  "parserOptions": {
+    "ecmaVersion": 12,
+    "sourceType": "module"
+  },
+  "rules": {
+    "@typescript-eslint/no-unused-vars": "off",
+    "@typescript-eslint/no-var-requires": "off",
+    "@typescript-eslint/no-empty-function": "off",
+    "@typescript-eslint/ban-ts-comment": "off",
+    "@typescript-eslint/indent": [
+      "warn",
+      2
+    ],
+    "eqeqeq": "warn",
+    "no-var": "warn",
+    "no-multi-spaces": "warn",
+    "indent": [
+      "off"
+    ],
+    "object-curly-spacing": [
+      "warn",
+      "always"
+    ],
+    "semi": [
+      "warn",
+      "never"
+    ],
+    "comma-dangle": [
+      "warn",
+      "never"
+    ],
+    "quotes": [
+      "warn",
+      "single",
+      {
+        "avoidEscape": true
+      }
+    ],
+    "yoda": [
+      "warn",
+      "never",
+      {
+        "exceptRange": true
+      }
+    ],
+    "no-trailing-spaces": [
+      "warn",
+      {
+        "skipBlankLines": true
+      }
+    ],
+    "block-spacing": [
+      "warn",
+      "always"
+    ],
+    "no-unsafe-negation": [
+      "warn",
+      {
+        "enforceForOrderingRelations": true
+      }
+    ],
+    "multiline-ternary": [
+      "warn",
+      "always-multiline"
+    ]
+  }
+}
