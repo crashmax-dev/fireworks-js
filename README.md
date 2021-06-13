@@ -84,6 +84,6 @@ key | default
 `autoresize` | `true`
 `hue` | `{ min: 0, max: 360 }`
 `delay` | `{ min: 15, max: 30 }`
-`boundaries` | `{ top: 50, bottom: 0, left: 50, right: 0 }`
-`sound` | `{ enable: false, files: [ ... ], min: 1, max: 2 }`
+`boundaries` | `{ top: 50, bottom: container.clientHeight, left: 50, right: container.clientWidth }`
+`sound` | `{ enable: false, files: [ ... ], volume: { min: 1, max: 2 } }`
 `mouse` | `{ click: false, move: false, max: 3 }`
