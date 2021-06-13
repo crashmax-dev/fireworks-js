@@ -1,6 +1,7 @@
 import { Trace } from './trace'
 import { Explosion } from './explosion'
-import { randomFloat, randomInteger } from './utils'
+import { Sound, SoundOptions } from './sound'
+import { randomInteger } from './utils'
 
 type HTMLContainer = Element | HTMLElement
 
@@ -33,13 +34,6 @@ interface BoundariesOptions {
   right: number
 }
 
-interface SoundOptions {
-  enable: boolean
-  files: string[]
-  min: number
-  max: number
-}
-
 interface MinMaxOptions {
   min: number
   max: number
@@ -69,28 +63,8 @@ export class Fireworks {
   private _explosionLength: number
   private _autoresize: boolean
   private _boundaries: BoundariesOptions
-
-  private _mouse: MouseOptions = {
-    click: false,
-    move: false,
-    max: 5
-  }
-
-  private _sound: SoundOptions = {
-    enable: false,
-    files: [
-      'explosion0.mp3',
-      'explosion1.mp3',
-      'explosion2.mp3'
-    ],
-    min: 1,
-    max: 2
-  }
-
-  private _delay: MinMaxOptions = {
-    min: 15,
-    max: 30
-  }
+  private _mouse: MouseOptions
+  private _delay: MinMaxOptions
 
   private _tick = 0
   private _version = version
@@ -100,8 +74,9 @@ export class Fireworks {
   private _my: number
   private _ds: number
 
-  private _traces: Trace[] = []
-  private _explosions: Explosion[] = []
+  private _sound: Sound
+  private _traces: Trace[]
+  private _explosions: Explosion[]
 
   constructor(container: HTMLContainer, {
     hue,
@@ -122,6 +97,7 @@ export class Fireworks {
     this._canvas = document.createElement('canvas')
     this._ctx = this._canvas.getContext('2d') as CanvasRenderingContext2D
     this._container.appendChild(this._canvas)
+    this._sound = new Sound(sound)
 
     this.updateSize()
     this.updateBoundaries(boundaries || {
@@ -141,9 +117,18 @@ export class Fireworks {
     this._explosionLength = explosion || 5
     this._autoresize = autoresize ?? true
 
-    this._mouse = { ...this._mouse, ...mouse }
-    this._sound = { ...this._sound, ...sound }
-    this._delay = { ...this._delay, ...delay }
+    this._mouse = {
+      click: false,
+      move: false,
+      max: 5,
+      ...mouse
+    }
+
+    this._delay = {
+      min: 15,
+      max: 30,
+      ...delay
+    }
 
     if (this._autoresize) {
       window.addEventListener('resize', () => {
@@ -221,17 +206,6 @@ export class Fireworks {
     }
   }
 
-  private playSound(): void {
-    if (this._sound.enable && this._sound.files.length > 0) {
-      const index = randomInteger(0, this._sound.files.length - 1)
-      const volume = randomFloat(this._sound.min / 10, this._sound.max / 10)
-      const audio = new Audio(this._sound.files[index])
-
-      audio.volume = volume
-      audio.play()
-    }
-  }
-
   private render(): void {
     if (!this._ctx || !this._running) return
 
@@ -278,8 +252,8 @@ export class Fireworks {
     while (length--) {
       this._traces[length].draw()
       this._traces[length].update((x: number, y: number, hue: number) => {
-        this.playSound()
         this.initExplosion(x, y, hue)
+        this._sound.play()
         this._traces.splice(length, 1)
       })
     }
