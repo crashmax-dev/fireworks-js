@@ -1,8 +1,14 @@
+const fs = require('fs')
 const path = require('path')
 const webpack = require('webpack')
+const pkg = require('./package.json')
 const outputPath = path.resolve(__dirname, 'dist')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+
+const banner = `${pkg.name} ${pkg.version} by ${pkg.author.name} (${pkg.author.url})
+${pkg.homepage}
+License ${pkg.license}`
 
 module.exports = {
   mode: process.env.NODE_ENV,
@@ -56,8 +62,9 @@ module.exports = {
   },
   plugins: [
     new CleanWebpackPlugin(),
+    new webpack.BannerPlugin(banner),
     new webpack.DefinePlugin({
-      version: JSON.stringify(require('./package.json').version)
+      version: JSON.stringify(pkg.version)
     }),
     new CopyWebpackPlugin({
       patterns: [
