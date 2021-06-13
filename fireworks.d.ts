@@ -1,3 +1,4 @@
+import { SoundOptions } from './sound';
 declare type HTMLContainer = Element | HTMLElement;
 interface FireworksOptions {
     hue?: MinMaxOptions;
@@ -25,12 +26,6 @@ interface BoundariesOptions {
     left: number;
     right: number;
 }
-interface SoundOptions {
-    enable: boolean;
-    files: string[];
-    min: number;
-    max: number;
-}
 interface MinMaxOptions {
     min: number;
     max: number;
@@ -56,7 +51,6 @@ export declare class Fireworks {
     private _autoresize;
     private _boundaries;
     private _mouse;
-    private _sound;
     private _delay;
     private _tick;
     private _version;
@@ -65,6 +59,7 @@ export declare class Fireworks {
     private _mx;
     private _my;
     private _ds;
+    private _sound;
     private _traces;
     private _explosions;
     constructor(container: HTMLContainer, { hue, speed, acceleration, friction, gravity, particles, trace, explosion, autoresize, mouse, boundaries, sound, delay }: FireworksOptions);
@@ -77,7 +72,6 @@ export declare class Fireworks {
     updateSize({ width, height }?: Sizes): void;
     updateBoundaries(boundaries: Partial<BoundariesOptions>): void;
     private useMouse;
-    private playSound;
     private render;
     private initTrace;
     private drawTrace;

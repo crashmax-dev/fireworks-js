@@ -30,12 +30,14 @@ const fireworksConfig = {
   sound: {
     enable: false,
     files: [
-      document.location.origin + document.location.pathname + '/sounds/explosion0.mp3',
-      document.location.origin + document.location.pathname + '/sounds/explosion1.mp3',
-      document.location.origin + document.location.pathname + '/sounds/explosion2.mp3'
+      document.location.origin + document.location.pathname + 'sounds/explosion0.mp3',
+      document.location.origin + document.location.pathname + 'sounds/explosion1.mp3',
+      document.location.origin + document.location.pathname + 'sounds/explosion2.mp3'
     ],
-    min: 1,
-    max: 2
+    volume: {
+      min: 4,
+      max: 8
+    }
   },
   mouse: {
     click: true,
@@ -284,16 +286,17 @@ folders.boundaries.add(fireworksConfig.boundaries, 'right').onChange(value => {
 })
 
 // sound
+folders.sound.addFolder('volume')
+folders.sound.__folders.volume.add(fireworksConfig.sound.volume, 'min', 1, 100).step(1).onChange(value => {
+  fireworks._sound.options.volume.min = value
+})
+
+folders.sound.__folders.volume.add(fireworksConfig.sound.volume, 'max', 1, 100).step(1).onChange(value => {
+  fireworks._sound.options.volume.max = value
+})
+
 folders.sound.add(fireworksConfig.sound, 'enable', false).onChange(value => {
-  fireworks._sound.enable = value
-})
-
-folders.sound.add(fireworksConfig.sound, 'min', 1, 10).step(1).onChange(value => {
-  fireworks._sound.min = value
-})
-
-folders.sound.add(fireworksConfig.sound, 'max', 1, 10).step(1).onChange(value => {
-  fireworks._sound.max = value
+  fireworks._sound.options.enable = value
 })
 
 // mouse
