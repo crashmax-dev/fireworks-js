@@ -1,15 +1,19 @@
 {
   "compilerOptions": {
     "moduleResolution": "node",
-    "module": "es6",
+    "module": "commonjs",
     "target": "es6",
+    "lib": [
+      "es6",
+      "dom"
+    ],
     "strict": true,
     "sourceMap": true,
     "declaration": true,
     "noImplicitAny": true,
     "strictPropertyInitialization": false,
     "rootDir": "src",
-    "outDir": "dist"
+    "outDir": "dist",
   },
   "include": [
     "src/**/*"

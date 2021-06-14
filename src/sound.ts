@@ -1,15 +1,7 @@
+import { SoundOptions } from './fireworks'
 import { randomInteger, randomFloat } from './utils'
 
-interface SoundOptions {
-  enable: boolean
-  files?: string[]
-  volume?: {
-    min: number
-    max: number
-  }
-}
-
-class Sound {
+export class Sound {
   public options: Required<SoundOptions>
   private _buffer: AudioBuffer[] = []
   private _audioContext = new AudioContext()
@@ -64,5 +56,3 @@ class Sound {
     }
   }
 }
-
-export { Sound, SoundOptions }
