@@ -1,7 +1,15 @@
 import { Fireworks } from '../src/fireworks'
 
 const container = document.querySelector('#container')
-const fireworks = new Fireworks(container)
+
+const options = {
+  hue: {
+    min: 0,
+    max: 180
+  }
+}
+
+const fireworks = new Fireworks(container, options)
 
 fireworks.pause()
 fireworks.start()
