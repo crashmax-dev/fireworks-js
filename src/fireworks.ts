@@ -1,6 +1,6 @@
 import { Trace } from './trace'
+import { Sound } from './sound'
 import { Explosion } from './explosion'
-import { Sound, SoundOptions } from './sound'
 import { randomInteger } from './utils'
 
 type HTMLContainer = Element | HTMLElement
@@ -34,6 +34,15 @@ interface BoundariesOptions {
   right: number
 }
 
+interface SoundOptions {
+  enable: boolean
+  files?: string[]
+  volume?: {
+    min: number
+    max: number
+  }
+}
+
 interface MinMaxOptions {
   min: number
   max: number
@@ -46,7 +55,7 @@ interface Sizes {
 
 declare const version: string
 
-export class Fireworks {
+class Fireworks {
   private _container: HTMLContainer
   private _canvas: HTMLCanvasElement
   private _ctx: CanvasRenderingContext2D
@@ -78,56 +87,42 @@ export class Fireworks {
   private _traces: Trace[]
   private _explosions: Explosion[]
 
-  constructor(container: HTMLContainer, {
-    hue,
-    speed,
-    acceleration,
-    friction,
-    gravity,
-    particles,
-    trace,
-    explosion,
-    autoresize,
-    mouse,
-    boundaries,
-    sound,
-    delay
-  }: FireworksOptions) {
+  constructor(container: HTMLContainer, opts?: FireworksOptions) {
     this._container = container
     this._canvas = document.createElement('canvas')
     this._ctx = this._canvas.getContext('2d') as CanvasRenderingContext2D
     this._container.appendChild(this._canvas)
-    this._sound = new Sound(sound)
+    this._sound = new Sound(opts?.sound)
 
     this.updateSize()
-    this.updateBoundaries(boundaries || {
+    this.updateBoundaries(opts?.boundaries || {
       top: 50,
       bottom: 0,
       left: 50,
       right: 0
     })
 
-    this._hue = hue || { min: 0, max: 360 }
-    this._speed = speed || 2
-    this._acceleration = acceleration || 1.05
-    this._friction = friction || 0.95
-    this._gravity = gravity || 1.5
-    this._particleCount = particles || 50
-    this._traceLength = trace || 3
-    this._explosionLength = explosion || 5
-    this._autoresize = autoresize ?? true
+    this._hue = opts?.hue || { min: 0, max: 360 }
+    this._speed = opts?.speed || 2
+    this._acceleration = opts?.acceleration || 1.05
+    this._friction = opts?.friction || 0.95
+    this._gravity = opts?.gravity || 1.5
+    this._particleCount = opts?.particles || 50
+    this._traceLength = opts?.trace || 3
+    this._explosionLength = opts?.explosion || 5
+    this._autoresize = opts?.autoresize ?? true
 
     this._mouse = {
       click: false,
       move: false,
       max: 5,
-      ...mouse
+      ...opts?.mouse
     }
 
     this._delay = {
       min: 15,
       max: 30,
-      ...delay
+      ...opts?.delay
     }
 
     if (this._autoresize) {
@@ -286,3 +281,5 @@ export class Fireworks {
     }
   }
 }
+
+export { Fireworks, FireworksOptions, MouseOptions, BoundariesOptions, SoundOptions }

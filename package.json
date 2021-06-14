@@ -1,10 +1,9 @@
 {
     "name": "fireworks-js",
-    "version": "1.1.1",
+    "version": "1.1.2",
     "description": "A simple fireworks library!",
-    "unpkg": "dist/fireworks.js",
-    "main": "dist/fireworks.js",
-    "types": "dist/fireworks.d.ts",
+    "module": "./dist/fireworks.js",
+    "types": "./dist/fireworks.d.ts",
     "files": [
         "dist/fireworks.js",
         "dist/fireworks.d.ts"
