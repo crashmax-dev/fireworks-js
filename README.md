@@ -11,7 +11,7 @@
 <br/>
 
 <p align="center">
-    <a href="https://travis-ci.org/github/crashmax-dev/fireworks-js" target="_blank"><img alt="Travis (.org)" src="https://img.shields.io/travis/crashmax-dev/fireworks-js"></a>
+    <a href="https://travis-ci.com/github/crashmax-dev/fireworks-js" target="_blank"><img alt="Travis (.org)" src="https://travis-ci.com/crashmax-dev/fireworks-js.svg?branch=master"></a>
     <a href="https://www.npmjs.com/package/fireworks-js" target="_blank"><img alt="npm" src="https://img.shields.io/npm/v/fireworks-js"></a>
     <a href="#"><img alt="npm bundle size" src="https://img.shields.io/bundlephobia/min/fireworks-js"></a>
 </p>
