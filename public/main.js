@@ -216,11 +216,11 @@ const folders = {
 folders.fireworks.addFolder('hue')
 
 folders.fireworks.__folders.hue.add(fireworksConfig.hue, 'min', 0, 360).step(1).onChange(value => {
-  fireworks._hue[0] = value
+  fireworks._hue.min = value
 })
 
 folders.fireworks.__folders.hue.add(fireworksConfig.hue, 'max', 0, 360).step(1).onChange(value => {
-  fireworks._hue[1] = value
+  fireworks._hue.max = value
 })
 
 folders.fireworks.addFolder('delay')
