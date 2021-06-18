@@ -1,11 +1,10 @@
-const fs = require('fs')
-const path = require('path')
-const webpack = require('webpack')
-const pkg = require('./package.json')
-const outputPath = path.resolve(__dirname, 'dist')
-const CopyWebpackPlugin = require('copy-webpack-plugin')
-const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+import path from 'path'
+import webpack from 'webpack'
+import pkg from './package.json'
+import CopyWebpackPlugin from 'copy-webpack-plugin'
+import { CleanWebpackPlugin } from 'clean-webpack-plugin'
 
+const outputPath = path.resolve(__dirname, 'dist')
 const banner = `${pkg.name} ${pkg.version} by ${pkg.author.name} (${pkg.author.url})
 ${pkg.homepage}
 License ${pkg.license}`
@@ -13,6 +12,7 @@ License ${pkg.license}`
 module.exports = {
   mode: process.env.NODE_ENV,
   target: 'web',
+  devtool: 'source-map',
   entry: path.join(__dirname, 'src/fireworks.ts'),
   output: {
     path: outputPath,
@@ -21,6 +21,7 @@ module.exports = {
     globalObject: 'this'
   },
   devServer: {
+    open: true,
     https: true,
     port: 8080,
     writeToDisk: true,
@@ -75,4 +76,4 @@ module.exports = {
       ]
     })
   ]
-}
+} as webpack.Configuration

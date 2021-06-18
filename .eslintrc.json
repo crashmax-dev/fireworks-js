@@ -1,15 +1,10 @@
 {
-  "env": {
-    "node": true
-  },
   "parser": "@typescript-eslint/parser",
   "extends": [
     "plugin:@typescript-eslint/recommended"
   ],
   "ignorePatterns": [
-    "test/*",
-    "dist/*",
-    "public/*"
+    "dist"
   ],
   "parserOptions": {
     "ecmaVersion": 12,
