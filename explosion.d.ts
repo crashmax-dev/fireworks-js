@@ -1,3 +1,4 @@
+import { BrightnessOptions } from './fireworks';
 export declare class Explosion {
     private _x;
     private _y;
@@ -12,7 +13,7 @@ export declare class Explosion {
     private _brightness;
     private _alpha;
     private _decay;
-    constructor(x: number, y: number, ctx: CanvasRenderingContext2D, hue: number, friction: number, gravity: number, explosion: number);
+    constructor(x: number, y: number, ctx: CanvasRenderingContext2D, hue: number, friction: number, gravity: number, explosion: number, brightness: Required<BrightnessOptions>);
     update(callback: () => void): void;
     draw(): void;
 }

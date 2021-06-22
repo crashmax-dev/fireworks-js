@@ -13,6 +13,15 @@ interface FireworksOptions {
     boundaries?: BoundariesOptions;
     sound?: SoundOptions;
     delay?: MinMaxOptions;
+    brightness?: BrightnessOptions;
+}
+interface BrightnessOptions {
+    min: number;
+    max: number;
+    decay?: {
+        min: number;
+        max: number;
+    };
 }
 interface MouseOptions {
     click: boolean;
@@ -59,6 +68,7 @@ declare class Fireworks {
     private _boundaries;
     private _mouse;
     private _delay;
+    private _brightness;
     private _tick;
     private _version;
     private _running;
@@ -85,4 +95,4 @@ declare class Fireworks {
     private initExplosion;
     private drawExplosion;
 }
-export { Fireworks, FireworksOptions, MouseOptions, BoundariesOptions, SoundOptions };
+export { Fireworks, FireworksOptions, MouseOptions, BoundariesOptions, SoundOptions, BrightnessOptions };
