@@ -12,7 +12,6 @@ License ${pkg.license}`
 module.exports = {
   mode: process.env.NODE_ENV,
   target: 'web',
-  devtool: 'source-map',
   entry: path.join(__dirname, 'src/fireworks.ts'),
   output: {
     path: outputPath,
