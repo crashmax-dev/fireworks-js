@@ -1,3 +1,4 @@
+import { BrightnessOptions } from './fireworks'
 import { randomFloat, randomInteger } from './utils'
 
 export class Explosion {
@@ -22,7 +23,8 @@ export class Explosion {
     hue: number,
     friction: number,
     gravity: number,
-    explosion: number
+    explosion: number,
+    brightness: Required<BrightnessOptions>
   ) {
     this._x = x
     this._y = y
@@ -39,8 +41,8 @@ export class Explosion {
     this._angle = randomFloat(0, Math.PI * 2)
     this._speed = randomInteger(1, 10)
     this._hue = randomInteger(this._hue - 20, this._hue + 20)
-    this._brightness = randomInteger(50, 80)
-    this._decay = randomFloat(0.015, 0.03)
+    this._brightness = randomInteger(brightness.min, brightness.max)
+    this._decay = randomFloat(brightness.decay.min, brightness.decay.max)
   }
 
   update(callback: () => void): void {

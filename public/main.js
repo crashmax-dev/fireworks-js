@@ -21,6 +21,14 @@ const fireworksConfig = {
   trace: 3,
   explosion: 6,
   autoresize: true,
+  brightness: {
+    min: 50,
+    max: 80,
+    decay: {
+      min: 0.015,
+      max: 0.03
+    }
+  },
   boundaries: {
     top: 50,
     bottom: fireworksContainer.clientHeight,
@@ -64,8 +72,6 @@ document.addEventListener('keydown', e => {
       fireworksContainer.requestFullscreen()
     } else if (fireworksContainer.webkitRequestFullscreen) {
       fireworksContainer.webkitRequestFullscreen()
-    } else if (fireworksContainer.msRequestFullscreen) {
-      fireworksContainer.msRequestFullscreen()
     }
   }
 })
@@ -77,18 +83,22 @@ if (document.location.hash) {
       .map(Number)
       .filter(v => typeof v === 'number')
 
-    if (c.length === 11) {
+    if (c.length === 15) {
       fireworksConfig.hue.min = c[0]
       fireworksConfig.hue.max = c[1]
       fireworksConfig.delay.min = c[2]
       fireworksConfig.delay.max = c[3]
-      fireworksConfig.speed = c[4]
-      fireworksConfig.acceleration = c[5]
-      fireworksConfig.friction = c[6]
-      fireworksConfig.gravity = c[7]
-      fireworksConfig.particles = c[8]
-      fireworksConfig.trace = c[9]
-      fireworksConfig.explosion = c[10]
+      fireworksConfig.brightness.min = c[4]
+      fireworksConfig.brightness.max = c[5]
+      fireworksConfig.brightness.decay.min = c[6]
+      fireworksConfig.brightness.decay.max = c[7]
+      fireworksConfig.speed = c[8]
+      fireworksConfig.acceleration = c[9]
+      fireworksConfig.friction = c[10]
+      fireworksConfig.gravity = c[11]
+      fireworksConfig.particles = c[12]
+      fireworksConfig.trace = c[13]
+      fireworksConfig.explosion = c[14]
     }
   } catch (err) {
     document.location.hash = ''
@@ -181,6 +191,7 @@ window.share = () => {
         case 10:
         case 11:
         case 12:
+        case 13:
           break
         default:
           return v
@@ -193,6 +204,10 @@ window.share = () => {
     fireworksConfig.hue.max,
     fireworksConfig.delay.min,
     fireworksConfig.delay.max,
+    fireworksConfig.brightness.min,
+    fireworksConfig.brightness.max,
+    fireworksConfig.brightness.decay.min,
+    fireworksConfig.brightness.decay.max,
     ...shareOptions
   ])
 
@@ -209,12 +224,11 @@ const folders = {
   boundaries: gui.addFolder('boundaries'),
   sound: gui.addFolder('sound'),
   mouse: gui.addFolder('mouse'),
-  background: gui.addFolder('background'),
+  background: gui.addFolder('background')
 }
 
 // fireworks
 folders.fireworks.addFolder('hue')
-
 folders.fireworks.__folders.hue.add(fireworksConfig.hue, 'min', 0, 360).step(1).onChange(value => {
   fireworks._hue.min = value
 })
@@ -223,14 +237,35 @@ folders.fireworks.__folders.hue.add(fireworksConfig.hue, 'max', 0, 360).step(1).
   fireworks._hue.max = value
 })
 
+// delay
 folders.fireworks.addFolder('delay')
-
 folders.fireworks.__folders.delay.add(fireworksConfig.delay, 'min', 1, 100).step(1).onChange(value => {
   fireworks._delay.min = value
 })
 
 folders.fireworks.__folders.delay.add(fireworksConfig.delay, 'max', 1, 100).step(1).onChange(value => {
   fireworks._delay.max = value
+})
+
+// brightness
+folders.fireworks.addFolder('brightness')
+
+folders.fireworks.__folders.brightness.add(fireworksConfig.brightness, 'min', 1, 100).step(1).onChange(value => {
+  fireworks._brightness.min = value
+})
+
+folders.fireworks.__folders.brightness.add(fireworksConfig.brightness, 'max', 1, 100).step(1).onChange(value => {
+  fireworks._brightness.max = value
+})
+
+// brightness -> decay
+folders.fireworks.__folders.brightness.addFolder('decay')
+folders.fireworks.__folders.brightness.__folders.decay.add(fireworksConfig.brightness.decay, 'min', 0.001, 0.05).step(0.001).onChange(value => {
+  fireworks._brightness.decay.min = value
+})
+
+folders.fireworks.__folders.brightness.__folders.decay.add(fireworksConfig.brightness.decay, 'max', 0.001, 0.05).step(0.001).onChange(value => {
+  fireworks._brightness.decay.max = value
 })
 
 folders.fireworks.add(fireworksConfig, 'speed', 1, 100).step(1).onChange(value => {
@@ -285,7 +320,7 @@ folders.boundaries.add(fireworksConfig.boundaries, 'right').onChange(value => {
   fireworks._boundaries.right = value
 })
 
-// sound
+// sound -> volume
 folders.sound.addFolder('volume')
 folders.sound.__folders.volume.add(fireworksConfig.sound.volume, 'min', 1, 100).step(1).onChange(value => {
   fireworks._sound.options.volume.min = value
@@ -299,7 +334,7 @@ folders.sound.add(fireworksConfig.sound, 'enable', false).onChange(value => {
   fireworks._sound.options.enable = value
 })
 
-// mouse
+// mouse -> click
 folders.mouse.addFolder('click')
 folders.mouse.__folders.click.add(fireworksConfig.mouse, 'click', true).onChange(value => {
   fireworks._mouse.click = value
