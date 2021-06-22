@@ -19,6 +19,16 @@ interface FireworksOptions {
   boundaries?: BoundariesOptions
   sound?: SoundOptions
   delay?: MinMaxOptions
+  brightness?: BrightnessOptions
+}
+
+interface BrightnessOptions {
+  min: number
+  max: number
+  decay?: {
+    min: number
+    max: number
+  }
 }
 
 interface MouseOptions {
@@ -74,6 +84,7 @@ class Fireworks {
   private _boundaries: BoundariesOptions
   private _mouse: MouseOptions
   private _delay: MinMaxOptions
+  private _brightness: Required<BrightnessOptions>
 
   private _tick = 0
   private _version = version
@@ -95,14 +106,14 @@ class Fireworks {
     this._sound = new Sound(opts?.sound)
 
     this.updateSize()
-    this.updateBoundaries(opts?.boundaries || {
+    this.updateBoundaries({
       top: 50,
       bottom: 0,
       left: 50,
-      right: 0
+      right: 0,
+      ...opts?.boundaries
     })
 
-    this._hue = opts?.hue || { min: 0, max: 360 }
     this._speed = opts?.speed || 2
     this._acceleration = opts?.acceleration || 1.05
     this._friction = opts?.friction || 0.95
@@ -111,6 +122,12 @@ class Fireworks {
     this._traceLength = opts?.trace || 3
     this._explosionLength = opts?.explosion || 5
     this._autoresize = opts?.autoresize ?? true
+
+    this._hue = {
+      min: 0,
+      max: 360,
+      ...opts?.hue
+    }
 
     this._mouse = {
       click: false,
@@ -125,15 +142,23 @@ class Fireworks {
       ...opts?.delay
     }
 
-    if (this._autoresize) {
-      window.addEventListener('resize', () => {
-        this.updateSize()
-      })
+    this._brightness = {
+      min: 50,
+      max: 80,
+      decay: {
+        min: 0.015,
+        max: 0.03
+      },
+      ...opts?.brightness
     }
 
-    this._canvas.addEventListener('mousedown', (e) => this.useMouse(e, this._mouse.click))
-    this._canvas.addEventListener('mouseup', (e) => this.useMouse(e, false))
-    this._canvas.addEventListener('mousemove', (e) => this.useMouse(e, this._m))
+    if (this._autoresize) {
+      window.addEventListener('resize', () => this.updateSize())
+    }
+
+    this._canvas.addEventListener('mousedown', e => this.useMouse(e, this._mouse.click))
+    this._canvas.addEventListener('mouseup', e => this.useMouse(e, false))
+    this._canvas.addEventListener('mousemove', e => this.useMouse(e, this._m))
   }
 
   get isRunning(): boolean {
@@ -265,7 +290,8 @@ class Fireworks {
         hue,
         this._friction,
         this._gravity,
-        this._explosionLength
+        this._explosionLength,
+        this._brightness
       ))
     }
   }
@@ -282,4 +308,4 @@ class Fireworks {
   }
 }
 
-export { Fireworks, FireworksOptions, MouseOptions, BoundariesOptions, SoundOptions }
+export { Fireworks, FireworksOptions, MouseOptions, BoundariesOptions, SoundOptions, BrightnessOptions }

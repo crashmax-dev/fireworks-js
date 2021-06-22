@@ -72,8 +72,8 @@ fireworks.stop()
 
 ## Options
 
-key | default
-----|--------
+key | default values
+----|---------------
 `speed` | `2`
 `acceleration` | `1.05`
 `friction` | `0.95`
@@ -85,5 +85,9 @@ key | default
 `hue` | `{ min: 0, max: 360 }`
 `delay` | `{ min: 15, max: 30 }`
 `boundaries` | `{ top: 50, bottom: container.clientHeight, left: 50, right: container.clientWidth }`
-`sound` | `{ enable: false, files: [ ... ], volume: { min: 1, max: 2 } }`
-`mouse` | `{ click: false, move: false, max: 3 }`
+`sound` | `{ enable: false }`
+`sound.files` | `[ '*.mp3', '*.ogg', '*.wav' ]`
+`sound.volume` | `{ min: 1, max: 2 }`
+`mouse` |`{ click: false, move: false, max: 3 }`
+`brightness` | ` { min: 50, max: 80 }`
+`brightness.decay` | `{ min: 0.015, max: 0.03 }`
