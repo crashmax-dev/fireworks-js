@@ -1,8 +1,3 @@
-/**
- * 
- * @param min
- * @param max
- */
-export function randomFloat(min: number, max: number) {
+export function randomFloat(min: number, max: number): number {
   return Math.random() * (max - min) + min
 }
