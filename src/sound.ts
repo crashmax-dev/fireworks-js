@@ -1,12 +1,21 @@
 import { SoundOptions } from './fireworks'
 import { randomInteger, randomFloat } from './utils'
 
+declare global {
+  interface Window {
+    webkitAudioContext: typeof AudioContext
+  }
+}
+
 export class Sound {
   public options: Required<SoundOptions>
   private _buffer: AudioBuffer[] = []
-  private _audioContext = new AudioContext()
+  private _audioContext: AudioContext
 
   constructor(options: SoundOptions | undefined) {
+    const AudioContext = window.AudioContext || window.webkitAudioContext
+    this._audioContext = new AudioContext()
+
     this.options = {
       enable: false,
       files: [
