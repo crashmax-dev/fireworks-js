@@ -1,4 +1,9 @@
 import { SoundOptions } from './fireworks';
+declare global {
+    interface Window {
+        webkitAudioContext: typeof AudioContext;
+    }
+}
 export declare class Sound {
     options: Required<SoundOptions>;
     private _buffer;
