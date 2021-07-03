@@ -12,10 +12,13 @@ License ${pkg.license}`
 module.exports = {
   mode: process.env.NODE_ENV,
   target: 'web',
-  entry: path.join(__dirname, 'src/fireworks.ts'),
+  entry: {
+    'fireworks': path.join(__dirname, 'src/fireworks.ts'),
+    'react': path.join(__dirname, 'src/react.tsx')
+  },
   output: {
     path: outputPath,
-    filename: 'fireworks.js',
+    filename: '[name].js',
     libraryTarget: 'umd',
     globalObject: 'this'
   },
@@ -30,12 +33,20 @@ module.exports = {
     minimize: true
   },
   resolve: {
-    extensions: ['.ts', '.js']
+    extensions: ['.ts', '.tsx', '.js']
+  },
+  externals: {
+    './fireworks': './fireworks',
+    react: 'react'
   },
   module: {
     rules: [
       {
-        test: /\.ts?$/,
+        test: /\.tsx$/,
+        loader: 'ts-loader'
+      },
+      {
+        test: /\.ts$/,
         exclude: /node_modules/,
         use: [
           {

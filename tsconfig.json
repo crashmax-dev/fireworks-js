@@ -13,9 +13,11 @@
     "noImplicitAny": true,
     "esModuleInterop": true,
     "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true,
     "strictPropertyInitialization": false,
     "rootDir": "src",
-    "outDir": "dist"
+    "outDir": "dist",
+    "jsx": "react"
   },
   "typeRoots": [
     "node_modules/@types"
