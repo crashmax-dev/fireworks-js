@@ -18,15 +18,12 @@ interface FireworksOptions {
 interface BrightnessOptions {
     min: number;
     max: number;
-    decay?: {
-        min: number;
-        max: number;
-    };
+    decay?: MinMaxOptions;
 }
 interface MouseOptions {
-    click: boolean;
-    move: boolean;
-    max: number;
+    click?: boolean;
+    move?: boolean;
+    max?: number;
 }
 interface BoundariesOptions {
     top: number;
@@ -37,10 +34,7 @@ interface BoundariesOptions {
 interface SoundOptions {
     enable: boolean;
     files?: string[];
-    volume?: {
-        min: number;
-        max: number;
-    };
+    volume?: MinMaxOptions;
 }
 interface MinMaxOptions {
     min: number;
