@@ -25,16 +25,13 @@ interface FireworksOptions {
 interface BrightnessOptions {
   min: number
   max: number
-  decay?: {
-    min: number
-    max: number
-  }
+  decay?: MinMaxOptions
 }
 
 interface MouseOptions {
-  click: boolean
-  move: boolean
-  max: number
+  click?: boolean
+  move?: boolean
+  max?: number
 }
 
 interface BoundariesOptions {
@@ -47,10 +44,7 @@ interface BoundariesOptions {
 interface SoundOptions {
   enable: boolean
   files?: string[]
-  volume?: {
-    min: number
-    max: number
-  }
+  volume?: MinMaxOptions
 }
 
 interface MinMaxOptions {
@@ -82,7 +76,7 @@ class Fireworks {
   private _explosionLength: number
   private _autoresize: boolean
   private _boundaries: BoundariesOptions
-  private _mouse: MouseOptions
+  private _mouse: Required<MouseOptions>
   private _delay: MinMaxOptions
   private _brightness: Required<BrightnessOptions>
 
@@ -132,7 +126,7 @@ class Fireworks {
     this._mouse = {
       click: false,
       move: false,
-      max: 5,
+      max: 3,
       ...opts?.mouse
     }
 
