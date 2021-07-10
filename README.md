@@ -22,95 +22,23 @@
 
 ## Installation
 
-with npm:
-
-```
-npm install fireworks-js
-```
-
-or yarn:
-
-```
-yarn add fireworks-js
-```
+<!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./examples/readme/installation.sh) -->
+<!-- MARKDOWN-AUTO-DOCS:END -->
 
 ## Usage
 
-```js 
-// ES6
-import { Fireworks } from 'fireworks-js'
-```
+<!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./examples/readme/usage.js) -->
+<!-- MARKDOWN-AUTO-DOCS:END -->
 
-```js
-// commonjs
-const { Fireworks } = require('fireworks-js')
-```
-
-```html
-<!-- including in your html page -->
-<script src="https://unpkg.com/fireworks-js@latest/dist/fireworks.js"></script>
-```
-
-```js
-// use querySelector or getElementById
-const container = document.querySelector('.fireworks-container')
-
-// default config
-const fireworks = new Fireworks(container, {
-    // options
-})
-
-fireworks.start()
-
-fireworks.pause()
-
-fireworks.clear()
-
-// stop and clear fireworks
-fireworks.stop()
-```
+<!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./examples/readme/usage.html) -->
+<!-- MARKDOWN-AUTO-DOCS:END -->
 
 For React.js (see detailed usage [here](test/react.tsx))
 
-```js
-import { Fireworks } from 'fireworks-js/dist/react'
-
-export const App = () => {
-  const options = {
-    speed: 3
-  }
-
-  const style = {
-    left: 0,
-    top: 0,
-    width: '100%',
-    height: '100%',
-    position: 'fixed',
-    background: '#000'
-  }
-
-  return <Fireworks options={options} style={style} />
-}
-```
+<!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./examples/readme/usage-react.js) -->
+<!-- MARKDOWN-AUTO-DOCS:END -->
 
 ## Options
 
-key | default values
-----|---------------
-`speed` | `2`
-`acceleration` | `1.05`
-`friction` | `0.95`
-`gravity` | `1.5`
-`particles` | `50`
-`trace` | `3`
-`explosion` | `5`
-`autoresize` | `true`
-`hue` | `{ min: 0, max: 360 }`
-`delay` | `{ min: 15, max: 30 }`
-`boundaries` | `{ top: 50, bottom: container.clientHeight, left: 50, right: container.clientWidth }`
-`sound` | `{ enable: false }`
-`sound.files` | `[ '*.mp3', '*.ogg', '*.wav' ]`
-`sound.volume` | `{ min: 1, max: 2 }`
-`mouse` |`{ click: false, move: false, max: 3 }`
-`brightness` | ` { min: 50, max: 80 }`
-`brightness.decay` | `{ min: 0.015, max: 0.03 }`
+<!-- MARKDOWN-AUTO-DOCS:START (JSON_TO_HTML_TABLE:src=./examples/readme/options.json) -->
+<!-- MARKDOWN-AUTO-DOCS:END -->
