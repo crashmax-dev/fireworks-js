@@ -1,3 +1,14 @@
+interface TraceOptions {
+    x: number;
+    y: number;
+    dx: number;
+    dy: number;
+    ctx: CanvasRenderingContext2D;
+    hue: number;
+    speed: number;
+    acceleration: number;
+    traceLength: number;
+}
 export declare class Trace {
     private _x;
     private _y;
@@ -11,12 +22,13 @@ export declare class Trace {
     private _acceleration;
     private _traceLength;
     private _totalDistance;
-    private _currentDistance;
     private _coordinates;
     private _angle;
     private _brightness;
-    constructor(x1: number, y1: number, x2: number, y2: number, ctx: CanvasRenderingContext2D, hue: number, speed: number, acceleration: number, trace: number);
+    private _currentDistance;
+    constructor({ x, y, dx, dy, ctx, hue, speed, acceleration, traceLength }: TraceOptions);
     update(callback: (x: number, y: number, hue: number) => void): void;
     draw(): void;
     private getDistance;
 }
+export {};

@@ -1,6 +1,7 @@
 declare type HTMLContainer = Element | HTMLElement;
 interface FireworksOptions {
     hue?: MinMaxOptions;
+    rocketsPoint?: number;
     speed?: number;
     acceleration?: number;
     friction?: number;
@@ -26,10 +27,10 @@ interface MouseOptions {
     max?: number;
 }
 interface BoundariesOptions {
-    top: number;
-    bottom: number;
-    left: number;
-    right: number;
+    x: number;
+    y: number;
+    width: number;
+    height: number;
 }
 interface SoundOptions {
     enable: boolean;
@@ -45,12 +46,14 @@ interface Sizes {
     height?: number;
 }
 declare class Fireworks {
+    [key: string]: unknown;
     private _container;
     private _canvas;
     private _ctx;
     private _width;
     private _height;
     private _hue;
+    private _rocketsPoint;
     private _speed;
     private _acceleration;
     private _friction;
@@ -66,6 +69,8 @@ declare class Fireworks {
     private _tick;
     private _version;
     private _running;
+    private _visibleBoundaries;
+    private _randomRocketsPoint;
     private _m;
     private _mx;
     private _my;
@@ -73,15 +78,36 @@ declare class Fireworks {
     private _sound;
     private _traces;
     private _explosions;
-    constructor(container: HTMLContainer, opts?: FireworksOptions);
+    constructor(container: HTMLContainer, { acceleration, autoresize, boundaries, brightness, delay, explosion, friction, gravity, hue, mouse, particles, sound, speed, rocketsPoint, trace }?: FireworksOptions);
     get isRunning(): boolean;
     get version(): string;
     start(): void;
     stop(): void;
     pause(): void;
     clear(): void;
-    updateSize({ width, height }?: Sizes): void;
-    updateBoundaries(boundaries: Partial<BoundariesOptions>): void;
+    /**
+     * Changing fireworks parameters
+     *
+     * @param key
+     * @param value
+     */
+    setOptions<T extends keyof FireworksOptions>(key: T, value: Partial<FireworksOptions[T]>): void;
+    /**
+     * Changing the container canvas size
+     *
+     * @param {Sizes}
+     */
+    setSize({ width, height }?: Sizes): void;
+    /**
+     * Show/hide border firework boundaries
+     */
+    visibleBoudaries(): void;
+    /**
+     * Changing the boundaries of fireworks
+     *
+     * @param boundaries
+     */
+    setBoundaries(boundaries: Partial<BoundariesOptions>): void;
     private useMouse;
     private render;
     private initTrace;

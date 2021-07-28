@@ -13,6 +13,7 @@ const fireworksConfig = {
     min: 15,
     max: 15
   },
+  rocketsPoint: 50, // center
   speed: 10,
   acceleration: 1.2,
   friction: 0.96,
@@ -30,10 +31,11 @@ const fireworksConfig = {
     }
   },
   boundaries: {
-    top: 50,
-    bottom: fireworksContainer.clientHeight,
-    left: 50,
-    right: fireworksContainer.clientWidth
+    x: 50,
+    y: 50,
+    width: fireworksContainer.clientWidth,
+    height: fireworksContainer.clientHeight,
+    visible: false
   },
   sound: {
     enable: false,
@@ -268,6 +270,10 @@ folders.fireworks.__folders.brightness.__folders.decay.add(fireworksConfig.brigh
   fireworks._brightness.decay.max = value
 })
 
+folders.fireworks.add(fireworksConfig, 'rocketsPoint', 0, 100).step(1).onChange(value => {
+  fireworks._rocketsPoint = value
+})
+
 folders.fireworks.add(fireworksConfig, 'speed', 1, 100).step(1).onChange(value => {
   fireworks._speed = value
 })
@@ -296,6 +302,10 @@ folders.fireworks.add(fireworksConfig, 'explosion', 1, 10).step(1).onChange(valu
   fireworks._explosionLength = value
 })
 
+folders.fireworks.add(fireworks, '_randomRocketsPoint', false).name('random start position').onChange(value => {
+  fireworks._randomRocketsPoint = value
+})
+
 folders.fireworks.add(fireworks, '_running', true).name('enable').onChange(() => {
   fireworks.render()
 })
@@ -304,20 +314,24 @@ folders.fireworks.add(window, 'export').name('export config (download json)')
 folders.fireworks.add(window, 'share').name('share config (copy url)')
 
 // boundaries
-folders.boundaries.add(fireworksConfig.boundaries, 'top').onChange(value => {
-  fireworks._boundaries.top = value
+folders.boundaries.add(fireworksConfig.boundaries, 'visible').onChange(value => {
+  fireworks._visibleBoundaries = value
 })
 
-folders.boundaries.add(fireworksConfig.boundaries, 'bottom').onChange(value => {
-  fireworks._boundaries.bottom = value
+folders.boundaries.add(fireworksConfig.boundaries, 'x').step(1).onChange(value => {
+  fireworks._boundaries.x = value
 })
 
-folders.boundaries.add(fireworksConfig.boundaries, 'left').onChange(value => {
-  fireworks._boundaries.left = value
+folders.boundaries.add(fireworksConfig.boundaries, 'y').step(1).onChange(value => {
+  fireworks._boundaries.y = value
 })
 
-folders.boundaries.add(fireworksConfig.boundaries, 'right').onChange(value => {
-  fireworks._boundaries.right = value
+folders.boundaries.add(fireworksConfig.boundaries, 'width').step(1).onChange(value => {
+  fireworks._boundaries.width = value
+})
+
+folders.boundaries.add(fireworksConfig.boundaries, 'height').step(1).onChange(value => {
+  fireworks._boundaries.height = value
 })
 
 // sound -> volume
@@ -386,6 +400,3 @@ folders.background.add(backgroundConfig, 'container').name('hide card').onChange
     container.style.display = 'block'
   }
 })
-
-// костыль
-document.querySelectorAll('.property-name')[21].textContent = 'enable'
