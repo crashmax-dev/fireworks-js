@@ -38,28 +38,29 @@ yarn add fireworks-js
 <!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./.github/markdown-autodocs/usage.js) -->
 <!-- The below code snippet is automatically added from ./.github/markdown-autodocs/usage.js -->
 ```js
-// ES6
 import { Fireworks } from 'fireworks-js'
 
-// commonjs
-const { Fireworks } = require('fireworks-js')
-
-// use querySelector or getElementById
 const container = document.querySelector('.fireworks-container')
-
-// default config
-const fireworks = new Fireworks(container, {
-    // options
-})
+const fireworks = new Fireworks(container, { /* options */ })
 
 fireworks.start()
-
 fireworks.pause()
-
 fireworks.clear()
 
 // stop and clear fireworks
 fireworks.stop()
+
+// changing the container canvas size (used on constructor)
+fireworks.setSize({ height: 500, width: 500 })
+
+// after initialization you can change the fireworks parameters
+fireworks.setOptions('delay', { min: 10, max: 15 })
+
+// show/hide border firework boundaries
+fireworks.visibleBoudaries()
+
+// changing the boundaries of fireworks (used on constructor)
+fireworks.setBoudaries()
 ```
 <!-- MARKDOWN-AUTO-DOCS:END -->
 
@@ -100,7 +101,8 @@ export const App = () => {
 ## Options
 
 <!-- MARKDOWN-AUTO-DOCS:START (JSON_TO_HTML_TABLE:src=./.github/markdown-autodocs/options.json) -->
-<table class="JSON-TO-HTML-TABLE"><thead><tr><th class="key-th">key</th><th class="default-values-th">default values</th></tr></thead><tbody ><tr ><td class="key-td td_text"><code>speed</code></td><td class="default-values-td td_text"><code>2</code></td></tr>
+<table class="JSON-TO-HTML-TABLE"><thead><tr><th class="key-th">key</th><th class="default-values-th">default values</th></tr></thead><tbody ><tr ><td class="key-td td_text"><code>rocketsPoint</code></td><td class="default-values-td td_text"><code>50 // bottom center</code></td></tr>
+<tr ><td class="key-td td_text"><code>speed</code></td><td class="default-values-td td_text"><code>2</code></td></tr>
 <tr ><td class="key-td td_text"><code>acceleration</code></td><td class="default-values-td td_text"><code>1.05</code></td></tr>
 <tr ><td class="key-td td_text"><code>friction</code></td><td class="default-values-td td_text"><code>0.95</code></td></tr>
 <tr ><td class="key-td td_text"><code>gravity</code></td><td class="default-values-td td_text"><code>1.5</code></td></tr>
@@ -110,7 +112,7 @@ export const App = () => {
 <tr ><td class="key-td td_text"><code>autoresize</code></td><td class="default-values-td td_text"><code>true</code></td></tr>
 <tr ><td class="key-td td_text"><code>hue</code></td><td class="default-values-td td_text"><code>{ min: 0, max: 360 }</code></td></tr>
 <tr ><td class="key-td td_text"><code>delay</code></td><td class="default-values-td td_text"><code>{ min: 15, max: 30 }</code></td></tr>
-<tr ><td class="key-td td_text"><code>boundaries</code></td><td class="default-values-td td_text"><code>{ top: 50, bottom: container.clientHeight, left: 50, right: container.clientWidth }</code></td></tr>
+<tr ><td class="key-td td_text"><code>boundaries</code></td><td class="default-values-td td_text"><code>{ x: 50, y: 50, width: container.clientWidth, height: container.clientHeight }</code></td></tr>
 <tr ><td class="key-td td_text"><code>sound</code></td><td class="default-values-td td_text"><code>{ enable: false }</code></td></tr>
 <tr ><td class="key-td td_text"><code>sound.files</code></td><td class="default-values-td td_text"><code>[ '*.mp3', '*.ogg', '*.wav' ]</code></td></tr>
 <tr ><td class="key-td td_text"><code>sound.volume</code></td><td class="default-values-td td_text"><code>{ min: 1, max: 2 }</code></td></tr>
