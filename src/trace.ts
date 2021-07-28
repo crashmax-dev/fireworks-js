@@ -1,5 +1,17 @@
 import { randomInteger } from './utils'
 
+interface TraceOptions {
+  x: number
+  y: number
+  dx: number
+  dy: number
+  ctx: CanvasRenderingContext2D
+  hue: number
+  speed: number
+  acceleration: number
+  traceLength: number
+}
+
 export class Trace {
   private _x: number
   private _y: number
@@ -14,41 +26,41 @@ export class Trace {
   private _traceLength: number
 
   private _totalDistance: number
-  private _currentDistance = 0
   private _coordinates: [number, number][] = []
   private _angle: number
   private _brightness: number
+  private _currentDistance = 0
 
-  constructor(
-    x1: number,
-    y1: number,
-    x2: number,
-    y2: number,
-    ctx: CanvasRenderingContext2D,
-    hue: number,
-    speed: number,
-    acceleration: number,
-    trace: number
-  ) {
-    this._x = x1
-    this._y = y1
-    this._sx = x1
-    this._sy = y1
-    this._dx = x2
-    this._dy = y2
+  constructor({
+    x,
+    y,
+    dx,
+    dy,
+    ctx,
+    hue,
+    speed,
+    acceleration,
+    traceLength
+  }: TraceOptions) {
+    this._x = x
+    this._y = y
+    this._sx = x
+    this._sy = y
+    this._dx = dx
+    this._dy = dy
     this._ctx = ctx
     this._hue = hue
     this._speed = speed
     this._acceleration = acceleration
-    this._traceLength = trace
+    this._traceLength = traceLength
 
-    this._totalDistance = this.getDistance(this._sx, this._sy, this._dx, this._dy)
+    this._totalDistance = this.getDistance(x, y, dx, dy)
 
     while (this._traceLength--) {
-      this._coordinates.push([x1, y1])
+      this._coordinates.push([x, y])
     }
 
-    this._angle = Math.atan2(this._dy - this._sy, this._dx - this._sx)
+    this._angle = Math.atan2(dy - y, dx - x)
     this._brightness = randomInteger(50, 70)
   }
 
@@ -60,7 +72,12 @@ export class Trace {
     const vx = Math.cos(this._angle) * this._speed
     const vy = Math.sin(this._angle) * this._speed
 
-    this._currentDistance = this.getDistance(this._sx, this._sy, this._x + vx, this._y + vy)
+    this._currentDistance = this.getDistance(
+      this._sx,
+      this._sy,
+      this._x + vx,
+      this._y + vy
+    )
 
     if (this._currentDistance >= this._totalDistance) {
       callback(this._dx, this._dy, this._hue)
@@ -80,8 +97,8 @@ export class Trace {
     this._ctx.stroke()
   }
 
-  private getDistance(x1: number, y1: number, x2: number, y2: number) {
+  private getDistance(x: number, y: number, dx: number, dy: number) {
     const pow = Math.pow
-    return Math.sqrt(pow(x1 - x2, 2) + pow(y1 - y2, 2))
+    return Math.sqrt(pow(x - dx, 2) + pow(y - dy, 2))
   }
 }

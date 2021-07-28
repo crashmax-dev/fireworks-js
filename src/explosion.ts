@@ -1,38 +1,49 @@
 import { BrightnessOptions } from './fireworks'
 import { randomFloat, randomInteger } from './utils'
 
+interface ExplosionOptions {
+  x: number
+  y: number
+  ctx: CanvasRenderingContext2D
+  hue: number
+  friction: number
+  gravity: number
+  explosionLength: number
+  brightness: Required<BrightnessOptions>
+}
+
 export class Explosion {
   private _x: number
   private _y: number
   private _ctx: CanvasRenderingContext2D
-  private _coordinates: [number, number][] = []
-  private _explosionLength: number
-  private _angle: number
-  private _speed: number
   private _friction: number
   private _gravity: number
+  private _explosionLength: number
+
+  private _coordinates: [number, number][] = []
+  private _angle: number
+  private _speed: number
   private _hue: number
   private _brightness: number
-  private _alpha = 1
   private _decay: number
+  private _alpha = 1
 
-  constructor(
-    x: number,
-    y: number,
-    ctx: CanvasRenderingContext2D,
-    hue: number,
-    friction: number,
-    gravity: number,
-    explosion: number,
-    brightness: Required<BrightnessOptions>
-  ) {
+  constructor({
+    x,
+    y,
+    ctx,
+    hue,
+    friction,
+    gravity,
+    explosionLength,
+    brightness
+  }: ExplosionOptions) {
     this._x = x
     this._y = y
     this._ctx = ctx
-    this._hue = hue
     this._friction = friction
     this._gravity = gravity
-    this._explosionLength = explosion
+    this._explosionLength = explosionLength
 
     while (this._explosionLength--) {
       this._coordinates.push([x, y])
@@ -40,7 +51,7 @@ export class Explosion {
 
     this._angle = randomFloat(0, Math.PI * 2)
     this._speed = randomInteger(1, 10)
-    this._hue = randomInteger(this._hue - 20, this._hue + 20)
+    this._hue = randomInteger(hue - 20, hue + 20)
     this._brightness = randomInteger(brightness.min, brightness.max)
     this._decay = randomFloat(brightness.decay.min, brightness.decay.max)
   }

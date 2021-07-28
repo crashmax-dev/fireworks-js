@@ -22,8 +22,8 @@
 
 ## Installation
 
-<!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./examples/readme/installation.sh) -->
-<!-- The below code snippet is automatically added from ./examples/readme/installation.sh -->
+<!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./.github/markdown-autodocs/installation.sh) -->
+<!-- The below code snippet is automatically added from ./.github/markdown-autodocs/installation.sh -->
 ```sh
 # with npm:
 npm install fireworks-js
@@ -35,8 +35,8 @@ yarn add fireworks-js
 
 ## Usage
 
-<!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./examples/readme/usage.js) -->
-<!-- The below code snippet is automatically added from ./examples/readme/usage.js -->
+<!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./.github/markdown-autodocs/usage.js) -->
+<!-- The below code snippet is automatically added from ./.github/markdown-autodocs/usage.js -->
 ```js
 // ES6
 import { Fireworks } from 'fireworks-js'
@@ -63,8 +63,8 @@ fireworks.stop()
 ```
 <!-- MARKDOWN-AUTO-DOCS:END -->
 
-<!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./examples/readme/usage.html) -->
-<!-- The below code snippet is automatically added from ./examples/readme/usage.html -->
+<!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./.github/markdown-autodocs/usage.html) -->
+<!-- The below code snippet is automatically added from ./.github/markdown-autodocs/usage.html -->
 ```html
 <!-- including in your html page -->
 <script src="https://unpkg.com/fireworks-js@latest/dist/fireworks.js"></script>
@@ -73,8 +73,8 @@ fireworks.stop()
 
 For React.js (see detailed usage [here](test/react.tsx))
 
-<!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./examples/readme/usage-react.js) -->
-<!-- The below code snippet is automatically added from ./examples/readme/usage-react.js -->
+<!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./.github/markdown-autodocs/usage-react.js) -->
+<!-- The below code snippet is automatically added from ./.github/markdown-autodocs/usage-react.js -->
 ```js
 import { Fireworks } from 'fireworks-js/dist/react'
 
@@ -99,7 +99,7 @@ export const App = () => {
 
 ## Options
 
-<!-- MARKDOWN-AUTO-DOCS:START (JSON_TO_HTML_TABLE:src=./examples/readme/options.json) -->
+<!-- MARKDOWN-AUTO-DOCS:START (JSON_TO_HTML_TABLE:src=./.github/markdown-autodocs/options.json) -->
 <table class="JSON-TO-HTML-TABLE"><thead><tr><th class="key-th">key</th><th class="default-values-th">default values</th></tr></thead><tbody ><tr ><td class="key-td td_text"><code>speed</code></td><td class="default-values-td td_text"><code>2</code></td></tr>
 <tr ><td class="key-td td_text"><code>acceleration</code></td><td class="default-values-td td_text"><code>1.05</code></td></tr>
 <tr ><td class="key-td td_text"><code>friction</code></td><td class="default-values-td td_text"><code>0.95</code></td></tr>
