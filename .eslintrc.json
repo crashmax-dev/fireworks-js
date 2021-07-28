@@ -5,7 +5,8 @@
   ],
   "ignorePatterns": [
     "dist",
-    "test"
+    "test",
+    "examples"
   ],
   "parserOptions": {
     "ecmaVersion": 12,

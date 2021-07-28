@@ -16,7 +16,7 @@ const Fireworks: React.FC<FireworksProps> = ({
   useEffect(() => {
     const fireworks = new Fw(canvas.current, options)
 
-    fireworks.updateSize()
+    fireworks.setSize()
     fireworks.start()
 
     return () => {

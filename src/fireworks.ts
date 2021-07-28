@@ -7,6 +7,7 @@ type HTMLContainer = Element | HTMLElement
 
 interface FireworksOptions {
   hue?: MinMaxOptions
+  rocketsPoint?: number
   speed?: number
   acceleration?: number
   friction?: number
@@ -35,10 +36,10 @@ interface MouseOptions {
 }
 
 interface BoundariesOptions {
-  top: number
-  bottom: number
-  left: number
-  right: number
+  x: number
+  y: number
+  width: number
+  height: number
 }
 
 interface SoundOptions {
@@ -60,6 +61,8 @@ interface Sizes {
 declare const version: string
 
 class Fireworks {
+  [key: string]: unknown
+
   private _container: HTMLContainer
   private _canvas: HTMLCanvasElement
   private _ctx: CanvasRenderingContext2D
@@ -67,6 +70,7 @@ class Fireworks {
   private _height: number
 
   private _hue: MinMaxOptions
+  private _rocketsPoint: number
   private _speed: number
   private _acceleration: number
   private _friction: number
@@ -83,6 +87,8 @@ class Fireworks {
   private _tick = 0
   private _version = version
   private _running = false
+  private _visibleBoundaries = false
+  private _randomRocketsPoint = false
   private _m = false
   private _mx: number
   private _my: number
@@ -92,48 +98,63 @@ class Fireworks {
   private _traces: Trace[]
   private _explosions: Explosion[]
 
-  constructor(container: HTMLContainer, opts?: FireworksOptions) {
+  constructor(container: HTMLContainer, {
+    acceleration,
+    autoresize,
+    boundaries,
+    brightness,
+    delay,
+    explosion,
+    friction,
+    gravity,
+    hue,
+    mouse,
+    particles,
+    sound,
+    speed,
+    rocketsPoint,
+    trace
+  }: FireworksOptions = {}) {
     this._container = container
     this._canvas = document.createElement('canvas')
     this._ctx = this._canvas.getContext('2d') as CanvasRenderingContext2D
     this._container.appendChild(this._canvas)
-    this._sound = new Sound(opts?.sound)
+    this._sound = new Sound(sound)
 
-    this.updateSize()
-    this.updateBoundaries({
-      top: 50,
-      bottom: 0,
-      left: 50,
-      right: 0,
-      ...opts?.boundaries
+    this.setSize()
+    this.setBoundaries({
+      x: 50,
+      y: 50,
+      ...boundaries
     })
 
-    this._speed = opts?.speed || 2
-    this._acceleration = opts?.acceleration || 1.05
-    this._friction = opts?.friction || 0.95
-    this._gravity = opts?.gravity || 1.5
-    this._particleCount = opts?.particles || 50
-    this._traceLength = opts?.trace || 3
-    this._explosionLength = opts?.explosion || 5
-    this._autoresize = opts?.autoresize ?? true
+    this._rocketsPoint = rocketsPoint ?? 50
+    this._speed = speed ?? 2
+    this._acceleration = acceleration ?? 1.05
+    this._friction = friction ?? 0.95
+    this._gravity = gravity ?? 1.5
+    this._particleCount = particles ?? 50
+    this._traceLength = trace ?? 3
+    this._explosionLength = explosion ?? 5
+    this._autoresize = autoresize ?? true
 
     this._hue = {
       min: 0,
       max: 360,
-      ...opts?.hue
+      ...hue
     }
 
     this._mouse = {
       click: false,
       move: false,
       max: 3,
-      ...opts?.mouse
+      ...mouse
     }
 
     this._delay = {
       min: 15,
       max: 30,
-      ...opts?.delay
+      ...delay
     }
 
     this._brightness = {
@@ -143,11 +164,11 @@ class Fireworks {
         min: 0.015,
         max: 0.03
       },
-      ...opts?.brightness
+      ...brightness
     }
 
     if (this._autoresize) {
-      window.addEventListener('resize', () => this.updateSize())
+      window.addEventListener('resize', () => this.setSize())
     }
 
     this._canvas.addEventListener('mousedown', e => this.useMouse(e, this._mouse.click))
@@ -192,7 +213,35 @@ class Fireworks {
     this._ctx.clearRect(0, 0, this._width, this._height)
   }
 
-  updateSize({
+  /**
+   * Changing fireworks parameters
+   *
+   * @param key
+   * @param value
+   */
+  setOptions<T extends keyof FireworksOptions>(
+    key: T,
+    value: Partial<FireworksOptions[T]>
+  ): void {
+    switch (key) {
+      case 'sound':
+        Object.assign(this._sound.options, value)
+        break
+      default:
+        if (typeof value === 'object') {
+          Object.assign(this[`_${key}`], value)
+        } else {
+          this[`_${key}`] = value
+        }
+    }
+  }
+
+  /**
+   * Changing the container canvas size
+   *
+   * @param {Sizes}
+   */
+  setSize({
     width = this._container.clientWidth,
     height = this._container.clientHeight
   }: Sizes = {}): void {
@@ -202,13 +251,22 @@ class Fireworks {
     this._canvas.width = width
     this._canvas.height = height
 
-    this.updateBoundaries({
-      right: width,
-      bottom: height
-    })
+    this.setBoundaries({ width, height })
   }
 
-  updateBoundaries(boundaries: Partial<BoundariesOptions>): void {
+  /**
+   * Show/hide border firework boundaries
+   */
+  visibleBoudaries(): void {
+    this._visibleBoundaries = !this._visibleBoundaries
+  }
+
+  /**
+   * Changing the boundaries of fireworks
+   *
+   * @param boundaries
+   */
+  setBoundaries(boundaries: Partial<BoundariesOptions>): void {
     this._boundaries = { ...this._boundaries, ...boundaries }
   }
 
@@ -224,6 +282,18 @@ class Fireworks {
     if (!this._ctx || !this._running) return
 
     requestAnimationFrame(() => this.render())
+
+    if (this._visibleBoundaries) {
+      this._ctx.beginPath()
+      this._ctx.strokeStyle = 'red'
+      this._ctx.rect(
+        this._boundaries.x,
+        this._boundaries.y,
+        this._boundaries.width - this._boundaries.x * 2,
+        this._boundaries.height * 0.5
+      )
+      this._ctx.stroke()
+    }
 
     this._ctx.globalCompositeOperation = 'destination-out'
     this._ctx.fillStyle = 'rgba(0, 0, 0, 0.5)'
@@ -244,17 +314,29 @@ class Fireworks {
       this._ds * 2 < this._tick ||
       this._m && this._mouse.max > this._traces.length
     ) {
-      this._traces.push(new Trace(
-        this._width * 0.5,
-        this._height,
-        this._m || this._mouse.move ? this._mx : randomInteger(this._boundaries.left, this._boundaries.right - 50),
-        this._m || this._mouse.move ? this._my : randomInteger(this._boundaries.top, this._boundaries.bottom * 0.5),
-        this._ctx,
-        randomInteger(this._hue.min, this._hue.max),
-        this._speed,
-        this._acceleration,
-        this._traceLength
-      ))
+      this._traces.push(
+        new Trace({
+          x: this._width * (
+            this._randomRocketsPoint ?
+              randomInteger(0, 100) :
+              this._rocketsPoint
+          ) / 100,
+          y: this._height,
+          dx: this._m ||
+            this._mouse.move
+            ? this._mx
+            : randomInteger(this._boundaries.x, this._boundaries.width - this._boundaries.x * 2),
+          dy: this._m ||
+            this._mouse.move
+            ? this._my
+            : randomInteger(this._boundaries.y, this._boundaries.height * 0.5),
+          ctx: this._ctx,
+          hue: randomInteger(this._hue.min, this._hue.max),
+          speed: this._speed,
+          acceleration: this._acceleration,
+          traceLength: this._traceLength
+        })
+      )
 
       this._tick = 0
     }
@@ -277,16 +359,18 @@ class Fireworks {
     let count = this._particleCount
 
     while (count--) {
-      this._explosions.push(new Explosion(
-        x,
-        y,
-        this._ctx,
-        hue,
-        this._friction,
-        this._gravity,
-        this._explosionLength,
-        this._brightness
-      ))
+      this._explosions.push(
+        new Explosion({
+          x,
+          y,
+          ctx: this._ctx,
+          hue,
+          friction: this._friction,
+          gravity: this._gravity,
+          explosionLength: this._explosionLength,
+          brightness: this._brightness
+        })
+      )
     }
   }
 
