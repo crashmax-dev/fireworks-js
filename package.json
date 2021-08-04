@@ -30,7 +30,7 @@
         "email": "sys@crashmax.ru",
         "url": "https://crashmax.ru"
     },
-    "license": "GPL-3",
+    "license": "MIT",
     "bugs": {
         "url": "https://github.com/crashmax-dev/fireworks-js/issues"
     },
