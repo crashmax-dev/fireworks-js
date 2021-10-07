@@ -5,9 +5,12 @@
   ],
   "ignorePatterns": [
     "dist",
-    "test",
-    "examples"
+    "public"
   ],
+  "env": {
+    "browser": true,
+    "es6": true
+  },
   "parserOptions": {
     "ecmaVersion": 12,
     "sourceType": "module"
