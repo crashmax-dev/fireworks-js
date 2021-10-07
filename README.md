@@ -18,7 +18,7 @@
 
 ## Demo
 
-> https://crashmax-dev.github.io/fireworks-js/
+> https://fireworks.js.org
 
 ## Installation
 
