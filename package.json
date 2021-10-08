@@ -14,7 +14,8 @@
     "dev": "webpack server --config webpack/webpack.dev.js",
     "build": "webpack --progress --config webpack/webpack.prod.js",
     "lint": "eslint --ext ts src",
-    "lint:fix": "eslint --fix --ext ts src"
+    "lint:fix": "eslint --fix --ext ts src",
+    "serve": "npm run build && parcel serve test/*.html --dist-dir parcel"
   },
   "repository": {
     "type": "git",
@@ -48,6 +49,7 @@
     "clean-webpack-plugin": "^4.0.0",
     "copy-webpack-plugin": "^9.0.1",
     "eslint": "^7.32.0",
+    "parcel": "^2.0.0-rc.0",
     "react": "^17.0.2",
     "terser-webpack-plugin": "^5.2.4",
     "ts-loader": "^9.2.6",
