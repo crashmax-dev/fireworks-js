@@ -5,33 +5,24 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fireworks</title>
+  <title>Fireworks.js | Vanilla</title>
   <style>
-    body {
-      margin: 0;
-    }
-
-    div {
-      position: fixed;
+    #root {
+      top: 0;
+      left: 0;
       width: 100%;
       height: 100%;
+      position: fixed;
       background: #000;
-      cursor: crosshair;
     }
   </style>
 </head>
 
 <body>
-  <div></div>
+  <div id="root"></div>
   <script src="../dist/fireworks.js"></script>
-  <script>
-    const fireworks = new Fireworks(document.querySelector('div'), {
-      mouse: {
-        click: true,
-        move: true,
-        max: 10
-      }
-    })
+  <script type="module">
+    const fireworks = new Fireworks(document.getElementById('root'))
     fireworks.start()
   </script>
 </body>
