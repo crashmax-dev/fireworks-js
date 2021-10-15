@@ -1,8 +1,17 @@
-import React, { CSSProperties } from 'react';
-import { FireworksOptions } from './fireworks';
-interface FireworksProps {
+import React, { Component, CSSProperties } from 'react';
+import { FireworksOptions, Fireworks as Fw } from './fireworks';
+export interface FireworksProps {
     options?: FireworksOptions;
     style?: CSSProperties;
 }
-declare const Fireworks: React.FC<FireworksProps>;
-export { Fireworks, FireworksOptions };
+export declare class Fireworks extends Component<FireworksProps> {
+    _fw: Fw;
+    _ref: HTMLElement | null;
+    componentDidMount(): void;
+    componentWillUnmount(): void;
+    render(): React.DetailedReactHTMLElement<{
+        ref: (ref: HTMLElement) => HTMLElement;
+        children: React.ReactNode;
+        style: React.CSSProperties | undefined;
+    }, HTMLElement>;
+}
