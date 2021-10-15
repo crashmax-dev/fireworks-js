@@ -1,6 +1,6 @@
 <br/>
 <p align="center">
-    <img src="test/images/fireworks_emoji.png" />
+    <img src="public/images/fireworks_emoji.png" />
 </p>
 
 <p align="center"><b>Fireworks.js</b></p>

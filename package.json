@@ -15,7 +15,7 @@
     "build": "webpack --progress --config webpack/webpack.prod.js",
     "lint": "eslint --ext ts src",
     "lint:fix": "eslint --fix --ext ts src",
-    "serve": "npm run build && parcel serve test/*.html --dist-dir parcel"
+    "serve": "npm run build && parcel serve dist/*.html --dist-dir parcel"
   },
   "repository": {
     "type": "git",

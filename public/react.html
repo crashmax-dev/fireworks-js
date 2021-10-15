@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fireworks.js | React</title>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+  <script type="module">
+    import { Fireworks } from './react.js'
+
+    const App = React.createElement(Fireworks, {
+      style: {
+        left: 0,
+        top: 0,
+        width: '100%',
+        height: '100%',
+        position: 'fixed',
+        background: '#000'
+      },
+      options: {
+        speed: 5
+      }
+    })
+
+    ReactDOM.render(App, document.getElementById('root'))
+  </script>
+</body>
+
+</html>
