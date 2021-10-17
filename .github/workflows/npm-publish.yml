@@ -1,0 +1,32 @@
+name: NPM Publish
+
+on: push
+
+jobs:
+  publish-npm:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 10
+      - run: npm install
+      - run: npm run build
+      - uses: JS-DevTools/npm-publish@v1
+        with:
+          registry: https://registry.npmjs.org/
+          token: ${{ secrets.NPM_TOKEN }}
+
+  publish-gpr:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 10
+      - run: npm install
+      - run: npm run build
+      - uses: JS-DevTools/npm-publish@v1
+        with:
+          registry: https://npm.pkg.github.com/
+          token: ${{ secrets.GITHUB_TOKEN }}
