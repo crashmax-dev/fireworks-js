@@ -1,6 +1,6 @@
 {
   "name": "fireworks-js",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "A simple fireworks library!",
   "module": "./dist/fireworks.js",
   "types": "./dist/fireworks.d.ts",

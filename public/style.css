@@ -2,12 +2,13 @@ body {
     font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
     line-height: 1;
     user-select: none;
+    overscroll-behavior: none;
 }
 
 .container {
     position: fixed;
     width: 240px;
-    height: 210px;
+    height: inherit;
     background: #e9ecef;
     top: 50%;
     left: 50%;
@@ -26,6 +27,7 @@ body {
     text-align: center;
     color: #111;
     margin: 0;
+    line-height: initial;
 }
 
 .container h2 {
