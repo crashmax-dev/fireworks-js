@@ -85,7 +85,7 @@ if (document.location.hash) {
       .map(Number)
       .filter(v => typeof v === 'number')
 
-    if (c.length === 15) {
+    if (c.length === 16) {
       fireworksConfig.hue.min = c[0]
       fireworksConfig.hue.max = c[1]
       fireworksConfig.delay.min = c[2]
@@ -94,17 +94,19 @@ if (document.location.hash) {
       fireworksConfig.brightness.max = c[5]
       fireworksConfig.brightness.decay.min = c[6]
       fireworksConfig.brightness.decay.max = c[7]
-      fireworksConfig.speed = c[8]
-      fireworksConfig.acceleration = c[9]
-      fireworksConfig.friction = c[10]
-      fireworksConfig.gravity = c[11]
-      fireworksConfig.particles = c[12]
-      fireworksConfig.trace = c[13]
-      fireworksConfig.explosion = c[14]
+      fireworksConfig.rocketsPoint = c[8]
+      fireworksConfig.speed = c[9]
+      fireworksConfig.acceleration = c[10]
+      fireworksConfig.friction = c[11]
+      fireworksConfig.gravity = c[12]
+      fireworksConfig.particles = c[13]
+      fireworksConfig.trace = c[14]
+      fireworksConfig.explosion = c[15]
+    } else {
+      throw Error()
     }
   } catch (err) {
-    document.location.hash = ''
-    console.log(err)
+    history.pushState(null, '', '/')
   }
 }
 
@@ -148,7 +150,9 @@ const fpsMonitor = document.querySelector('#stats'),
   container = document.querySelector('.container')
 
 const gui = new dat.GUI({
-  width: 300
+  closed: true,
+  autoPlace: true,
+  width: window.outerWidth > 360 ? 320 : 260
 })
 
 window.export = () => {
@@ -189,11 +193,11 @@ window.share = () => {
       switch (i) {
         case 0:
         case 1:
-        case 9:
         case 10:
         case 11:
         case 12:
         case 13:
+        case 14:
           break
         default:
           return v
@@ -231,79 +235,79 @@ const folders = {
 
 // fireworks
 folders.fireworks.addFolder('hue')
-folders.fireworks.__folders.hue.add(fireworksConfig.hue, 'min', 0, 360).step(1).onChange(value => {
-  fireworks._hue.min = value
+folders.fireworks.__folders.hue.add(fireworksConfig.hue, 'min', 0, 360).step(1).onChange(() => {
+  fireworks.setOptions(fireworksConfig)
 })
 
-folders.fireworks.__folders.hue.add(fireworksConfig.hue, 'max', 0, 360).step(1).onChange(value => {
-  fireworks._hue.max = value
+folders.fireworks.__folders.hue.add(fireworksConfig.hue, 'max', 0, 360).step(1).onChange(() => {
+  fireworks.setOptions(fireworksConfig)
 })
 
 // delay
 folders.fireworks.addFolder('delay')
-folders.fireworks.__folders.delay.add(fireworksConfig.delay, 'min', 1, 100).step(1).onChange(value => {
-  fireworks._delay.min = value
+folders.fireworks.__folders.delay.add(fireworksConfig.delay, 'min', 1, 100).step(1).onChange(() => {
+  fireworks.setOptions(fireworksConfig)
 })
 
-folders.fireworks.__folders.delay.add(fireworksConfig.delay, 'max', 1, 100).step(1).onChange(value => {
-  fireworks._delay.max = value
+folders.fireworks.__folders.delay.add(fireworksConfig.delay, 'max', 1, 100).step(1).onChange(() => {
+  fireworks.setOptions(fireworksConfig)
 })
 
 // brightness
 folders.fireworks.addFolder('brightness')
 
-folders.fireworks.__folders.brightness.add(fireworksConfig.brightness, 'min', 1, 100).step(1).onChange(value => {
-  fireworks._brightness.min = value
+folders.fireworks.__folders.brightness.add(fireworksConfig.brightness, 'min', 1, 100).step(1).onChange(() => {
+  fireworks.setOptions(fireworksConfig)
 })
 
-folders.fireworks.__folders.brightness.add(fireworksConfig.brightness, 'max', 1, 100).step(1).onChange(value => {
-  fireworks._brightness.max = value
+folders.fireworks.__folders.brightness.add(fireworksConfig.brightness, 'max', 1, 100).step(1).onChange(() => {
+  fireworks.setOptions(fireworksConfig)
 })
 
 // brightness -> decay
 folders.fireworks.__folders.brightness.addFolder('decay')
-folders.fireworks.__folders.brightness.__folders.decay.add(fireworksConfig.brightness.decay, 'min', 0.001, 0.05).step(0.001).onChange(value => {
-  fireworks._brightness.decay.min = value
+folders.fireworks.__folders.brightness.__folders.decay.add(fireworksConfig.brightness.decay, 'min', 0.001, 0.05).step(0.001).onChange(() => {
+  fireworks.setOptions(fireworksConfig)
 })
 
-folders.fireworks.__folders.brightness.__folders.decay.add(fireworksConfig.brightness.decay, 'max', 0.001, 0.05).step(0.001).onChange(value => {
-  fireworks._brightness.decay.max = value
+folders.fireworks.__folders.brightness.__folders.decay.add(fireworksConfig.brightness.decay, 'max', 0.001, 0.05).step(0.001).onChange(() => {
+  fireworks.setOptions(fireworksConfig)
 })
 
-folders.fireworks.add(fireworksConfig, 'rocketsPoint', 0, 100).step(1).onChange(value => {
-  fireworks._rocketsPoint = value
+folders.fireworks.add(fireworksConfig, 'rocketsPoint', 0, 100).step(1).onChange(() => {
+  fireworks.setOptions(fireworksConfig)
 })
 
-folders.fireworks.add(fireworksConfig, 'speed', 1, 100).step(1).onChange(value => {
-  fireworks._speed = value
+folders.fireworks.add(fireworksConfig, 'speed', 1, 100).step(1).onChange(() => {
+  fireworks.setOptions(fireworksConfig)
 })
 
-folders.fireworks.add(fireworksConfig, 'acceleration', 1, 10).step(0.1).onChange(value => {
-  fireworks._acceleration = value
+folders.fireworks.add(fireworksConfig, 'acceleration', 1, 10).step(0.1).onChange(() => {
+  fireworks.setOptions(fireworksConfig)
 })
 
-folders.fireworks.add(fireworksConfig, 'friction', 0.5, 3).step(0.01).onChange(value => {
-  fireworks._friction = value
+folders.fireworks.add(fireworksConfig, 'friction', 0.5, 3).step(0.01).onChange(() => {
+  fireworks.setOptions(fireworksConfig)
 })
 
-folders.fireworks.add(fireworksConfig, 'gravity', 0.1, 10).step(0.1).onChange(value => {
-  fireworks._gravity = value
+folders.fireworks.add(fireworksConfig, 'gravity', 0.1, 10).step(0.1).onChange(() => {
+  fireworks.setOptions(fireworksConfig)
 })
 
-folders.fireworks.add(fireworksConfig, 'particles', 1, 1000).step(1).onChange(value => {
-  fireworks._particleCount = value
+folders.fireworks.add(fireworksConfig, 'particles', 1, 1000).step(1).onChange(() => {
+  fireworks.setOptions(fireworksConfig)
 })
 
-folders.fireworks.add(fireworksConfig, 'trace', 1, 10).step(1).onChange(value => {
-  fireworks._traceLength = value
+folders.fireworks.add(fireworksConfig, 'trace', 1, 10).step(1).onChange(() => {
+  fireworks.setOptions(fireworksConfig)
 })
 
-folders.fireworks.add(fireworksConfig, 'explosion', 1, 10).step(1).onChange(value => {
-  fireworks._explosionLength = value
+folders.fireworks.add(fireworksConfig, 'explosion', 1, 10).step(1).onChange(() => {
+  fireworks.setOptions(fireworksConfig)
 })
 
-folders.fireworks.add(fireworks, '_randomRocketsPoint', false).name('random start position').onChange(value => {
-  fireworks._randomRocketsPoint = value
+folders.fireworks.add(fireworks, '_randomRocketsPoint', false).name('random start position').onChange(() => {
+  fireworks.setOptions(fireworksConfig)
 })
 
 folders.fireworks.add(fireworks, '_running', true).name('enable').onChange(() => {
@@ -314,52 +318,52 @@ folders.fireworks.add(window, 'export').name('export config (download json)')
 folders.fireworks.add(window, 'share').name('share config (copy url)')
 
 // boundaries
-folders.boundaries.add(fireworksConfig.boundaries, 'visible').onChange(value => {
-  fireworks._visibleBoundaries = value
+folders.boundaries.add(fireworksConfig.boundaries, 'visible').onChange(() => {
+  fireworks.setOptions(fireworksConfig)
 })
 
-folders.boundaries.add(fireworksConfig.boundaries, 'x').step(1).onChange(value => {
-  fireworks._boundaries.x = value
+folders.boundaries.add(fireworksConfig.boundaries, 'x').step(1).onChange(() => {
+  fireworks.setOptions(fireworksConfig)
 })
 
-folders.boundaries.add(fireworksConfig.boundaries, 'y').step(1).onChange(value => {
-  fireworks._boundaries.y = value
+folders.boundaries.add(fireworksConfig.boundaries, 'y').step(1).onChange(() => {
+  fireworks.setOptions(fireworksConfig)
 })
 
-folders.boundaries.add(fireworksConfig.boundaries, 'width').step(1).onChange(value => {
-  fireworks._boundaries.width = value
+folders.boundaries.add(fireworksConfig.boundaries, 'width').step(1).onChange(() => {
+  fireworks.setOptions(fireworksConfig)
 })
 
-folders.boundaries.add(fireworksConfig.boundaries, 'height').step(1).onChange(value => {
-  fireworks._boundaries.height = value
+folders.boundaries.add(fireworksConfig.boundaries, 'height').step(1).onChange(() => {
+  fireworks.setOptions(fireworksConfig)
 })
 
 // sound -> volume
 folders.sound.addFolder('volume')
-folders.sound.__folders.volume.add(fireworksConfig.sound.volume, 'min', 1, 100).step(1).onChange(value => {
-  fireworks._sound.options.volume.min = value
+folders.sound.__folders.volume.add(fireworksConfig.sound.volume, 'min', 1, 100).step(1).onChange(() => {
+  fireworks.setOptions(fireworksConfig)
 })
 
-folders.sound.__folders.volume.add(fireworksConfig.sound.volume, 'max', 1, 100).step(1).onChange(value => {
-  fireworks._sound.options.volume.max = value
+folders.sound.__folders.volume.add(fireworksConfig.sound.volume, 'max', 1, 100).step(1).onChange(() => {
+  fireworks.setOptions(fireworksConfig)
 })
 
-folders.sound.add(fireworksConfig.sound, 'enable', false).onChange(value => {
-  fireworks._sound.options.enable = value
+folders.sound.add(fireworksConfig.sound, 'enable', false).onChange(() => {
+  fireworks.setOptions(fireworksConfig)
 })
 
 // mouse -> click
 folders.mouse.addFolder('click')
-folders.mouse.__folders.click.add(fireworksConfig.mouse, 'click', true).onChange(value => {
-  fireworks._mouse.click = value
+folders.mouse.__folders.click.add(fireworksConfig.mouse, 'click', true).onChange(() => {
+  fireworks.setOptions(fireworksConfig)
 })
 
-folders.mouse.__folders.click.add(fireworksConfig.mouse, 'max', 1, 10).step(1).onChange(value => {
-  fireworks._mouse.max = value
+folders.mouse.__folders.click.add(fireworksConfig.mouse, 'max', 1, 10).step(1).onChange(() => {
+  fireworks.setOptions(fireworksConfig)
 })
 
-folders.mouse.add(fireworksConfig.mouse, 'move', false).onChange(value => {
-  fireworks._mouse.move = value
+folders.mouse.add(fireworksConfig.mouse, 'move', false).onChange(() => {
+  fireworks.setOptions(fireworksConfig)
 })
 
 // background
