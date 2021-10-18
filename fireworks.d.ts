@@ -1,5 +1,5 @@
 declare type HTMLContainer = Element | HTMLElement;
-interface FireworksOptions {
+export interface FireworksOptions {
     hue?: MinMaxOptions;
     rocketsPoint?: number;
     speed?: number;
@@ -16,23 +16,24 @@ interface FireworksOptions {
     delay?: MinMaxOptions;
     brightness?: BrightnessOptions;
 }
-interface BrightnessOptions {
+export interface BrightnessOptions {
     min: number;
     max: number;
     decay?: MinMaxOptions;
 }
-interface MouseOptions {
+export interface MouseOptions {
     click?: boolean;
     move?: boolean;
     max?: number;
 }
-interface BoundariesOptions {
+export interface BoundariesOptions {
+    visible: boolean;
     x: number;
     y: number;
     width: number;
     height: number;
 }
-interface SoundOptions {
+export interface SoundOptions {
     enable: boolean;
     files?: string[];
     volume?: MinMaxOptions;
@@ -45,31 +46,29 @@ interface Sizes {
     width?: number;
     height?: number;
 }
-declare class Fireworks {
-    [key: string]: unknown;
+export declare class Fireworks {
     private _container;
     private _canvas;
     private _ctx;
     private _width;
     private _height;
-    private _hue;
-    private _rocketsPoint;
-    private _speed;
-    private _acceleration;
-    private _friction;
-    private _gravity;
-    private _particleCount;
-    private _traceLength;
-    private _explosionLength;
-    private _autoresize;
-    private _boundaries;
-    private _mouse;
-    private _delay;
-    private _brightness;
+    private hue;
+    private rocketsPoint;
+    private speed;
+    private acceleration;
+    private friction;
+    private gravity;
+    private particles;
+    private trace;
+    private explosion;
+    private autoresize;
+    private boundaries;
+    private mouse;
+    private delay;
+    private brightness;
     private _tick;
     private _version;
     private _running;
-    private _visibleBoundaries;
     private _randomRocketsPoint;
     private _m;
     private _mx;
@@ -78,35 +77,15 @@ declare class Fireworks {
     private _sound;
     private _traces;
     private _explosions;
-    constructor(container: HTMLContainer, { acceleration, autoresize, boundaries, brightness, delay, explosion, friction, gravity, hue, mouse, particles, sound, speed, rocketsPoint, trace }?: FireworksOptions);
+    constructor(container: HTMLContainer, options?: FireworksOptions);
     get isRunning(): boolean;
     get version(): string;
     start(): void;
     stop(): void;
     pause(): void;
     clear(): void;
-    /**
-     * Changing fireworks parameters
-     *
-     * @param key
-     * @param value
-     */
-    setOptions<T extends keyof FireworksOptions>(key: T, value: Partial<FireworksOptions[T]>): void;
-    /**
-     * Changing the container canvas size
-     *
-     * @param {Sizes}
-     */
+    setOptions(options: Partial<FireworksOptions>): void;
     setSize({ width, height }?: Sizes): void;
-    /**
-     * Show/hide border firework boundaries
-     */
-    visibleBoudaries(): void;
-    /**
-     * Changing the boundaries of fireworks
-     *
-     * @param boundaries
-     */
     setBoundaries(boundaries: Partial<BoundariesOptions>): void;
     private useMouse;
     private render;
@@ -115,4 +94,4 @@ declare class Fireworks {
     private initExplosion;
     private drawExplosion;
 }
-export { Fireworks, FireworksOptions, MouseOptions, BoundariesOptions, SoundOptions, BrightnessOptions };
+export {};
