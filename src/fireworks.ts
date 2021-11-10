@@ -165,7 +165,7 @@ export class Fireworks {
     }
 
     if (this.autoresize) {
-      window.addEventListener('resize', () => this.windowResize)
+      window.addEventListener('resize', () => this.windowResize())
     }
 
     this._canvas.addEventListener('mousedown', e => this.mouseDown(e))
