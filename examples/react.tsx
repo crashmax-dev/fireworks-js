@@ -39,7 +39,7 @@ export default function App() {
         visible: true
       },
       sound: {
-        enable: false,
+        enabled: false,
         files: [
           'https://fireworks.js.org/sounds/explosion0.mp3',
           'https://fireworks.js.org/sounds/explosion1.mp3',

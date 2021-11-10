@@ -42,7 +42,7 @@ export interface BoundariesOptions {
 }
 
 export interface SoundOptions {
-  enable?: boolean
+  enabled?: boolean
   files?: string[]
   volume?: MinMaxOptions
 }
@@ -351,7 +351,7 @@ export class Fireworks {
       this._traces[length].draw()
       this._traces[length].update((x: number, y: number, hue: number) => {
         this.initExplosion(x, y, hue)
-        void this._sound.play()
+        this._sound.play()
         this._traces.splice(length, 1)
       })
     }
