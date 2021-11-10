@@ -32,7 +32,7 @@ export interface BoundariesOptions {
     height?: number;
 }
 export interface SoundOptions {
-    enable?: boolean;
+    enabled?: boolean;
     files?: string[];
     volume?: MinMaxOptions;
 }
