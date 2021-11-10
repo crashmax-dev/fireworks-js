@@ -64,7 +64,7 @@ fireworks.setOptions({ delay: { min: 10, max: 15 }})
 ```
 <!-- MARKDOWN-AUTO-DOCS:END -->
 
-For React.js (see detailed usage [here](test/react.tsx))
+For React.js (see detailed usage [here](examples/react.tsx))
 
 <!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./.github/markdown-autodocs/usage-react.js) -->
 <!-- The below code snippet is automatically added from ./.github/markdown-autodocs/usage-react.js -->

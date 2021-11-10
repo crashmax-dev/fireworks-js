@@ -31,7 +31,7 @@ export class Sound {
     }
 
     if (this.options.enable) {
-      this.load()
+      void this.load()
     }
   }
 
@@ -41,7 +41,7 @@ export class Sound {
         await fetch(file)
       ).arrayBuffer()
 
-      this._audioContext.decodeAudioData(response, (buffer: AudioBuffer) => {
+      void this._audioContext.decodeAudioData(response, (buffer: AudioBuffer) => {
         this._buffer.push(buffer)
       })
     }

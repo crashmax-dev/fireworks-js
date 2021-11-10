@@ -45,7 +45,7 @@
     },
     {
         "key": "<code>boundaries</code>",
-        "default values": "<code>{ x: 50, y: 50, width: container.clientWidth, height: container.clientHeight }</code>"
+        "default values": "<code>{ visible: false, x: 50, y: 50, width: container.clientWidth, height: container.clientHeight }</code>"
     },
     {
         "key": "<code>sound</code>",

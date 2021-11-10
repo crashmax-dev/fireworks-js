@@ -8,7 +8,7 @@ module.exports = {
   paths: {
     entry: {
       fireworks: path.resolve(__dirname, '../src/fireworks.ts'),
-      react: path.resolve(__dirname, '../src/react.tsx')
+      react: path.resolve(__dirname, '../src/react.ts')
     },
     output: path.resolve(__dirname, '../dist'),
     public: path.resolve(__dirname, '../public')
