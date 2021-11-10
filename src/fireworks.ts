@@ -231,7 +231,6 @@ export class Fireworks {
         } else {
           this[key] = value
         }
-        return
       }
 
       if (key === 'sound') {
