@@ -104,7 +104,7 @@ export const App = () => {
 <tr ><td class="key-td td_text"><code>autoresize</code></td><td class="default-values-td td_text"><code>true</code></td></tr>
 <tr ><td class="key-td td_text"><code>hue</code></td><td class="default-values-td td_text"><code>{ min: 0, max: 360 }</code></td></tr>
 <tr ><td class="key-td td_text"><code>delay</code></td><td class="default-values-td td_text"><code>{ min: 15, max: 30 }</code></td></tr>
-<tr ><td class="key-td td_text"><code>boundaries</code></td><td class="default-values-td td_text"><code>{ x: 50, y: 50, width: container.clientWidth, height: container.clientHeight }</code></td></tr>
+<tr ><td class="key-td td_text"><code>boundaries</code></td><td class="default-values-td td_text"><code>{ visible: false, x: 50, y: 50, width: container.clientWidth, height: container.clientHeight }</code></td></tr>
 <tr ><td class="key-td td_text"><code>sound</code></td><td class="default-values-td td_text"><code>{ enable: false }</code></td></tr>
 <tr ><td class="key-td td_text"><code>sound.files</code></td><td class="default-values-td td_text"><code>[ '*.mp3', '*.ogg', '*.wav' ]</code></td></tr>
 <tr ><td class="key-td td_text"><code>sound.volume</code></td><td class="default-values-td td_text"><code>{ min: 1, max: 2 }</code></td></tr>
