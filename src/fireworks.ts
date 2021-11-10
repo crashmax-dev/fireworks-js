@@ -60,6 +60,8 @@ interface Sizes {
 declare const version: string
 
 export class Fireworks {
+  [key: string]: unknown
+
   private _container: HTMLContainer
   private _canvas: HTMLCanvasElement
   private _ctx: CanvasRenderingContext2D
@@ -217,13 +219,19 @@ export class Fireworks {
 
   setOptions(options: FireworksOptions): void {
     for (const [key, value] of Object.entries(options)) {
-      const optionKey = `_${key}` as keyof Fireworks
-      const hasOption = Object.prototype.hasOwnProperty.call(this, optionKey)
+      const hasOption = Object.prototype.hasOwnProperty.call(this, key)
 
-      if (typeof this[optionKey] === 'function') return
+      if (typeof this[key] === 'function') {
+        throw new Error('You cannot change the methods of the class!')
+      }
 
       if (hasOption) {
-        Object.assign(this[optionKey], value)
+        if (typeof this[key] === 'object') {
+          Object.assign(this[key], value)
+        } else {
+          this[key] = value
+        }
+        return
       }
 
       if (key === 'sound') {
