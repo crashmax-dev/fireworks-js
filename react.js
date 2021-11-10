@@ -1,5 +1,5 @@
 /*!
- * fireworks-js 1.3.0 by Vitalij Ryndin (https://crashmax.ru)
+ * fireworks-js 1.3.1 by Vitalij Ryndin (https://crashmax.ru)
  * https://fireworks.js.org
  * License MIT
  */
