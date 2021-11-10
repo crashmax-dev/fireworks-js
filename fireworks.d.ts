@@ -16,9 +16,7 @@ export interface FireworksOptions {
     delay?: MinMaxOptions;
     brightness?: BrightnessOptions;
 }
-export interface BrightnessOptions {
-    min: number;
-    max: number;
+export interface BrightnessOptions extends MinMaxOptions {
     decay?: MinMaxOptions;
 }
 export interface MouseOptions {
@@ -27,14 +25,14 @@ export interface MouseOptions {
     max?: number;
 }
 export interface BoundariesOptions {
-    visible: boolean;
-    x: number;
-    y: number;
-    width: number;
-    height: number;
+    visible?: boolean;
+    x?: number;
+    y?: number;
+    width?: number;
+    height?: number;
 }
 export interface SoundOptions {
-    enable: boolean;
+    enable?: boolean;
     files?: string[];
     volume?: MinMaxOptions;
 }
@@ -77,18 +75,24 @@ export declare class Fireworks {
     private _sound;
     private _traces;
     private _explosions;
-    constructor(container: HTMLContainer, options?: FireworksOptions);
+    constructor(container: HTMLContainer, { acceleration, autoresize, boundaries, brightness, delay, explosion, friction, gravity, hue, mouse, particles, sound, speed, rocketsPoint, trace }?: FireworksOptions);
     get isRunning(): boolean;
     get version(): string;
     start(): void;
     stop(): void;
+    unmount(): void;
     pause(): void;
     clear(): void;
-    setOptions(options: Partial<FireworksOptions>): void;
-    setSize({ width, height }?: Sizes): void;
+    setOptions(options: FireworksOptions): void;
+    setSize({ width, height }?: Partial<Sizes>): void;
     setBoundaries(boundaries: Partial<BoundariesOptions>): void;
     private useMouse;
+    private windowResize;
+    private mouseDown;
+    private mouseUp;
+    private mouseMove;
     private render;
+    private drawBoundaries;
     private initTrace;
     private drawTrace;
     private initExplosion;
