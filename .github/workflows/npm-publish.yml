@@ -1,12 +1,9 @@
 name: npm-publish
 
-on:
-  push:
-    branches:
-      - master
+on: push
 
 jobs:
-  publish-npm:
+  publish-gpr:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
@@ -17,5 +14,5 @@ jobs:
       - run: npm run build
       - uses: JS-DevTools/npm-publish@v1
         with:
-          registry: https://registry.npmjs.org/
-          token: ${{ secrets.NPM_TOKEN }}
+          registry: https://npm.pkg.github.com/
+          token: ${{ secrets.GITHUB_TOKEN }}
