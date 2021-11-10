@@ -45,6 +45,7 @@ interface Sizes {
     height?: number;
 }
 export declare class Fireworks {
+    [key: string]: unknown;
     private _container;
     private _canvas;
     private _ctx;
