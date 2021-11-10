@@ -1,5 +1,5 @@
 {
-  "name": "fireworks-js",
+  "name": "@crashmax-dev/fireworks-js",
   "version": "1.3.2",
   "description": "A simple fireworks library!",
   "module": "./dist/fireworks.js",
@@ -20,6 +20,9 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/crashmax-dev/fireworks-js.git"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
   },
   "keywords": [
     "canvas",
