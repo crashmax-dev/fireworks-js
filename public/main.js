@@ -38,7 +38,7 @@ const fireworksConfig = {
     visible: false
   },
   sound: {
-    enable: false,
+    enabled: false,
     files: [
       document.location.origin + document.location.pathname + 'sounds/explosion0.mp3',
       document.location.origin + document.location.pathname + 'sounds/explosion1.mp3',
@@ -310,7 +310,7 @@ folders.fireworks.add(fireworks, '_randomRocketsPoint', false).name('random star
   fireworks.setOptions(fireworksConfig)
 })
 
-folders.fireworks.add(fireworks, '_running', true).name('enable').onChange(() => {
+folders.fireworks.add(fireworks, '_running', true).name('enabled').onChange(() => {
   fireworks.render()
 })
 
@@ -348,7 +348,7 @@ folders.sound.__folders.volume.add(fireworksConfig.sound.volume, 'max', 1, 100).
   fireworks.setOptions(fireworksConfig)
 })
 
-folders.sound.add(fireworksConfig.sound, 'enable', false).onChange(() => {
+folders.sound.add(fireworksConfig.sound, 'enabled', false).onChange(() => {
   fireworks.setOptions(fireworksConfig)
 })
 

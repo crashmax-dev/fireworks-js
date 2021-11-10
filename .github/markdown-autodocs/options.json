@@ -49,7 +49,7 @@
     },
     {
         "key": "<code>sound</code>",
-        "default values": "<code>{ enable: false }</code>"
+        "default values": "<code>{ enabled: false }</code>"
     },
     {
         "key": "<code>sound.files</code>",
