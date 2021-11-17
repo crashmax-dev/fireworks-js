@@ -67,6 +67,10 @@ fireworks.setOptions({ delay: { min: 10, max: 15 }})
 ## CDN
 
 <!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./.github/markdown-autodocs/usage-cdn.html) -->
+<!-- The below code snippet is automatically added from ./.github/markdown-autodocs/usage-cdn.html -->
+```html
+<script src="https://unpkg.com/fireworks-js@latest/dist/fireworks.js"></script>
+```
 <!-- MARKDOWN-AUTO-DOCS:END -->
 
 ## Usage in React (see detailed usage [here](examples/react.tsx))
@@ -98,29 +102,45 @@ export const App = () => {
 ## Server-Side Rendering ([with-no-ssr](https://nextjs.org/docs/advanced-features/dynamic-import#with-no-ssr))
 
 <!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./.github/markdown-autodocs/ssr-next.js) -->
+<!-- The below code snippet is automatically added from ./.github/markdown-autodocs/ssr-next.js -->
+```js
+// components/Fireworks.tsx
+import { Fireworks } from 'fireworks-js/dist/react'
+
+export default () => <Fireworks />
+
+// pages/index.tsx
+import dynamic from 'next/dynamic'
+
+const FireworksWithNoSSR = dynamic(
+  () => import('../components/Fireworks'),
+  { ssr: false }
+)
+```
 <!-- MARKDOWN-AUTO-DOCS:END -->
 
 ## Options
 
 <!-- MARKDOWN-AUTO-DOCS:START (JSON_TO_HTML_TABLE:src=./.github/markdown-autodocs/options.json) -->
-<table class="JSON-TO-HTML-TABLE"><thead><tr><th class="key-th">key</th><th class="default-values-th">default values</th></tr></thead><tbody ><tr ><td class="key-td td_text"><code>rocketsPoint</code></td><td class="default-values-td td_text"><code>50 // bottom center</code></td></tr>
-<tr ><td class="key-td td_text"><code>speed</code></td><td class="default-values-td td_text"><code>2</code></td></tr>
-<tr ><td class="key-td td_text"><code>acceleration</code></td><td class="default-values-td td_text"><code>1.05</code></td></tr>
-<tr ><td class="key-td td_text"><code>friction</code></td><td class="default-values-td td_text"><code>0.95</code></td></tr>
-<tr ><td class="key-td td_text"><code>gravity</code></td><td class="default-values-td td_text"><code>1.5</code></td></tr>
-<tr ><td class="key-td td_text"><code>particles</code></td><td class="default-values-td td_text"><code>50</code></td></tr>
-<tr ><td class="key-td td_text"><code>trace</code></td><td class="default-values-td td_text"><code>3</code></td></tr>
-<tr ><td class="key-td td_text"><code>explosion</code></td><td class="default-values-td td_text"><code>5</code></td></tr>
-<tr ><td class="key-td td_text"><code>autoresize</code></td><td class="default-values-td td_text"><code>true</code></td></tr>
-<tr ><td class="key-td td_text"><code>hue</code></td><td class="default-values-td td_text"><code>{ min: 0, max: 360 }</code></td></tr>
-<tr ><td class="key-td td_text"><code>delay</code></td><td class="default-values-td td_text"><code>{ min: 15, max: 30 }</code></td></tr>
-<tr ><td class="key-td td_text"><code>boundaries</code></td><td class="default-values-td td_text"><code>{ visible: false, x: 50, y: 50, width: container.clientWidth, height: container.clientHeight }</code></td></tr>
-<tr ><td class="key-td td_text"><code>sound</code></td><td class="default-values-td td_text"><code>{ enabled: false }</code></td></tr>
-<tr ><td class="key-td td_text"><code>sound.files</code></td><td class="default-values-td td_text"><code>[ '*.mp3', '*.ogg', '*.wav' ]</code></td></tr>
-<tr ><td class="key-td td_text"><code>sound.volume</code></td><td class="default-values-td td_text"><code>{ min: 1, max: 2 }</code></td></tr>
-<tr ><td class="key-td td_text"><code>mouse</code></td><td class="default-values-td td_text"><code>{ click: false, move: false, max: 3 }</code></td></tr>
-<tr ><td class="key-td td_text"><code>brightness</code></td><td class="default-values-td td_text"><code> { min: 50, max: 80 }</code></td></tr>
-<tr ><td class="key-td td_text"><code>brightness.decay</code></td><td class="default-values-td td_text"><code>{ min: 0.015, max: 0.03 }</code></td></tr></tbody></table>
+<table class="JSON-TO-HTML-TABLE"><thead><tr><th class="name-th">Name</th><th class="type-th">Type</th><th class="default-th">Default</th><th class="description-th">Description</th></tr></thead><tbody ><tr ><td class="name-td td_text">rocketsPoint</td><td class="type-td td_text"><code>number</code></td><td class="default-td td_text"><code>50 // bottom center</code></td><td class="description-td td_text">-</td></tr>
+<tr ><td class="name-td td_text">opacity</td><td class="type-td td_text"><code>number</code></td><td class="default-td td_text"><code>0.5</code></td><td class="description-td td_text">-</td></tr>
+<tr ><td class="name-td td_text">speed</td><td class="type-td td_text"><code>number</code></td><td class="default-td td_text"><code>2</code></td><td class="description-td td_text">-</td></tr>
+<tr ><td class="name-td td_text">acceleration</td><td class="type-td td_text"><code>number</code></td><td class="default-td td_text"><code>1.05</code></td><td class="description-td td_text">-</td></tr>
+<tr ><td class="name-td td_text">friction</td><td class="type-td td_text"><code>number</code></td><td class="default-td td_text"><code>0.95</code></td><td class="description-td td_text">-</td></tr>
+<tr ><td class="name-td td_text">gravity</td><td class="type-td td_text"><code>number</code></td><td class="default-td td_text"><code>1.5</code></td><td class="description-td td_text">-</td></tr>
+<tr ><td class="name-td td_text">particles</td><td class="type-td td_text"><code>number</code></td><td class="default-td td_text"><code>50</code></td><td class="description-td td_text">-</td></tr>
+<tr ><td class="name-td td_text">trace</td><td class="type-td td_text">number</td><td class="default-td td_text"><code>3</code></td><td class="description-td td_text">-</td></tr>
+<tr ><td class="name-td td_text">explosion</td><td class="type-td td_text"><code>number</code></td><td class="default-td td_text"><code>5</code></td><td class="description-td td_text">-</td></tr>
+<tr ><td class="name-td td_text">autoresize</td><td class="type-td td_text"><code>boolean</code></td><td class="default-td td_text"><code>true</code></td><td class="description-td td_text">-</td></tr>
+<tr ><td class="name-td td_text">hue</td><td class="type-td td_text"><code>object</code></td><td class="default-td td_text"><code>{ min: 0, max: 360 }</code></td><td class="description-td td_text">-</td></tr>
+<tr ><td class="name-td td_text">delay</td><td class="type-td td_text"><code>object</code></td><td class="default-td td_text"><code>{ min: 15, max: 30 }</code></td><td class="description-td td_text">-</td></tr>
+<tr ><td class="name-td td_text">boundaries</td><td class="type-td td_text"><code>object</code></td><td class="default-td td_text"><code>{ visible: false, x: 50, y: 50, width: container.clientWidth, height: container.clientHeight }</code></td><td class="description-td td_text">-</td></tr>
+<tr ><td class="name-td td_text">sound.enabled</td><td class="type-td td_text"><code>boolean</code></td><td class="default-td td_text"><code>false</code></td><td class="description-td td_text">-</td></tr>
+<tr ><td class="name-td td_text">sound.files</td><td class="type-td td_text"><code>string[]</code></td><td class="default-td td_text"><code>[ 'explosion0.mp3', 'explosion1.mp3', 'explosion2.mp3' ]</code></td><td class="description-td td_text">https://github.com/crashmax-dev/fireworks-js/tree/master/public/sounds</td></tr>
+<tr ><td class="name-td td_text">sound.volume</td><td class="type-td td_text"><code>object</code></td><td class="default-td td_text"><code>{ min: 1, max: 2 }</code></td><td class="description-td td_text">-</td></tr>
+<tr ><td class="name-td td_text">mouse</td><td class="type-td td_text"><code>object</code></td><td class="default-td td_text"><code>{ click: false, move: false, max: 3 }</code></td><td class="description-td td_text">-</td></tr>
+<tr ><td class="name-td td_text">brightness</td><td class="type-td td_text"><code>object</code></td><td class="default-td td_text"><code>{ min: 50, max: 80 }</code></td><td class="description-td td_text">-</td></tr>
+<tr ><td class="name-td td_text">brightness.decay</td><td class="type-td td_text"><code>object</code></td><td class="default-td td_text"><code>{ min: 0.015, max: 0.03 }</code></td><td class="description-td td_text">-</td></tr></tbody></table>
 <!-- MARKDOWN-AUTO-DOCS:END -->
 
 ## License
