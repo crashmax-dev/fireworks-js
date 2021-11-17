@@ -2,6 +2,7 @@ declare type HTMLContainer = Element | HTMLElement;
 export interface FireworksOptions {
     hue?: MinMaxOptions;
     rocketsPoint?: number;
+    opacity?: number;
     speed?: number;
     acceleration?: number;
     friction?: number;
@@ -53,6 +54,7 @@ export declare class Fireworks {
     private _height;
     private hue;
     private rocketsPoint;
+    private opacity;
     private speed;
     private acceleration;
     private friction;
@@ -76,7 +78,7 @@ export declare class Fireworks {
     private _sound;
     private _traces;
     private _explosions;
-    constructor(container: HTMLContainer, { acceleration, autoresize, boundaries, brightness, delay, explosion, friction, gravity, hue, mouse, particles, sound, speed, rocketsPoint, trace }?: FireworksOptions);
+    constructor(container: HTMLContainer, { acceleration, autoresize, boundaries, brightness, delay, explosion, friction, gravity, hue, mouse, particles, sound, speed, opacity, rocketsPoint, trace }?: FireworksOptions);
     get isRunning(): boolean;
     get version(): string;
     start(): void;
