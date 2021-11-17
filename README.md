@@ -1,6 +1,6 @@
 <br/>
 <p align="center">
-    <img src="public/images/fireworks_emoji.png" />
+    <img src="https://fireworks.js.org/images/fireworks_emoji.png" />
 </p>
 
 <p align="center"><b>Fireworks.js</b></p>
@@ -20,7 +20,7 @@
  - 🔥 No [dependencies](https://www.npmjs.com/package/fireworks-js?activeTab=dependents).
  - ⚙️ Flexible [configuration](#options).
  - 📦 Lightweight ([~3.0kB gizpped](https://bundlephobia.com/package/fireworks-js))
- - ☁️ [Server-side rendering](#server-side-rendering) compatibility. 
+ - ☁️ [Server-side rendering](#server-side-rendering-with-no-ssr) compatibility. 
  - 📜 Supports [TypeScript](https://www.typescriptlang.org) type definition.
 
 ## Demo

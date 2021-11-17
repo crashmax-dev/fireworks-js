@@ -2,7 +2,7 @@
     {
         "Name": "rocketsPoint",
         "Type": "<code>number</code>",
-        "Default": "<code>50 // bottom center</code>",
+        "Default": "<code>50</code>",
         "Description": "-"
     },
     {
@@ -43,7 +43,7 @@
     },
     {
         "Name": "trace",
-        "Type": "number",
+        "Type": "<code>number</code>",
         "Default": "<code>3</code>",
         "Description": "-"
     },
@@ -87,7 +87,7 @@
         "Name": "sound.files",
         "Type": "<code>string[]</code>",
         "Default": "<code>[ 'explosion0.mp3', 'explosion1.mp3', 'explosion2.mp3' ]</code>",
-        "Description": "https://github.com/crashmax-dev/fireworks-js/tree/master/public/sounds"
+        "Description": "-"
     },
     {
         "Name": "sound.volume",
