@@ -1,4 +1,3 @@
-<br/>
 <p align="center">
     <img src="https://fireworks.js.org/images/fireworks_emoji.png" />
 </p>
@@ -6,7 +5,6 @@
 <p align="center"><b>Fireworks.js</b></p>
 <p align="center">A simple fireworks library!</p>
 
-<br/>
 <p align="center">
     <img alt="GitHub Workflow Status" src="https://img.shields.io/github/workflow/status/crashmax-dev/fireworks-js/github-pages">
     <a href="https://www.npmjs.com/package/fireworks-js" target="_blank"><img alt="npm" src="https://img.shields.io/npm/v/fireworks-js"></a>
@@ -19,7 +17,7 @@
 
  - 🔥 Zero [dependencies](https://www.npmjs.com/package/fireworks-js?activeTab=dependents).
  - ⚙️ Flexible [configuration](#options).
- - 📦 Lightweight ([~3.0kB gizpped](https://bundlephobia.com/package/fireworks-js))
+ - 📦 Lightweight ([~3.0kB gizpped](https://bundlephobia.com/package/fireworks-js)).
  - ☁️ [Server-side rendering](#server-side-rendering-with-no-ssr) compatibility. 
  - 📜 Supports [TypeScript](https://www.typescriptlang.org) type definition.
 
@@ -144,4 +142,4 @@ const FireworksWithNoSSR = dynamic(
 <!-- MARKDOWN-AUTO-DOCS:END -->
 
 ## License
-MIT License © 2021 [Vitalij Ryndin](https://github.com/crashmax-deb)
+MIT License © 2021 [Vitalij Ryndin](https://github.com/crashmax-dev)
