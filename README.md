@@ -4,22 +4,29 @@
 </p>
 
 <p align="center"><b>Fireworks.js</b></p>
+<p align="center">A simple fireworks library!</p>
 
-<p align="center">
-    A simple fireworks library!
-</p>
 <br/>
-
 <p align="center">
     <img alt="GitHub Workflow Status" src="https://img.shields.io/github/workflow/status/crashmax-dev/fireworks-js/github-pages">
     <a href="https://www.npmjs.com/package/fireworks-js" target="_blank"><img alt="npm" src="https://img.shields.io/npm/v/fireworks-js"></a>
-    <a href="https://bundlephobia.com/package/fireworks-js@latest"><img alt="npm bundle size" src="https://badgen.net/bundlephobia/min/fireworks-js"></a>
+    <img alt="npm" src="https://img.shields.io/npm/dt/fireworks-js?color=blue">
+    <a href="https://bundlephobia.com/package/fireworks-js@latest"><img alt="npm bundle size" src="https://badgen.net/bundlephobia/minzip/fireworks-js"></a>
     <a href="https://www.codefactor.io/repository/github/crashmax-dev/fireworks-js"><img src="https://www.codefactor.io/repository/github/crashmax-dev/fireworks-js/badge" alt="CodeFactor" /></a>
 </p>
 
+## Features
+
+ - 🔥 No [dependencies](https://www.npmjs.com/package/fireworks-js?activeTab=dependents).
+ - ⚙️ Flexible [configuration](#options).
+ - 📦 Lightweight ([~3.0kB gizpped](https://bundlephobia.com/package/fireworks-js))
+ - 📜 Supports [TypeScript](https://www.typescriptlang.org) type definition.
+
 ## Demo
 
-> https://fireworks.js.org
+You can play with `fireworks-js` on [fireworks.js.org](https://fireworks.js.org) or [codesandbox.io](https://codesandbox.io/s/fireworks-js-qxihw)
+
+[![Edit fireworks-js](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/fireworks-js-qxihw)
 
 ## Installation
 
@@ -64,7 +71,7 @@ fireworks.setOptions({ delay: { min: 10, max: 15 }})
 ```
 <!-- MARKDOWN-AUTO-DOCS:END -->
 
-For React.js (see detailed usage [here](examples/react.tsx))
+## Usage in React (see detailed usage [here](examples/react.tsx))
 
 <!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./.github/markdown-autodocs/usage-react.js) -->
 <!-- The below code snippet is automatically added from ./.github/markdown-autodocs/usage-react.js -->
@@ -112,3 +119,6 @@ export const App = () => {
 <tr ><td class="key-td td_text"><code>brightness</code></td><td class="default-values-td td_text"><code> { min: 50, max: 80 }</code></td></tr>
 <tr ><td class="key-td td_text"><code>brightness.decay</code></td><td class="default-values-td td_text"><code>{ min: 0.015, max: 0.03 }</code></td></tr></tbody></table>
 <!-- MARKDOWN-AUTO-DOCS:END -->
+
+## License
+MIT License © 2021 [Vitalij Ryndin](https://github.com/crashmax-deb)
