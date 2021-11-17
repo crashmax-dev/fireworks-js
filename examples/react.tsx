@@ -36,7 +36,7 @@ export default function App() {
         }
       },
       boundaries: {
-        visible: true
+        visible: false
       },
       sound: {
         enabled: false,
@@ -53,7 +53,7 @@ export default function App() {
       mouse: {
         click: true,
         move: false,
-        max: 3
+        max: 1
       }
     }
   })
@@ -68,7 +68,7 @@ export default function App() {
   }
 
   const toggleSound = () => {
-    setOptions({ sound: { enable: !options.sound!.enable } })
+    setOptions({ sound: { enabled: !options.sound!.enabled } })
   }
 
   return (
@@ -87,7 +87,7 @@ export default function App() {
           Fireworks {enabled ? 'enabled' : 'disabled'}
         </button>
         <button onClick={() => toggleSound()}>
-          Sound {options.sound!.enable ? 'enabled' : 'disabled'}
+          Sound {options.sound!.enabled ? 'enabled' : 'disabled'}
         </button>
       </div>
     </Fireworks>

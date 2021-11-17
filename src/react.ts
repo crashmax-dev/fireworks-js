@@ -24,6 +24,7 @@ export const useFireworks = ({ initialStart = true, initialOptions = {} }: useFi
 }
 
 export type FireworksProps = {
+  className?: string
   style?: CSSProperties
   enabled?: boolean
   options?: FireworksOptions
@@ -32,6 +33,10 @@ export type FireworksProps = {
 export class Fireworks extends Component<FireworksProps> {
   private _fw: Fw | null = null
   private _ref: HTMLElement | null = null
+
+  static defaultProps = {
+    enabled: true
+  }
 
   componentDidMount() {
     if (this._ref) {
@@ -54,7 +59,7 @@ export class Fireworks extends Component<FireworksProps> {
   }
 
   toggleStart() {
-    if (this.props.enabled ?? true) {
+    if (this.props.enabled) {
       this._fw?.start()
     } else {
       this._fw?.stop()
@@ -64,6 +69,7 @@ export class Fireworks extends Component<FireworksProps> {
   render() {
     return React.createElement('div', {
       ref: (ref: HTMLElement) => (this._ref = ref),
+      className: this.props.className,
       children: this.props.children,
       style: this.props.style
     })

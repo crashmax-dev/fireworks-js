@@ -1,74 +1,116 @@
 [
     {
-        "key": "<code>rocketsPoint</code>",
-        "default values": "<code>50 // bottom center</code>"
+        "Name": "rocketsPoint",
+        "Type": "<code>number</code>",
+        "Default": "<code>50</code>",
+        "Description": "-"
     },
     {
-        "key": "<code>speed</code>",
-        "default values": "<code>2</code>"
+        "Name": "opacity",
+        "Type": "<code>number</code>",
+        "Default": "<code>0.5</code>",
+        "Description": "-"
     },
     {
-        "key": "<code>acceleration</code>",
-        "default values": "<code>1.05</code>"
+        "Name": "speed",
+        "Type": "<code>number</code>",
+        "Default": "<code>2</code>",
+        "Description": "-"
     },
     {
-        "key": "<code>friction</code>",
-        "default values": "<code>0.95</code>"
+        "Name": "acceleration",
+        "Type": "<code>number</code>",
+        "Default": "<code>1.05</code>",
+        "Description": "-"
     },
     {
-        "key": "<code>gravity</code>",
-        "default values": "<code>1.5</code>"
+        "Name": "friction",
+        "Type": "<code>number</code>",
+        "Default": "<code>0.95</code>",
+        "Description": "-"
     },
     {
-        "key": "<code>particles</code>",
-        "default values": "<code>50</code>"
+        "Name": "gravity",
+        "Type": "<code>number</code>",
+        "Default": "<code>1.5</code>",
+        "Description": "-"
     },
     {
-        "key": "<code>trace</code>",
-        "default values": "<code>3</code>"
+        "Name": "particles",
+        "Type": "<code>number</code>",
+        "Default": "<code>50</code>",
+        "Description": "-"
     },
     {
-        "key": "<code>explosion</code>",
-        "default values": "<code>5</code>"
+        "Name": "trace",
+        "Type": "<code>number</code>",
+        "Default": "<code>3</code>",
+        "Description": "-"
     },
     {
-        "key": "<code>autoresize</code>",
-        "default values": "<code>true</code>"
+        "Name": "explosion",
+        "Type": "<code>number</code>",
+        "Default": "<code>5</code>",
+        "Description": "-"
     },
     {
-        "key": "<code>hue</code>",
-        "default values": "<code>{ min: 0, max: 360 }</code>"
+        "Name": "autoresize",
+        "Type": "<code>boolean</code>",
+        "Default": "<code>true</code>",
+        "Description": "-"
     },
     {
-        "key": "<code>delay</code>",
-        "default values": "<code>{ min: 15, max: 30 }</code>"
+        "Name": "hue",
+        "Type": "<code>object</code>",
+        "Default": "<code>{ min: 0, max: 360 }</code>",
+        "Description": "-"
     },
     {
-        "key": "<code>boundaries</code>",
-        "default values": "<code>{ visible: false, x: 50, y: 50, width: container.clientWidth, height: container.clientHeight }</code>"
+        "Name": "delay",
+        "Type": "<code>object</code>",
+        "Default": "<code>{ min: 15, max: 30 }</code>",
+        "Description": "-"
     },
     {
-        "key": "<code>sound</code>",
-        "default values": "<code>{ enabled: false }</code>"
+        "Name": "boundaries",
+        "Type": "<code>object</code>",
+        "Default": "<code>{ visible: false, x: 50, y: 50, width: container.clientWidth, height: container.clientHeight }</code>",
+        "Description": "-"
     },
     {
-        "key": "<code>sound.files</code>",
-        "default values": "<code>[ '*.mp3', '*.ogg', '*.wav' ]</code>"
+        "Name": "sound.enabled",
+        "Type": "<code>boolean</code>",
+        "Default": "<code>false</code>",
+        "Description": "-"
     },
     {
-        "key": "<code>sound.volume</code>",
-        "default values": "<code>{ min: 1, max: 2 }</code>"
+        "Name": "sound.files",
+        "Type": "<code>string[]</code>",
+        "Default": "<code>[ 'explosion0.mp3', 'explosion1.mp3', 'explosion2.mp3' ]</code>",
+        "Description": "-"
     },
     {
-        "key": "<code>mouse</code>",
-        "default values": "<code>{ click: false, move: false, max: 3 }</code>"
+        "Name": "sound.volume",
+        "Type": "<code>object</code>",
+        "Default": "<code>{ min: 1, max: 2 }</code>",
+        "Description": "-"
     },
     {
-        "key": "<code>brightness</code>",
-        "default values": "<code> { min: 50, max: 80 }</code>"
+        "Name": "mouse",
+        "Type": "<code>object</code>",
+        "Default": "<code>{ click: false, move: false, max: 3 }</code>",
+        "Description": "-"
     },
     {
-        "key": "<code>brightness.decay</code>",
-        "default values": "<code>{ min: 0.015, max: 0.03 }</code>"
+        "Name": "brightness",
+        "Type": "<code>object</code>",
+        "Default": "<code>{ min: 50, max: 80 }</code>",
+        "Description": "-"
+    },
+    {
+        "Name": "brightness.decay",
+        "Type": "<code>object</code>",
+        "Default": "<code>{ min: 0.015, max: 0.03 }</code>",
+        "Description": "-"
     }
 ]

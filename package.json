@@ -1,6 +1,6 @@
 {
   "name": "@crashmax-dev/fireworks-js",
-  "version": "1.3.3",
+  "version": "1.3.4",
   "description": "A simple fireworks library!",
   "module": "./dist/fireworks.js",
   "types": "./dist/fireworks.d.ts",

@@ -1,25 +1,33 @@
 <br/>
 <p align="center">
-    <img src="public/images/fireworks_emoji.png" />
+    <img src="https://fireworks.js.org/images/fireworks_emoji.png" />
 </p>
 
 <p align="center"><b>Fireworks.js</b></p>
+<p align="center">A simple fireworks library!</p>
 
-<p align="center">
-    A simple fireworks library!
-</p>
 <br/>
-
 <p align="center">
     <img alt="GitHub Workflow Status" src="https://img.shields.io/github/workflow/status/crashmax-dev/fireworks-js/github-pages">
     <a href="https://www.npmjs.com/package/fireworks-js" target="_blank"><img alt="npm" src="https://img.shields.io/npm/v/fireworks-js"></a>
-    <a href="https://bundlephobia.com/package/fireworks-js@latest"><img alt="npm bundle size" src="https://badgen.net/bundlephobia/min/fireworks-js"></a>
+    <img alt="npm" src="https://img.shields.io/npm/dt/fireworks-js?color=blue">
+    <a href="https://bundlephobia.com/package/fireworks-js@latest"><img alt="npm bundle size" src="https://badgen.net/bundlephobia/minzip/fireworks-js"></a>
     <a href="https://www.codefactor.io/repository/github/crashmax-dev/fireworks-js"><img src="https://www.codefactor.io/repository/github/crashmax-dev/fireworks-js/badge" alt="CodeFactor" /></a>
 </p>
 
+## Features
+
+ - 🔥 Zero [dependencies](https://www.npmjs.com/package/fireworks-js?activeTab=dependents).
+ - ⚙️ Flexible [configuration](#options).
+ - 📦 Lightweight ([~3.0kB gizpped](https://bundlephobia.com/package/fireworks-js))
+ - ☁️ [Server-side rendering](#server-side-rendering-with-no-ssr) compatibility. 
+ - 📜 Supports [TypeScript](https://www.typescriptlang.org) type definition.
+
 ## Demo
 
-> https://fireworks.js.org
+You can play with `fireworks-js` on [fireworks.js.org](https://fireworks.js.org) or [codesandbox.io](https://codesandbox.io/s/fireworks-js-qxihw)
+
+[![Edit fireworks-js](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/fireworks-js-qxihw)
 
 ## Installation
 
@@ -56,15 +64,16 @@ fireworks.setOptions({ delay: { min: 10, max: 15 }})
 ```
 <!-- MARKDOWN-AUTO-DOCS:END -->
 
-<!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./.github/markdown-autodocs/usage.html) -->
-<!-- The below code snippet is automatically added from ./.github/markdown-autodocs/usage.html -->
+## CDN
+
+<!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./.github/markdown-autodocs/usage-cdn.html) -->
+<!-- The below code snippet is automatically added from ./.github/markdown-autodocs/usage-cdn.html -->
 ```html
-<!-- including in your html page -->
 <script src="https://unpkg.com/fireworks-js@latest/dist/fireworks.js"></script>
 ```
 <!-- MARKDOWN-AUTO-DOCS:END -->
 
-For React.js (see detailed usage [here](examples/react.tsx))
+## Usage in React (see detailed usage [here](examples/react.tsx))
 
 <!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./.github/markdown-autodocs/usage-react.js) -->
 <!-- The below code snippet is automatically added from ./.github/markdown-autodocs/usage-react.js -->
@@ -77,8 +86,8 @@ export const App = () => {
   }
 
   const style = {
-    left: 0,
     top: 0,
+    left: 0,
     width: '100%',
     height: '100%',
     position: 'fixed',
@@ -90,25 +99,49 @@ export const App = () => {
 ```
 <!-- MARKDOWN-AUTO-DOCS:END -->
 
+## Server-Side Rendering ([with-no-ssr](https://nextjs.org/docs/advanced-features/dynamic-import#with-no-ssr))
+
+<!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./.github/markdown-autodocs/ssr-next.js) -->
+<!-- The below code snippet is automatically added from ./.github/markdown-autodocs/ssr-next.js -->
+```js
+// components/Fireworks.tsx
+import { Fireworks } from 'fireworks-js/dist/react'
+
+export default () => <Fireworks />
+
+// pages/index.tsx
+import dynamic from 'next/dynamic'
+
+const FireworksWithNoSSR = dynamic(
+  () => import('../components/Fireworks'),
+  { ssr: false }
+)
+```
+<!-- MARKDOWN-AUTO-DOCS:END -->
+
 ## Options
 
 <!-- MARKDOWN-AUTO-DOCS:START (JSON_TO_HTML_TABLE:src=./.github/markdown-autodocs/options.json) -->
-<table class="JSON-TO-HTML-TABLE"><thead><tr><th class="key-th">key</th><th class="default-values-th">default values</th></tr></thead><tbody ><tr ><td class="key-td td_text"><code>rocketsPoint</code></td><td class="default-values-td td_text"><code>50 // bottom center</code></td></tr>
-<tr ><td class="key-td td_text"><code>speed</code></td><td class="default-values-td td_text"><code>2</code></td></tr>
-<tr ><td class="key-td td_text"><code>acceleration</code></td><td class="default-values-td td_text"><code>1.05</code></td></tr>
-<tr ><td class="key-td td_text"><code>friction</code></td><td class="default-values-td td_text"><code>0.95</code></td></tr>
-<tr ><td class="key-td td_text"><code>gravity</code></td><td class="default-values-td td_text"><code>1.5</code></td></tr>
-<tr ><td class="key-td td_text"><code>particles</code></td><td class="default-values-td td_text"><code>50</code></td></tr>
-<tr ><td class="key-td td_text"><code>trace</code></td><td class="default-values-td td_text"><code>3</code></td></tr>
-<tr ><td class="key-td td_text"><code>explosion</code></td><td class="default-values-td td_text"><code>5</code></td></tr>
-<tr ><td class="key-td td_text"><code>autoresize</code></td><td class="default-values-td td_text"><code>true</code></td></tr>
-<tr ><td class="key-td td_text"><code>hue</code></td><td class="default-values-td td_text"><code>{ min: 0, max: 360 }</code></td></tr>
-<tr ><td class="key-td td_text"><code>delay</code></td><td class="default-values-td td_text"><code>{ min: 15, max: 30 }</code></td></tr>
-<tr ><td class="key-td td_text"><code>boundaries</code></td><td class="default-values-td td_text"><code>{ visible: false, x: 50, y: 50, width: container.clientWidth, height: container.clientHeight }</code></td></tr>
-<tr ><td class="key-td td_text"><code>sound</code></td><td class="default-values-td td_text"><code>{ enabled: false }</code></td></tr>
-<tr ><td class="key-td td_text"><code>sound.files</code></td><td class="default-values-td td_text"><code>[ '*.mp3', '*.ogg', '*.wav' ]</code></td></tr>
-<tr ><td class="key-td td_text"><code>sound.volume</code></td><td class="default-values-td td_text"><code>{ min: 1, max: 2 }</code></td></tr>
-<tr ><td class="key-td td_text"><code>mouse</code></td><td class="default-values-td td_text"><code>{ click: false, move: false, max: 3 }</code></td></tr>
-<tr ><td class="key-td td_text"><code>brightness</code></td><td class="default-values-td td_text"><code> { min: 50, max: 80 }</code></td></tr>
-<tr ><td class="key-td td_text"><code>brightness.decay</code></td><td class="default-values-td td_text"><code>{ min: 0.015, max: 0.03 }</code></td></tr></tbody></table>
+<table class="JSON-TO-HTML-TABLE"><thead><tr><th class="name-th">Name</th><th class="type-th">Type</th><th class="default-th">Default</th><th class="description-th">Description</th></tr></thead><tbody ><tr ><td class="name-td td_text">rocketsPoint</td><td class="type-td td_text"><code>number</code></td><td class="default-td td_text"><code>50</code></td><td class="description-td td_text">-</td></tr>
+<tr ><td class="name-td td_text">opacity</td><td class="type-td td_text"><code>number</code></td><td class="default-td td_text"><code>0.5</code></td><td class="description-td td_text">-</td></tr>
+<tr ><td class="name-td td_text">speed</td><td class="type-td td_text"><code>number</code></td><td class="default-td td_text"><code>2</code></td><td class="description-td td_text">-</td></tr>
+<tr ><td class="name-td td_text">acceleration</td><td class="type-td td_text"><code>number</code></td><td class="default-td td_text"><code>1.05</code></td><td class="description-td td_text">-</td></tr>
+<tr ><td class="name-td td_text">friction</td><td class="type-td td_text"><code>number</code></td><td class="default-td td_text"><code>0.95</code></td><td class="description-td td_text">-</td></tr>
+<tr ><td class="name-td td_text">gravity</td><td class="type-td td_text"><code>number</code></td><td class="default-td td_text"><code>1.5</code></td><td class="description-td td_text">-</td></tr>
+<tr ><td class="name-td td_text">particles</td><td class="type-td td_text"><code>number</code></td><td class="default-td td_text"><code>50</code></td><td class="description-td td_text">-</td></tr>
+<tr ><td class="name-td td_text">trace</td><td class="type-td td_text"><code>number</code></td><td class="default-td td_text"><code>3</code></td><td class="description-td td_text">-</td></tr>
+<tr ><td class="name-td td_text">explosion</td><td class="type-td td_text"><code>number</code></td><td class="default-td td_text"><code>5</code></td><td class="description-td td_text">-</td></tr>
+<tr ><td class="name-td td_text">autoresize</td><td class="type-td td_text"><code>boolean</code></td><td class="default-td td_text"><code>true</code></td><td class="description-td td_text">-</td></tr>
+<tr ><td class="name-td td_text">hue</td><td class="type-td td_text"><code>object</code></td><td class="default-td td_text"><code>{ min: 0, max: 360 }</code></td><td class="description-td td_text">-</td></tr>
+<tr ><td class="name-td td_text">delay</td><td class="type-td td_text"><code>object</code></td><td class="default-td td_text"><code>{ min: 15, max: 30 }</code></td><td class="description-td td_text">-</td></tr>
+<tr ><td class="name-td td_text">boundaries</td><td class="type-td td_text"><code>object</code></td><td class="default-td td_text"><code>{ visible: false, x: 50, y: 50, width: container.clientWidth, height: container.clientHeight }</code></td><td class="description-td td_text">-</td></tr>
+<tr ><td class="name-td td_text">sound.enabled</td><td class="type-td td_text"><code>boolean</code></td><td class="default-td td_text"><code>false</code></td><td class="description-td td_text">-</td></tr>
+<tr ><td class="name-td td_text">sound.files</td><td class="type-td td_text"><code>string[]</code></td><td class="default-td td_text"><code>[ 'explosion0.mp3', 'explosion1.mp3', 'explosion2.mp3' ]</code></td><td class="description-td td_text">-</td></tr>
+<tr ><td class="name-td td_text">sound.volume</td><td class="type-td td_text"><code>object</code></td><td class="default-td td_text"><code>{ min: 1, max: 2 }</code></td><td class="description-td td_text">-</td></tr>
+<tr ><td class="name-td td_text">mouse</td><td class="type-td td_text"><code>object</code></td><td class="default-td td_text"><code>{ click: false, move: false, max: 3 }</code></td><td class="description-td td_text">-</td></tr>
+<tr ><td class="name-td td_text">brightness</td><td class="type-td td_text"><code>object</code></td><td class="default-td td_text"><code>{ min: 50, max: 80 }</code></td><td class="description-td td_text">-</td></tr>
+<tr ><td class="name-td td_text">brightness.decay</td><td class="type-td td_text"><code>object</code></td><td class="default-td td_text"><code>{ min: 0.015, max: 0.03 }</code></td><td class="description-td td_text">-</td></tr></tbody></table>
 <!-- MARKDOWN-AUTO-DOCS:END -->
+
+## License
+MIT License © 2021 [Vitalij Ryndin](https://github.com/crashmax-deb)

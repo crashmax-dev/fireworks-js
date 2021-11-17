@@ -1,13 +1,14 @@
 import { Trace } from './trace'
 import { Sound } from './sound'
 import { Explosion } from './explosion'
-import { randomInteger } from './utils'
+import { randomInt } from './helpers'
 
 type HTMLContainer = Element | HTMLElement
 
 export interface FireworksOptions {
   hue?: MinMaxOptions
   rocketsPoint?: number
+  opacity?: number
   speed?: number
   acceleration?: number
   friction?: number
@@ -70,6 +71,7 @@ export class Fireworks {
 
   private hue: MinMaxOptions
   private rocketsPoint: number
+  private opacity: number
   private speed: number
   private acceleration: number
   private friction: number
@@ -110,6 +112,7 @@ export class Fireworks {
     particles,
     sound,
     speed,
+    opacity,
     rocketsPoint,
     trace
   }: FireworksOptions = {}) {
@@ -128,6 +131,7 @@ export class Fireworks {
     })
 
     this.rocketsPoint = rocketsPoint ?? 50
+    this.opacity = opacity ?? 0.5
     this.speed = speed ?? 2
     this.acceleration = acceleration ?? 1.05
     this.friction = friction ?? 0.95
@@ -146,7 +150,7 @@ export class Fireworks {
     this.mouse = {
       click: false,
       move: false,
-      max: 3,
+      max: 1,
       ...mouse
     }
 
@@ -292,7 +296,7 @@ export class Fireworks {
     requestAnimationFrame(() => this.render())
 
     this._ctx.globalCompositeOperation = 'destination-out'
-    this._ctx.fillStyle = 'rgba(0, 0, 0, 0.5)'
+    this._ctx.fillStyle = `rgba(0, 0, 0, ${this.opacity})`
     this._ctx.fillRect(0, 0, this._width, this._height)
     this._ctx.globalCompositeOperation = 'lighter'
 
@@ -319,7 +323,7 @@ export class Fireworks {
   }
 
   private initTrace() {
-    this._ds = randomInteger(this.delay.min, this.delay.max)
+    this._ds = randomInt(this.delay.min, this.delay.max)
 
     if (
       (this._ds * 2 < this._tick) ||
@@ -329,18 +333,18 @@ export class Fireworks {
         new Trace({
           x: this._width * (
             this._randomRocketsPoint ?
-              randomInteger(0, 100) :
+              randomInt(0, 100) :
               this.rocketsPoint
           ) / 100,
           y: this._height,
           dx: (this._mx && this.mouse.move) || this._m ?
             this._mx :
-            randomInteger(this.boundaries.x, this.boundaries.width - this.boundaries.x * 2),
+            randomInt(this.boundaries.x, this.boundaries.width - this.boundaries.x * 2),
           dy: (this._my && this.mouse.move) || this._m ?
             this._my :
-            randomInteger(this.boundaries.y, this.boundaries.height * 0.5),
+            randomInt(this.boundaries.y, this.boundaries.height * 0.5),
           ctx: this._ctx,
-          hue: randomInteger(this.hue.min, this.hue.max),
+          hue: randomInt(this.hue.min, this.hue.max),
           speed: this.speed,
           acceleration: this.acceleration,
           traceLength: this.trace

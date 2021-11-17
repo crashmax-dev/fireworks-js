@@ -1,4 +1,4 @@
-import { randomInteger } from './utils'
+import { randomInt } from './helpers'
 
 interface TraceOptions {
   x: number
@@ -61,7 +61,7 @@ export class Trace {
     }
 
     this._angle = Math.atan2(dy - y, dx - x)
-    this._brightness = randomInteger(50, 70)
+    this._brightness = randomInt(50, 70)
   }
 
   update(callback: (x: number, y: number, hue: number) => void): void {
