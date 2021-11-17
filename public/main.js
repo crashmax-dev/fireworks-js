@@ -1,5 +1,4 @@
-const fireworksContainer = document.querySelector('.fireworks-container'),
-  versionContainer = document.querySelector('.container > span')
+const fireworksContainer = document.querySelector('.fireworks-container')
 
 /**
  * fireworks
@@ -14,10 +13,11 @@ const fireworksConfig = {
     max: 15
   },
   rocketsPoint: 50, // center
+  opacity: 0.5, // fillStyle
   speed: 10,
   acceleration: 1.2,
-  friction: 0.96,
-  gravity: 1,
+  friction: 0.97,
+  gravity: 1.5,
   particles: 90,
   trace: 3,
   explosion: 6,
@@ -45,14 +45,14 @@ const fireworksConfig = {
       document.location.origin + document.location.pathname + 'sounds/explosion2.mp3'
     ],
     volume: {
-      min: 4,
-      max: 8
+      min: 2,
+      max: 4
     }
   },
   mouse: {
     click: true,
     move: false,
-    max: 3
+    max: 1
   }
 }
 
@@ -85,7 +85,7 @@ if (document.location.hash) {
       .map(Number)
       .filter(v => typeof v === 'number')
 
-    if (c.length === 16) {
+    if (c.length === 17) {
       fireworksConfig.hue.min = c[0]
       fireworksConfig.hue.max = c[1]
       fireworksConfig.delay.min = c[2]
@@ -95,13 +95,14 @@ if (document.location.hash) {
       fireworksConfig.brightness.decay.min = c[6]
       fireworksConfig.brightness.decay.max = c[7]
       fireworksConfig.rocketsPoint = c[8]
-      fireworksConfig.speed = c[9]
-      fireworksConfig.acceleration = c[10]
-      fireworksConfig.friction = c[11]
-      fireworksConfig.gravity = c[12]
-      fireworksConfig.particles = c[13]
-      fireworksConfig.trace = c[14]
-      fireworksConfig.explosion = c[15]
+      fireworksConfig.opacity = c[9]
+      fireworksConfig.speed = c[10]
+      fireworksConfig.acceleration = c[11]
+      fireworksConfig.friction = c[12]
+      fireworksConfig.gravity = c[13]
+      fireworksConfig.particles = c[14]
+      fireworksConfig.trace = c[15]
+      fireworksConfig.explosion = c[16]
     } else {
       throw Error()
     }
@@ -111,10 +112,7 @@ if (document.location.hash) {
 }
 
 const fireworks = new Fireworks(fireworksContainer, fireworksConfig)
-
 fireworks.start()
-
-versionContainer.textContent = 'v' + fireworks.version
 
 /**
  * stats.js
@@ -193,11 +191,11 @@ window.share = () => {
       switch (i) {
         case 0:
         case 1:
-        case 10:
         case 11:
         case 12:
         case 13:
         case 14:
+        case 15:
           break
         default:
           return v
@@ -275,6 +273,10 @@ folders.fireworks.__folders.brightness.__folders.decay.add(fireworksConfig.brigh
 })
 
 folders.fireworks.add(fireworksConfig, 'rocketsPoint', 0, 100).step(1).onChange(() => {
+  fireworks.setOptions(fireworksConfig)
+})
+
+folders.fireworks.add(fireworksConfig, 'opacity', 0.1, 1).step(0.1).onChange(() => {
   fireworks.setOptions(fireworksConfig)
 })
 

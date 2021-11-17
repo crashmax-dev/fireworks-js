@@ -1,5 +1,5 @@
 import { BrightnessOptions } from './fireworks'
-import { randomFloat, randomInteger } from './utils'
+import { randomFloat, randomInt } from './helpers'
 
 interface ExplosionOptions {
   x: number
@@ -50,9 +50,9 @@ export class Explosion {
     }
 
     this._angle = randomFloat(0, Math.PI * 2)
-    this._speed = randomInteger(1, 10)
-    this._hue = randomInteger(hue - 20, hue + 20)
-    this._brightness = randomInteger(brightness.min, brightness.max)
+    this._speed = randomInt(1, 10)
+    this._hue = randomInt(hue - 20, hue + 20)
+    this._brightness = randomInt(brightness.min, brightness.max)
     this._decay = randomFloat(brightness.decay.min, brightness.decay.max)
   }
 
