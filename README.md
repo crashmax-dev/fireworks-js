@@ -20,6 +20,7 @@
  - 🔥 No [dependencies](https://www.npmjs.com/package/fireworks-js?activeTab=dependents).
  - ⚙️ Flexible [configuration](#options).
  - 📦 Lightweight ([~3.0kB gizpped](https://bundlephobia.com/package/fireworks-js))
+ - ☁️ [Server-side rendering](#server-side-rendering) compatibility. 
  - 📜 Supports [TypeScript](https://www.typescriptlang.org) type definition.
 
 ## Demo
@@ -63,12 +64,9 @@ fireworks.setOptions({ delay: { min: 10, max: 15 }})
 ```
 <!-- MARKDOWN-AUTO-DOCS:END -->
 
-<!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./.github/markdown-autodocs/usage.html) -->
-<!-- The below code snippet is automatically added from ./.github/markdown-autodocs/usage.html -->
-```html
-<!-- including in your html page -->
-<script src="https://unpkg.com/fireworks-js@latest/dist/fireworks.js"></script>
-```
+## CDN
+
+<!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./.github/markdown-autodocs/usage-cdn.html) -->
 <!-- MARKDOWN-AUTO-DOCS:END -->
 
 ## Usage in React (see detailed usage [here](examples/react.tsx))
@@ -95,6 +93,11 @@ export const App = () => {
   return <Fireworks options={options} style={style} />
 }
 ```
+<!-- MARKDOWN-AUTO-DOCS:END -->
+
+## Server-Side Rendering ([with-no-ssr](https://nextjs.org/docs/advanced-features/dynamic-import#with-no-ssr))
+
+<!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./.github/markdown-autodocs/ssr-next.js) -->
 <!-- MARKDOWN-AUTO-DOCS:END -->
 
 ## Options
