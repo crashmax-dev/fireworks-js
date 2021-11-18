@@ -2,12 +2,7 @@ import { CSSProperties } from 'react'
 import { Fireworks, useFireworks } from 'fireworks-js/dist/react'
 
 export default function App() {
-  const {
-    setEnabled,
-    setOptions,
-    enabled,
-    options,
-  } = useFireworks({
+  const { enabled, options, setEnabled, setOptions } = useFireworks({
     initialStart: true,
     initialOptions: {
       hue: {

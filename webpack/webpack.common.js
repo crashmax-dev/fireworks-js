@@ -10,6 +10,8 @@ module.exports = {
     filename: '[name].js',
     libraryTarget: 'umd',
     globalObject: 'this',
+    // library: 'Fireworks',
+    // libraryExport: 'default',
     umdNamedDefine: true
   },
   externals: {
@@ -46,6 +48,9 @@ module.exports = {
   },
   resolve: {
     extensions: ['.ts', '.js']
+  },
+  performance: {
+    hints: false
   },
   plugins: [
     new CleanWebpackPlugin(),

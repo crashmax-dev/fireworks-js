@@ -2,7 +2,7 @@
   "name": "fireworks-js",
   "version": "1.3.4",
   "description": "A simple fireworks library!",
-  "module": "./dist/fireworks.js",
+  "main": "./dist/fireworks.js",
   "types": "./dist/fireworks.d.ts",
   "files": [
     "dist/react.js",
@@ -14,8 +14,7 @@
     "dev": "webpack server --config webpack/webpack.dev.js",
     "build": "webpack --progress --config webpack/webpack.prod.js",
     "lint": "eslint --ext ts src",
-    "lint:fix": "eslint --fix --ext ts src",
-    "serve": "npm run build && parcel serve dist/*.html --dist-dir parcel"
+    "lint:fix": "eslint --fix --ext ts src"
   },
   "repository": {
     "type": "git",
@@ -47,8 +46,6 @@
     "babel-loader": "^8.2.2",
     "clean-webpack-plugin": "^4.0.0",
     "copy-webpack-plugin": "^9.0.1",
-    "parcel": "^2.0.0-rc.0",
-    "react": "^17.0.2",
     "terser-webpack-plugin": "^5.2.4",
     "ts-loader": "^9.2.6",
     "ts-node": "^10.2.1",

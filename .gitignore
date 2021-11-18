@@ -3,5 +3,3 @@
 yarn.lock
 package-lock.json
 *.tgz
-/parcel
-/.parcel-cache
