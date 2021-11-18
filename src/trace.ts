@@ -1,4 +1,4 @@
-import { randomInt } from './helpers'
+import { randomInt, getDistance, hsla } from './helpers'
 
 interface TraceOptions {
   x: number
@@ -39,8 +39,8 @@ export class Trace {
     ctx,
     hue,
     speed,
-    acceleration,
-    traceLength
+    traceLength,
+    acceleration
   }: TraceOptions) {
     this._x = x
     this._y = y
@@ -51,10 +51,10 @@ export class Trace {
     this._ctx = ctx
     this._hue = hue
     this._speed = speed
-    this._acceleration = acceleration
     this._traceLength = traceLength
+    this._acceleration = acceleration
 
-    this._totalDistance = this.getDistance(x, y, dx, dy)
+    this._totalDistance = getDistance(x, y, dx, dy)
 
     while (this._traceLength--) {
       this._coordinates.push([x, y])
@@ -72,12 +72,7 @@ export class Trace {
     const vx = Math.cos(this._angle) * this._speed
     const vy = Math.sin(this._angle) * this._speed
 
-    this._currentDistance = this.getDistance(
-      this._sx,
-      this._sy,
-      this._x + vx,
-      this._y + vy
-    )
+    this._currentDistance = getDistance(this._sx, this._sy, this._x + vx, this._y + vy)
 
     if (this._currentDistance >= this._totalDistance) {
       callback(this._dx, this._dy, this._hue)
@@ -88,17 +83,12 @@ export class Trace {
   }
 
   draw(): void {
-    const last = this._coordinates.length - 1
+    const lastIndex = this._coordinates.length - 1
 
     this._ctx.beginPath()
-    this._ctx.moveTo(this._coordinates[last][0], this._coordinates[last][1])
+    this._ctx.moveTo(this._coordinates[lastIndex][0], this._coordinates[lastIndex][1])
     this._ctx.lineTo(this._x, this._y)
-    this._ctx.strokeStyle = `hsl(${this._hue}, 100%, ${this._brightness}%)`
+    this._ctx.strokeStyle = hsla(this._hue, this._brightness)
     this._ctx.stroke()
-  }
-
-  private getDistance(x: number, y: number, dx: number, dy: number) {
-    const pow = Math.pow
-    return Math.sqrt(pow(x - dx, 2) + pow(y - dy, 2))
   }
 }

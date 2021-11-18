@@ -99,22 +99,22 @@ export class Fireworks {
   private _explosions: Explosion[]
 
   constructor(container: HTMLContainer, {
-    acceleration,
-    autoresize,
+    autoresize = true,
     boundaries,
     brightness,
     delay,
-    explosion,
-    friction,
-    gravity,
     hue,
     mouse,
-    particles,
     sound,
-    speed,
-    opacity,
-    rocketsPoint,
-    trace
+    trace = 3,
+    speed = 2,
+    explosion = 5,
+    gravity = 1.5,
+    opacity = 0.5,
+    particles = 50,
+    friction = 0.95,
+    rocketsPoint = 50,
+    acceleration = 1.05
   }: FireworksOptions = {}) {
     this._container = container
     this._canvas = document.createElement('canvas')
@@ -130,16 +130,16 @@ export class Fireworks {
       ...boundaries
     })
 
-    this.rocketsPoint = rocketsPoint ?? 50
-    this.opacity = opacity ?? 0.5
-    this.speed = speed ?? 2
-    this.acceleration = acceleration ?? 1.05
-    this.friction = friction ?? 0.95
-    this.gravity = gravity ?? 1.5
-    this.particles = particles ?? 50
-    this.trace = trace ?? 3
-    this.explosion = explosion ?? 5
-    this.autoresize = autoresize ?? true
+    this.autoresize = autoresize
+    this.trace = trace
+    this.speed = speed
+    this.explosion = explosion
+    this.gravity = gravity
+    this.opacity = opacity
+    this.particles = particles
+    this.friction = friction
+    this.rocketsPoint = rocketsPoint
+    this.acceleration = acceleration
 
     this.hue = {
       min: 0,
@@ -274,19 +274,19 @@ export class Fireworks {
     }
   }
 
-  private windowResize() {
+  private windowResize(): void {
     this.setSize()
   }
 
-  private mouseDown(event: MouseEvent) {
+  private mouseDown(event: MouseEvent): void {
     this.useMouse(event, this.mouse.click)
   }
 
-  private mouseUp(event: MouseEvent) {
+  private mouseUp(event: MouseEvent): void {
     this.useMouse(event, false)
   }
 
-  private mouseMove(event: MouseEvent) {
+  private mouseMove(event: MouseEvent): void {
     this.useMouse(event, this._m)
   }
 
@@ -322,7 +322,7 @@ export class Fireworks {
     }
   }
 
-  private initTrace() {
+  private initTrace(): void {
     this._ds = randomInt(this.delay.min, this.delay.max)
 
     if (
@@ -355,7 +355,7 @@ export class Fireworks {
     }
   }
 
-  private drawTrace() {
+  private drawTrace(): void {
     let length = this._traces.length
 
     while (length--) {
@@ -368,7 +368,7 @@ export class Fireworks {
     }
   }
 
-  private initExplosion(x: number, y: number, hue: number) {
+  private initExplosion(x: number, y: number, hue: number): void {
     let count = this.particles
 
     while (count--) {
@@ -387,7 +387,7 @@ export class Fireworks {
     }
   }
 
-  private drawExplosion() {
+  private drawExplosion(): void {
     let length = this._explosions.length
 
     while (length--) {

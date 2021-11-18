@@ -33,7 +33,7 @@ export class Sound {
     this.init()
   }
 
-  private init() {
+  private init(): void {
     if (this.onInit && this.options.enabled) {
       this.onInit = false
       void this.load()

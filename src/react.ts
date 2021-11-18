@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import React, { Component, CSSProperties, useState } from 'react'
 import { FireworksOptions, Fireworks as Fw } from './fireworks'
 
