@@ -308,7 +308,11 @@ folders.fireworks.add(fireworksConfig, 'explosion', 1, 10).step(1).onChange(() =
   fireworks.setOptions(fireworksConfig)
 })
 
-folders.fireworks.add(fireworks, '_randomRocketsPoint', false).name('random start position').onChange(() => {
+folders.fireworks.add(fireworks, '_experimentals', false).name('experimentals').onChange(() => {
+  fireworks.setOptions(fireworksConfig)
+})
+
+folders.fireworks.add(fireworks, '_randomRocketsPoint', false).name('random flying start point').onChange(() => {
   fireworks.setOptions(fireworksConfig)
 })
 

@@ -89,6 +89,7 @@ export class Fireworks {
   private _version = version
   private _running = false
   private _randomRocketsPoint = false
+  private _experimentals = false
   private _m = false
   private _mx: number
   private _my: number
@@ -381,7 +382,8 @@ export class Fireworks {
           friction: this.friction,
           gravity: this.gravity,
           explosionLength: this.explosion,
-          brightness: this.brightness
+          brightness: this.brightness,
+          exp: this._experimentals
         })
       )
     }
