@@ -88,6 +88,10 @@ fireworks.setOptions({ delay: { min: 10, max: 15 }})
 <!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./.github/markdown-autodocs/usage-cdn.html) -->
 <!-- The below code snippet is automatically added from ./.github/markdown-autodocs/usage-cdn.html -->
 ```html
+<!-- jsdelivr  -->
+<script src="https://cdn.jsdelivr.net/npm/fireworks-js@latest/dist/fireworks.js"></script>
+
+<!-- unpkg -->
 <script src="https://unpkg.com/fireworks-js@latest/dist/fireworks.js"></script>
 ```
 <!-- MARKDOWN-AUTO-DOCS:END -->
@@ -121,6 +125,21 @@ export const App = () => {
 ## Server-Side Rendering ([with-no-ssr](https://nextjs.org/docs/advanced-features/dynamic-import#with-no-ssr))
 
 <!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./.github/markdown-autodocs/usage-ssr.js) -->
+<!-- The below code snippet is automatically added from ./.github/markdown-autodocs/usage-ssr.js -->
+```js
+// components/Fireworks.tsx
+import { Fireworks } from 'fireworks-js/dist/react'
+
+export default () => <Fireworks />
+
+// pages/index.tsx
+import dynamic from 'next/dynamic'
+
+const FireworksWithNoSSR = dynamic(
+  () => import('../components/Fireworks'),
+  { ssr: false }
+)
+```
 <!-- MARKDOWN-AUTO-DOCS:END -->
 
 ## Options
