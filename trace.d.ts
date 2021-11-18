@@ -26,9 +26,8 @@ export declare class Trace {
     private _angle;
     private _brightness;
     private _currentDistance;
-    constructor({ x, y, dx, dy, ctx, hue, speed, acceleration, traceLength }: TraceOptions);
+    constructor({ x, y, dx, dy, ctx, hue, speed, traceLength, acceleration }: TraceOptions);
     update(callback: (x: number, y: number, hue: number) => void): void;
     draw(): void;
-    private getDistance;
 }
 export {};

@@ -71,6 +71,7 @@ export declare class Fireworks {
     private _version;
     private _running;
     private _randomRocketsPoint;
+    private _experimentals;
     private _m;
     private _mx;
     private _my;
@@ -78,7 +79,7 @@ export declare class Fireworks {
     private _sound;
     private _traces;
     private _explosions;
-    constructor(container: HTMLContainer, { acceleration, autoresize, boundaries, brightness, delay, explosion, friction, gravity, hue, mouse, particles, sound, speed, opacity, rocketsPoint, trace }?: FireworksOptions);
+    constructor(container: HTMLContainer, { autoresize, boundaries, brightness, delay, hue, mouse, sound, trace, speed, explosion, gravity, opacity, particles, friction, rocketsPoint, acceleration }?: FireworksOptions);
     get isRunning(): boolean;
     get version(): string;
     start(): void;

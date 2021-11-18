@@ -8,6 +8,7 @@ interface ExplosionOptions {
     gravity: number;
     explosionLength: number;
     brightness: Required<BrightnessOptions>;
+    exp: boolean;
 }
 export declare class Explosion {
     private _x;
@@ -23,7 +24,8 @@ export declare class Explosion {
     private _brightness;
     private _decay;
     private _alpha;
-    constructor({ x, y, ctx, hue, friction, gravity, explosionLength, brightness }: ExplosionOptions);
+    private _exp;
+    constructor({ x, y, ctx, hue, exp, gravity, friction, brightness, explosionLength }: ExplosionOptions);
     update(callback: () => void): void;
     draw(): void;
 }
