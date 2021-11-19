@@ -14,7 +14,8 @@
     "dev": "webpack server --config webpack/webpack.dev.js",
     "build": "webpack --progress --config webpack/webpack.prod.js",
     "lint": "eslint --ext ts src",
-    "lint:fix": "eslint --fix --ext ts src"
+    "lint:fix": "eslint --fix --ext ts src",
+    "prepare": "husky install"
   },
   "repository": {
     "type": "git",
@@ -46,6 +47,7 @@
     "babel-loader": "^8.2.3",
     "clean-webpack-plugin": "^4.0.0",
     "copy-webpack-plugin": "^10.0.0",
+    "husky": "^7.0.4",
     "terser-webpack-plugin": "^5.2.5",
     "ts-loader": "^9.2.6",
     "ts-node": "^10.4.0",
