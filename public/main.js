@@ -18,7 +18,7 @@ const fireworksConfig = {
   },
   opacity: 0.5, // fillStyle
   speed: 10,
-  acceleration: 1.2,
+  acceleration: 1.02,
   friction: 0.97,
   gravity: 1.5,
   particles: 90,
@@ -30,8 +30,8 @@ const fireworksConfig = {
       max: 4
     },
     trace: {
-      min: 1,
-      max: 2
+      min: 0.1,
+      max: 1
     }
   },
   autoresize: true,
@@ -303,7 +303,7 @@ folders.fireworks.add(fireworksConfig, 'speed', 1, 100).step(1).onChange(() => {
   fireworks.setOptions(fireworksConfig)
 })
 
-folders.fireworks.add(fireworksConfig, 'acceleration', 1, 10).step(0.1).onChange(() => {
+folders.fireworks.add(fireworksConfig, 'acceleration', 1, 2).step(0.01).onChange(() => {
   fireworks.setOptions(fireworksConfig)
 })
 
@@ -329,19 +329,21 @@ folders.fireworks.add(fireworksConfig, 'explosion', 1, 10).step(1).onChange(() =
 
 // line width
 folders.fireworks.addFolder('lineWidth')
-folders.fireworks.__folders.lineWidth.add(fireworksConfig.lineWidth.explosion, 'min', 1, 10).step(0.1).onChange(() => {
+folders.fireworks.__folders.lineWidth.addFolder('explosion')
+folders.fireworks.__folders.lineWidth.__folders.explosion.add(fireworksConfig.lineWidth.explosion, 'min', 1, 10).step(0.1).onChange(() => {
   fireworks.setOptions(fireworksConfig)
 })
 
-folders.fireworks.__folders.lineWidth.add(fireworksConfig.lineWidth.explosion, 'max', 1, 10).step(0.1).onChange(() => {
+folders.fireworks.__folders.lineWidth.__folders.explosion.add(fireworksConfig.lineWidth.explosion, 'max', 1, 10).step(0.1).onChange(() => {
   fireworks.setOptions(fireworksConfig)
 })
 
-folders.fireworks.__folders.brightness.__folders.decay.add(fireworksConfig.lineWidth.trace, 'min', 1, 10).step(0.1).onChange(() => {
+folders.fireworks.__folders.lineWidth.addFolder('trace')
+folders.fireworks.__folders.lineWidth.__folders.trace.add(fireworksConfig.lineWidth.trace, 'min', 0, 10).step(0.1).onChange(() => {
   fireworks.setOptions(fireworksConfig)
 })
 
-folders.fireworks.__folders.brightness.__folders.decay.add(fireworksConfig.lineWidth.trace, 'max', 1, 10).step(0.1).onChange(() => {
+folders.fireworks.__folders.lineWidth.__folders.trace.add(fireworksConfig.lineWidth.trace, 'max', 0, 10).step(0.1).onChange(() => {
   fireworks.setOptions(fireworksConfig)
 })
 

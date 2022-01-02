@@ -10,6 +10,7 @@ interface ExplosionOptions {
   gravity: number
   explosionLength: number
   flickering: boolean
+  lineWidth: number
   brightness: Required<BrightnessOptions>
   exp: boolean
 }
@@ -21,6 +22,7 @@ export class Explosion {
   private _friction: number
   private _gravity: number
   private _flickering: boolean
+  private _lineWidth: number
   private _explosionLength: number
 
   private _coordinates: [number, number][] = []
@@ -42,6 +44,7 @@ export class Explosion {
     friction,
     brightness,
     flickering,
+    lineWidth,
     explosionLength
   }: ExplosionOptions) {
     this._x = x
@@ -51,6 +54,7 @@ export class Explosion {
     this._gravity = gravity
     this._friction = friction
     this._flickering = flickering
+    this._lineWidth = lineWidth
     this._explosionLength = explosionLength
 
     while (this._explosionLength--) {
@@ -81,6 +85,7 @@ export class Explosion {
     const lastIndex = this._coordinates.length - 1
 
     this._ctx.beginPath()
+    this._ctx.lineWidth = this._lineWidth
 
     // experimental
     if (this._exp) {

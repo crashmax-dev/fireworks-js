@@ -1,5 +1,5 @@
-import React, { Component, CSSProperties, useState } from 'react'
-import { FireworksOptions, Fireworks as Fw } from './fireworks'
+import React, { Component, type CSSProperties, useState } from 'react'
+import { type FireworksOptions, Fireworks as Fw } from './fireworks'
 
 type useFireworksProps = {
   initialStart?: boolean

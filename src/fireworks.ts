@@ -136,6 +136,8 @@ export class Fireworks {
       this._container.appendChild(this._canvas)
     }
     this._ctx = this._canvas.getContext('2d') as CanvasRenderingContext2D
+    this._ctx.lineCap = 'round'
+    this._ctx.lineJoin = 'round'
     this._sound = new Sound(sound)
 
     this.setSize()
@@ -336,6 +338,8 @@ export class Fireworks {
     this._ctx.fillStyle = `rgba(0, 0, 0, ${this.opacity})`
     this._ctx.fillRect(0, 0, this._width, this._height)
     this._ctx.globalCompositeOperation = 'lighter'
+    this._ctx.lineCap = 'round'
+    this._ctx.lineJoin = 'round'
 
     this.drawBoundaries()
     this.initTrace()
@@ -348,6 +352,7 @@ export class Fireworks {
   private drawBoundaries() {
     if (this.boundaries.visible) {
       this._ctx.beginPath()
+      this._ctx.lineWidth = 1
       this._ctx.strokeStyle = 'red'
       this._ctx.rect(
         this.boundaries.x,
@@ -415,6 +420,7 @@ export class Fireworks {
           friction: this.friction,
           gravity: this.gravity,
           flickering: randomInt(0, 100) <= this.flickering,
+          lineWidth: randomFloat(this.lineWidth.explosion.min, this.lineWidth.explosion.max),
           explosionLength: this.explosion,
           brightness: this.brightness,
           exp: this._experimentals
@@ -425,7 +431,6 @@ export class Fireworks {
 
   private drawExplosion(): void {
     let length = this._explosions.length
-    this._ctx.lineWidth = randomFloat(this.lineWidth.explosion.min, this.lineWidth.explosion.max)
 
     while (length--) {
       this._explosions[length].draw()
