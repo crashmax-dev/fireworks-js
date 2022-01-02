@@ -1,4 +1,4 @@
-import { BrightnessOptions } from './fireworks'
+import type { BrightnessOptions } from './fireworks'
 import { randomFloat, randomInt, hsla } from './helpers'
 
 interface ExplosionOptions {
@@ -9,6 +9,7 @@ interface ExplosionOptions {
   friction: number
   gravity: number
   explosionLength: number
+  flickering: boolean
   brightness: Required<BrightnessOptions>
   exp: boolean
 }
@@ -19,6 +20,7 @@ export class Explosion {
   private _ctx: CanvasRenderingContext2D
   private _friction: number
   private _gravity: number
+  private _flickering: boolean
   private _explosionLength: number
 
   private _coordinates: [number, number][] = []
@@ -39,6 +41,7 @@ export class Explosion {
     gravity,
     friction,
     brightness,
+    flickering,
     explosionLength
   }: ExplosionOptions) {
     this._x = x
@@ -47,6 +50,7 @@ export class Explosion {
     this._ctx = ctx
     this._gravity = gravity
     this._friction = friction
+    this._flickering = flickering
     this._explosionLength = explosionLength
 
     while (this._explosionLength--) {
@@ -93,7 +97,7 @@ export class Explosion {
     this._ctx.fillStyle = hsla(this._hue, this._brightness, this._alpha)
     this._ctx.moveTo(this._coordinates[lastIndex][0], this._coordinates[lastIndex][1])
     this._ctx.lineTo(this._x, this._y)
-    this._ctx.strokeStyle = hsla(this._hue, this._brightness, this._alpha)
+    this._ctx.strokeStyle = hsla(this._hue, this._flickering?randomFloat(0, this._brightness):this._brightness, this._alpha)
     this._ctx.stroke()
   }
 }

@@ -12,7 +12,10 @@ const fireworksConfig = {
     min: 15,
     max: 15
   },
-  rocketsPoint: 50, // center
+  rocketsPoint: {
+    min: 40,
+    max: 60
+  },
   opacity: 0.5, // fillStyle
   speed: 10,
   acceleration: 1.2,
@@ -21,6 +24,16 @@ const fireworksConfig = {
   particles: 90,
   trace: 3,
   explosion: 6,
+  lineWidth: {
+    explosion: {
+      min: 1,
+      max: 4
+    },
+    trace: {
+      min: 1,
+      max: 2
+    }
+  },
   autoresize: true,
   brightness: {
     min: 50,
@@ -272,7 +285,13 @@ folders.fireworks.__folders.brightness.__folders.decay.add(fireworksConfig.brigh
   fireworks.setOptions(fireworksConfig)
 })
 
-folders.fireworks.add(fireworksConfig, 'rocketsPoint', 0, 100).step(1).onChange(() => {
+// rockets point
+folders.fireworks.addFolder('rocketsPoint')
+folders.fireworks.__folders.rocketsPoint.add(fireworksConfig.rocketsPoint, 'min', 0, 100).step(1).onChange(() => {
+  fireworks.setOptions(fireworksConfig)
+})
+
+folders.fireworks.__folders.rocketsPoint.add(fireworksConfig.rocketsPoint, 'max', 0, 100).step(1).onChange(() => {
   fireworks.setOptions(fireworksConfig)
 })
 
@@ -308,11 +327,29 @@ folders.fireworks.add(fireworksConfig, 'explosion', 1, 10).step(1).onChange(() =
   fireworks.setOptions(fireworksConfig)
 })
 
-folders.fireworks.add(fireworks, '_experimentals', false).name('experimentals').onChange(() => {
+// line width
+folders.fireworks.addFolder('lineWidth')
+folders.fireworks.__folders.lineWidth.add(fireworksConfig.lineWidth.explosion, 'min', 1, 10).step(0.1).onChange(() => {
   fireworks.setOptions(fireworksConfig)
 })
 
-folders.fireworks.add(fireworks, '_randomRocketsPoint', false).name('random flying start point').onChange(() => {
+folders.fireworks.__folders.lineWidth.add(fireworksConfig.lineWidth.explosion, 'max', 1, 10).step(0.1).onChange(() => {
+  fireworks.setOptions(fireworksConfig)
+})
+
+folders.fireworks.__folders.brightness.__folders.decay.add(fireworksConfig.lineWidth.trace, 'min', 1, 10).step(0.1).onChange(() => {
+  fireworks.setOptions(fireworksConfig)
+})
+
+folders.fireworks.__folders.brightness.__folders.decay.add(fireworksConfig.lineWidth.trace, 'max', 1, 10).step(0.1).onChange(() => {
+  fireworks.setOptions(fireworksConfig)
+})
+
+folders.fireworks.add(fireworks, 'flickering', 0, 100).step(1).onChange(() => {
+  fireworks.setOptions(fireworksConfig)
+})
+
+folders.fireworks.add(fireworks, '_experimentals', false).name('experimentals').onChange(() => {
   fireworks.setOptions(fireworksConfig)
 })
 

@@ -1,4 +1,4 @@
-import { SoundOptions } from './fireworks'
+import type { SoundOptions } from './fireworks'
 import { randomInt, randomFloat } from './helpers'
 
 declare global {
@@ -14,7 +14,6 @@ export class Sound {
   private onInit = true
 
   constructor(options: SoundOptions | undefined) {
-    this._audioContext = new (window.AudioContext || window.webkitAudioContext)()
 
     this.options = {
       enabled: false,
@@ -36,6 +35,7 @@ export class Sound {
   private init(): void {
     if (this.onInit && this.options.enabled) {
       this.onInit = false
+      this._audioContext = new (window.AudioContext || window.webkitAudioContext)()
       void this.load()
     }
   }
