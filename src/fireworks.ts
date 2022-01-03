@@ -23,7 +23,7 @@ export interface FireworksOptions {
   delay?: MinMaxOptions
   brightness?: BrightnessOptions
   flickering?: number
-  lineWidth?: lineWidthOptions
+  lineWidth?: LineWidthOptions
 }
 
 export interface BrightnessOptions extends MinMaxOptions {
@@ -60,7 +60,7 @@ interface Sizes {
   height?: number
 }
 
-interface lineWidthOptions {
+interface LineWidthOptions {
   explosion: MinMaxOptions
   trace: MinMaxOptions
 }
@@ -92,7 +92,7 @@ export class Fireworks {
   private mouse: Required<MouseOptions>
   private delay: MinMaxOptions
   private brightness: Required<BrightnessOptions>
-  private lineWidth: lineWidthOptions
+  private lineWidth: LineWidthOptions
 
   private _tick = 0
   private _version = version
@@ -107,7 +107,7 @@ export class Fireworks {
   private _traces: Trace[]
   private _explosions: Explosion[]
 
-  constructor(container: HTMLContainer, {
+  constructor(container: HTMLContainer | HTMLCanvasElement, {
     autoresize = true,
     boundaries,
     brightness,
@@ -283,8 +283,8 @@ export class Fireworks {
   }
 
   setSize({
-    width = this._container === this._canvas ? this._canvas.width : this._container.clientWidth,
-    height = this._container === this._canvas ? this._canvas.height : this._container.clientHeight
+    width = this._container instanceof HTMLCanvasElement ? this._canvas.width : this._container.clientWidth,
+    height = this._container instanceof HTMLCanvasElement ? this._canvas.height : this._container.clientHeight
   }: Partial<Sizes> = {}): void {
     this._width = width
     this._height = height
