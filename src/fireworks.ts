@@ -97,7 +97,6 @@ export class Fireworks {
   private _tick = 0
   private _version = version
   private _running = false
-  private _experimentals = false
   private _m = false
   private _mx: number
   private _my: number
@@ -422,8 +421,7 @@ export class Fireworks {
           flickering: randomInt(0, 100) <= this.flickering,
           lineWidth: randomFloat(this.lineWidth.explosion.min, this.lineWidth.explosion.max),
           explosionLength: this.explosion,
-          brightness: this.brightness,
-          exp: this._experimentals
+          brightness: this.brightness
         })
       )
     }
