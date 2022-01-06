@@ -24,6 +24,8 @@ export interface FireworksOptions {
   brightness?: BrightnessOptions
   flickering?: number
   lineWidth?: LineWidthOptions
+  lineCap?: CanvasLineCap
+  lineJoin?: CanvasLineJoin
 }
 
 export interface BrightnessOptions extends MinMaxOptions {
@@ -86,6 +88,8 @@ export class Fireworks {
   private particles: number
   private trace: number
   private flickering: number
+  private lineCap: CanvasLineCap
+  private lineJoin: CanvasLineJoin
   private explosion: number
   private autoresize: boolean
   private boundaries: Required<BoundariesOptions>
@@ -116,6 +120,8 @@ export class Fireworks {
     sound,
     rocketsPoint,
     lineWidth,
+    lineCap = 'round',
+    lineJoin = 'round',
     flickering = 50,
     trace = 3,
     speed = 2,
@@ -135,8 +141,6 @@ export class Fireworks {
       this._container.appendChild(this._canvas)
     }
     this._ctx = this._canvas.getContext('2d') as CanvasRenderingContext2D
-    this._ctx.lineCap = 'round'
-    this._ctx.lineJoin = 'round'
     this._sound = new Sound(sound)
 
     this.setSize()
@@ -157,6 +161,8 @@ export class Fireworks {
     this.friction = friction
     this.acceleration = acceleration
     this.flickering = flickering
+    this.lineCap = lineCap
+    this.lineJoin = lineJoin
 
     this.hue = {
       min: 0,
@@ -337,8 +343,8 @@ export class Fireworks {
     this._ctx.fillStyle = `rgba(0, 0, 0, ${this.opacity})`
     this._ctx.fillRect(0, 0, this._width, this._height)
     this._ctx.globalCompositeOperation = 'lighter'
-    this._ctx.lineCap = 'round'
-    this._ctx.lineJoin = 'round'
+    this._ctx.lineCap = this.lineCap
+    this._ctx.lineJoin = this.lineJoin
 
     this.drawBoundaries()
     this.initTrace()
