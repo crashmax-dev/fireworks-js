@@ -1,10 +1,10 @@
-import React, { Component, CSSProperties } from 'react';
-import { FireworksOptions } from './fireworks';
-declare type useFireworksProps = {
+import React, { Component, type CSSProperties } from 'react';
+import { type FireworksOptions } from './fireworks';
+declare type FireworksHookProps = {
     initialStart?: boolean;
     initialOptions?: FireworksOptions;
 };
-export declare const useFireworks: ({ initialStart, initialOptions }: useFireworksProps) => {
+export declare const useFireworks: ({ initialStart, initialOptions }: FireworksHookProps) => {
     enabled: boolean;
     options: FireworksOptions;
     setOptions: React.Dispatch<React.SetStateAction<FireworksOptions>>;
@@ -27,7 +27,7 @@ export declare class Fireworks extends Component<FireworksProps> {
     componentWillUnmount(): void;
     toggleStart(): void;
     render(): React.DetailedReactHTMLElement<{
-        ref: (ref: HTMLElement) => HTMLElement;
+        ref: (ref: HTMLElement | null) => HTMLElement | null;
         className: string | undefined;
         children: React.ReactNode;
         style: React.CSSProperties | undefined;

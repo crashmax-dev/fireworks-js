@@ -1,7 +1,8 @@
 declare type HTMLContainer = Element | HTMLElement;
+declare type LineStyle = 'round' | 'square';
 export interface FireworksOptions {
     hue?: MinMaxOptions;
-    rocketsPoint?: number;
+    rocketsPoint?: MinMaxOptions;
     opacity?: number;
     speed?: number;
     acceleration?: number;
@@ -16,6 +17,9 @@ export interface FireworksOptions {
     sound?: SoundOptions;
     delay?: MinMaxOptions;
     brightness?: BrightnessOptions;
+    flickering?: number;
+    lineWidth?: LineWidthOptions;
+    lineStyle?: LineStyle;
 }
 export interface BrightnessOptions extends MinMaxOptions {
     decay?: MinMaxOptions;
@@ -45,6 +49,10 @@ interface Sizes {
     width?: number;
     height?: number;
 }
+interface LineWidthOptions {
+    explosion: MinMaxOptions;
+    trace: MinMaxOptions;
+}
 export declare class Fireworks {
     [key: string]: unknown;
     private _container;
@@ -61,17 +69,18 @@ export declare class Fireworks {
     private gravity;
     private particles;
     private trace;
+    private flickering;
     private explosion;
     private autoresize;
     private boundaries;
     private mouse;
     private delay;
     private brightness;
+    private lineWidth;
+    private lineStyle;
     private _tick;
     private _version;
     private _running;
-    private _randomRocketsPoint;
-    private _experimentals;
     private _m;
     private _mx;
     private _my;
@@ -79,7 +88,7 @@ export declare class Fireworks {
     private _sound;
     private _traces;
     private _explosions;
-    constructor(container: HTMLContainer, { autoresize, boundaries, brightness, delay, hue, mouse, sound, trace, speed, explosion, gravity, opacity, particles, friction, rocketsPoint, acceleration }?: FireworksOptions);
+    constructor(container: HTMLContainer | HTMLCanvasElement, { autoresize, boundaries, brightness, delay, hue, mouse, sound, rocketsPoint, lineWidth, lineStyle, flickering, trace, speed, explosion, gravity, opacity, particles, friction, acceleration }?: FireworksOptions);
     get isRunning(): boolean;
     get version(): string;
     start(): void;

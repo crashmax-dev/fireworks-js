@@ -1,4 +1,4 @@
-import { SoundOptions } from './fireworks';
+import type { SoundOptions } from './fireworks';
 declare global {
     interface Window {
         webkitAudioContext: typeof AudioContext;

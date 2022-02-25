@@ -1,4 +1,4 @@
-import { BrightnessOptions } from './fireworks';
+import type { BrightnessOptions } from './fireworks';
 interface ExplosionOptions {
     x: number;
     y: number;
@@ -7,8 +7,9 @@ interface ExplosionOptions {
     friction: number;
     gravity: number;
     explosionLength: number;
+    flickering: boolean;
+    lineWidth: number;
     brightness: Required<BrightnessOptions>;
-    exp: boolean;
 }
 export declare class Explosion {
     private _x;
@@ -16,6 +17,8 @@ export declare class Explosion {
     private _ctx;
     private _friction;
     private _gravity;
+    private _flickering;
+    private _lineWidth;
     private _explosionLength;
     private _coordinates;
     private _angle;
@@ -24,8 +27,7 @@ export declare class Explosion {
     private _brightness;
     private _decay;
     private _alpha;
-    private _exp;
-    constructor({ x, y, ctx, hue, exp, gravity, friction, brightness, explosionLength }: ExplosionOptions);
+    constructor({ x, y, ctx, hue, gravity, friction, brightness, flickering, lineWidth, explosionLength }: ExplosionOptions);
     update(callback: () => void): void;
     draw(): void;
 }
