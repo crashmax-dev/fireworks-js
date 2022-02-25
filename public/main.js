@@ -17,13 +17,15 @@ const fireworksConfig = {
     max: 50
   },
   opacity: 0.5, // fillStyle
-  speed: 10,
   acceleration: 1.02,
   friction: 0.97,
   gravity: 1.5,
   particles: 90,
   trace: 3,
+  traceSpeed: 10,
   explosion: 6,
+  intensity: 30,
+  flickering: 50,
   lineStyle: 'round',
   lineWidth: {
     explosion: {
@@ -217,10 +219,6 @@ folders.fireworks.add(fireworksConfig, 'opacity', 0.1, 1).step(0.1).onChange(() 
   fireworks.setOptions(fireworksConfig)
 })
 
-folders.fireworks.add(fireworksConfig, 'speed', 1, 100).step(1).onChange(() => {
-  fireworks.setOptions(fireworksConfig)
-})
-
 folders.fireworks.add(fireworksConfig, 'acceleration', 1, 2).step(0.01).onChange(() => {
   fireworks.setOptions(fireworksConfig)
 })
@@ -241,11 +239,19 @@ folders.fireworks.add(fireworksConfig, 'trace', 1, 10).step(1).onChange(() => {
   fireworks.setOptions(fireworksConfig)
 })
 
+folders.fireworks.add(fireworksConfig, 'traceSpeed', 1, 100).step(1).onChange(() => {
+  fireworks.setOptions(fireworksConfig)
+})
+
 folders.fireworks.add(fireworksConfig, 'explosion', 1, 10).step(1).onChange(() => {
   fireworks.setOptions(fireworksConfig)
 })
 
-folders.fireworks.add(fireworks, 'flickering', 0, 100).step(1).onChange(() => {
+folders.fireworks.add(fireworksConfig, 'flickering', 0, 100).step(1).onChange(() => {
+  fireworks.setOptions(fireworksConfig)
+})
+
+folders.fireworks.add(fireworksConfig, 'intensity', 1, 60).onChange(() => {
   fireworks.setOptions(fireworksConfig)
 })
 
@@ -253,10 +259,6 @@ folders.fireworks.add(fireworks, 'lineStyle', ['round', 'square']).onChange((lin
   fireworksConfig.lineStyle = lineStyle
   fireworks.setOptions(fireworksConfig)
 })
-
-// folders.fireworks.add(fireworks, '_experimental', false).name('experimental').onChange(() => {
-//   fireworks.setOptions(fireworksConfig)
-// })
 
 folders.fireworks.add(fireworks, '_running', true).name('enabled').onChange(() => {
   fireworks.render()

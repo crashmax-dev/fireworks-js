@@ -11,7 +11,6 @@ export interface FireworksOptions {
   hue?: MinMaxOptions
   rocketsPoint?: MinMaxOptions
   opacity?: number
-  speed?: number
   acceleration?: number
   friction?: number
   gravity?: number
@@ -25,6 +24,7 @@ export interface FireworksOptions {
   delay?: MinMaxOptions
   brightness?: BrightnessOptions
   flickering?: number
+  intensity?: number
   lineWidth?: LineWidthOptions
   lineStyle?: LineStyle
 }
@@ -82,13 +82,13 @@ export class Fireworks {
   private hue: MinMaxOptions
   private rocketsPoint: MinMaxOptions
   private opacity: number
-  private speed: number
   private acceleration: number
   private friction: number
   private gravity: number
   private particles: number
   private trace: number
   private flickering: number
+  private intensity: number
   private explosion: number
   private autoresize: boolean
   private boundaries: Required<BoundariesOptions>
@@ -99,6 +99,7 @@ export class Fireworks {
   private lineStyle: LineStyle
 
   private _tick = 0
+  private _timestamp = performance.now()
   private _version = version
   private _running = false
   private _m = false
@@ -123,7 +124,8 @@ export class Fireworks {
     lineStyle = 'round',
     flickering = 50,
     trace = 3,
-    speed = 2,
+    traceSpeed = 10,
+    intensity = 30,
     explosion = 5,
     gravity = 1.5,
     opacity = 0.5,
@@ -152,7 +154,6 @@ export class Fireworks {
 
     this.autoresize = autoresize
     this.trace = trace
-    this.speed = speed
     this.explosion = explosion
     this.gravity = gravity
     this.opacity = opacity
@@ -160,6 +161,7 @@ export class Fireworks {
     this.friction = friction
     this.acceleration = acceleration
     this.flickering = flickering
+    this.intensity = intensity
     this.lineStyle = lineStyle
 
     this.hue = {
@@ -332,10 +334,10 @@ export class Fireworks {
     this.useMouse(event, this._m)
   }
 
-  private render(): void {
+  private render(timestamp = this._timestamp): void {
     if (!this._ctx || !this._running) return
 
-    requestAnimationFrame(() => this.render())
+    requestAnimationFrame((timestamp) => this.render(timestamp))
 
     this._ctx.globalCompositeOperation = 'destination-out'
     this._ctx.fillStyle = `rgba(0, 0, 0, ${this.opacity})`
@@ -354,7 +356,9 @@ export class Fireworks {
     this.drawTrace()
     this.drawExplosion()
 
-    this._tick++
+    const timeDiff = timestamp - this._timestamp
+    this._timestamp = timestamp
+    this._tick += timeDiff * (this.intensity * Math.PI) / 1000
   }
 
   private drawBoundaries() {
@@ -391,7 +395,7 @@ export class Fireworks {
             randomInt(this.boundaries.y, this.boundaries.height * 0.5),
           ctx: this._ctx,
           hue: randomInt(this.hue.min, this.hue.max),
-          speed: this.speed,
+          speed: this.traceSpeed,
           acceleration: this.acceleration,
           traceLength: this.trace
         })
