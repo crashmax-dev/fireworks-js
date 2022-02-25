@@ -346,13 +346,8 @@ export class Fireworks {
     this._ctx.fillStyle = `rgba(0, 0, 0, ${this.opacity})`
     this._ctx.fillRect(0, 0, this._width, this._height)
     this._ctx.globalCompositeOperation = 'lighter'
-
+    this._ctx.lineCap = this.lineStyle
     this._ctx.lineJoin = 'round'
-    if (this.lineStyle === 'square') {
-      this._ctx.lineCap = 'square'
-    } else if (this.lineStyle === 'round') {
-      this._ctx.lineCap = 'round'
-    }
 
     this.drawBoundaries()
     this.initTrace()
