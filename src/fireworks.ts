@@ -26,7 +26,7 @@ export interface FireworksOptions {
   lineCap?: CanvasLineCap
   lineJoin?: CanvasLineJoin
   traceSpeed?: number
-  renderSpeed?: number
+  intensity?: number
 }
 
 export interface BrightnessOptions extends MinMaxOptions {
@@ -98,7 +98,7 @@ export class Fireworks {
   private brightness: Required<BrightnessOptions>
   private lineWidth: LineWidthOptions
   private traceSpeed: number
-  private renderSpeed: number
+  private intensity: number
 
   private _tick = 0
   private _timestamp = performance.now()
@@ -128,7 +128,7 @@ export class Fireworks {
     flickering = 50,
     trace = 3,
     traceSpeed = 10,
-    renderSpeed = 60,
+    intensity = 30,
     explosion = 5,
     gravity = 1.5,
     opacity = 0.5,
@@ -167,7 +167,7 @@ export class Fireworks {
     this.lineCap = lineCap
     this.lineJoin = lineJoin
     this.traceSpeed = traceSpeed
-    this.renderSpeed = renderSpeed
+    this.intensity = intensity
 
     this.hue = {
       min: 0,
@@ -358,7 +358,7 @@ export class Fireworks {
 
     const timeDiff = timestamp - this._timestamp
     this._timestamp = timestamp
-    this._tick += timeDiff * this.renderSpeed / 1000
+    this._tick += timeDiff * (this.intensity * Math.PI) / 1000
   }
 
   private drawBoundaries() {

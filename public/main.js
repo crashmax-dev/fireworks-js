@@ -24,7 +24,7 @@ const fireworksConfig = {
   trace: 3,
   traceSpeed: 10,
   explosion: 6,
-  renderSpeed: 60,
+  intensity: 30,
   flickering: 50,
   lineCap: 'round',
   lineJoin: 'round',
@@ -252,7 +252,7 @@ folders.fireworks.add(fireworksConfig, 'flickering', 0, 100).step(1).onChange(()
   fireworks.setOptions(fireworksConfig)
 })
 
-folders.fireworks.add(fireworksConfig, 'renderSpeed', 30, 100).onChange(() => {
+folders.fireworks.add(fireworksConfig, 'intensity', 1, 60).onChange(() => {
   fireworks.setOptions(fireworksConfig)
 })
 
