@@ -12,15 +12,29 @@ const fireworksConfig = {
     min: 15,
     max: 15
   },
-  rocketsPoint: 50, // center
+  rocketsPoint: {
+    min: 50,
+    max: 50
+  },
   opacity: 0.5, // fillStyle
   speed: 10,
-  acceleration: 1.2,
+  acceleration: 1.02,
   friction: 0.97,
   gravity: 1.5,
   particles: 90,
   trace: 3,
   explosion: 6,
+  lineStyle: 'round',
+  lineWidth: {
+    explosion: {
+      min: 1,
+      max: 4
+    },
+    trace: {
+      min: 0.1,
+      max: 1
+    }
+  },
   autoresize: true,
   brightness: {
     min: 50,
@@ -78,39 +92,6 @@ document.addEventListener('keydown', e => {
   }
 })
 
-if (document.location.hash) {
-  try {
-    const hash = document.location.hash.slice(1)
-    const c = b64DecodeUnicode(hash).split(',')
-      .map(Number)
-      .filter(v => typeof v === 'number')
-
-    if (c.length === 17) {
-      fireworksConfig.hue.min = c[0]
-      fireworksConfig.hue.max = c[1]
-      fireworksConfig.delay.min = c[2]
-      fireworksConfig.delay.max = c[3]
-      fireworksConfig.brightness.min = c[4]
-      fireworksConfig.brightness.max = c[5]
-      fireworksConfig.brightness.decay.min = c[6]
-      fireworksConfig.brightness.decay.max = c[7]
-      fireworksConfig.rocketsPoint = c[8]
-      fireworksConfig.opacity = c[9]
-      fireworksConfig.speed = c[10]
-      fireworksConfig.acceleration = c[11]
-      fireworksConfig.friction = c[12]
-      fireworksConfig.gravity = c[13]
-      fireworksConfig.particles = c[14]
-      fireworksConfig.trace = c[15]
-      fireworksConfig.explosion = c[16]
-    } else {
-      throw Error()
-    }
-  } catch (err) {
-    history.pushState(null, '', '/')
-  }
-}
-
 const fireworks = new Fireworks(fireworksContainer, fireworksConfig)
 fireworks.start()
 
@@ -152,76 +133,6 @@ const gui = new dat.GUI({
   autoPlace: true,
   width: window.outerWidth > 360 ? 320 : 260
 })
-
-window.export = () => {
-  let blob = new Blob([JSON.stringify(fireworksConfig, void 0, 4)], { type: 'text/plain' })
-  let a = document.createElement('a')
-
-  Object.assign(a, {
-    href: URL.createObjectURL(blob),
-    download: 'fireworks-config.json'
-  })
-
-  a.click()
-  a.remove()
-}
-
-/**
- * base64 encode/decode
- */
-function b64EncodeUnicode(str) {
-  return btoa(encodeURIComponent(str).replace(/%([0-9A-F]{2})/g,
-    function toSolidBytes(match, p1) {
-      return String.fromCharCode('0x' + p1)
-    }))
-}
-
-function b64DecodeUnicode(str) {
-  return decodeURIComponent(atob(str).split('').map((c) => {
-    return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)
-  }).join(''))
-}
-
-/**
- * share fireworks options
- */
-window.share = () => {
-  const shareOptions = Object.values(fireworksConfig)
-    .map((v, i) => {
-      switch (i) {
-        case 0:
-        case 1:
-        case 11:
-        case 12:
-        case 13:
-        case 14:
-        case 15:
-          break
-        default:
-          return v
-      }
-    })
-    .filter(v => v !== undefined)
-
-  document.location.hash = '#' + b64EncodeUnicode([
-    fireworksConfig.hue.min,
-    fireworksConfig.hue.max,
-    fireworksConfig.delay.min,
-    fireworksConfig.delay.max,
-    fireworksConfig.brightness.min,
-    fireworksConfig.brightness.max,
-    fireworksConfig.brightness.decay.min,
-    fireworksConfig.brightness.decay.max,
-    ...shareOptions
-  ])
-
-  const i = document.createElement('input')
-  document.body.appendChild(i)
-  i.value = document.location.href
-  i.select()
-  document.execCommand('copy')
-  document.body.removeChild(i)
-}
 
 const folders = {
   fireworks: gui.addFolder('fireworks'),
@@ -272,7 +183,33 @@ folders.fireworks.__folders.brightness.__folders.decay.add(fireworksConfig.brigh
   fireworks.setOptions(fireworksConfig)
 })
 
-folders.fireworks.add(fireworksConfig, 'rocketsPoint', 0, 100).step(1).onChange(() => {
+// rockets point
+folders.fireworks.addFolder('rocketsPoint')
+folders.fireworks.__folders.rocketsPoint.add(fireworksConfig.rocketsPoint, 'min', 0, 100).step(1).onChange(() => {
+  fireworks.setOptions(fireworksConfig)
+})
+
+// line width
+folders.fireworks.addFolder('lineWidth')
+folders.fireworks.__folders.lineWidth.addFolder('explosion')
+folders.fireworks.__folders.lineWidth.__folders.explosion.add(fireworksConfig.lineWidth.explosion, 'min', 1, 10).step(0.1).onChange(() => {
+  fireworks.setOptions(fireworksConfig)
+})
+
+folders.fireworks.__folders.lineWidth.__folders.explosion.add(fireworksConfig.lineWidth.explosion, 'max', 1, 10).step(0.1).onChange(() => {
+  fireworks.setOptions(fireworksConfig)
+})
+
+folders.fireworks.__folders.lineWidth.addFolder('trace')
+folders.fireworks.__folders.lineWidth.__folders.trace.add(fireworksConfig.lineWidth.trace, 'min', 0, 10).step(0.1).onChange(() => {
+  fireworks.setOptions(fireworksConfig)
+})
+
+folders.fireworks.__folders.lineWidth.__folders.trace.add(fireworksConfig.lineWidth.trace, 'max', 0, 10).step(0.1).onChange(() => {
+  fireworks.setOptions(fireworksConfig)
+})
+
+folders.fireworks.__folders.rocketsPoint.add(fireworksConfig.rocketsPoint, 'max', 0, 100).step(1).onChange(() => {
   fireworks.setOptions(fireworksConfig)
 })
 
@@ -284,7 +221,7 @@ folders.fireworks.add(fireworksConfig, 'speed', 1, 100).step(1).onChange(() => {
   fireworks.setOptions(fireworksConfig)
 })
 
-folders.fireworks.add(fireworksConfig, 'acceleration', 1, 10).step(0.1).onChange(() => {
+folders.fireworks.add(fireworksConfig, 'acceleration', 1, 2).step(0.01).onChange(() => {
   fireworks.setOptions(fireworksConfig)
 })
 
@@ -308,20 +245,37 @@ folders.fireworks.add(fireworksConfig, 'explosion', 1, 10).step(1).onChange(() =
   fireworks.setOptions(fireworksConfig)
 })
 
-folders.fireworks.add(fireworks, '_experimentals', false).name('experimentals').onChange(() => {
+folders.fireworks.add(fireworks, 'flickering', 0, 100).step(1).onChange(() => {
   fireworks.setOptions(fireworksConfig)
 })
 
-folders.fireworks.add(fireworks, '_randomRocketsPoint', false).name('random flying start point').onChange(() => {
+folders.fireworks.add(fireworks, 'lineStyle', ['round', 'square']).onChange((lineStyle) => {
+  fireworksConfig.lineStyle = lineStyle
   fireworks.setOptions(fireworksConfig)
 })
+
+// folders.fireworks.add(fireworks, '_experimental', false).name('experimental').onChange(() => {
+//   fireworks.setOptions(fireworksConfig)
+// })
 
 folders.fireworks.add(fireworks, '_running', true).name('enabled').onChange(() => {
   fireworks.render()
 })
 
-folders.fireworks.add(window, 'export').name('export config (download json)')
-folders.fireworks.add(window, 'share').name('share config (copy url)')
+window.export = () => {
+  const blob = new Blob([JSON.stringify(fireworksConfig, void 0, 4)], { type: 'text/plain' })
+  const link = document.createElement('a')
+
+  Object.assign(link, {
+    href: URL.createObjectURL(blob),
+    download: 'fireworks-config.json'
+  })
+
+  link.click()
+  link.remove()
+}
+
+folders.fireworks.add(window, 'export').name('export config (json)')
 
 // boundaries
 folders.boundaries.add(fireworksConfig.boundaries, 'visible').onChange(() => {

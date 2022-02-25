@@ -1,4 +1,4 @@
-import { BrightnessOptions } from './fireworks'
+import type { BrightnessOptions } from './fireworks'
 import { randomFloat, randomInt, hsla } from './helpers'
 
 interface ExplosionOptions {
@@ -9,8 +9,9 @@ interface ExplosionOptions {
   friction: number
   gravity: number
   explosionLength: number
+  flickering: boolean
+  lineWidth: number
   brightness: Required<BrightnessOptions>
-  exp: boolean
 }
 
 export class Explosion {
@@ -19,6 +20,8 @@ export class Explosion {
   private _ctx: CanvasRenderingContext2D
   private _friction: number
   private _gravity: number
+  private _flickering: boolean
+  private _lineWidth: number
   private _explosionLength: number
 
   private _coordinates: [number, number][] = []
@@ -28,25 +31,26 @@ export class Explosion {
   private _brightness: number
   private _decay: number
   private _alpha = 1
-  private _exp: boolean
 
   constructor({
     x,
     y,
     ctx,
     hue,
-    exp,
     gravity,
     friction,
     brightness,
+    flickering,
+    lineWidth,
     explosionLength
   }: ExplosionOptions) {
     this._x = x
     this._y = y
-    this._exp = exp
     this._ctx = ctx
     this._gravity = gravity
     this._friction = friction
+    this._flickering = flickering
+    this._lineWidth = lineWidth
     this._explosionLength = explosionLength
 
     while (this._explosionLength--) {
@@ -77,23 +81,11 @@ export class Explosion {
     const lastIndex = this._coordinates.length - 1
 
     this._ctx.beginPath()
-
-    // experimental
-    if (this._exp) {
-      this._ctx.arc(
-        this._x,
-        this._y,
-        randomFloat(0.5, 1.5),
-        0,
-        Math.PI * 2
-      )
-      this._ctx.fill()
-    }
-
+    this._ctx.lineWidth = this._lineWidth
     this._ctx.fillStyle = hsla(this._hue, this._brightness, this._alpha)
     this._ctx.moveTo(this._coordinates[lastIndex][0], this._coordinates[lastIndex][1])
     this._ctx.lineTo(this._x, this._y)
-    this._ctx.strokeStyle = hsla(this._hue, this._brightness, this._alpha)
+    this._ctx.strokeStyle = hsla(this._hue, this._flickering ? randomFloat(0, this._brightness) : this._brightness, this._alpha)
     this._ctx.stroke()
   }
 }

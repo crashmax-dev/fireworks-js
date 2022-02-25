@@ -1,13 +1,15 @@
 import { Trace } from './trace'
 import { Sound } from './sound'
 import { Explosion } from './explosion'
-import { randomInt } from './helpers'
+import { randomFloat, randomInt } from './helpers'
 
 type HTMLContainer = Element | HTMLElement
 
+type LineStyle = 'round' | 'square'
+
 export interface FireworksOptions {
   hue?: MinMaxOptions
-  rocketsPoint?: number
+  rocketsPoint?: MinMaxOptions
   opacity?: number
   speed?: number
   acceleration?: number
@@ -22,6 +24,9 @@ export interface FireworksOptions {
   sound?: SoundOptions
   delay?: MinMaxOptions
   brightness?: BrightnessOptions
+  flickering?: number
+  lineWidth?: LineWidthOptions
+  lineStyle?: LineStyle
 }
 
 export interface BrightnessOptions extends MinMaxOptions {
@@ -58,6 +63,11 @@ interface Sizes {
   height?: number
 }
 
+interface LineWidthOptions {
+  explosion: MinMaxOptions
+  trace: MinMaxOptions
+}
+
 declare const version: string
 
 export class Fireworks {
@@ -70,7 +80,7 @@ export class Fireworks {
   private _height: number
 
   private hue: MinMaxOptions
-  private rocketsPoint: number
+  private rocketsPoint: MinMaxOptions
   private opacity: number
   private speed: number
   private acceleration: number
@@ -78,18 +88,19 @@ export class Fireworks {
   private gravity: number
   private particles: number
   private trace: number
+  private flickering: number
   private explosion: number
   private autoresize: boolean
   private boundaries: Required<BoundariesOptions>
   private mouse: Required<MouseOptions>
   private delay: MinMaxOptions
   private brightness: Required<BrightnessOptions>
+  private lineWidth: LineWidthOptions
+  private lineStyle: LineStyle
 
   private _tick = 0
   private _version = version
   private _running = false
-  private _randomRocketsPoint = false
-  private _experimentals = false
   private _m = false
   private _mx: number
   private _my: number
@@ -99,7 +110,7 @@ export class Fireworks {
   private _traces: Trace[]
   private _explosions: Explosion[]
 
-  constructor(container: HTMLContainer, {
+  constructor(container: HTMLContainer | HTMLCanvasElement, {
     autoresize = true,
     boundaries,
     brightness,
@@ -107,6 +118,10 @@ export class Fireworks {
     hue,
     mouse,
     sound,
+    rocketsPoint,
+    lineWidth,
+    lineStyle = 'round',
+    flickering = 50,
     trace = 3,
     speed = 2,
     explosion = 5,
@@ -114,13 +129,17 @@ export class Fireworks {
     opacity = 0.5,
     particles = 50,
     friction = 0.95,
-    rocketsPoint = 50,
     acceleration = 1.05
   }: FireworksOptions = {}) {
-    this._container = container
-    this._canvas = document.createElement('canvas')
+    if (container instanceof HTMLCanvasElement) {
+      this._container = container
+      this._canvas = container
+    } else {
+      this._container = container
+      this._canvas = document.createElement('canvas')
+      this._container.appendChild(this._canvas)
+    }
     this._ctx = this._canvas.getContext('2d') as CanvasRenderingContext2D
-    this._container.appendChild(this._canvas)
     this._sound = new Sound(sound)
 
     this.setSize()
@@ -139,13 +158,32 @@ export class Fireworks {
     this.opacity = opacity
     this.particles = particles
     this.friction = friction
-    this.rocketsPoint = rocketsPoint
     this.acceleration = acceleration
+    this.flickering = flickering
+    this.lineStyle = lineStyle
 
     this.hue = {
       min: 0,
       max: 360,
       ...hue
+    }
+
+    this.rocketsPoint = {
+      min: 50,
+      max: 50,
+      ...rocketsPoint
+    }
+
+    this.lineWidth = {
+      explosion: {
+        min: 1,
+        max: 3
+      },
+      trace: {
+        min: 1,
+        max: 2
+      },
+      ...lineWidth
     }
 
     this.mouse = {
@@ -212,6 +250,9 @@ export class Fireworks {
 
   pause(): void {
     this._running = !this._running
+    if (this._running) {
+      this.render()
+    }
   }
 
   clear(): void {
@@ -245,8 +286,8 @@ export class Fireworks {
   }
 
   setSize({
-    width = this._container.clientWidth,
-    height = this._container.clientHeight
+    width = this._container instanceof HTMLCanvasElement ? this._canvas.width : this._container.clientWidth,
+    height = this._container instanceof HTMLCanvasElement ? this._canvas.height : this._container.clientHeight
   }: Partial<Sizes> = {}): void {
     this._width = width
     this._height = height
@@ -301,6 +342,13 @@ export class Fireworks {
     this._ctx.fillRect(0, 0, this._width, this._height)
     this._ctx.globalCompositeOperation = 'lighter'
 
+    this._ctx.lineJoin = 'round'
+    if (this.lineStyle === 'square') {
+      this._ctx.lineCap = 'square'
+    } else if (this.lineStyle === 'round') {
+      this._ctx.lineCap = 'round'
+    }
+
     this.drawBoundaries()
     this.initTrace()
     this.drawTrace()
@@ -312,6 +360,7 @@ export class Fireworks {
   private drawBoundaries() {
     if (this.boundaries.visible) {
       this._ctx.beginPath()
+      this._ctx.lineWidth = 1
       this._ctx.strokeStyle = 'red'
       this._ctx.rect(
         this.boundaries.x,
@@ -332,11 +381,7 @@ export class Fireworks {
     ) {
       this._traces.push(
         new Trace({
-          x: this._width * (
-            this._randomRocketsPoint ?
-              randomInt(0, 100) :
-              this.rocketsPoint
-          ) / 100,
+          x: this._width * (randomInt(this.rocketsPoint.min, this.rocketsPoint.max)) / 100,
           y: this._height,
           dx: (this._mx && this.mouse.move) || this._m ?
             this._mx :
@@ -358,6 +403,7 @@ export class Fireworks {
 
   private drawTrace(): void {
     let length = this._traces.length
+    this._ctx.lineWidth = randomFloat(this.lineWidth.trace.min, this.lineWidth.trace.max)
 
     while (length--) {
       this._traces[length].draw()
@@ -381,9 +427,10 @@ export class Fireworks {
           hue,
           friction: this.friction,
           gravity: this.gravity,
+          flickering: randomInt(0, 100) <= this.flickering,
+          lineWidth: randomFloat(this.lineWidth.explosion.min, this.lineWidth.explosion.max),
           explosionLength: this.explosion,
-          brightness: this.brightness,
-          exp: this._experimentals
+          brightness: this.brightness
         })
       )
     }

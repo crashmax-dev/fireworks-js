@@ -1,12 +1,12 @@
-import React, { Component, CSSProperties, useState } from 'react'
-import { FireworksOptions, Fireworks as Fw } from './fireworks'
+import React, { Component, type CSSProperties, useState } from 'react'
+import { type FireworksOptions, Fireworks as Fw } from './fireworks'
 
-type useFireworksProps = {
+type FireworksHookProps = {
   initialStart?: boolean
   initialOptions?: FireworksOptions
 }
 
-export const useFireworks = ({ initialStart = true, initialOptions = {} }: useFireworksProps) => {
+export const useFireworks = ({ initialStart = true, initialOptions = {} }: FireworksHookProps) => {
   const [enabled, _setEnabled] = useState<boolean>(initialStart)
   const [options, setOptions] = useState<FireworksOptions>(initialOptions)
 
@@ -31,7 +31,7 @@ export type FireworksProps = {
 
 export class Fireworks extends Component<FireworksProps> {
   private _fw: Fw | null = null
-  private _ref: HTMLElement | null = null
+  private _ref: HTMLElement | HTMLCanvasElement | null = null
 
   static defaultProps = {
     enabled: true
@@ -67,7 +67,7 @@ export class Fireworks extends Component<FireworksProps> {
 
   render() {
     return React.createElement('div', {
-      ref: (ref: HTMLElement) => (this._ref = ref),
+      ref: (ref) => (this._ref = ref),
       className: this.props.className,
       children: this.props.children,
       style: this.props.style
