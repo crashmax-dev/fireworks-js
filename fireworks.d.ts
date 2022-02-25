@@ -4,7 +4,6 @@ export interface FireworksOptions {
     hue?: MinMaxOptions;
     rocketsPoint?: MinMaxOptions;
     opacity?: number;
-    speed?: number;
     acceleration?: number;
     friction?: number;
     gravity?: number;
@@ -18,6 +17,8 @@ export interface FireworksOptions {
     delay?: MinMaxOptions;
     brightness?: BrightnessOptions;
     flickering?: number;
+    intensity?: number;
+    traceSpeed?: number;
     lineWidth?: LineWidthOptions;
     lineStyle?: LineStyle;
 }
@@ -63,22 +64,24 @@ export declare class Fireworks {
     private hue;
     private rocketsPoint;
     private opacity;
-    private speed;
     private acceleration;
     private friction;
     private gravity;
     private particles;
     private trace;
     private flickering;
+    private intensity;
     private explosion;
     private autoresize;
     private boundaries;
     private mouse;
     private delay;
     private brightness;
+    private traceSpeed;
     private lineWidth;
     private lineStyle;
     private _tick;
+    private _timestamp;
     private _version;
     private _running;
     private _m;
@@ -88,7 +91,7 @@ export declare class Fireworks {
     private _sound;
     private _traces;
     private _explosions;
-    constructor(container: HTMLContainer | HTMLCanvasElement, { autoresize, boundaries, brightness, delay, hue, mouse, sound, rocketsPoint, lineWidth, lineStyle, flickering, trace, speed, explosion, gravity, opacity, particles, friction, acceleration }?: FireworksOptions);
+    constructor(container: HTMLContainer | HTMLCanvasElement, { autoresize, boundaries, brightness, delay, hue, mouse, sound, rocketsPoint, lineWidth, lineStyle, flickering, trace, traceSpeed, intensity, explosion, gravity, opacity, particles, friction, acceleration }?: FireworksOptions);
     get isRunning(): boolean;
     get version(): string;
     start(): void;
