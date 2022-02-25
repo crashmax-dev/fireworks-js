@@ -25,6 +25,7 @@ export interface FireworksOptions {
   brightness?: BrightnessOptions
   flickering?: number
   intensity?: number
+  traceSpeed?: number
   lineWidth?: LineWidthOptions
   lineStyle?: LineStyle
 }
@@ -95,6 +96,7 @@ export class Fireworks {
   private mouse: Required<MouseOptions>
   private delay: MinMaxOptions
   private brightness: Required<BrightnessOptions>
+  private traceSpeed: number
   private lineWidth: LineWidthOptions
   private lineStyle: LineStyle
 
@@ -162,6 +164,7 @@ export class Fireworks {
     this.acceleration = acceleration
     this.flickering = flickering
     this.intensity = intensity
+    this.traceSpeed = traceSpeed
     this.lineStyle = lineStyle
 
     this.hue = {
