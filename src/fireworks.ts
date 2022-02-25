@@ -5,6 +5,8 @@ import { randomFloat, randomInt } from './helpers'
 
 type HTMLContainer = Element | HTMLElement
 
+type LineStyle = 'round' | 'square'
+
 export interface FireworksOptions {
   hue?: MinMaxOptions
   rocketsPoint?: MinMaxOptions
@@ -22,11 +24,9 @@ export interface FireworksOptions {
   delay?: MinMaxOptions
   brightness?: BrightnessOptions
   flickering?: number
-  lineWidth?: LineWidthOptions
-  lineCap?: CanvasLineCap
-  lineJoin?: CanvasLineJoin
-  traceSpeed?: number
   intensity?: number
+  lineWidth?: LineWidthOptions
+  lineStyle?: LineStyle
 }
 
 export interface BrightnessOptions extends MinMaxOptions {
@@ -88,8 +88,7 @@ export class Fireworks {
   private particles: number
   private trace: number
   private flickering: number
-  private lineCap: CanvasLineCap
-  private lineJoin: CanvasLineJoin
+  private intensity: number
   private explosion: number
   private autoresize: boolean
   private boundaries: Required<BoundariesOptions>
@@ -97,8 +96,7 @@ export class Fireworks {
   private delay: MinMaxOptions
   private brightness: Required<BrightnessOptions>
   private lineWidth: LineWidthOptions
-  private traceSpeed: number
-  private intensity: number
+  private lineStyle: LineStyle
 
   private _tick = 0
   private _timestamp = performance.now()
@@ -123,8 +121,7 @@ export class Fireworks {
     sound,
     rocketsPoint,
     lineWidth,
-    lineCap = 'round',
-    lineJoin = 'round',
+    lineStyle = 'round',
     flickering = 50,
     trace = 3,
     traceSpeed = 10,
@@ -164,10 +161,8 @@ export class Fireworks {
     this.friction = friction
     this.acceleration = acceleration
     this.flickering = flickering
-    this.lineCap = lineCap
-    this.lineJoin = lineJoin
-    this.traceSpeed = traceSpeed
     this.intensity = intensity
+    this.lineStyle = lineStyle
 
     this.hue = {
       min: 0,
@@ -348,8 +343,13 @@ export class Fireworks {
     this._ctx.fillStyle = `rgba(0, 0, 0, ${this.opacity})`
     this._ctx.fillRect(0, 0, this._width, this._height)
     this._ctx.globalCompositeOperation = 'lighter'
-    this._ctx.lineCap = this.lineCap
-    this._ctx.lineJoin = this.lineJoin
+
+    this._ctx.lineJoin = 'round'
+    if (this.lineStyle === 'square') {
+      this._ctx.lineCap = 'square'
+    } else if (this.lineStyle === 'round') {
+      this._ctx.lineCap = 'round'
+    }
 
     this.drawBoundaries()
     this.initTrace()

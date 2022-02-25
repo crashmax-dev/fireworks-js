@@ -26,8 +26,7 @@ const fireworksConfig = {
   explosion: 6,
   intensity: 30,
   flickering: 50,
-  lineCap: 'round',
-  lineJoin: 'round',
+  lineStyle: 'round',
   lineWidth: {
     explosion: {
       min: 1,
@@ -256,11 +255,8 @@ folders.fireworks.add(fireworksConfig, 'intensity', 1, 60).onChange(() => {
   fireworks.setOptions(fireworksConfig)
 })
 
-folders.fireworks.add(fireworksConfig, 'lineCap', ['butt', 'round', 'square']).onChange(() => {
-  fireworks.setOptions(fireworksConfig)
-})
-
-folders.fireworks.add(fireworksConfig, 'lineJoin', ['round', 'bevel', 'miter']).onChange(() => {
+folders.fireworks.add(fireworks, 'lineStyle', ['round', 'square']).onChange((lineStyle) => {
+  fireworksConfig.lineStyle = lineStyle
   fireworks.setOptions(fireworksConfig)
 })
 
