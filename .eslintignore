@@ -1,4 +1,4 @@
 /dist
 /examples
 /public
-/webpack
+**/*.js
