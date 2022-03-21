@@ -1,0 +1,108 @@
+body {
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", "Open Sans", "Helvetica Neue", Helvetica, Arial,
+    sans-serif;
+  line-height: 1;
+  user-select: none;
+  overscroll-behavior: none;
+}
+
+.container {
+  position: fixed;
+  width: 240px;
+  height: inherit;
+  background: hsla(0, 0%, 10%, 1.00);
+  top: 50%;
+  left: 50%;
+  margin: -120px 0 0 -120px;
+  padding: 20px;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 20px;
+  z-index: 1;
+  opacity: 0.9;
+  line-height: initial;
+}
+
+.container div {
+  text-align: center;
+  font-size: 3rem;
+}
+
+.container h1 {
+  font-size: 1.8em;
+  text-align: center;
+  color: #FFFFFF;
+  margin: 0;
+}
+
+.container h2 {
+  font-weight: 400;
+  font-size: 16px;
+  margin-bottom: 10px;
+  text-align: center;
+  color: #FFFFFF;
+}
+
+.container a {
+  width: 100%;
+  text-align: center;
+  line-height: 36px;
+  background: #FFFFFF;
+  margin-top: 10px;
+  color: #222;
+  border-radius: 4px;
+  display: inline-block;
+  font-size: 16px;
+  font-weight: 500;
+  transition-duration: 0.1s;
+  text-decoration: none;
+}
+
+.container a:hover {
+  transition: ease-in color;
+  background: #222;
+  color: hsla(0, 0%, 70%, 1.00);
+}
+
+.fireworks-container {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: #000000;
+}
+
+.fireworks-container > canvas {
+  cursor: crosshair;
+}
+
+:root {
+  --tp-base-background-color: hsla(0, 0%, 0%, 0.75);
+  --tp-base-shadow-color: hsla(0, 0%, 0%, 0.2);
+  --tp-button-background-color: hsla(0, 0%, 70%, 1.00);
+  --tp-button-background-color-active: hsla(0, 0%, 85%, 1.00);
+  --tp-button-background-color-focus: hsla(0, 0%, 80%, 1.00);
+  --tp-button-background-color-hover: hsla(0, 0%, 75%, 1.00);
+  --tp-button-foreground-color: hsla(0, 0%, 0%, 1.00);
+  --tp-container-background-color: hsla(0, 0%, 10%, 1.00);
+  --tp-container-background-color-active: hsla(0, 0%, 25%, 1.00);
+  --tp-container-background-color-focus: hsla(0, 0%, 20%, 1.00);
+  --tp-container-background-color-hover: hsla(0, 0%, 15%, 1.00);
+  --tp-container-foreground-color: hsla(0, 0%, 50%, 1.00);
+  --tp-groove-foreground-color: hsla(0, 0%, 10%, 1.00);
+  --tp-input-background-color: hsla(0, 0%, 10%, 1.00);
+  --tp-input-background-color-active: hsla(0, 0%, 25%, 1.00);
+  --tp-input-background-color-focus: hsla(0, 0%, 20%, 1.00);
+  --tp-input-background-color-hover: hsla(0, 0%, 15%, 1.00);
+  --tp-input-foreground-color: hsla(0, 0%, 70%, 1.00);
+  --tp-label-foreground-color: hsla(0, 0%, 50%, 1.00);
+  --tp-monitor-background-color: hsla(0, 0%, 8%, 1.00);
+  --tp-monitor-foreground-color: hsla(0, 0%, 48%, 1.00);
+}
+
+:root .tp-dfwv {
+  padding-bottom: 8px;
+  width: 350px !important;
+  z-index: 1;
+}
