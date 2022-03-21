@@ -378,7 +378,7 @@ export class Fireworks {
     this._ds = randomInt(this.delay.min, this.delay.max)
 
     if (
-      (this._ds * 2 < this._tick) ||
+      (this._tick > this._ds) ||
       (this._m && this.mouse.max > this._traces.length)
     ) {
       this._traces.push(
@@ -431,7 +431,7 @@ export class Fireworks {
           gravity: this.gravity,
           flickering: randomInt(0, 100) <= this.flickering,
           lineWidth: randomFloat(this.lineWidth.explosion.min, this.lineWidth.explosion.max),
-          explosionLength: this.explosion,
+          explosionLength: Math.round(this.explosion),
           brightness: this.brightness
         })
       )

@@ -77,30 +77,31 @@ body {
 }
 
 :root {
-  --tp-base-background-color: hsla(0, 0%, 10%, 0.8);
+  --tp-base-background-color: hsla(0, 0%, 0%, 0.75);
   --tp-base-shadow-color: hsla(0, 0%, 0%, 0.2);
-  --tp-button-background-color: hsla(0, 0%, 80%, 1);
-  --tp-button-background-color-active: hsla(0, 0%, 100%, 1);
-  --tp-button-background-color-focus: hsla(0, 0%, 95%, 1);
-  --tp-button-background-color-hover: hsla(0, 0%, 85%, 1);
-  --tp-button-foreground-color: hsla(0, 0%, 0%, 0.8);
-  --tp-container-background-color: hsla(0, 0%, 0%, 0.3);
-  --tp-container-background-color-active: hsla(0, 0%, 0%, 0.6);
-  --tp-container-background-color-focus: hsla(0, 0%, 0%, 0.5);
-  --tp-container-background-color-hover: hsla(0, 0%, 0%, 0.4);
-  --tp-container-foreground-color: hsla(0, 0%, 100%, 0.5);
-  --tp-groove-foreground-color: hsla(0, 0%, 0%, 0.2);
-  --tp-input-background-color: hsla(0, 0%, 0%, 0.3);
-  --tp-input-background-color-active: hsla(0, 0%, 0%, 0.6);
-  --tp-input-background-color-focus: hsla(0, 0%, 0%, 0.5);
-  --tp-input-background-color-hover: hsla(0, 0%, 0%, 0.4);
-  --tp-input-foreground-color: hsla(0, 0%, 100%, 0.5);
-  --tp-label-foreground-color: hsla(0, 0%, 100%, 0.5);
-  --tp-monitor-background-color: hsla(0, 0%, 0%, 0.3);
-  --tp-monitor-foreground-color: hsla(0, 0%, 100%, 0.3);
+  --tp-button-background-color: hsla(0, 0%, 70%, 1.00);
+  --tp-button-background-color-active: hsla(0, 0%, 85%, 1.00);
+  --tp-button-background-color-focus: hsla(0, 0%, 80%, 1.00);
+  --tp-button-background-color-hover: hsla(0, 0%, 75%, 1.00);
+  --tp-button-foreground-color: hsla(0, 0%, 0%, 1.00);
+  --tp-container-background-color: hsla(0, 0%, 10%, 1.00);
+  --tp-container-background-color-active: hsla(0, 0%, 25%, 1.00);
+  --tp-container-background-color-focus: hsla(0, 0%, 20%, 1.00);
+  --tp-container-background-color-hover: hsla(0, 0%, 15%, 1.00);
+  --tp-container-foreground-color: hsla(0, 0%, 50%, 1.00);
+  --tp-groove-foreground-color: hsla(0, 0%, 10%, 1.00);
+  --tp-input-background-color: hsla(0, 0%, 10%, 1.00);
+  --tp-input-background-color-active: hsla(0, 0%, 25%, 1.00);
+  --tp-input-background-color-focus: hsla(0, 0%, 20%, 1.00);
+  --tp-input-background-color-hover: hsla(0, 0%, 15%, 1.00);
+  --tp-input-foreground-color: hsla(0, 0%, 70%, 1.00);
+  --tp-label-foreground-color: hsla(0, 0%, 50%, 1.00);
+  --tp-monitor-background-color: hsla(0, 0%, 8%, 1.00);
+  --tp-monitor-foreground-color: hsla(0, 0%, 48%, 1.00);
 }
 
 :root .tp-dfwv {
   padding-bottom: 8px;
-  width: 300px !important;
+  width: 350px !important;
+  z-index: 1;
 }

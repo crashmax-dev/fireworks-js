@@ -4,15 +4,16 @@ import { Fireworks } from '../fireworks'
 import type { FireworksOptions } from '../fireworks'
 import type { FpsGraphBladeApi } from '@tweakpane/plugin-essentials/dist/types/fps-graph/api/fps-graph'
 
-const fireworksContainer = document.querySelector('.fireworks-container')!
+const container = document.querySelector<HTMLDivElement>('.container')!
+const fireworksContainer = document.querySelector<HTMLDivElement>('.fireworks-container')!
 const fireworksOptions: FireworksOptions = {
   hue: {
     min: 0,
     max: 345
   },
   delay: {
-    min: 15,
-    max: 15
+    min: 30,
+    max: 60
   },
   rocketsPoint: {
     min: 50,
@@ -74,7 +75,7 @@ const fireworksOptions: FireworksOptions = {
   }
 }
 
-const background = {
+const backgroundConfig = {
   color: '#000000',
   image: '',
   size: 'cover',
@@ -106,14 +107,183 @@ const tweakpane = new Pane({
 
 tweakpane.registerPlugin(EssentialsPlugin)
 
-const tabs = tweakpane.addTab({
-  pages: [
-    { title: 'Options' },
-    { title: 'Monitors' }
-  ]
+/** options */
+tweakpane.addInput(fireworksOptions, 'hue', {
+  min: 0,
+  max: 360,
+  step: 1
 })
 
-const [options, monitors] = tabs.pages
+tweakpane.addInput(fireworksOptions, 'acceleration', {
+  min: 1,
+  max: 2
+})
+
+tweakpane.addInput(fireworksOptions, 'brightness', {
+  min: 1,
+  max: 100,
+  step: 1
+})
+
+tweakpane.addInput(fireworksOptions.brightness!, 'decay', {
+  min: 0.001,
+  max: 0.05
+})
+
+tweakpane.addInput(fireworksOptions, 'delay', {
+  min: 10,
+  max: 100
+})
+
+tweakpane.addInput(fireworksOptions, 'explosion', {
+  min: 1,
+  max: 10,
+  step: 1
+})
+
+tweakpane.addInput(fireworksOptions, 'flickering', {
+  min: 0,
+  max: 100
+})
+
+tweakpane.addInput(fireworksOptions, 'intensity', {
+  min: 1,
+  max: 60
+})
+
+tweakpane.addInput(fireworksOptions, 'friction', {
+  min: 0.5,
+  max: 3
+})
+
+tweakpane.addInput(fireworksOptions, 'gravity', {
+  min: 0,
+  max: 10
+})
+
+tweakpane.addInput(fireworksOptions, 'opacity', {
+  min: 0,
+  max: 1,
+  step: 0.1
+})
+
+tweakpane.addInput(fireworksOptions, 'traceSpeed', {
+  min: 1,
+  max: 100,
+  step: 1
+})
+
+tweakpane.addInput(fireworksOptions, 'rocketsPoint', {
+  min: 0,
+  max: 100,
+  step: 1
+})
+
+tweakpane.addInput(fireworksOptions.lineWidth!, 'explosion', {
+  min: 1,
+  max: 10
+})
+
+tweakpane.addInput(fireworksOptions.lineWidth!, 'trace', {
+  min: 0,
+  max: 10
+})
+
+tweakpane.addInput(fireworksOptions, 'autoresize')
+
+tweakpane.addInput(fireworksOptions, 'lineStyle', {
+  options: {
+    round: 'round',
+    square: 'square'
+  }
+})
+
+/** mouse events */
+const mouse = tweakpane.addFolder({
+  title: 'mouse',
+  expanded: false
+})
+
+mouse.addInput(fireworksOptions.mouse!, 'click', {
+  label: 'mouse click'
+})
+
+mouse.addInput(fireworksOptions.mouse!, 'max', {
+  label: 'maximum rockets',
+  min: 1,
+  max: 15,
+  step: 1
+})
+
+mouse.addInput(fireworksOptions.mouse!, 'move', {
+  label: 'follow mouse'
+})
+
+/** sounds */
+const sound = tweakpane.addFolder({
+  title: 'sound',
+  expanded: false
+})
+
+sound.addInput(fireworksOptions.sound!, 'enabled')
+
+sound.addInput(fireworksOptions.sound!, 'volume', {
+  min: 0,
+  max: 100,
+  step: 1
+})
+
+tweakpane.on('change', () => {
+  fireworks.setOptions(fireworksOptions)
+})
+
+/** background */
+const background = tweakpane.addFolder({
+  title: 'background',
+  expanded: false
+})
+
+background
+  .addInput(backgroundConfig, 'container')
+  .on('change', ({ value }) => {
+    container.style.display = value ? 'none' : 'block'
+  })
+
+background
+  .addInput(backgroundConfig, 'color')
+  .on('change', ({ value }) => {
+    fireworksContainer.style.backgroundColor = value
+  })
+
+background
+  .addInput(backgroundConfig, 'image')
+  .on('change', ({ value }) => {
+    fireworksContainer.style.backgroundImage = `url(${value})`
+  })
+
+background
+  .addInput(backgroundConfig, 'size')
+  .on('change', ({ value }) => {
+    fireworksContainer.style.backgroundSize = value
+  })
+
+background
+  .addInput(backgroundConfig, 'position')
+  .on('change', ({ value }) => {
+    fireworksContainer.style.backgroundPosition = value
+  })
+
+background
+  .addInput(backgroundConfig, 'repeat')
+  .on('change', ({ value }) => {
+    fireworksContainer.style.backgroundRepeat = value
+  })
+
+/** monitors */
+const monitors = tweakpane.addFolder({
+  title: 'monitors',
+  expanded: false
+})
 
 const fpsGraph = monitors.addBlade({
   view: 'fpsgraph',
@@ -134,20 +304,10 @@ monitors.addMonitor(fireworksGetters, 'traces', {
   max: 50
 })
 
-options.addInput(fireworksOptions, 'acceleration', {
-  min: 1,
-  max: 2,
-  step: 0.01
-})
-
-tabs.on('change', () => {
-  fireworks.setOptions(fireworksOptions)
-})
-
-const update = () => {
+const updateGraph = () => {
   fpsGraph.begin()
   fpsGraph.end()
-  requestAnimationFrame(update)
+  requestAnimationFrame(updateGraph)
 }
 
-requestAnimationFrame(update)
+requestAnimationFrame(updateGraph)

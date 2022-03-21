@@ -91,11 +91,13 @@ module.exports = (env, args) => ({
     }),
     new RemovePlugin({
       before: {
+        log: false,
         include: [
           'dist'
         ]
       },
       after: {
+        log: false,
         root: 'dist',
         include: [
           'demo',
