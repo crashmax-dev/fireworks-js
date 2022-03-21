@@ -10,7 +10,7 @@ body {
   position: fixed;
   width: 240px;
   height: inherit;
-  background: #e9ecef;
+  background: hsla(0, 0%, 10%, 1.00);
   top: 50%;
   left: 50%;
   margin: -120px 0 0 -120px;
@@ -31,7 +31,7 @@ body {
 .container h1 {
   font-size: 1.8em;
   text-align: center;
-  color: #111;
+  color: #FFFFFF;
   margin: 0;
 }
 
@@ -40,13 +40,14 @@ body {
   font-size: 16px;
   margin-bottom: 10px;
   text-align: center;
+  color: #FFFFFF;
 }
 
 .container a {
   width: 100%;
   text-align: center;
   line-height: 36px;
-  background: #fff;
+  background: #FFFFFF;
   margin-top: 10px;
   color: #222;
   border-radius: 4px;
@@ -60,7 +61,7 @@ body {
 .container a:hover {
   transition: ease-in color;
   background: #222;
-  color: #fff;
+  color: hsla(0, 0%, 70%, 1.00);
 }
 
 .fireworks-container {
