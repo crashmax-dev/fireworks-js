@@ -1,5 +1,11 @@
 [
     {
+        "Name": "hue",
+        "Type": "<code>object</code>",
+        "Default": "<code>{ min: 0, max: 360 }</code>",
+        "Description": "-"
+    },
+    {
         "Name": "rocketsPoint",
         "Type": "<code>number</code>",
         "Default": "<code>50</code>",
@@ -9,12 +15,6 @@
         "Name": "opacity",
         "Type": "<code>number</code>",
         "Default": "<code>0.5</code>",
-        "Description": "-"
-    },
-    {
-        "Name": "speed",
-        "Type": "<code>number</code>",
-        "Default": "<code>2</code>",
         "Description": "-"
     },
     {
@@ -60,15 +60,9 @@
         "Description": "-"
     },
     {
-        "Name": "hue",
+        "Name": "mouse",
         "Type": "<code>object</code>",
-        "Default": "<code>{ min: 0, max: 360 }</code>",
-        "Description": "-"
-    },
-    {
-        "Name": "delay",
-        "Type": "<code>object</code>",
-        "Default": "<code>{ min: 15, max: 30 }</code>",
+        "Default": "<code>{ click: false, move: false, max: 3 }</code>",
         "Description": "-"
     },
     {
@@ -96,21 +90,51 @@
         "Description": "-"
     },
     {
-        "Name": "mouse",
+        "Name": "delay",
         "Type": "<code>object</code>",
-        "Default": "<code>{ click: false, move: false, max: 3 }</code>",
+        "Default": "<code>{ min: 15, max: 30 }</code>",
         "Description": "-"
     },
     {
         "Name": "brightness",
         "Type": "<code>object</code>",
-        "Default": "<code>{ min: 50, max: 80 }</code>",
+        "Default": "<code>{ min: 50, max: 80, decay }</code>",
         "Description": "-"
     },
     {
         "Name": "brightness.decay",
         "Type": "<code>object</code>",
         "Default": "<code>{ min: 0.015, max: 0.03 }</code>",
+        "Description": "-"
+    },
+    {
+        "Name": "flickering",
+        "Type": "<code>number</code>",
+        "Default": "<code>50</code>",
+        "Description": "-"
+    },
+    {
+        "Name": "intensity",
+        "Type": "<code>number</code>",
+        "Default": "<code>30</code>",
+        "Description": "-"
+    },
+    {
+        "Name": "traceSpeed",
+        "Type": "<code>number</code>",
+        "Default": "<code>10</code>",
+        "Description": "-"
+    },
+    {
+        "Name": "lineWidth",
+        "Type": "<code>object</code>",
+        "Default": "<code>{ explosion: { min: 0, max: 0 }, trace: { min: 0, max: 0 } }</code>",
+        "Description": "-"
+    },
+    {
+        "Name": "lineStyle",
+        "Type": "<code>'round' | 'square'</code>",
+        "Default": "<code>'round'</code>",
         "Description": "-"
     }
 ]
