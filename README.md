@@ -145,9 +145,9 @@ const FireworksWithNoSSR = dynamic(
 ## Options
 
 <!-- MARKDOWN-AUTO-DOCS:START (JSON_TO_HTML_TABLE:src=./.github/markdown-autodocs/options.json) -->
-<table class="JSON-TO-HTML-TABLE"><thead><tr><th class="name-th">Name</th><th class="type-th">Type</th><th class="default-th">Default</th><th class="description-th">Description</th></tr></thead><tbody ><tr ><td class="name-td td_text">rocketsPoint</td><td class="type-td td_text"><code>number</code></td><td class="default-td td_text"><code>50</code></td><td class="description-td td_text">-</td></tr>
+<table class="JSON-TO-HTML-TABLE"><thead><tr><th class="name-th">Name</th><th class="type-th">Type</th><th class="default-th">Default</th><th class="description-th">Description</th></tr></thead><tbody ><tr ><td class="name-td td_text">hue</td><td class="type-td td_text"><code>object</code></td><td class="default-td td_text"><code>{ min: 0, max: 360 }</code></td><td class="description-td td_text">-</td></tr>
+<tr ><td class="name-td td_text">rocketsPoint</td><td class="type-td td_text"><code>number</code></td><td class="default-td td_text"><code>50</code></td><td class="description-td td_text">-</td></tr>
 <tr ><td class="name-td td_text">opacity</td><td class="type-td td_text"><code>number</code></td><td class="default-td td_text"><code>0.5</code></td><td class="description-td td_text">-</td></tr>
-<tr ><td class="name-td td_text">speed</td><td class="type-td td_text"><code>number</code></td><td class="default-td td_text"><code>2</code></td><td class="description-td td_text">-</td></tr>
 <tr ><td class="name-td td_text">acceleration</td><td class="type-td td_text"><code>number</code></td><td class="default-td td_text"><code>1.05</code></td><td class="description-td td_text">-</td></tr>
 <tr ><td class="name-td td_text">friction</td><td class="type-td td_text"><code>number</code></td><td class="default-td td_text"><code>0.95</code></td><td class="description-td td_text">-</td></tr>
 <tr ><td class="name-td td_text">gravity</td><td class="type-td td_text"><code>number</code></td><td class="default-td td_text"><code>1.5</code></td><td class="description-td td_text">-</td></tr>
@@ -155,15 +155,19 @@ const FireworksWithNoSSR = dynamic(
 <tr ><td class="name-td td_text">trace</td><td class="type-td td_text"><code>number</code></td><td class="default-td td_text"><code>3</code></td><td class="description-td td_text">-</td></tr>
 <tr ><td class="name-td td_text">explosion</td><td class="type-td td_text"><code>number</code></td><td class="default-td td_text"><code>5</code></td><td class="description-td td_text">-</td></tr>
 <tr ><td class="name-td td_text">autoresize</td><td class="type-td td_text"><code>boolean</code></td><td class="default-td td_text"><code>true</code></td><td class="description-td td_text">-</td></tr>
-<tr ><td class="name-td td_text">hue</td><td class="type-td td_text"><code>object</code></td><td class="default-td td_text"><code>{ min: 0, max: 360 }</code></td><td class="description-td td_text">-</td></tr>
-<tr ><td class="name-td td_text">delay</td><td class="type-td td_text"><code>object</code></td><td class="default-td td_text"><code>{ min: 15, max: 30 }</code></td><td class="description-td td_text">-</td></tr>
+<tr ><td class="name-td td_text">mouse</td><td class="type-td td_text"><code>object</code></td><td class="default-td td_text"><code>{ click: false, move: false, max: 3 }</code></td><td class="description-td td_text">-</td></tr>
 <tr ><td class="name-td td_text">boundaries</td><td class="type-td td_text"><code>object</code></td><td class="default-td td_text"><code>{ visible: false, x: 50, y: 50, width: container.clientWidth, height: container.clientHeight }</code></td><td class="description-td td_text">-</td></tr>
 <tr ><td class="name-td td_text">sound.enabled</td><td class="type-td td_text"><code>boolean</code></td><td class="default-td td_text"><code>false</code></td><td class="description-td td_text">-</td></tr>
 <tr ><td class="name-td td_text">sound.files</td><td class="type-td td_text"><code>string[]</code></td><td class="default-td td_text"><code>[ 'explosion0.mp3', 'explosion1.mp3', 'explosion2.mp3' ]</code></td><td class="description-td td_text">-</td></tr>
 <tr ><td class="name-td td_text">sound.volume</td><td class="type-td td_text"><code>object</code></td><td class="default-td td_text"><code>{ min: 1, max: 2 }</code></td><td class="description-td td_text">-</td></tr>
-<tr ><td class="name-td td_text">mouse</td><td class="type-td td_text"><code>object</code></td><td class="default-td td_text"><code>{ click: false, move: false, max: 3 }</code></td><td class="description-td td_text">-</td></tr>
-<tr ><td class="name-td td_text">brightness</td><td class="type-td td_text"><code>object</code></td><td class="default-td td_text"><code>{ min: 50, max: 80 }</code></td><td class="description-td td_text">-</td></tr>
-<tr ><td class="name-td td_text">brightness.decay</td><td class="type-td td_text"><code>object</code></td><td class="default-td td_text"><code>{ min: 0.015, max: 0.03 }</code></td><td class="description-td td_text">-</td></tr></tbody></table>
+<tr ><td class="name-td td_text">delay</td><td class="type-td td_text"><code>object</code></td><td class="default-td td_text"><code>{ min: 15, max: 30 }</code></td><td class="description-td td_text">-</td></tr>
+<tr ><td class="name-td td_text">brightness</td><td class="type-td td_text"><code>object</code></td><td class="default-td td_text"><code>{ min: 50, max: 80, decay }</code></td><td class="description-td td_text">-</td></tr>
+<tr ><td class="name-td td_text">brightness.decay</td><td class="type-td td_text"><code>object</code></td><td class="default-td td_text"><code>{ min: 0.015, max: 0.03 }</code></td><td class="description-td td_text">-</td></tr>
+<tr ><td class="name-td td_text">flickering</td><td class="type-td td_text"><code>number</code></td><td class="default-td td_text"><code>50</code></td><td class="description-td td_text">-</td></tr>
+<tr ><td class="name-td td_text">intensity</td><td class="type-td td_text"><code>number</code></td><td class="default-td td_text"><code>30</code></td><td class="description-td td_text">-</td></tr>
+<tr ><td class="name-td td_text">traceSpeed</td><td class="type-td td_text"><code>number</code></td><td class="default-td td_text"><code>10</code></td><td class="description-td td_text">-</td></tr>
+<tr ><td class="name-td td_text">lineWidth</td><td class="type-td td_text"><code>object</code></td><td class="default-td td_text"><code>{ explosion: { min: 0, max: 0 }, trace: { min: 0, max: 0 } }</code></td><td class="description-td td_text">-</td></tr>
+<tr ><td class="name-td td_text">lineStyle</td><td class="type-td td_text"><code>'round' | 'square'</code></td><td class="default-td td_text"><code>'round'</code></td><td class="description-td td_text">-</td></tr></tbody></table>
 <!-- MARKDOWN-AUTO-DOCS:END -->
 
 ## License
