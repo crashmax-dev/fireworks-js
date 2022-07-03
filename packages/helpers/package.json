@@ -1,13 +1,16 @@
 {
   "name": "@fireworks-js/helpers",
-  "version": "2.0.0",
+  "version": "0.0.0-beta.0",
   "type": "module",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": "./dist/index.js"
   },
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "build": "tsc",
-    "prepare": "rm -rf dist && pnpm build"
+    "build": "rm -rf dist && tsc",
+    "prepare": "pnpm build"
   }
 }

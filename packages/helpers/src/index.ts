@@ -3,26 +3,31 @@ export function randomFloat(min: number, max: number): number {
 }
 
 export function randomInt(min: number, max: number): number {
-  return Math.floor(min + Math.random() * (max + 1 - min))
+  return Math.floor(randomFloat(min, max + 1))
 }
 
-export function getDistance(x: number, y: number, dx: number, dy: number): number {
+export function getDistance(
+  x: number,
+  y: number,
+  dx: number,
+  dy: number
+): number {
   const pow = Math.pow
   return Math.sqrt(pow(x - dx, 2) + pow(y - dy, 2))
 }
 
-export function hsla(hue: number, light: number, alpha = 1): string {
+export function hsla(hue: number, brightness: number, alpha = 1): string {
   if (hue > 255 || hue < 0) {
-    throw new Error('')
+    throw new Error(`Expected hue 0-255 range, got \`${hue}\``)
   }
 
-  if (light > 100 || light < 0) {
-    throw new Error('')
+  if (brightness > 100 || brightness < 0) {
+    throw new Error(`Expected brightness 0-100 range, got \`${brightness}\``)
   }
 
   if (alpha > 1 || alpha < 0) {
-    throw new Error('')
+    throw new Error(`Expected alpha 0-1 range, got \`${alpha}\``)
   }
 
-  return `hsla(${hue}, 100%, ${light}%, ${alpha})`
+  return `hsla(${hue}, 100%, ${brightness}%, ${alpha})`
 }
