@@ -1,7 +1,7 @@
-import { Trace } from './trace'
-import { Sound } from './sound'
-import { Explosion } from './explosion'
-import { randomFloat, randomInt } from './helpers'
+import { Trace } from './trace.js'
+import { Sound } from './sound.js'
+import { Explosion } from './explosion.js'
+import { randomFloat, randomInt } from '@fireworks-js/helpers'
 
 type HTMLContainer = Element | HTMLElement
 
@@ -286,6 +286,7 @@ export class Fireworks {
 
       if (hasOption) {
         if (typeof this[key] === 'object') {
+          // @ts-ignore
           Object.assign(this[key], value)
         } else {
           this[key] = value
@@ -416,8 +417,8 @@ export class Fireworks {
     this._ctx.lineWidth = randomFloat(this.lineWidth.trace.min, this.lineWidth.trace.max)
 
     while (length--) {
-      this._traces[length].draw()
-      this._traces[length].update((x: number, y: number, hue: number) => {
+      this._traces[length]!.draw()
+      this._traces[length]!.update((x: number, y: number, hue: number) => {
         this.initExplosion(x, y, hue)
         this._sound.play()
         this._traces.splice(length, 1)
@@ -450,8 +451,8 @@ export class Fireworks {
     let length = this._explosions.length
 
     while (length--) {
-      this._explosions[length].draw()
-      this._explosions[length].update(() => {
+      this._explosions[length]!.draw()
+      this._explosions[length]!.update(() => {
         this._explosions.splice(length, 1)
       })
     }

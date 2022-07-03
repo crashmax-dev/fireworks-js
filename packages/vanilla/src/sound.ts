@@ -1,5 +1,5 @@
-import type { SoundOptions } from './fireworks'
-import { randomInt, randomFloat } from './helpers'
+import type { SoundOptions } from './index.js'
+import { randomInt, randomFloat } from '@fireworks-js/helpers'
 
 declare global {
   interface Window {
@@ -58,7 +58,7 @@ export class Sound {
   play(): void {
     if (this.options.enabled && this._buffer.length) {
       const source = this._audioContext.createBufferSource()
-      const buffer = this._buffer[randomInt(0, this._buffer.length - 1)]
+      const buffer = this._buffer[randomInt(0, this._buffer.length - 1)]!
       const volume = this._audioContext.createGain()
 
       source.buffer = buffer

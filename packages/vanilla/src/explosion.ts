@@ -1,5 +1,5 @@
-import type { BrightnessOptions } from './fireworks'
-import { randomFloat, randomInt, hsla } from './helpers'
+import type { BrightnessOptions } from './index.js'
+import { randomFloat, randomInt, hsla } from '@fireworks-js/helpers'
 
 interface ExplosionOptions {
   x: number
@@ -83,7 +83,7 @@ export class Explosion {
     this._ctx.beginPath()
     this._ctx.lineWidth = this._lineWidth
     this._ctx.fillStyle = hsla(this._hue, this._brightness, this._alpha)
-    this._ctx.moveTo(this._coordinates[lastIndex][0], this._coordinates[lastIndex][1])
+    this._ctx.moveTo(this._coordinates[lastIndex]![0], this._coordinates[lastIndex]![1])
     this._ctx.lineTo(this._x, this._y)
     this._ctx.strokeStyle = hsla(this._hue, this._flickering ? randomFloat(0, this._brightness) : this._brightness, this._alpha)
     this._ctx.stroke()

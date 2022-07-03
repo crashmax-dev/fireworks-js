@@ -1,4 +1,4 @@
-import type { FireworksOptions } from '../fireworks'
+import type { FireworksOptions } from '@fireworks-js/vanilla'
 
 export const mainContainer = document
   .querySelector<HTMLDivElement>('.container')!

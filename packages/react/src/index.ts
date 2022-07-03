@@ -1,5 +1,5 @@
 import React, { Component, type CSSProperties, useState } from 'react'
-import { type FireworksOptions, Fireworks as Fw } from './fireworks'
+import { type FireworksOptions, Fireworks as Fw } from '@fireworks-js/vanilla'
 
 type FireworksHookProps = {
   initialStart?: boolean

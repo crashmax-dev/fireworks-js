@@ -1,4 +1,4 @@
-import { randomInt, getDistance, hsla } from './helpers'
+import { randomInt, getDistance, hsla } from '@fireworks-js/helpers'
 
 interface TraceOptions {
   x: number
@@ -86,7 +86,7 @@ export class Trace {
     const lastIndex = this._coordinates.length - 1
 
     this._ctx.beginPath()
-    this._ctx.moveTo(this._coordinates[lastIndex][0], this._coordinates[lastIndex][1])
+    this._ctx.moveTo(this._coordinates[lastIndex]![0], this._coordinates[lastIndex]![1])
     this._ctx.lineTo(this._x, this._y)
     this._ctx.strokeStyle = hsla(this._hue, this._brightness)
     this._ctx.stroke()

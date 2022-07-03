@@ -11,6 +11,18 @@ export function getDistance(x: number, y: number, dx: number, dy: number): numbe
   return Math.sqrt(pow(x - dx, 2) + pow(y - dy, 2))
 }
 
-export function hsla(hue: number, brightness: number, alpha = 1): string {
-  return `hsla(${hue}, 100%, ${brightness}%, ${alpha})`
+export function hsla(hue: number, light: number, alpha = 1): string {
+  if (hue > 255 || hue < 0) {
+    throw new Error('')
+  }
+
+  if (light > 100 || light < 0) {
+    throw new Error('')
+  }
+
+  if (alpha > 1 || alpha < 0) {
+    throw new Error('')
+  }
+
+  return `hsla(${hue}, 100%, ${light}%, ${alpha})`
 }

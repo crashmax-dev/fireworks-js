@@ -1,21 +1,18 @@
 {
   "name": "fireworks-js",
-  "version": "1.4.1",
+  "version": "2.0.0",
+  "type": "module",
   "description": "A simple fireworks library!",
-  "main": "./dist/fireworks.js",
-  "types": "./dist/fireworks.d.ts",
-  "files": [
-    "dist/react.js",
-    "dist/react.d.ts",
-    "dist/fireworks.js",
-    "dist/fireworks.d.ts"
-  ],
+  "homepage": "https://fireworks.js.org",
   "scripts": {
-    "dev": "webpack serve --mode=development",
-    "build": "webpack --mode=production",
-    "lint": "eslint --ext ts src",
-    "lint:fix": "eslint --fix --ext ts src",
-    "prepare": "husky install"
+    "dev:website": "pnpm -r --filter=./website/* run dev",
+    "build:website": "pnpm -r --filter=./website/* run build",
+    "dev:packages": "pnpm -r --filter=./packages/* run dev",
+    "build:packages": "pnpm -r --filter=./packages/* run build",
+    "test": "ava",
+    "test:watch": "ava --watch",
+    "format": "prettier --check --ignore-unknown '**/*.{ts,tsx,js,jsx,vue}'",
+    "format:fix": "prettier --write --ignore-unknown '**/*.{ts,tsx,js,jsx,vue}'"
   },
   "repository": {
     "type": "git",
@@ -35,31 +32,14 @@
   "bugs": {
     "url": "https://github.com/crashmax-dev/fireworks-js/issues"
   },
-  "homepage": "https://fireworks.js.org",
+  "prettier": "@crashmax/prettier-config",
+  "packageManager": "pnpm@7.5.0",
   "devDependencies": {
-    "@babel/core": "^7.17.8",
-    "@babel/preset-env": "^7.16.11",
-    "@crashmax/eslint-config": "^1.1.0",
-    "@tweakpane/core": "^1.0.8",
-    "@tweakpane/plugin-essentials": "^0.1.4",
-    "@types/react": "^17.0.41",
-    "@types/stats.js": "^0.17.0",
-    "babel-loader": "^8.2.3",
-    "copy-webpack-plugin": "^10.2.4",
-    "css-minimizer-webpack-plugin": "^3.4.1",
-    "husky": "^7.0.4",
-    "remove-files-webpack-plugin": "^1.5.0",
-    "terser-webpack-plugin": "^5.3.1",
-    "ts-loader": "^9.2.8",
-    "ts-node": "^10.7.0",
-    "tweakpane": "^3.0.7",
-    "typescript": "^4.6.2",
-    "webpack": "^5.70.0",
-    "webpack-cli": "^4.9.2",
-    "webpack-dev-server": "^4.7.4"
-  },
-  "peerDependencies": {
-    "@types/react": ">=16.8.0",
-    "react": ">=16.8.0"
+    "@crashmax/prettier-config": "^1.1.1",
+    "@crashmax/tsconfig": "^1.0.1",
+    "@types/node": "^18.0.0",
+    "ava": "^4.3.0",
+    "tsx": "^3.7.1",
+    "typescript": "^4.7.4"
   }
 }

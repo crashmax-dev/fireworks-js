@@ -1,6 +1,6 @@
 import { Pane } from 'tweakpane'
 import * as EssentialsPlugin from '@tweakpane/plugin-essentials'
-import { Fireworks } from '../fireworks'
+import { Fireworks } from '@fireworks-js/vanilla'
 import { fireworksContainer, fireworksOptions, backgroundConfig, mainContainer } from './config'
 import type { FpsGraphBladeApi } from '@tweakpane/plugin-essentials/dist/types/fps-graph/api/fps-graph'
 
