@@ -1,5 +1,5 @@
-import { CSSProperties } from 'react'
 import { Fireworks, useFireworks } from 'fireworks-js/dist/react'
+import { CSSProperties } from 'react'
 
 export default function App() {
   const { enabled, options, setEnabled, setOptions } = useFireworks({
@@ -72,12 +72,14 @@ export default function App() {
       enabled={enabled}
       options={options}
     >
-      <div style={{
-        gap: '6px',
-        padding: '6px',
-        display: 'flex',
-        background: '#607d8b'
-      }}>
+      <div
+        style={{
+          gap: '6px',
+          padding: '6px',
+          display: 'flex',
+          background: '#607d8b'
+        }}
+      >
         <button onClick={() => setEnabled()}>
           Fireworks {enabled ? 'enabled' : 'disabled'}
         </button>

@@ -1,4 +1,4 @@
-import { randomInt, getDistance, hsla } from '@fireworks-js/helpers'
+import { getDistance, hsla, randomInt } from '@fireworks-js/helpers'
 
 interface TraceOptions {
   x: number
@@ -72,7 +72,12 @@ export class Trace {
     const vx = Math.cos(this._angle) * this._speed
     const vy = Math.sin(this._angle) * this._speed
 
-    this._currentDistance = getDistance(this._sx, this._sy, this._x + vx, this._y + vy)
+    this._currentDistance = getDistance(
+      this._sx,
+      this._sy,
+      this._x + vx,
+      this._y + vy
+    )
 
     if (this._currentDistance >= this._totalDistance) {
       callback(this._dx, this._dy, this._hue)
@@ -86,7 +91,10 @@ export class Trace {
     const lastIndex = this._coordinates.length - 1
 
     this._ctx.beginPath()
-    this._ctx.moveTo(this._coordinates[lastIndex]![0], this._coordinates[lastIndex]![1])
+    this._ctx.moveTo(
+      this._coordinates[lastIndex]![0],
+      this._coordinates[lastIndex]![1]
+    )
     this._ctx.lineTo(this._x, this._y)
     this._ctx.strokeStyle = hsla(this._hue, this._brightness)
     this._ctx.stroke()

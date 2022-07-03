@@ -1,5 +1,5 @@
+import { randomFloat, randomInt } from '@fireworks-js/helpers'
 import type { SoundOptions } from './index.js'
-import { randomInt, randomFloat } from '@fireworks-js/helpers'
 
 declare global {
   interface Window {
@@ -14,7 +14,6 @@ export class Sound {
   private onInit = true
 
   constructor(options: SoundOptions | undefined) {
-
     this.options = {
       enabled: false,
       files: [
@@ -35,21 +34,22 @@ export class Sound {
   private init(): void {
     if (this.onInit && this.options.enabled) {
       this.onInit = false
-      this._audioContext = new (window.AudioContext || window.webkitAudioContext)()
+      this._audioContext = new (window.AudioContext ||
+        window.webkitAudioContext)()
       void this.load()
     }
   }
 
   private async load(): Promise<void> {
     for (const file of this.options.files) {
-      const response = await (
-        await fetch(file)
-      ).arrayBuffer()
+      const response = await (await fetch(file)).arrayBuffer()
 
-      this._audioContext.decodeAudioData(response)
-        .then(buffer => {
+      this._audioContext
+        .decodeAudioData(response)
+        .then((buffer) => {
           this._buffer.push(buffer)
-        }).catch(err => {
+        })
+        .catch((err) => {
           throw err
         })
     }
@@ -62,7 +62,10 @@ export class Sound {
       const volume = this._audioContext.createGain()
 
       source.buffer = buffer
-      volume.gain.value = randomFloat(this.options.volume.min / 100, this.options.volume.max / 100)
+      volume.gain.value = randomFloat(
+        this.options.volume.min / 100,
+        this.options.volume.max / 100
+      )
       volume.connect(this._audioContext.destination)
       source.connect(volume)
       source.start(0)

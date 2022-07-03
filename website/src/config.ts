@@ -1,10 +1,11 @@
 import type { FireworksOptions } from '@fireworks-js/vanilla'
 
-export const mainContainer = document
-  .querySelector<HTMLDivElement>('.container')!
+export const mainContainer =
+  document.querySelector<HTMLDivElement>('.container')!
 
-export const fireworksContainer = document
-  .querySelector<HTMLDivElement>('.fireworks-container')!
+export const fireworksContainer = document.querySelector<HTMLDivElement>(
+  '.fireworks-container'
+)!
 
 export const fireworksOptions: FireworksOptions = {
   hue: {

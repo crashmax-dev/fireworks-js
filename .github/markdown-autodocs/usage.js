@@ -1,7 +1,9 @@
 import { Fireworks } from 'fireworks-js'
 
 const container = document.querySelector('.fireworks-container')
-const fireworks = new Fireworks(container, { /* options */ })
+const fireworks = new Fireworks(container, {
+  /* options */
+})
 
 fireworks.start()
 fireworks.pause()
@@ -11,4 +13,4 @@ fireworks.clear()
 fireworks.stop()
 
 // after initialization you can change the fireworks parameters
-fireworks.setOptions({ delay: { min: 10, max: 15 }})
+fireworks.setOptions({ delay: { min: 10, max: 15 } })

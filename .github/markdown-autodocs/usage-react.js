@@ -14,5 +14,10 @@ export const App = () => {
     background: '#000'
   }
 
-  return <Fireworks options={options} style={style} />
+  return (
+    <Fireworks
+      options={options}
+      style={style}
+    />
+  )
 }

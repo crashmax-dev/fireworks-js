@@ -1,8 +1,13 @@
 import { Pane } from 'tweakpane'
-import * as EssentialsPlugin from '@tweakpane/plugin-essentials'
 import { Fireworks } from '@fireworks-js/vanilla'
-import { fireworksContainer, fireworksOptions, backgroundConfig, mainContainer } from './config'
+import * as EssentialsPlugin from '@tweakpane/plugin-essentials'
 import type { FpsGraphBladeApi } from '@tweakpane/plugin-essentials/dist/types/fps-graph/api/fps-graph'
+import {
+  backgroundConfig,
+  fireworksContainer,
+  fireworksOptions,
+  mainContainer
+} from './config'
 
 const fireworks = new Fireworks(fireworksContainer, fireworksOptions)
 fireworks.start()
@@ -162,43 +167,29 @@ const background = tweakpane.addFolder({
   expanded: false
 })
 
-background
-  .addInput(backgroundConfig, 'container')
-  .on('change', ({ value }) => {
-    mainContainer.style.display = value ?
-      'none' :
-      'block'
-  })
+background.addInput(backgroundConfig, 'container').on('change', ({ value }) => {
+  mainContainer.style.display = value ? 'none' : 'block'
+})
 
-background
-  .addInput(backgroundConfig, 'color')
-  .on('change', ({ value }) => {
-    fireworksContainer.style.backgroundColor = value
-  })
+background.addInput(backgroundConfig, 'color').on('change', ({ value }) => {
+  fireworksContainer.style.backgroundColor = value
+})
 
-background
-  .addInput(backgroundConfig, 'image')
-  .on('change', ({ value }) => {
-    fireworksContainer.style.backgroundImage = `url(${value})`
-  })
+background.addInput(backgroundConfig, 'image').on('change', ({ value }) => {
+  fireworksContainer.style.backgroundImage = `url(${value})`
+})
 
-background
-  .addInput(backgroundConfig, 'size')
-  .on('change', ({ value }) => {
-    fireworksContainer.style.backgroundSize = value
-  })
+background.addInput(backgroundConfig, 'size').on('change', ({ value }) => {
+  fireworksContainer.style.backgroundSize = value
+})
 
-background
-  .addInput(backgroundConfig, 'position')
-  .on('change', ({ value }) => {
-    fireworksContainer.style.backgroundPosition = value
-  })
+background.addInput(backgroundConfig, 'position').on('change', ({ value }) => {
+  fireworksContainer.style.backgroundPosition = value
+})
 
-background
-  .addInput(backgroundConfig, 'repeat')
-  .on('change', ({ value }) => {
-    fireworksContainer.style.backgroundRepeat = value
-  })
+background.addInput(backgroundConfig, 'repeat').on('change', ({ value }) => {
+  fireworksContainer.style.backgroundRepeat = value
+})
 
 /** monitors */
 const monitors = tweakpane.addFolder({
