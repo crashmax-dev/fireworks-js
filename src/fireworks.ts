@@ -218,9 +218,17 @@ export class Fireworks {
       window.addEventListener('resize', () => this.windowResize())
     }
 
-    this._canvas.addEventListener('mousedown', e => this.mouseDown(e))
-    this._canvas.addEventListener('mouseup', e => this.mouseUp(e))
-    this._canvas.addEventListener('mousemove', e => this.mouseMove(e))
+    this._canvas.addEventListener('mousedown', (event) => {
+      this.mouseDown(event)
+    })
+
+    this._canvas.addEventListener('mouseup', (event) => {
+      this.mouseUp(event)
+    })
+
+    this._canvas.addEventListener('mousemove', (event) => {
+      this.mouseMove(event)
+    })
   }
 
   get isRunning(): boolean {
@@ -248,9 +256,9 @@ export class Fireworks {
 
   unmount(): void {
     window.removeEventListener('resize', this.windowResize)
-    this._canvas.addEventListener('mousedown', this.mouseDown)
-    this._canvas.addEventListener('mouseup', this.mouseUp)
-    this._canvas.addEventListener('mousemove', this.mouseMove)
+    this._canvas.removeEventListener('mousedown', this.mouseDown)
+    this._canvas.removeEventListener('mouseup', this.mouseUp)
+    this._canvas.removeEventListener('mousemove', this.mouseMove)
   }
 
   pause(): void {
