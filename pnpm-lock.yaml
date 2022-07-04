@@ -26,7 +26,7 @@ importers:
 
   packages/vanilla:
     specifiers:
-      '@fireworks-js/helpers': workspace:^2.0.0
+      '@fireworks-js/helpers': workspace:*
       vite: ^2.9.13
       vite-plugin-dts: ^1.2.0
       vite-plugin-external: ^1.2.3
