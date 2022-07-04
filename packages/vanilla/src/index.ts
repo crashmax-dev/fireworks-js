@@ -169,7 +169,7 @@ export class Fireworks {
 
     this.hue = {
       min: 0,
-      max: 360,
+      max: 255,
       ...hue
     }
 

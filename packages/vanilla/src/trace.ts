@@ -96,7 +96,12 @@ export class Trace {
       this._coordinates[lastIndex]![1]
     )
     this._ctx.lineTo(this._x, this._y)
-    this._ctx.strokeStyle = hsla(this._hue, this._brightness)
+    try {
+      this._ctx.strokeStyle = hsla(this._hue, this._brightness)
+    } catch (err) {
+      debugger
+      console.log(this._hue)
+    }
     this._ctx.stroke()
   }
 }

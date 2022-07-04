@@ -1,9 +1,9 @@
 {
   "name": "@fireworks-js/vanilla",
-  "version": "2.0.0",
+  "version": "0.0.0-beta.0",
   "type": "module",
   "types": "./dist/index.d.ts",
-  "main": "./dist/index.js",
+  "main": "./dist/index.umd.js",
   "files": [
     "./dist/index.es.js",
     "./dist/index.cjs.js",
@@ -11,8 +11,10 @@
     "./dist/index.d.ts"
   ],
   "exports": {
-    "import": "./dist/index.es.js",
-    "require": "./dist/index.cjs.js"
+    ".": {
+      "import": "./dist/index.es.js",
+      "require": "./dist/index.cjs.js"
+    }
   },
   "scripts": {
     "dev": "vite",
@@ -22,10 +24,12 @@
   "devDependencies": {
     "vite": "^2.9.13",
     "vite-plugin-dts": "^1.2.0",
-    "vite-plugin-external": "^1.2.3",
     "vite-tsconfig-paths": "^3.5.0"
   },
   "dependencies": {
-    "@fireworks-js/helpers": "workspace:^2.0.0"
+    "@fireworks-js/helpers": "workspace:0.0.0-beta.1"
+  },
+  "peerDependencies": {
+    "@fireworks-js/helpers": "0.0.0-beta.0"
   }
 }

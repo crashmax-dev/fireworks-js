@@ -26,17 +26,15 @@ importers:
 
   packages/vanilla:
     specifiers:
-      '@fireworks-js/helpers': workspace:*
+      '@fireworks-js/helpers': workspace:0.0.0-beta.1
       vite: ^2.9.13
       vite-plugin-dts: ^1.2.0
-      vite-plugin-external: ^1.2.3
       vite-tsconfig-paths: ^3.5.0
     dependencies:
       '@fireworks-js/helpers': link:../helpers
     devDependencies:
       vite: 2.9.13
       vite-plugin-dts: 1.2.0_vite@2.9.13
-      vite-plugin-external: 1.2.3
       vite-tsconfig-paths: 3.5.0_vite@2.9.13
 
 packages:
@@ -2138,12 +2136,6 @@ packages:
       vite: 2.9.13
     transitivePeerDependencies:
       - supports-color
-    dev: true
-
-  /vite-plugin-external/1.2.3:
-    resolution: {integrity: sha512-NCVDWVY7J/t8Z6/au5fqY+lDIMfv0CFayyO2OaJFnVCB0PVH8qh+b99Zq2BarS3/cRLdZLCzjlhqzLfc60OkSg==}
-    dependencies:
-      fs-extra: 10.0.1
     dev: true
 
   /vite-tsconfig-paths/3.5.0_vite@2.9.13:
