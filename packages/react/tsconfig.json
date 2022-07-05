@@ -1,0 +1,13 @@
+{
+  "extends": "@crashmax/tsconfig",
+  "compilerOptions": {
+    "noImplicitOverride": false,
+    "outDir": "dist",
+    "types": [
+      "vite/client"
+    ]
+  },
+  "include": [
+    "src/**/*"
+  ]
+}
