@@ -1,2 +1,7 @@
 dist
 node_modules
+*.log*
+.vscode
+.*rc
+.*ignore
+pnpm-lock.yaml

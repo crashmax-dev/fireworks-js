@@ -1,6 +1,6 @@
 {
-  "name": "@fireworks-js/vanilla",
-  "version": "0.0.0-beta.2",
+  "name": "fireworks-js",
+  "version": "0.0.0-beta.0",
   "type": "module",
   "types": "dist/index.d.ts",
   "module": "dist/index.es.js",

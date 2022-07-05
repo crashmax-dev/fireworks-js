@@ -2,6 +2,7 @@
   "name": "fireworks-js",
   "version": "2.0.0",
   "type": "module",
+  "private": true,
   "description": "A simple fireworks library!",
   "homepage": "https://fireworks.js.org",
   "scripts": {
@@ -32,7 +33,6 @@
   "bugs": {
     "url": "https://github.com/crashmax-dev/fireworks-js/issues"
   },
-  "prettier": "@crashmax/prettier-config",
   "packageManager": "pnpm@7.5.0",
   "devDependencies": {
     "@crashmax/prettier-config": "^1.1.1",

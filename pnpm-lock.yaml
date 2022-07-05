@@ -14,7 +14,7 @@ importers:
       vite-plugin-dts: ^1.2.1
       vite-tsconfig-paths: ^3.5.0
     devDependencies:
-      '@crashmax/prettier-config': 1.1.1_xpdg5htbptjlk4mfy6iiphmdgy
+      '@crashmax/prettier-config': 1.1.1_dxxkk2ww3a5bz4e7mvp7yp25cu
       '@crashmax/tsconfig': 1.0.1
       '@types/node': 18.0.0
       ava: 4.3.0
@@ -25,9 +25,6 @@ importers:
       vite-tsconfig-paths: 3.5.0_vite@2.9.13
 
   packages/helpers:
-    specifiers: {}
-
-  packages/react:
     specifiers: {}
 
   packages/vanilla:
@@ -266,7 +263,7 @@ packages:
       to-fast-properties: 2.0.0
     dev: true
 
-  /@crashmax/prettier-config/1.1.1_xpdg5htbptjlk4mfy6iiphmdgy:
+  /@crashmax/prettier-config/1.1.1_dxxkk2ww3a5bz4e7mvp7yp25cu:
     resolution: {integrity: sha512-4y7FwkH/NqFjWCsNmhSd7mehEJCq0diwFV7X7jGpXZzoQE/bdK7KuRXZ4F/leIUvWBUYhbUc2CvmksSCEoDb9Q==}
     peerDependencies:
       '@trivago/prettier-plugin-sort-imports': ^3.2.0
@@ -275,7 +272,7 @@ packages:
     dependencies:
       '@trivago/prettier-plugin-sort-imports': 3.2.0_prettier@2.7.1
       prettier: 2.7.1
-      prettier-plugin-multiline-arrays: 1.0.0
+      prettier-plugin-multiline-arrays: 1.1.0
     dev: true
 
   /@crashmax/tsconfig/1.0.1:
@@ -565,10 +562,10 @@ packages:
     engines: {node: '>=12'}
     dev: true
 
-  /augment-vir/1.9.1:
-    resolution: {integrity: sha512-GgXArqs9uvHmDQFbaAYh0QhsxVGPhR+CEVln/3R2hBq5Sq89qXuMyRA4HtPHTfWGzI/TeH5DmupGi702mxP6QQ==}
+  /augment-vir/2.0.2:
+    resolution: {integrity: sha512-DAU4/MEuL2Kk5CbF3jZlzR0YVfU9Fhrg8zKp9p/GenTAlaE6/bYpcTphoic0sSaknBtkjWYfQxk+7fRqlm6bhA==}
     dependencies:
-      fs-extra: 10.0.1
+      fs-extra: 10.1.0
     dev: true
 
   /ava/4.3.0:
@@ -668,8 +665,8 @@ packages:
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
     dependencies:
-      caniuse-lite: 1.0.30001362
-      electron-to-chromium: 1.4.177
+      caniuse-lite: 1.0.30001363
+      electron-to-chromium: 1.4.179
       node-releases: 2.0.5
       update-browserslist-db: 1.0.4_browserslist@4.21.1
     dev: true
@@ -683,8 +680,8 @@ packages:
     engines: {node: '>=12.20'}
     dev: true
 
-  /caniuse-lite/1.0.30001362:
-    resolution: {integrity: sha512-PFykHuC7BQTzCGQFaV6wD8IDRM3HpI83BXr99nNJhoOyDufgSuKlt0QVlWYt5ZJtEYFeuNVF5QY3kJcu8hVFjQ==}
+  /caniuse-lite/1.0.30001363:
+    resolution: {integrity: sha512-HpQhpzTGGPVMnCjIomjt+jvyUu8vNFo3TaDiZ/RcoTrlOq/5+tC8zHdsbgFB6MxmaY+jCpsH09aD80Bb4Ow3Sg==}
     dev: true
 
   /cbor/8.1.0:
@@ -903,8 +900,8 @@ packages:
     resolution: {integrity: sha512-I88TYZWc9XiYHRQ4/3c5rjjfgkjhLyW2luGIheGERbNQ6OY7yTybanSpDXZa8y7VUP9YmDcYa+eyq4ca7iLqWA==}
     dev: true
 
-  /electron-to-chromium/1.4.177:
-    resolution: {integrity: sha512-FYPir3NSBEGexSZUEeht81oVhHfLFl6mhUKSkjHN/iB/TwEIt/WHQrqVGfTLN5gQxwJCQkIJBe05eOXjI7omgg==}
+  /electron-to-chromium/1.4.179:
+    resolution: {integrity: sha512-1XeTb/U/8Xgh2YgPOqhakLYsvCcU4U7jUjTMbEnhIJoIWd/Qt3yC8y0cbG+fHzn4zUNF99Ey1xiPf20bwgLO3Q==}
     dev: true
 
   /emittery/0.11.0:
@@ -1213,6 +1210,15 @@ packages:
 
   /fs-extra/10.0.1:
     resolution: {integrity: sha512-NbdoVMZso2Lsrn/QwLXOy6rm0ufY2zEOKCDzJR/0kBsb0E6qed0P3iYK+Ath3BfvXEeu4JhEtXLgILx5psUfag==}
+    engines: {node: '>=12'}
+    dependencies:
+      graceful-fs: 4.2.10
+      jsonfile: 6.1.0
+      universalify: 2.0.0
+    dev: true
+
+  /fs-extra/10.1.0:
+    resolution: {integrity: sha512-oRXApq54ETRj4eMiFzGnHWGy+zo5raudjuxN0b8H7s/RU2oW0Wvsx9O0ACRN/kRq9E8Vu/ReskGB5o3ji+FzHQ==}
     engines: {node: '>=12'}
     dependencies:
       graceful-fs: 4.2.10
@@ -1744,10 +1750,10 @@ packages:
       source-map-js: 1.0.2
     dev: true
 
-  /prettier-plugin-multiline-arrays/1.0.0:
-    resolution: {integrity: sha512-BXsUjSjS7L/1wZRf3+xWsT8uGq9MpoWg6NA85fymBo/QNcxWpZXoF4bqIUDjwa/U/NaWnXdxMyb3Oh1vSKBz0w==}
+  /prettier-plugin-multiline-arrays/1.1.0:
+    resolution: {integrity: sha512-Pp5JCJGXj2pBxR9o0bLNSxbHd0qOjgzTCXn9oD8Wkevgz/KnXJA6JVzt28OgXznzOgPhCCXlUqEqmEkGVCPBUw==}
     dependencies:
-      augment-vir: 1.9.1
+      augment-vir: 2.0.2
     dev: true
 
   /prettier/2.7.1:
