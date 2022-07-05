@@ -40,6 +40,9 @@
     "@types/node": "^18.0.0",
     "ava": "^4.3.0",
     "tsx": "^3.7.1",
-    "typescript": "^4.7.4"
+    "typescript": "^4.7.4",
+    "vite": "^2.9.13",
+    "vite-plugin-dts": "^1.2.1",
+    "vite-tsconfig-paths": "^3.5.0"
   }
 }

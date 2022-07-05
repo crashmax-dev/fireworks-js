@@ -1,1 +1,1 @@
-# [@fireworks-js/vanilla](../../README.md)
+# [@fireworks-js/vanilla](https://github.com/crashmax-dev/fireworks-js)

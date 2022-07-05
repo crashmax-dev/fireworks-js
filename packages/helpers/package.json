@@ -1,6 +1,6 @@
 {
   "name": "@fireworks-js/helpers",
-  "version": "0.0.0-beta.1",
+  "version": "0.0.0-beta.2",
   "type": "module",
   "types": "./dist/index.d.ts",
   "module": "./dist/index.js",
@@ -8,6 +8,7 @@
     "dist"
   ],
   "scripts": {
+    "dev": "tsx watch ./src/index.ts",
     "build": "rm -rf dist && tsc",
     "prepare": "pnpm build"
   }

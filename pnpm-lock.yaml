@@ -10,6 +10,9 @@ importers:
       ava: ^4.3.0
       tsx: ^3.7.1
       typescript: ^4.7.4
+      vite: ^2.9.13
+      vite-plugin-dts: ^1.2.1
+      vite-tsconfig-paths: ^3.5.0
     devDependencies:
       '@crashmax/prettier-config': 1.1.1_xpdg5htbptjlk4mfy6iiphmdgy
       '@crashmax/tsconfig': 1.0.1
@@ -17,6 +20,9 @@ importers:
       ava: 4.3.0
       tsx: 3.7.1
       typescript: 4.7.4
+      vite: 2.9.13
+      vite-plugin-dts: 1.2.1_vite@2.9.13
+      vite-tsconfig-paths: 3.5.0_vite@2.9.13
 
   packages/helpers:
     specifiers: {}
@@ -26,16 +32,9 @@ importers:
 
   packages/vanilla:
     specifiers:
-      '@fireworks-js/helpers': workspace:0.0.0-beta.1
-      vite: ^2.9.13
-      vite-plugin-dts: ^1.2.0
-      vite-tsconfig-paths: ^3.5.0
+      '@fireworks-js/helpers': workspace:0.0.0-beta.2
     dependencies:
       '@fireworks-js/helpers': link:../helpers
-    devDependencies:
-      vite: 2.9.13
-      vite-plugin-dts: 1.2.0_vite@2.9.13
-      vite-tsconfig-paths: 3.5.0_vite@2.9.13
 
 packages:
 
@@ -347,8 +346,8 @@ packages:
       '@rushstack/node-core-library': 3.49.0
     dev: true
 
-  /@microsoft/api-extractor/7.28.2:
-    resolution: {integrity: sha512-sl97erZ5Zh3ov5dvV/rMSt45//dYf7C5Y6PCpIXpFidDYMyRwN+pizZ543g2d8D5/WbthGvsZoYcYSzG7CkjHQ==}
+  /@microsoft/api-extractor/7.28.3:
+    resolution: {integrity: sha512-lkDHPyln8MNEy1QHjmGwedRquclGKU0qL0gHplfnHuSTXSoNQ86UYaPmhG77/GiNehXzGNKMYSIfTsuoQb69jA==}
     hasBin: true
     dependencies:
       '@microsoft/api-extractor-model': 7.21.0
@@ -777,10 +776,8 @@ packages:
       wrap-ansi: 7.0.0
     dev: true
 
-  /code-block-writer/11.0.0:
-    resolution: {integrity: sha512-GEqWvEWWsOvER+g9keO4ohFoD3ymwyCnqY3hoTr7GZipYFwEhMHJw+TtV0rfgRhNImM6QWZGO2XYjlJVyYT62w==}
-    dependencies:
-      tslib: 2.3.1
+  /code-block-writer/11.0.1:
+    resolution: {integrity: sha512-0ch9DeCY8v/BWA9n1/Qu1ALG3lpesel4PYL2eNlGLgvGl+J7k74i+dSXSF3wLvF5SYII8/GUT/Ic+fycBR/DUQ==}
     dev: true
 
   /code-excerpt/4.0.0:
@@ -2041,7 +2038,7 @@ packages:
     resolution: {integrity: sha512-tO8YQ1dP41fw8GVmeQAdNsD8roZi1JMqB7YwZrqU856DvmG5/710e41q2XauzTYrygH9XmMryaFeLo+kdCziyA==}
     dependencies:
       '@ts-morph/common': 0.13.0
-      code-block-writer: 11.0.0
+      code-block-writer: 11.0.1
     dev: true
 
   /tsconfig-paths/4.0.0:
@@ -2054,10 +2051,6 @@ packages:
 
   /tslib/1.14.1:
     resolution: {integrity: sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg==}
-    dev: true
-
-  /tslib/2.3.1:
-    resolution: {integrity: sha512-77EbyPPpMz+FRFRuAFlWMtmgUWGe9UOG2Z25NqCwiIjRhOf5iKGuzSe5P2w1laq+FkRy4p+PCuVkJSGkzTEKVw==}
     dev: true
 
   /tsx/3.7.1:
@@ -2120,13 +2113,13 @@ packages:
     engines: {node: '>= 0.10'}
     dev: true
 
-  /vite-plugin-dts/1.2.0_vite@2.9.13:
-    resolution: {integrity: sha512-dg0x2VKHDnpNQvx0iPKkPpX+aJNBqzusMJv1l7SwzTV8J62eLhIKzE2FKOp4oYkPlN/vi+MqNEDKvv+XE70lzA==}
+  /vite-plugin-dts/1.2.1_vite@2.9.13:
+    resolution: {integrity: sha512-V59rsKQnPI6FTGybh/ED4+dyK3UeSkvC1CJzpuDNoXb7mKNUcWmg66EM0N5Ijoc8xDAfZIXYxQjg675YHIDvFw==}
     engines: {node: '>=12.0.0'}
     peerDependencies:
       vite: '>=2.4.4'
     dependencies:
-      '@microsoft/api-extractor': 7.28.2
+      '@microsoft/api-extractor': 7.28.3
       '@rushstack/node-core-library': 3.49.0
       chalk: 4.1.2
       debug: 4.3.4
