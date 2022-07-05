@@ -1,0 +1,10 @@
+{
+  "name": "with-vanilla",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build"
+  },
+  "dependencies": {
+    "fireworks-js": "workspace:*"
+  }
+}

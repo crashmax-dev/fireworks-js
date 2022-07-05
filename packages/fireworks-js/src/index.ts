@@ -143,7 +143,7 @@ export class Fireworks {
       this._canvas = document.createElement('canvas')
       this._container.appendChild(this._canvas)
     }
-    this._ctx = this._canvas.getContext('2d') as CanvasRenderingContext2D
+    this._ctx = this._canvas.getContext('2d')!
     this._sound = new Sound(sound)
 
     this.setSize()
