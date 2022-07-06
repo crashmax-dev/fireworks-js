@@ -1,0 +1,11 @@
+{
+  "extends": "@crashmax/tsconfig",
+  "compilerOptions": {
+    "rootDir": ".",
+    "jsx": "preserve"
+  },
+  "include": [
+    "src/**/*",
+    "shim.d.ts"
+  ]
+}
