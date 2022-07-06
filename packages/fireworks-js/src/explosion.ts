@@ -1,5 +1,5 @@
 import { hsla, randomFloat, randomInt } from '@fireworks-js/helpers'
-import type { BrightnessOptions } from './index.js'
+import type { Brightness } from './types.js'
 
 interface ExplosionOptions {
   x: number
@@ -11,7 +11,7 @@ interface ExplosionOptions {
   explosionLength: number
   flickering: boolean
   lineWidth: number
-  brightness: Required<BrightnessOptions>
+  brightness: Required<Brightness>
 }
 
 export class Explosion {

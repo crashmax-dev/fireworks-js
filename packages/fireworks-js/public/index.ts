@@ -1,13 +1,12 @@
-import { Fireworks } from '../src/index.js'
+import Fireworks from '../src/index.js'
+import type { FireworksOptions } from '../src/index.js'
 
-const app = document.querySelector('#app')
-if (app) {
-  const fireworks = new Fireworks(app, {
-    mouse: {
-      click: true,
-      max: 10
-    }
-  })
-  fireworks.start()
-  console.log(fireworks)
+const app = document.querySelector('#app')!
+const options: FireworksOptions = {
+  mouse: {
+    click: true,
+    max: 10
+  }
 }
+const fireworks = new Fireworks(app, options)
+fireworks.start()
