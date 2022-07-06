@@ -6,10 +6,12 @@
   "description": "A simple fireworks library!",
   "homepage": "https://fireworks.js.org",
   "scripts": {
-    "dev:website": "pnpm -r --filter=./website/* run dev",
-    "build:website": "pnpm -r --filter=./website/* run build",
+    "dev:website": "pnpm -r --filter=./website run dev",
     "dev:packages": "pnpm -r --filter=./packages/* run dev",
+    "dev:examples": "pnpm -r --filter=./examples/* run dev",
+    "build:website": "pnpm -r --filter=./website run build",
     "build:packages": "pnpm -r --filter=./packages/* run build",
+    "build:examples": "pnpm -r --filter=./examples/* run build",
     "test": "ava",
     "test:watch": "ava --watch",
     "format": "prettier --check --ignore-unknown '**/*.{ts,tsx,js,jsx,vue}'",
@@ -21,6 +23,10 @@
     "url": "git+https://github.com/crashmax-dev/fireworks-js.git"
   },
   "keywords": [
+    "react",
+    "vue",
+    "angular",
+    "svelte",
     "canvas",
     "fireworks",
     "animation"
@@ -39,7 +45,7 @@
     "@crashmax/prettier-config": "^1.1.1",
     "@crashmax/tsconfig": "^1.0.1",
     "@types/node": "^18.0.3",
-    "@types/react": "18.0.14",
+    "@types/react": "18.0.15",
     "@types/react-dom": "18.0.6",
     "@vitejs/plugin-react": "^1.3.2",
     "@vitejs/plugin-vue": "^2.3.3",
