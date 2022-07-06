@@ -26,6 +26,7 @@
     "url": "git+https://github.com/crashmax-dev/fireworks-js.git"
   },
   "keywords": [
+    "vue",
     "canvas",
     "fireworks",
     "animation"
@@ -45,12 +46,7 @@
     "prepublishOnly": "pnpm build"
   },
   "dependencies": {
-    "@fireworks-js/helpers": "workspace:0.0.0-beta.2",
     "fireworks-js": "workspace:0.0.0-beta.6"
-  },
-  "devDependencies": {
-    "@vitejs/plugin-vue": "^2.3.3",
-    "vue": "^3.2.37"
   },
   "peerDependencies": {
     "vue": "^2.7.0"
