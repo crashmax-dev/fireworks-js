@@ -11,6 +11,7 @@ importers:
       tsx: ^3.7.1
       typescript: ^4.7.4
       vite: ^2.9.13
+      vite-plugin-banner: ^0.3.0
       vite-plugin-dts: ^1.2.1
       vite-tsconfig-paths: ^3.5.0
     devDependencies:
@@ -21,6 +22,7 @@ importers:
       tsx: 3.7.1
       typescript: 4.7.4
       vite: 2.9.13
+      vite-plugin-banner: 0.3.0
       vite-plugin-dts: 1.2.1_vite@2.9.13
       vite-tsconfig-paths: 3.5.0_vite@2.9.13
 
@@ -88,14 +90,14 @@ packages:
     engines: {node: '>=6.9.0'}
     dependencies:
       '@babel/code-frame': 7.18.6
-      '@babel/generator': 7.13.9
+      '@babel/generator': 7.18.7
       '@babel/helper-compilation-targets': 7.18.6_@babel+core@7.13.10
       '@babel/helper-module-transforms': 7.18.6
       '@babel/helpers': 7.18.6
-      '@babel/parser': 7.14.6
+      '@babel/parser': 7.18.6
       '@babel/template': 7.18.6
-      '@babel/traverse': 7.13.0
-      '@babel/types': 7.13.0
+      '@babel/traverse': 7.18.6
+      '@babel/types': 7.18.7
       convert-source-map: 1.8.0
       debug: 4.3.4
       gensync: 1.0.0-beta.2
@@ -133,7 +135,7 @@ packages:
   /@babel/generator/7.13.9:
     resolution: {integrity: sha512-mHOOmY0Axl/JCTkxTU6Lf5sWOg/v8nUa+Xkt4zMTftX0wqmb6Sh7J8gvcehBw7q0AhrhAR+FDacKjCZ2X8K+Sw==}
     dependencies:
-      '@babel/types': 7.13.0
+      '@babel/types': 7.18.7
       jsesc: 2.5.2
       source-map: 0.5.7
     dev: true
@@ -277,7 +279,7 @@ packages:
     engines: {node: '>=6.0.0'}
     hasBin: true
     dependencies:
-      '@babel/types': 7.13.0
+      '@babel/types': 7.18.7
     dev: true
 
   /@babel/parser/7.18.6:
@@ -355,11 +357,11 @@ packages:
     resolution: {integrity: sha512-xys5xi5JEhzC3RzEmSGrs/b3pJW/o87SypZ+G/PhaE7uqVQNv/jlmVIBXuoh5atqQ434LfXV+sf23Oxj0bchJQ==}
     dependencies:
       '@babel/code-frame': 7.18.6
-      '@babel/generator': 7.13.9
+      '@babel/generator': 7.18.7
       '@babel/helper-function-name': 7.18.6
       '@babel/helper-split-export-declaration': 7.18.6
-      '@babel/parser': 7.14.6
-      '@babel/types': 7.13.0
+      '@babel/parser': 7.18.6
+      '@babel/types': 7.18.7
       debug: 4.3.4
       globals: 11.12.0
       lodash: 4.17.21
@@ -2343,6 +2345,10 @@ packages:
   /validator/13.7.0:
     resolution: {integrity: sha512-nYXQLCBkpJ8X6ltALua9dRrZDHVYxjJ1wgskNt1lH9fzGjs3tgojGSCBjmEPwkWS1y29+DrizMTW19Pr9uB2nw==}
     engines: {node: '>= 0.10'}
+    dev: true
+
+  /vite-plugin-banner/0.3.0:
+    resolution: {integrity: sha512-3QQVJxIwO1afUoEm10e5J3S8AJ4eVKNL+78q8vW5TQhBYmjogyqBCiRPcax+OyWuECEnRRFSWX0KKrenVGzHOg==}
     dev: true
 
   /vite-plugin-dts/1.2.1_vite@2.9.13:
