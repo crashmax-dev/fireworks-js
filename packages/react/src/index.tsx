@@ -9,7 +9,7 @@ type FireworksProps = {
   style?: CSSProperties
 }
 
-export const Fireworks = ({ children, options, style }: FireworksProps) => {
+const Fireworks = ({ children, options, style }: FireworksProps) => {
   const [fireworks, setFireworks] = useState<VanillaFireworks | null>(null)
   const ref = useRef<HTMLDivElement>(null)
 
@@ -20,9 +20,8 @@ export const Fireworks = ({ children, options, style }: FireworksProps) => {
       setFireworks(fireworksInstance)
     }
 
-    ;() => {
+    ; () => {
       if (fireworks) {
-        fireworks.unmount()
         fireworks.stop()
       }
     }
@@ -37,3 +36,7 @@ export const Fireworks = ({ children, options, style }: FireworksProps) => {
     </div>
   )
 }
+
+export { Fireworks }
+export type { FireworksOptions }
+export default Fireworks
