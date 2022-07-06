@@ -26,6 +26,7 @@
     "url": "git+https://github.com/crashmax-dev/fireworks-js.git"
   },
   "keywords": [
+    "react",
     "canvas",
     "fireworks",
     "animation"
@@ -42,18 +43,10 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "prepare": "pnpm build"
+    "prepublishOnly": "pnpm build"
   },
   "dependencies": {
-    "@fireworks-js/helpers": "workspace:0.0.0-beta.2",
     "fireworks-js": "workspace:0.0.0-beta.6"
-  },
-  "devDependencies": {
-    "@types/react": "18.0.14",
-    "@types/react-dom": "18.0.6",
-    "@vitejs/plugin-react": "^1.3.2",
-    "react": "18.2.0",
-    "react-dom": "18.2.0"
   },
   "peerDependencies": {
     "@types/react": ">=16.8.0",

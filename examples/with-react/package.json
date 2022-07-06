@@ -5,12 +5,6 @@
     "build": "vite build"
   },
   "dependencies": {
-    "@fireworks-js/react": "workspace:0.0.0-beta.1",
-    "react": "18.2.0",
-    "react-dom": "18.2.0"
-  },
-  "devDependencies": {
-    "@types/react": "18.0.14",
-    "@types/react-dom": "18.0.6"
+    "@fireworks-js/react": "workspace:*"
   }
 }

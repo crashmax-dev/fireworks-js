@@ -1,4 +1,3 @@
-// React is not defined
 import React from 'react'
 import { CSSProperties, useState } from 'react'
 import { createRoot } from 'react-dom/client'
@@ -17,6 +16,7 @@ const style: CSSProperties = {
 
 function App() {
   const [enabled, setEnabled] = useState(true)
+
   return (
     <>
       <button
