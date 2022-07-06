@@ -1,0 +1,10 @@
+{
+  "name": "with-vue",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build"
+  },
+  "dependencies": {
+    "@fireworks-js/vue": "workspace:*"
+  }
+}
