@@ -1,5 +1,5 @@
+import { Fireworks } from 'fireworks-js'
 import { Pane } from 'tweakpane'
-import { Fireworks } from '@fireworks-js/vanilla'
 import * as EssentialsPlugin from '@tweakpane/plugin-essentials'
 import type { FpsGraphBladeApi } from '@tweakpane/plugin-essentials/dist/types/fps-graph/api/fps-graph'
 import {
@@ -7,7 +7,7 @@ import {
   fireworksContainer,
   fireworksOptions,
   mainContainer
-} from './config'
+} from './config.js'
 
 const fireworks = new Fireworks(fireworksContainer, fireworksOptions)
 fireworks.start()
@@ -112,8 +112,6 @@ tweakpane.addInput(fireworksOptions.lineWidth!, 'trace', {
   min: 0,
   max: 10
 })
-
-tweakpane.addInput(fireworksOptions, 'autoresize')
 
 tweakpane.addInput(fireworksOptions, 'lineStyle', {
   options: {

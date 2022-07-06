@@ -1,4 +1,4 @@
-import type { FireworksOptions } from '@fireworks-js/vanilla'
+import type { FireworksOptions } from 'fireworks-js'
 
 export const mainContainer =
   document.querySelector<HTMLDivElement>('.container')!
@@ -41,7 +41,6 @@ export const fireworksOptions: FireworksOptions = {
       max: 1
     }
   },
-  autoresize: true,
   brightness: {
     min: 50,
     max: 80,

@@ -80,7 +80,16 @@ importers:
       fireworks-js: link:../fireworks-js
 
   website:
-    specifiers: {}
+    specifiers:
+      '@tweakpane/core': ^1.1.0
+      '@tweakpane/plugin-essentials': ^0.1.4
+      fireworks-js: workspace:*
+      tweakpane: ^3.1.0
+    dependencies:
+      '@tweakpane/core': 1.1.0
+      '@tweakpane/plugin-essentials': 0.1.4_tweakpane@3.1.0
+      fireworks-js: link:../packages/fireworks-js
+      tweakpane: 3.1.0
 
 packages:
 
@@ -625,6 +634,18 @@ packages:
       mkdirp: 1.0.4
       path-browserify: 1.0.1
     dev: true
+
+  /@tweakpane/core/1.1.0:
+    resolution: {integrity: sha512-vbbiQb+aoFI13lIbE7DJvhHZVE1YlUpGoaAamSpU6wLp2jA3VowS1wfRJBBB8IBCYm7nF6ULl7zfJKxl1XdyfA==}
+    dev: false
+
+  /@tweakpane/plugin-essentials/0.1.4_tweakpane@3.1.0:
+    resolution: {integrity: sha512-beJWDrTo6a29eh1L5AFsiybsiWL2BFMN+49dwAzccnR7vr6uXy3qxJIZVr3J91KXZwDEg1XZ+ZW301Sz+xTBqw==}
+    peerDependencies:
+      tweakpane: ^3.0.5
+    dependencies:
+      tweakpane: 3.1.0
+    dev: false
 
   /@types/argparse/1.0.38:
     resolution: {integrity: sha512-ebDJ9b0e702Yr7pWgB0jzm+CX4Srzz8RcXtLJDJB+BSccqMa36uyH/zUsSYao5+BD1ytv3k3rPYCq4mAE1hsXA==}
@@ -2424,6 +2445,10 @@ packages:
     optionalDependencies:
       fsevents: 2.3.2
     dev: true
+
+  /tweakpane/3.1.0:
+    resolution: {integrity: sha512-PGAp/LPQdHwzL7/iAW4lV1p9iPQTti7YMjMWO48CoYjvZRS59RmgQnhEGzKzqST1JnmOYmQUjTe8bdhlZRJs5A==}
+    dev: false
 
   /type-fest/0.13.1:
     resolution: {integrity: sha512-34R7HTnG0XIJcBSn5XhDd7nNFPRcXYRZrBB2O2jdKqYODldSzBAqzsWoZYYvduky73toYS/ESqxPvkDf/F0XMg==}
