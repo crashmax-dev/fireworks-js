@@ -3,5 +3,5 @@
 </template>
 
 <script lang="ts" setup>
-import Fireworks from './fireworks.vue'
+import { Fireworks } from './index.js'
 </script>

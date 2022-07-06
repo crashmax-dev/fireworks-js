@@ -1,0 +1,10 @@
+{
+  "extends": "@crashmax/tsconfig",
+  "compilerOptions": {
+    "jsx": "preserve",
+    "moduleResolution": "node"
+  },
+  "include": [
+    "src/**/*"
+  ]
+}
