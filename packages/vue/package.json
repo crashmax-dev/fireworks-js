@@ -11,7 +11,8 @@
     "dist/index.es.js",
     "dist/index.cjs.js",
     "dist/index.umd.js",
-    "dist/index.d.ts"
+    "dist/index.d.ts",
+    "dist/fireworks.d.ts"
   ],
   "exports": {
     ".": {
