@@ -1,4 +1,5 @@
-import React from 'react' // React is not defined
+// React is not defined
+import React from 'react'
 import { CSSProperties, useState } from 'react'
 import { createRoot } from 'react-dom/client'
 import Fireworks from '@fireworks-js/react'

@@ -20,7 +20,7 @@ const Fireworks = ({ children, options, style }: FireworksProps) => {
       setFireworks(fireworksInstance)
     }
 
-    ; () => {
+    ;() => {
       if (fireworks) {
         fireworks.stop()
       }

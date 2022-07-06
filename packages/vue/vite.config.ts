@@ -8,7 +8,11 @@ import vue from '@vitejs/plugin-vue'
 const workdir = dirname(fileURLToPath(import.meta.url))
 
 export default defineConfig({
-  plugins: [vue(),  dts({ insertTypesEntry: true }), tsConfigPaths()],
+  plugins: [
+    vue(),
+    dts({ insertTypesEntry: true }),
+    tsConfigPaths()
+  ],
   build: {
     lib: {
       entry: resolve(workdir, 'src/index.ts'),
