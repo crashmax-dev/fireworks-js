@@ -1,6 +1,6 @@
-import { Fireworks as VanillaFireworks } from 'fireworks-js'
+import { Fireworks as FireworksJs } from 'fireworks-js'
 import type { FireworksOptions } from 'fireworks-js'
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef } from 'react'
 import type { CSSProperties } from 'react'
 
 type FireworksProps = {
@@ -10,26 +10,21 @@ type FireworksProps = {
 }
 
 const Fireworks = ({ children, options, style }: FireworksProps) => {
-  const [fireworks, setFireworks] = useState<VanillaFireworks | null>(null)
-  const ref = useRef<HTMLDivElement>(null)
+  const fireworks = useRef<FireworksJs | null>(null)
+  const container = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    if (!fireworks && ref.current) {
-      const fireworksInstance = new VanillaFireworks(ref.current, options)
-      fireworksInstance.start()
-      setFireworks(fireworksInstance)
-    }
+    fireworks.current = new FireworksJs(container.current!, options)
+    fireworks.current.start()
 
-    ;() => {
-      if (fireworks) {
-        fireworks.stop()
-      }
+    return () => {
+      fireworks.current!.stop()
     }
   }, [])
 
   return (
     <div
-      ref={ref}
+      ref={container}
       style={style}
     >
       {children}
