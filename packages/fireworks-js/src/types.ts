@@ -10,10 +10,9 @@ export interface FireworksOptions {
   particles?: number
   trace?: number
   explosion?: number
-  autoresize?: boolean
   mouse?: Mouse
   boundaries?: Boundaries
-  sound?: Sound
+  sound?: Sounds
   delay?: MinMaxValues
   brightness?: Brightness
   flickering?: number
@@ -41,7 +40,7 @@ export interface Boundaries {
   height?: number
 }
 
-export interface Sound {
+export interface Sounds {
   enabled?: boolean
   files?: string[]
   volume?: MinMaxValues

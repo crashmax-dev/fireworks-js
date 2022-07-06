@@ -1,5 +1,5 @@
 import { randomFloat, randomInt } from '@fireworks-js/helpers'
-import type { Sound } from './types.js'
+import type { Sounds } from './types.js'
 
 declare global {
   interface Window {
@@ -8,12 +8,12 @@ declare global {
 }
 
 export class Sound {
-  public options: Required<Sound>
+  public options: Required<Sounds>
   private _buffer: AudioBuffer[] = []
   private _audioContext: AudioContext
   private onInit = true
 
-  constructor(options: Sound | undefined) {
+  constructor(options: Sounds | undefined) {
     this.options = {
       enabled: false,
       files: [

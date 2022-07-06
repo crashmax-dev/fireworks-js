@@ -14,12 +14,11 @@ export default defineConfig({
     tsConfigPaths(),
     banner(
       `/**\n * name: ${name}` +
-      `\n * version: ${version}` +
-      `\n * author: ${author.name} (${author.url})` +
-      `\n * homepage: ${homepage}` +
-      `\n * license ${license}\n */`
-    )
-  ],
+        `\n * version: ${version}` +
+        `\n * author: ${author.name} (${author.url})` +
+        `\n * homepage: ${homepage}` +
+        `\n * license ${license}\n */`
+    )],
   define: {
     version: JSON.stringify(version)
   },
