@@ -1,0 +1,7 @@
+{
+  "recommendations": [
+    "vue.volar",
+    "svelte.svelte-vscode",
+    "esbenp.prettier-vscode"
+  ]
+}
