@@ -21,9 +21,6 @@ export default defineConfig({
         `\n * homepage: ${homepage}` +
         `\n * license ${license}\n */`
     )],
-  define: {
-    version: JSON.stringify(version)
-  },
   build: {
     lib: {
       entry: resolve(workdir, 'src/index.tsx'),

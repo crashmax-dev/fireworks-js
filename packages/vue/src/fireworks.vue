@@ -5,7 +5,7 @@
 <script lang="ts" setup>
 import { Fireworks } from 'fireworks-js'
 import type { FireworksOptions } from 'fireworks-js'
-import { onMounted, onUnmounted, PropType, ref } from 'vue'
+import { PropType, onMounted, onUnmounted, ref } from 'vue'
 
 const props = defineProps({
   options: {

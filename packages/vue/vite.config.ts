@@ -16,7 +16,8 @@ export default defineConfig({
         `\n * author: ${author.name} (${author.url})` +
         `\n * homepage: ${homepage}` +
         `\n * license ${license}\n */`
-    )],
+    )
+  ],
   build: {
     lib: {
       entry: resolve(workdir, 'src/index.ts'),

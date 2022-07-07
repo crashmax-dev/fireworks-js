@@ -49,7 +49,7 @@
     "prepublishOnly": "pnpm build"
   },
   "dependencies": {
-    "fireworks-js": "workspace:0.0.0-beta.6"
+    "fireworks-js": "workspace:0.0.0-beta.7"
   },
   "peerDependencies": {
     "vue": "^2.7.0"
