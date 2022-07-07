@@ -54,12 +54,6 @@
         "Description": "-"
     },
     {
-        "Name": "autoresize",
-        "Type": "<code>boolean</code>",
-        "Default": "<code>true</code>",
-        "Description": "-"
-    },
-    {
         "Name": "mouse",
         "Type": "<code>object</code>",
         "Default": "<code>{ click: false, move: false, max: 3 }</code>",

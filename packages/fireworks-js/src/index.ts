@@ -1,7 +1,7 @@
-import { Trace } from './trace.js'
-import { Sound } from './sound.js'
-import { Explosion } from './explosion.js'
 import { randomFloat, randomInt } from '@fireworks-js/helpers'
+import { Explosion } from './explosion.js'
+import { Sound } from './sound.js'
+import { Trace } from './trace.js'
 
 type HTMLContainer = Element | HTMLElement
 
@@ -17,7 +17,6 @@ export interface FireworksOptions {
   particles?: number
   trace?: number
   explosion?: number
-  autoresize?: boolean
   mouse?: MouseOptions
   boundaries?: BoundariesOptions
   sound?: SoundOptions
@@ -91,7 +90,6 @@ export class Fireworks {
   private flickering: number
   private intensity: number
   private explosion: number
-  private autoresize: boolean
   private boundaries: Required<BoundariesOptions>
   private mouse: Required<MouseOptions>
   private delay: MinMaxOptions
@@ -113,28 +111,30 @@ export class Fireworks {
   private _traces: Trace[]
   private _explosions: Explosion[]
 
-  constructor(container: HTMLContainer | HTMLCanvasElement, {
-    autoresize = true,
-    boundaries,
-    brightness,
-    delay,
-    hue,
-    mouse,
-    sound,
-    rocketsPoint,
-    lineWidth,
-    lineStyle = 'round',
-    flickering = 50,
-    trace = 3,
-    traceSpeed = 10,
-    intensity = 30,
-    explosion = 5,
-    gravity = 1.5,
-    opacity = 0.5,
-    particles = 50,
-    friction = 0.95,
-    acceleration = 1.05
-  }: FireworksOptions = {}) {
+  constructor(
+    container: HTMLContainer | HTMLCanvasElement,
+    {
+      boundaries,
+      brightness,
+      delay,
+      hue,
+      mouse,
+      sound,
+      rocketsPoint,
+      lineWidth,
+      lineStyle = 'round',
+      flickering = 50,
+      trace = 3,
+      traceSpeed = 10,
+      intensity = 30,
+      explosion = 5,
+      gravity = 1.5,
+      opacity = 0.5,
+      particles = 50,
+      friction = 0.95,
+      acceleration = 1.05
+    }: FireworksOptions = {}
+  ) {
     if (container instanceof HTMLCanvasElement) {
       this._container = container
       this._canvas = container
@@ -154,7 +154,6 @@ export class Fireworks {
       ...boundaries
     })
 
-    this.autoresize = autoresize
     this.trace = trace
     this.explosion = explosion
     this.gravity = gravity
@@ -213,22 +212,6 @@ export class Fireworks {
       },
       ...brightness
     }
-
-    if (this.autoresize) {
-      window.addEventListener('resize', () => this.windowResize())
-    }
-
-    this._canvas.addEventListener('mousedown', (event) => {
-      this.mouseDown(event)
-    })
-
-    this._canvas.addEventListener('mouseup', (event) => {
-      this.mouseUp(event)
-    })
-
-    this._canvas.addEventListener('mousemove', (event) => {
-      this.mouseMove(event)
-    })
   }
 
   get isRunning(): boolean {
@@ -241,24 +224,27 @@ export class Fireworks {
 
   start(): void {
     if (this._running) return
-
     this._running = true
+
+    window.addEventListener('resize', () => this.windowResize())
+    this._canvas.addEventListener('mousedown', (event) => this.mouseDown(event))
+    this._canvas.addEventListener('mouseup', (event) => this.mouseUp(event))
+    this._canvas.addEventListener('mousemove', (event) => this.mouseMove(event))
+
     this.clear()
     this.render()
   }
 
   stop(): void {
     if (!this._running) return
-
     this._running = false
-    this.clear()
-  }
 
-  unmount(): void {
     window.removeEventListener('resize', this.windowResize)
     this._canvas.removeEventListener('mousedown', this.mouseDown)
     this._canvas.removeEventListener('mouseup', this.mouseUp)
     this._canvas.removeEventListener('mousemove', this.mouseMove)
+
+    this.clear()
   }
 
   pause(): void {
@@ -300,8 +286,12 @@ export class Fireworks {
   }
 
   setSize({
-    width = this._container instanceof HTMLCanvasElement ? this._canvas.width : this._container.clientWidth,
-    height = this._container instanceof HTMLCanvasElement ? this._canvas.height : this._container.clientHeight
+    width = this._container instanceof HTMLCanvasElement
+      ? this._canvas.width
+      : this._container.clientWidth,
+    height = this._container instanceof HTMLCanvasElement
+      ? this._canvas.height
+      : this._container.clientHeight
   }: Partial<Sizes> = {}): void {
     this._width = width
     this._height = height
@@ -365,7 +355,7 @@ export class Fireworks {
 
     const timeDiff = timestamp - this._timestamp
     this._timestamp = timestamp
-    this._tick += timeDiff * (this.intensity * Math.PI) / 1000
+    this._tick += (timeDiff * (this.intensity * Math.PI)) / 1000
   }
 
   private drawBoundaries() {
@@ -387,19 +377,27 @@ export class Fireworks {
     this._ds = randomInt(this.delay.min, this.delay.max)
 
     if (
-      (this._tick > this._ds) ||
+      this._tick > this._ds ||
       (this._m && this.mouse.max > this._traces.length)
     ) {
       this._traces.push(
         new Trace({
-          x: this._width * (randomInt(this.rocketsPoint.min, this.rocketsPoint.max)) / 100,
+          x:
+            (this._width *
+              randomInt(this.rocketsPoint.min, this.rocketsPoint.max)) /
+            100,
           y: this._height,
-          dx: (this._mx && this.mouse.move) || this._m ?
-            this._mx :
-            randomInt(this.boundaries.x, this.boundaries.width - this.boundaries.x * 2),
-          dy: (this._my && this.mouse.move) || this._m ?
-            this._my :
-            randomInt(this.boundaries.y, this.boundaries.height * 0.5),
+          dx:
+            (this._mx && this.mouse.move) || this._m
+              ? this._mx
+              : randomInt(
+                  this.boundaries.x,
+                  this.boundaries.width - this.boundaries.x * 2
+                ),
+          dy:
+            (this._my && this.mouse.move) || this._m
+              ? this._my
+              : randomInt(this.boundaries.y, this.boundaries.height * 0.5),
           ctx: this._ctx,
           hue: randomInt(this.hue.min, this.hue.max),
           speed: this.traceSpeed,
@@ -414,7 +412,10 @@ export class Fireworks {
 
   private drawTrace(): void {
     let length = this._traces.length
-    this._ctx.lineWidth = randomFloat(this.lineWidth.trace.min, this.lineWidth.trace.max)
+    this._ctx.lineWidth = randomFloat(
+      this.lineWidth.trace.min,
+      this.lineWidth.trace.max
+    )
 
     while (length--) {
       this._traces[length]!.draw()
@@ -439,7 +440,10 @@ export class Fireworks {
           friction: this.friction,
           gravity: this.gravity,
           flickering: randomInt(0, 100) <= this.flickering,
-          lineWidth: randomFloat(this.lineWidth.explosion.min, this.lineWidth.explosion.max),
+          lineWidth: randomFloat(
+            this.lineWidth.explosion.min,
+            this.lineWidth.explosion.max
+          ),
           explosionLength: Math.round(this.explosion),
           brightness: this.brightness
         })
