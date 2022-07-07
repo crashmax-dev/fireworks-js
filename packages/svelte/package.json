@@ -1,7 +1,9 @@
 {
 	"name": "@fireworks-js/svelte",
-	"version": "0.0.0-beta.2",
+	"version": "0.0.0-beta.3",
 	"type": "module",
+	"description": "A simple fireworks library!",
+	"homepage": "https://fireworks.js.org",
 	"types": "./dist/index.d.ts",
 	"svelte": "./dist/index.js",
 	"files": [
@@ -9,6 +11,25 @@
 	],
 	"exports": {
 		".": "./dist/index.js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/crashmax-dev/fireworks-js.git"
+	},
+	"keywords": [
+		"svelte",
+		"canvas",
+		"fireworks",
+		"animation"
+	],
+	"author": {
+		"name": "Vitalij Ryndin",
+		"email": "sys@crashmax.ru",
+		"url": "https://crashmax.ru"
+	},
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/crashmax-dev/fireworks-js/issues"
 	},
 	"scripts": {
 		"dev": "vite dev",
@@ -21,5 +42,8 @@
 	},
 	"dependencies": {
 		"fireworks-js": "workspace:0.0.0-beta.8"
+	},
+	"peerDependencies": {
+		"svelte": "^3.x"
 	}
 }
