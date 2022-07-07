@@ -2,6 +2,7 @@
 	"name": "@fireworks-js/svelte",
 	"version": "0.0.0-beta.1",
 	"type": "module",
+	"types": "./package/index.d.ts",
 	"svelte": "./package/index.js",
 	"files": [
 		"package/index.js",
@@ -10,6 +11,7 @@
 		"package/fireworks.svelte"
 	],
 	"exports": {
+		"./package.json": "./package.json",
 		".": "./package/index.js"
 	},
 	"scripts": {
@@ -20,15 +22,6 @@
 		"check": "svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-check --tsconfig ./tsconfig.json --watch",
 		"prepublishOnly": "pnpm build"
-	},
-	"devDependencies": {
-		"@sveltejs/adapter-auto": "next",
-		"@sveltejs/kit": "next",
-		"svelte": "^3.44.0",
-		"svelte-check": "^2.7.1",
-		"svelte-preprocess": "^4.10.6",
-		"svelte2tsx": "^0.5.11",
-		"tslib": "^2.3.1"
 	},
 	"dependencies": {
 		"fireworks-js": "workspace:0.0.0-beta.8"

@@ -1,2 +1,4 @@
-export { default as Firewokrs } from './fireworks.svelte'
+import Fireworks from './fireworks.svelte'
+
+export { Fireworks }
 export type { FireworksOptions } from 'fireworks-js'
