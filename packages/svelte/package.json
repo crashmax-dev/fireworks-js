@@ -1,6 +1,6 @@
 {
 	"name": "@fireworks-js/svelte",
-	"version": "0.0.0-beta.1",
+	"version": "0.0.0-beta.2",
 	"type": "module",
 	"types": "./dist/index.d.ts",
 	"svelte": "./dist/index.js",
