@@ -1,11 +1,13 @@
-<div bind:this={container}></div>
-
 <script lang="ts">
   import { onMount, onDestroy } from 'svelte'
   import { Fireworks } from 'fireworks-js'
   import type { FireworksOptions } from 'fireworks-js'
 
-  export let options: FireworksOptions
+  let className = ''
+  export { className as class }
+  export let style: string = ''
+  export let options: FireworksOptions = {}
+
   let container: HTMLDivElement
   let fireworks: Fireworks
 
@@ -18,3 +20,7 @@
     fireworks.stop()
   })
 </script>
+
+<div bind:this={container} class={className} {style}>
+  <slot></slot>
+</div>

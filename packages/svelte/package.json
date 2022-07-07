@@ -2,21 +2,17 @@
 	"name": "@fireworks-js/svelte",
 	"version": "0.0.0-beta.1",
 	"type": "module",
-	"types": "./package/index.d.ts",
-	"svelte": "./package/index.js",
+	"types": "./dist/index.d.ts",
+	"svelte": "./dist/index.js",
 	"files": [
-		"package/index.js",
-		"package/index.d.ts",
-		"package/fireworks.svelte.d.ts",
-		"package/fireworks.svelte"
+		"dist"
 	],
 	"exports": {
-		"./package.json": "./package.json",
-		".": "./package/index.js"
+		".": "./dist/index.js"
 	},
 	"scripts": {
 		"dev": "vite dev",
-		"build": "svelte-kit package",
+		"build": "svelte-kit package && rm ./dist/package.json ./dist/README.md",
 		"preview": "vite preview",
 		"prepare": "svelte-kit sync",
 		"check": "svelte-check --tsconfig ./tsconfig.json",
