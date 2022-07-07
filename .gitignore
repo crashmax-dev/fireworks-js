@@ -1,4 +1,7 @@
 **/node_modules
 **/dist
+**/.svelte-kit
+**/package
 *.tgz
 *.log
+.DS_Store
