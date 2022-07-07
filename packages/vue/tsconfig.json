@@ -2,7 +2,8 @@
   "extends": "@crashmax/tsconfig",
   "compilerOptions": {
     "jsx": "preserve",
-    "moduleResolution": "node"
+    "moduleResolution": "node",
+    "outDir": "dist"
   },
   "include": [
     "src/**/*"

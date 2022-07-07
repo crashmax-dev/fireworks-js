@@ -43,7 +43,9 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "rm -rf dist && vite build && pnpm types",
+    "types": "vue-tsc --declaration --emitDeclarationOnly",
+    "preview": "vite preview",
     "prepublishOnly": "pnpm build"
   },
   "dependencies": {
