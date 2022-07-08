@@ -1,0 +1,15 @@
+{
+  "extends": "@crashmax/tsconfig",
+  "compilerOptions": {
+    "noImplicitOverride": false,
+    "useDefineForClassFields": false,
+    "moduleResolution": "node",
+    "jsx": "preserve",
+    "jsxFactory": "h",
+    "jsxFragmentFactory": "Fragment",
+    "outDir": "dist"
+  },
+  "include": [
+    "src/**/*"
+  ]
+}

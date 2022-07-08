@@ -44,6 +44,7 @@
   "devDependencies": {
     "@crashmax/prettier-config": "^1.1.1",
     "@crashmax/tsconfig": "^1.0.1",
+    "@preact/preset-vite": "^2.3.0",
     "@sveltejs/kit": "1.0.0-next.360",
     "@sveltejs/vite-plugin-svelte": "1.0.0-next.49",
     "@tsconfig/svelte": "^3.0.0",

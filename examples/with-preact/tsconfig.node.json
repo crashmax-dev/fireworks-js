@@ -1,9 +1,10 @@
 {
-  "extends": "@crashmax/tsconfig",
   "compilerOptions": {
+    "composite": true,
+    "module": "esnext",
     "moduleResolution": "node"
   },
   "include": [
-    "src/**/*"
+    "vite.config.ts"
   ]
 }

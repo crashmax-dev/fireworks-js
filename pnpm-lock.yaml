@@ -6,6 +6,7 @@ importers:
     specifiers:
       '@crashmax/prettier-config': ^1.1.1
       '@crashmax/tsconfig': ^1.0.1
+      '@preact/preset-vite': ^2.3.0
       '@sveltejs/kit': 1.0.0-next.360
       '@sveltejs/vite-plugin-svelte': 1.0.0-next.49
       '@tsconfig/svelte': ^3.0.0
@@ -33,6 +34,7 @@ importers:
     devDependencies:
       '@crashmax/prettier-config': 1.1.1_dxxkk2ww3a5bz4e7mvp7yp25cu
       '@crashmax/tsconfig': 1.0.1
+      '@preact/preset-vite': 2.3.0_owyj5gncrwxzcpyzipbw3bejn4
       '@sveltejs/kit': 1.0.0-next.360_svelte@3.49.0+vite@2.9.14
       '@sveltejs/vite-plugin-svelte': 1.0.0-next.49_svelte@3.49.0+vite@2.9.14
       '@tsconfig/svelte': 3.0.0
@@ -65,6 +67,21 @@ importers:
     dependencies:
       fireworks-js: link:../../packages/fireworks-js
     devDependencies:
+      vite: 2.9.14
+
+  examples/with-preact:
+    specifiers:
+      '@fireworks-js/preact': workspace:*
+      '@preact/preset-vite': ^2.3.0
+      preact: ^10.5.15
+      typescript: ^4.7.4
+      vite: ^2.9.14
+    dependencies:
+      '@fireworks-js/preact': link:../../packages/preact
+      preact: 10.9.0
+    devDependencies:
+      '@preact/preset-vite': 2.3.0_owyj5gncrwxzcpyzipbw3bejn4
+      typescript: 4.7.4
       vite: 2.9.14
 
   examples/with-react:
@@ -133,6 +150,15 @@ importers:
 
   packages/fireworks-js:
     specifiers: {}
+
+  packages/preact:
+    specifiers:
+      fireworks-js: workspace:0.0.0-beta.10
+      preact: ^10.5.15
+    dependencies:
+      fireworks-js: link:../fireworks-js
+    devDependencies:
+      preact: 10.9.0
 
   packages/react:
     specifiers:
@@ -642,6 +668,60 @@ packages:
     dependencies:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.13.0
+    dev: true
+
+  /@preact/preset-vite/2.3.0_owyj5gncrwxzcpyzipbw3bejn4:
+    resolution: {integrity: sha512-0kOuz7wdrQLqrPlyI/Ypw9IWDF2++GGcOHMRBYO5T2w2+dheelaBH+XrIN/okqdsGIflzFIFNyIGubo5BC8wbQ==}
+    peerDependencies:
+      '@babel/core': 7.x
+      vite: 2.x || 3.x
+    dependencies:
+      '@babel/core': 7.18.6
+      '@babel/plugin-transform-react-jsx': 7.18.6_@babel+core@7.18.6
+      '@babel/plugin-transform-react-jsx-development': 7.18.6_@babel+core@7.18.6
+      '@prefresh/vite': 2.2.8_preact@10.9.0+vite@2.9.14
+      '@rollup/pluginutils': 4.2.1
+      babel-plugin-transform-hook-names: 1.0.2_@babel+core@7.18.6
+      debug: 4.3.4
+      kolorist: 1.5.1
+      resolve: 1.22.1
+      vite: 2.9.14
+    transitivePeerDependencies:
+      - preact
+      - supports-color
+    dev: true
+
+  /@prefresh/babel-plugin/0.4.3:
+    resolution: {integrity: sha512-fYAWbU1WDSLn108kKY4eDaaeUcnszFqXjgaGKYXNZ5NLulpRTpsrY+Sbfo9q8LDpWrBpqIgzjrwNnvglWI1xNQ==}
+    dev: true
+
+  /@prefresh/core/1.3.4_preact@10.9.0:
+    resolution: {integrity: sha512-s7iNsnyJ3lZEUrYIgmVIB/hKtp4U6mdD91a31Zg7Q8M49O0x2KThrbrMQYraoDDrs4STdFB8Zv6bceUguOoX1A==}
+    peerDependencies:
+      preact: ^10.0.0
+    dependencies:
+      preact: 10.9.0
+    dev: true
+
+  /@prefresh/utils/1.1.3:
+    resolution: {integrity: sha512-Mb9abhJTOV4yCfkXrMrcgFiFT7MfNOw8sDa+XyZBdq/Ai2p4Zyxqsb3EgHLOEdHpMj6J9aiZ54W8H6FTam1u+A==}
+    dev: true
+
+  /@prefresh/vite/2.2.8_preact@10.9.0+vite@2.9.14:
+    resolution: {integrity: sha512-yGGa+PKPYPTzMlxgQ8aBgxw9K69I8X4iQ0E6KOcIvls96WKqKLLOYZW9SUgCve446jpUXvc9udviPBZjCeZIIQ==}
+    peerDependencies:
+      preact: ^10.4.0
+      vite: '>=2.0.0-beta.3'
+    dependencies:
+      '@babel/core': 7.18.6
+      '@prefresh/babel-plugin': 0.4.3
+      '@prefresh/core': 1.3.4_preact@10.9.0
+      '@prefresh/utils': 1.1.3
+      '@rollup/pluginutils': 4.2.1
+      preact: 10.9.0
+      vite: 2.9.14
+    transitivePeerDependencies:
+      - supports-color
     dev: true
 
   /@rollup/pluginutils/4.2.1:
@@ -1204,6 +1284,14 @@ packages:
       yargs: 17.5.1
     transitivePeerDependencies:
       - supports-color
+    dev: true
+
+  /babel-plugin-transform-hook-names/1.0.2_@babel+core@7.18.6:
+    resolution: {integrity: sha512-5gafyjyyBTTdX/tQQ0hRgu4AhNHG/hqWi0ZZmg2xvs2FgRkJXzDNKBZCyoYqgFkovfDrgM8OoKg8karoUvWeCw==}
+    peerDependencies:
+      '@babel/core': ^7.12.10
+    dependencies:
+      '@babel/core': 7.18.6
     dev: true
 
   /balanced-match/1.0.2:
@@ -2178,6 +2266,10 @@ packages:
     engines: {node: '>=6'}
     dev: true
 
+  /kolorist/1.5.1:
+    resolution: {integrity: sha512-lxpCM3HTvquGxKGzHeknB/sUjuVoUElLlfYnXZT73K8geR9jQbroGlSCFBax9/0mpGoD3kzcMLnOlGQPJJNyqQ==}
+    dev: true
+
   /load-json-file/7.0.1:
     resolution: {integrity: sha512-Gnxj3ev3mB5TkVBGad0JM6dmLiQL+o0t23JPBZ9sd+yvSLk05mFoqKBw5N8gbbkU4TNXyqCgIrl/VM17OgUIgQ==}
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
@@ -2486,6 +2578,9 @@ packages:
       picocolors: 1.0.0
       source-map-js: 1.0.2
     dev: true
+
+  /preact/10.9.0:
+    resolution: {integrity: sha512-jO6/OvCRL+OT8gst/+Q2ir7dMybZAX8ioP02Zmzh3BkQMHLyqZSujvxbUriXvHi8qmhcHKC2Gwbog6Kt+YTh+Q==}
 
   /prettier-plugin-multiline-arrays/1.1.0:
     resolution: {integrity: sha512-Pp5JCJGXj2pBxR9o0bLNSxbHd0qOjgzTCXn9oD8Wkevgz/KnXJA6JVzt28OgXznzOgPhCCXlUqEqmEkGVCPBUw==}
