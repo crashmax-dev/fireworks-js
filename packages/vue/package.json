@@ -1,6 +1,6 @@
 {
   "name": "@fireworks-js/vue",
-  "version": "0.0.0-beta.3",
+  "version": "0.0.0-beta.4",
   "type": "module",
   "description": "A simple fireworks library!",
   "homepage": "https://fireworks.js.org",
@@ -8,18 +8,12 @@
   "module": "./dist/index.es.js",
   "main": "./dist/index.umd.js",
   "files": [
-    "dist/index.es.js",
-    "dist/index.cjs.js",
-    "dist/index.umd.js",
-    "dist/index.d.ts",
-    "dist/fireworks.vue.d.ts"
+    "dist"
   ],
   "exports": {
     ".": {
       "import": "./dist/index.es.js",
-      "require": "./dist/index.cjs.js",
-      "umd": "./dist/index.umd.js",
-      "types": "./dist/index.d.ts"
+      "require": "./dist/index.cjs.js"
     }
   },
   "repository": {

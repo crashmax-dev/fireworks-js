@@ -2,85 +2,30 @@ import { randomFloat, randomInt } from '@fireworks-js/helpers'
 import { Explosion } from './explosion.js'
 import { Sound } from './sound.js'
 import { Trace } from './trace.js'
-
-type HTMLContainer = Element | HTMLElement
-
-type LineStyle = 'round' | 'square'
-
-export interface FireworksOptions {
-  hue?: MinMaxOptions
-  rocketsPoint?: MinMaxOptions
-  opacity?: number
-  acceleration?: number
-  friction?: number
-  gravity?: number
-  particles?: number
-  trace?: number
-  explosion?: number
-  mouse?: MouseOptions
-  boundaries?: BoundariesOptions
-  sound?: SoundOptions
-  delay?: MinMaxOptions
-  brightness?: BrightnessOptions
-  flickering?: number
-  intensity?: number
-  traceSpeed?: number
-  lineWidth?: LineWidthOptions
-  lineStyle?: LineStyle
-}
-
-export interface BrightnessOptions extends MinMaxOptions {
-  decay?: MinMaxOptions
-}
-
-export interface MouseOptions {
-  click?: boolean
-  move?: boolean
-  max?: number
-}
-
-export interface BoundariesOptions {
-  visible?: boolean
-  x?: number
-  y?: number
-  width?: number
-  height?: number
-}
-
-export interface SoundOptions {
-  enabled?: boolean
-  files?: string[]
-  volume?: MinMaxOptions
-}
-
-interface MinMaxOptions {
-  min: number
-  max: number
-}
-
-interface Sizes {
-  width?: number
-  height?: number
-}
-
-interface LineWidthOptions {
-  explosion: MinMaxOptions
-  trace: MinMaxOptions
-}
+import {
+  Boundaries,
+  Brightness,
+  FireworksOptions,
+  LineStyle,
+  LineWidth,
+  MinMaxValues,
+  Mouse,
+  Sizes
+} from './types.js'
 
 declare const version: string
 
-export class Fireworks {
+class Fireworks {
   [key: string]: unknown
 
-  private _container: HTMLContainer
+  private _container: Element
   private _canvas: HTMLCanvasElement
   private _ctx: CanvasRenderingContext2D
   private _width: number
   private _height: number
 
-  private hue: MinMaxOptions
-  private rocketsPoint: MinMaxOptions
+  private hue: MinMaxValues
+  private rocketsPoint: MinMaxValues
   private opacity: number
   private acceleration: number
   private friction: number
@@ -90,12 +35,12 @@ export class Fireworks {
   private flickering: number
   private intensity: number
   private explosion: number
-  private boundaries: Required<BoundariesOptions>
-  private mouse: Required<MouseOptions>
-  private delay: MinMaxOptions
-  private brightness: Required<BrightnessOptions>
+  private boundaries: Required<Boundaries>
+  private mouse: Required<Mouse>
+  private delay: MinMaxValues
+  private brightness: Required<Brightness>
   private traceSpeed: number
-  private lineWidth: LineWidthOptions
+  private lineWidth: LineWidth
   private lineStyle: LineStyle
 
   private _tick = 0
@@ -112,7 +57,7 @@ export class Fireworks {
   private _explosions: Explosion[]
 
   constructor(
-    container: HTMLContainer | HTMLCanvasElement,
+    container: Element | HTMLCanvasElement,
     {
       boundaries,
       brightness,
@@ -305,7 +250,7 @@ export class Fireworks {
     })
   }
 
-  setBoundaries(boundaries: Partial<BoundariesOptions>): void {
+  setBoundaries(boundaries: Partial<Boundaries>): void {
     this.boundaries = {
       ...this.boundaries,
       ...boundaries
@@ -462,3 +407,7 @@ export class Fireworks {
     }
   }
 }
+
+export { Fireworks }
+export type { FireworksOptions }
+export default Fireworks
