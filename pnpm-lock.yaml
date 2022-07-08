@@ -61,8 +61,23 @@ importers:
   examples/with-react:
     specifiers:
       '@fireworks-js/react': workspace:*
+      '@types/react': ^18.0.0
+      '@types/react-dom': ^18.0.0
+      '@vitejs/plugin-react': ^1.3.0
+      react: ^18.0.0
+      react-dom: ^18.0.0
+      typescript: ^4.6.3
+      vite: ^2.9.9
     dependencies:
       '@fireworks-js/react': link:../../packages/react
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+    devDependencies:
+      '@types/react': 18.0.15
+      '@types/react-dom': 18.0.6
+      '@vitejs/plugin-react': 1.3.2
+      typescript: 4.7.4
+      vite: 2.9.14
 
   examples/with-svelte:
     specifiers:
@@ -83,29 +98,23 @@ importers:
       '@fireworks-js/vue': link:../../packages/vue
 
   packages/fireworks-js:
-    specifiers:
-      '@fireworks-js/helpers': workspace:0.0.0-beta.2
-    dependencies:
-      '@fireworks-js/helpers': link:../helpers
-
-  packages/helpers:
     specifiers: {}
 
   packages/react:
     specifiers:
-      fireworks-js: workspace:0.0.0-beta.8
+      fireworks-js: workspace:0.0.0-beta.10
     dependencies:
       fireworks-js: link:../fireworks-js
 
   packages/svelte:
     specifiers:
-      fireworks-js: workspace:0.0.0-beta.8
+      fireworks-js: workspace:0.0.0-beta.10
     dependencies:
       fireworks-js: link:../fireworks-js
 
   packages/vue:
     specifiers:
-      fireworks-js: workspace:0.0.0-beta.8
+      fireworks-js: workspace:0.0.0-beta.10
     dependencies:
       fireworks-js: link:../fireworks-js
 
@@ -148,14 +157,14 @@ packages:
     engines: {node: '>=6.9.0'}
     dependencies:
       '@babel/code-frame': 7.18.6
-      '@babel/generator': 7.13.9
+      '@babel/generator': 7.18.7
       '@babel/helper-compilation-targets': 7.18.6_@babel+core@7.13.10
       '@babel/helper-module-transforms': 7.18.8
       '@babel/helpers': 7.18.6
-      '@babel/parser': 7.14.6
+      '@babel/parser': 7.18.8
       '@babel/template': 7.18.6
-      '@babel/traverse': 7.13.0
-      '@babel/types': 7.13.0
+      '@babel/traverse': 7.18.8
+      '@babel/types': 7.18.8
       convert-source-map: 1.8.0
       debug: 4.3.4
       gensync: 1.0.0-beta.2
@@ -193,7 +202,7 @@ packages:
   /@babel/generator/7.13.9:
     resolution: {integrity: sha512-mHOOmY0Axl/JCTkxTU6Lf5sWOg/v8nUa+Xkt4zMTftX0wqmb6Sh7J8gvcehBw7q0AhrhAR+FDacKjCZ2X8K+Sw==}
     dependencies:
-      '@babel/types': 7.13.0
+      '@babel/types': 7.18.8
       jsesc: 2.5.2
       source-map: 0.5.7
     dev: true
@@ -337,7 +346,7 @@ packages:
     engines: {node: '>=6.0.0'}
     hasBin: true
     dependencies:
-      '@babel/types': 7.13.0
+      '@babel/types': 7.18.8
     dev: true
 
   /@babel/parser/7.18.8:
@@ -415,11 +424,11 @@ packages:
     resolution: {integrity: sha512-xys5xi5JEhzC3RzEmSGrs/b3pJW/o87SypZ+G/PhaE7uqVQNv/jlmVIBXuoh5atqQ434LfXV+sf23Oxj0bchJQ==}
     dependencies:
       '@babel/code-frame': 7.18.6
-      '@babel/generator': 7.13.9
+      '@babel/generator': 7.18.7
       '@babel/helper-function-name': 7.18.6
       '@babel/helper-split-export-declaration': 7.18.6
-      '@babel/parser': 7.14.6
-      '@babel/types': 7.13.0
+      '@babel/parser': 7.18.8
+      '@babel/types': 7.18.8
       debug: 4.3.4
       globals: 11.12.0
       lodash: 4.17.21
@@ -2091,7 +2100,6 @@ packages:
 
   /js-tokens/4.0.0:
     resolution: {integrity: sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ==}
-    dev: true
 
   /js-yaml/3.14.1:
     resolution: {integrity: sha512-okMH7OXXJ7YrN9Ok3/SXrnu4iX9yOk+25nqX4imS2npuvTYDmo/QEZoqwZkYaIDk3jVvBOTOIEgEhaLOynBS9g==}
@@ -2165,7 +2173,6 @@ packages:
     hasBin: true
     dependencies:
       js-tokens: 4.0.0
-    dev: true
 
   /lower-case/2.0.2:
     resolution: {integrity: sha512-7fm3l3NAF9WfN6W3JOmf5drwpVqX78JtoGJ3A6W0a6ZnldM41w2fV5D490psKFTpMds8TJse/eHLFFsNHHjHgg==}
@@ -2501,7 +2508,6 @@ packages:
       loose-envify: 1.4.0
       react: 18.2.0
       scheduler: 0.23.0
-    dev: true
 
   /react-refresh/0.13.0:
     resolution: {integrity: sha512-XP8A9BT0CpRBD+NYLLeIhld/RqG9+gktUjW1FkE+Vm7OCinbG1SshcK5tb9ls4kzvjZr9mOQc7HYgBngEyPAXg==}
@@ -2513,7 +2519,6 @@ packages:
     engines: {node: '>=0.10.0'}
     dependencies:
       loose-envify: 1.4.0
-    dev: true
 
   /readdirp/3.6.0:
     resolution: {integrity: sha512-hOS089on8RduqdbhvQ5Z37A0ESjsqz6qnRcffsMU3495FuTdqSm+7bhJ29JvIOsBDEEnan5DPu9t3To9VRlMzA==}
@@ -2632,7 +2637,6 @@ packages:
     resolution: {integrity: sha512-CtuThmgHNg7zIZWAXi3AsyIzA3n4xx7aNyjwC2VJldO2LMVDhFK+63xGqq6CsJH4rTAt6/M+N4GhZiDYPx9eUw==}
     dependencies:
       loose-envify: 1.4.0
-    dev: true
 
   /semver/6.3.0:
     resolution: {integrity: sha512-b39TBaTSfV6yBrapU89p5fKekE2m/NwnDocOVruQFS1/veMgdzuPcnOM34M6CwxW8jH/lxEa5rBoDeUwu5HHTw==}
