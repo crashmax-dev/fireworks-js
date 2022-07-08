@@ -1,5 +1,5 @@
 {
-  "name": "with-react",
+  "name": "with-ts",
   "private": true,
   "version": "0.0.0",
   "scripts": {
@@ -8,14 +8,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@fireworks-js/react": "workspace:*",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "fireworks-js": "workspace:*"
   },
   "devDependencies": {
-    "@types/react": "^18.0.15",
-    "@types/react-dom": "^18.0.6",
-    "@vitejs/plugin-react": "^1.3.2",
     "typescript": "^4.7.4",
     "vite": "^2.9.9"
   }
