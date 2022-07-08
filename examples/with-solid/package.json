@@ -1,0 +1,19 @@
+{
+  "name": "with-solid",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "typescript": "^4.7.4",
+    "vite": "^2.9.14",
+    "vite-plugin-solid": "^2.2.6"
+  },
+  "dependencies": {
+    "@fireworks-js/solid": "workspace:*",
+    "solid-js": "^1.4.7"
+  }
+}
