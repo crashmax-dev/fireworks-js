@@ -1,9 +1,7 @@
-import React from 'react'
 import { useState } from 'react'
-import { createRoot } from 'react-dom/client'
-import Fireworks from '@fireworks-js/react'
+import { Fireworks } from '@fireworks-js/react'
 
-function App() {
+export function App() {
   const [enabled, setEnabled] = useState(true)
 
   return (
@@ -30,7 +28,3 @@ function App() {
     </>
   )
 }
-
-const app = document.querySelector('#app')!
-const root = createRoot(app)
-root.render(<App />)
