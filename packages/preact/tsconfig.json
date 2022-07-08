@@ -7,7 +7,10 @@
     "jsx": "preserve",
     "jsxFactory": "h",
     "jsxFragmentFactory": "Fragment",
-    "outDir": "dist"
+    "outDir": "dist",
+    "types": [
+      "vite/client"
+    ]
   },
   "include": [
     "src/**/*"

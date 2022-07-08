@@ -1,7 +1,10 @@
 {
   "extends": "@crashmax/tsconfig",
   "compilerOptions": {
-    "moduleResolution": "node"
+    "moduleResolution": "node",
+    "types": [
+      "vite/client"
+    ]
   },
   "include": [
     "src/**/*"
