@@ -1,4 +1,4 @@
-import { hsla, randomFloat, randomInt } from '@fireworks-js/helpers'
+import { hsla, randomFloat, randomInt } from './helpers.js'
 import type { Brightness } from './types.js'
 
 interface ExplosionOptions {

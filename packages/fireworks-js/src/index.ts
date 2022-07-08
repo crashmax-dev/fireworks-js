@@ -1,5 +1,5 @@
-import { randomFloat, randomInt } from '@fireworks-js/helpers'
 import { Explosion } from './explosion.js'
+import { randomFloat, randomInt } from './helpers.js'
 import { Sound } from './sound.js'
 import { Trace } from './trace.js'
 import {

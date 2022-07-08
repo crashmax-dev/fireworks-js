@@ -1,4 +1,4 @@
-import { getDistance, hsla, randomInt } from '@fireworks-js/helpers'
+import { getDistance, hsla, randomInt } from './helpers.js'
 
 interface TraceOptions {
   x: number

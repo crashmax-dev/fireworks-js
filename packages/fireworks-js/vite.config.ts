@@ -34,12 +34,8 @@ export default defineConfig({
       fileName: (format) => `index.${format}.js`
     },
     rollupOptions: {
-      external: ['@fireworks-js/helpers'],
       output: {
-        exports: 'named',
-        globals: {
-          '@fireworks-js/helpers': 'FireworksHelpers'
-        }
+        exports: 'named'
       }
     }
   }

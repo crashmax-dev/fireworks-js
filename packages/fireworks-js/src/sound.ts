@@ -1,4 +1,4 @@
-import { randomFloat, randomInt } from '@fireworks-js/helpers'
+import { randomFloat, randomInt } from './helpers.js'
 import type { Sounds } from './types.js'
 
 declare global {

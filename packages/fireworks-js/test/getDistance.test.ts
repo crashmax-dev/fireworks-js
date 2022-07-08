@@ -1,5 +1,5 @@
 import test from 'ava'
-import { getDistance } from '../src/index.js'
+import { getDistance } from '../src/helpers.js'
 
 test('getDistance', (t) => {
   t.is(getDistance(10, 10, 10, 10), 0)

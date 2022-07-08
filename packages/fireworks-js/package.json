@@ -1,6 +1,6 @@
 {
   "name": "fireworks-js",
-  "version": "0.0.0-beta.9",
+  "version": "0.0.0-beta.10",
   "type": "module",
   "description": "A simple fireworks library!",
   "homepage": "https://fireworks.js.org",
@@ -43,8 +43,5 @@
     "build": "vite build",
     "preview": "vite priview",
     "prepublishOnly": "pnpm build"
-  },
-  "dependencies": {
-    "@fireworks-js/helpers": "workspace:0.0.0-beta.2"
   }
 }

@@ -1,5 +1,5 @@
 import test from 'ava'
-import { hsla } from '../src/index.js'
+import { hsla } from '../src/helpers.js'
 
 test('hsla', (t) => {
   t.is(hsla(1, 0, 0), 'hsla(1, 100%, 0%, 0)')
