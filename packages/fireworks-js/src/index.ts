@@ -42,6 +42,7 @@ class Fireworks {
   private traceSpeed: number
   private lineWidth: LineWidth
   private lineStyle: LineStyle
+  private autoresize: boolean
 
   private _tick = 0
   private _timestamp = performance.now()
@@ -67,6 +68,7 @@ class Fireworks {
       sound,
       rocketsPoint,
       lineWidth,
+      autoresize = true,
       lineStyle = 'round',
       flickering = 50,
       trace = 3,
@@ -110,6 +112,7 @@ class Fireworks {
     this.intensity = intensity
     this.traceSpeed = traceSpeed
     this.lineStyle = lineStyle
+    this.autoresize = autoresize
 
     this.hue = {
       min: 0,
@@ -171,7 +174,9 @@ class Fireworks {
     if (this._running) return
     this._running = true
 
-    window.addEventListener('resize', () => this.windowResize())
+    if (this.autoresize) {
+      window.addEventListener('resize', () => this.windowResize())
+    }
     this._canvas.addEventListener('mousedown', (event) => this.mouseDown(event))
     this._canvas.addEventListener('mouseup', (event) => this.mouseUp(event))
     this._canvas.addEventListener('mousemove', (event) => this.mouseMove(event))
@@ -184,7 +189,9 @@ class Fireworks {
     if (!this._running) return
     this._running = false
 
-    window.removeEventListener('resize', this.windowResize)
+    if (this.autoresize) {
+      window.removeEventListener('resize', this.windowResize)
+    }
     this._canvas.removeEventListener('mousedown', this.mouseDown)
     this._canvas.removeEventListener('mouseup', this.mouseUp)
     this._canvas.removeEventListener('mousemove', this.mouseMove)

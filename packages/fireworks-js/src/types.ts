@@ -20,6 +20,7 @@ export interface FireworksOptions {
   traceSpeed?: number
   lineWidth?: LineWidth
   lineStyle?: LineStyle
+  autoresize?: boolean
 }
 
 export interface Brightness extends MinMaxValues {
