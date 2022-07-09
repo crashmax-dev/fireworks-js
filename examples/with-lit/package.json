@@ -1,0 +1,17 @@
+{
+  "name": "with-lit",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build && tsc",
+    "serve": "vite preview"
+  },
+  "devDependencies": {
+    "typescript": "^4.7.4"
+  },
+  "dependencies": {
+    "@fireworks-js/lit": "workspace:*",
+    "lit": "^2.2.7"
+  }
+}
