@@ -10,8 +10,8 @@ type FireworksProps = {
 }
 
 const Fireworks = ({ children, options, style }: FireworksProps) => {
-  const fireworks = useRef<FireworksJs | null>(null)
   const container = useRef<HTMLDivElement>(null)
+  const fireworks = useRef<FireworksJs | null>(null)
 
   useEffect(() => {
     fireworks.current = new FireworksJs(container.current!, options)

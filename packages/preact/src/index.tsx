@@ -9,8 +9,8 @@ type FireworksProps = {
 }
 
 const Fireworks: React.FC<FireworksProps> = ({ options, style, children }) => {
-  const fireworks = useRef<FireworksJs | null>(null)
   const container = useRef<HTMLDivElement>(null)
+  const fireworks = useRef<FireworksJs | null>(null)
 
   useEffect(() => {
     fireworks.current = new FireworksJs(container.current!, options)
@@ -32,5 +32,5 @@ const Fireworks: React.FC<FireworksProps> = ({ options, style, children }) => {
 }
 
 export { Fireworks }
-export type { FireworksOptions } from 'fireworks-js'
+export type { FireworksOptions }
 export default Fireworks
