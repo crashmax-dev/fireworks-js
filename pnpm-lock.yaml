@@ -75,6 +75,17 @@ importers:
     devDependencies:
       vite: 2.9.14
 
+  examples/with-lit:
+    specifiers:
+      '@fireworks-js/lit': workspace:*
+      lit: ^2.2.7
+      typescript: ^4.7.4
+    dependencies:
+      '@fireworks-js/lit': link:../../packages/lit
+      lit: 2.2.7
+    devDependencies:
+      typescript: 4.7.4
+
   examples/with-preact:
     specifiers:
       '@fireworks-js/preact': workspace:*
@@ -171,6 +182,14 @@ importers:
 
   packages/fireworks-js:
     specifiers: {}
+
+  packages/lit:
+    specifiers:
+      fireworks-js: workspace:0.0.0-beta.10
+      lit: ^2.2.7
+    dependencies:
+      fireworks-js: link:../fireworks-js
+      lit: 2.2.7
 
   packages/preact:
     specifiers:
@@ -726,6 +745,10 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.14
     dev: true
 
+  /@lit/reactive-element/1.3.3:
+    resolution: {integrity: sha512-ukelZ49tzUqgOAEbVujl/U62JNK3wdn5kKtXVqrjKND4QvHACZOMOYaZI6/5Jd8vsg+Fq9HDwiib70FBLydOiQ==}
+    dev: false
+
   /@microsoft/api-extractor-model/7.21.0:
     resolution: {integrity: sha512-NN4mXzoQWTuzznIcnLWeV6tGyn6Os9frDK6M/mmTXZ73vUYOvSWoKQ5SYzyzP7HF3YtvTmr1Rs+DsBb0HRx7WQ==}
     dependencies:
@@ -1004,6 +1027,10 @@ packages:
   /@types/scheduler/0.16.2:
     resolution: {integrity: sha512-hppQEBDmlwhFAXKJX2KnWLYu5yMfi91yazPb2l+lbJiwW+wdo1gNeRA+3RgNSO39WYX2euey41KEwnqesU2Jew==}
     dev: true
+
+  /@types/trusted-types/2.0.2:
+    resolution: {integrity: sha512-F5DIZ36YVLE+PN+Zwws4kJogq47hNgX3Nx6WyDJ3kcplxyke3XIzB8uK5n/Lpm1HBsbGzd6nmGehL8cPekP+Tg==}
+    dev: false
 
   /@vitejs/plugin-react/1.3.2:
     resolution: {integrity: sha512-aurBNmMo0kz1O4qRoY+FM4epSA39y3ShWGuqfLRA/3z0oEJAdtoSfgA3aO98/PCCHAqMaduLxIxErWrVKIFzXA==}
@@ -2451,6 +2478,27 @@ packages:
   /kolorist/1.5.1:
     resolution: {integrity: sha512-lxpCM3HTvquGxKGzHeknB/sUjuVoUElLlfYnXZT73K8geR9jQbroGlSCFBax9/0mpGoD3kzcMLnOlGQPJJNyqQ==}
     dev: true
+
+  /lit-element/3.2.1:
+    resolution: {integrity: sha512-2PxyE9Yq9Jyo/YBK2anycaHcqo93YvB5D+24JxloPVqryW/BOXekne+jGsm0Ke3E5E2v7CDgkmpEmCAzYfrHCQ==}
+    dependencies:
+      '@lit/reactive-element': 1.3.3
+      lit-html: 2.2.6
+    dev: false
+
+  /lit-html/2.2.6:
+    resolution: {integrity: sha512-xOKsPmq/RAKJ6dUeOxhmOYFjcjf0Q7aSdfBJgdJkOfCUnkmmJPxNrlZpRBeVe1Gg50oYWMlgm6ccAE/SpJgSdw==}
+    dependencies:
+      '@types/trusted-types': 2.0.2
+    dev: false
+
+  /lit/2.2.7:
+    resolution: {integrity: sha512-WXYujlKFwme5ZqXOZoWuRVZQAwy7scbcVT3wCbAOHefOxyscqjywWGlF2e6nnC9E64yP9l2ZQlN8wZcRlrjUMQ==}
+    dependencies:
+      '@lit/reactive-element': 1.3.3
+      lit-element: 3.2.1
+      lit-html: 2.2.6
+    dev: false
 
   /load-json-file/7.0.1:
     resolution: {integrity: sha512-Gnxj3ev3mB5TkVBGad0JM6dmLiQL+o0t23JPBZ9sd+yvSLk05mFoqKBw5N8gbbkU4TNXyqCgIrl/VM17OgUIgQ==}
