@@ -6,7 +6,8 @@
   "homepage": "https://fireworks.js.org",
   "types": "./dist/index.d.ts",
   "module": "./dist/index.es.js",
-  "main": "./dist/index.umd.js",
+  "main": "./dist/index.cjs.js",
+  "main:umd": "./dist/index.umd.js",
   "files": [
     "dist/index.es.js",
     "dist/index.cjs.js",
@@ -17,7 +18,8 @@
   "exports": {
     ".": {
       "import": "./dist/index.es.js",
-      "require": "./dist/index.cjs.js"
+      "require": "./dist/index.cjs.js",
+      "default": "./dist/index.es.js"
     }
   },
   "repository": {

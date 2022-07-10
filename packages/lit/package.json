@@ -34,7 +34,7 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "rm -rf dist && vite build && tsc",
+    "build": "del-cli dist && vite build && tsc",
     "serve": "vite preview",
     "prepublishOnly": "pnpm build"
   },

@@ -33,7 +33,7 @@
 	},
 	"scripts": {
 		"dev": "vite dev",
-		"build": "svelte-kit package && rm ./dist/package.json ./dist/README.md",
+		"build": "svelte-kit package && del-cli ./dist/package.json ./dist/README.md",
 		"preview": "vite preview",
 		"prepare": "svelte-kit sync",
 		"check": "svelte-check --tsconfig ./tsconfig.json",
