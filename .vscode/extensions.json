@@ -1,6 +1,7 @@
 {
   "recommendations": [
     "vue.volar",
+    "angular.ng-template",
     "svelte.svelte-vscode",
     "esbenp.prettier-vscode"
   ]

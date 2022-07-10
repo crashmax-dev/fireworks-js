@@ -1,7 +1,9 @@
 **/node_modules
 **/dist
 **/.svelte-kit
+**/.angular
 **/package
 *.tgz
 *.log
 .DS_Store
+Thumbs.db

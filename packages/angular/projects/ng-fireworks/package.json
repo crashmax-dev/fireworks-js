@@ -1,0 +1,33 @@
+{
+  "name": "@fireworks-js/angular",
+  "version": "0.0.0-beta.0",
+  "description": "A simple fireworks library!",
+  "homepage": "https://fireworks.js.org",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/crashmax-dev/fireworks-js.git"
+  },
+  "keywords": [
+    "angular",
+    "canvas",
+    "fireworks",
+    "animation"
+  ],
+  "author": {
+    "name": "Vitalij Ryndin",
+    "email": "sys@crashmax.ru",
+    "url": "https://crashmax.ru"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/crashmax-dev/fireworks-js/issues"
+  },
+  "peerDependencies": {
+    "@angular/common": "^14.0.0",
+    "@angular/core": "^14.0.0"
+  },
+  "dependencies": {
+    "fireworks-js": "workspace:0.0.0-beta.11",
+    "tslib": "^2.3.0"
+  }
+}

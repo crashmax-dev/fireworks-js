@@ -1,0 +1,48 @@
+{
+  "name": "@fireworks-js/angular",
+  "version": "0.0.0",
+  "typings": "./dist/ng-fireworks/index.d.ts",
+  "exports": {
+    "./package.json": {
+      "default": "./dist/ng-fireworks/package.json"
+    },
+    ".": {
+      "types": "./dist/ng-fireworks/index.d.ts",
+      "esm2020": "./dist/ng-fireworks/esm2020/fireworks-js-angular.mjs",
+      "es2020": "./dist/ng-fireworks/fesm2020/fireworks-js-angular.mjs",
+      "es2015": "./dist/ng-fireworks/fesm2015/fireworks-js-angular.mjs",
+      "node": "./dist/ng-fireworks/fesm2015/fireworks-js-angular.mjs",
+      "default": "./dist/ng-fireworks/fesm2020/fireworks-js-angular.mjs"
+    }
+  },
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build",
+    "watch": "ng build --watch --configuration development"
+  },
+  "private": true,
+  "dependencies": {
+    "@angular/animations": "^14.0.0",
+    "@angular/common": "^14.0.0",
+    "@angular/compiler": "^14.0.0",
+    "@angular/core": "^14.0.0",
+    "@angular/forms": "^14.0.0",
+    "@angular/platform-browser": "^14.0.0",
+    "@angular/platform-browser-dynamic": "^14.0.0",
+    "@angular/router": "^14.0.0",
+    "fireworks-js": "workspace:0.0.0-beta.11",
+    "rxjs": "~7.5.0",
+    "tslib": "^2.3.0",
+    "zone.js": "~0.11.4"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "^14.0.5",
+    "@angular/cli": "~14.0.5",
+    "@angular/compiler-cli": "^14.0.0",
+    "@types/jasmine": "~4.0.0",
+    "jasmine-core": "~4.1.0",
+    "ng-packagr": "^14.0.0",
+    "typescript": "~4.7.2"
+  }
+}

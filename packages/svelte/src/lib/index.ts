@@ -1,5 +1,5 @@
-import { default as Fireworks } from './fireworks.svelte'
 import type { FireworksOptions } from 'fireworks-js'
+import { default as Fireworks } from './fireworks.svelte'
 
 export { Fireworks }
 export type { FireworksOptions }
