@@ -1,6 +1,6 @@
 {
   "name": "@fireworks-js/angular",
-  "version": "0.0.0",
+  "version": "0.0.0-beta.0",
   "typings": "./dist/ng-fireworks/index.d.ts",
   "exports": {
     "./package.json": {
@@ -19,7 +19,8 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "watch": "ng build --watch --configuration development"
+    "watch": "ng build --watch --configuration development",
+    "prepublishOnly": "pnpm build"
   },
   "private": true,
   "dependencies": {
@@ -42,7 +43,6 @@
     "@angular/compiler-cli": "^14.0.0",
     "@types/jasmine": "~4.0.0",
     "jasmine-core": "~4.1.0",
-    "ng-packagr": "^14.0.0",
-    "typescript": "~4.7.2"
+    "ng-packagr": "^14.0.0"
   }
 }
