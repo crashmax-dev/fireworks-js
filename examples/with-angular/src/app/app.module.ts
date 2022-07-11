@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core'
 import { BrowserModule } from '@angular/platform-browser'
 import { AppComponent } from './app.component'
-import { FireworksModule } from '@fireworks-js/angular'
+import { AppRoutingModule } from './app-routing.module'
+import { NgFireworksModule } from '@fireworks-js/angular'
 
 @NgModule({
   declarations: [
@@ -9,7 +10,8 @@ import { FireworksModule } from '@fireworks-js/angular'
   ],
   imports: [
     BrowserModule,
-    FireworksModule.withConfig({ opacity: 0 })
+    AppRoutingModule,
+    NgFireworksModule
   ],
   providers: [],
   bootstrap: [AppComponent]

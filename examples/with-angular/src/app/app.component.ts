@@ -1,4 +1,5 @@
 import { Component } from '@angular/core'
+import type { FireworksProps } from '@fireworks-js/angular'
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,12 @@ import { Component } from '@angular/core'
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'with-angular'
+  enabled = true
+  options: FireworksProps = {
+    opacity: 0.5
+  }
+
+  public toggleFireworks(): void {
+    this.enabled = !this.enabled
+  }
 }
