@@ -1,5 +1,5 @@
 import { randomFloat, randomInt } from './helpers.js'
-import type { Sounds } from './types.js'
+import type { ISounds } from './types.js'
 
 declare global {
   interface Window {
@@ -8,12 +8,12 @@ declare global {
 }
 
 export class Sound {
-  public options: Required<Sounds>
+  public options: Required<ISounds>
   private _buffer: AudioBuffer[] = []
   private _audioContext: AudioContext
   private onInit = true
 
-  constructor(options: Sounds | undefined) {
+  constructor(options: ISounds | undefined) {
     this.options = {
       enabled: false,
       files: [

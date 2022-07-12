@@ -1,5 +1,5 @@
 import { hsla, randomFloat, randomInt } from './helpers.js'
-import type { Brightness } from './types.js'
+import type { IBrightness } from './types.js'
 
 interface ExplosionOptions {
   x: number
@@ -11,7 +11,7 @@ interface ExplosionOptions {
   explosionLength: number
   flickering: boolean
   lineWidth: number
-  brightness: Required<Brightness>
+  brightness: Required<IBrightness>
 }
 
 export class Explosion {

@@ -10,11 +10,11 @@ export interface FireworksOptions {
   particles?: number
   trace?: number
   explosion?: number
-  mouse?: Mouse
-  boundaries?: Boundaries
-  sound?: Sounds
+  mouse?: IMouse
+  boundaries?: IBoundaries
+  sound?: ISounds
   delay?: MinMaxValues
-  brightness?: Brightness
+  brightness?: IBrightness
   flickering?: number
   intensity?: number
   traceSpeed?: number
@@ -23,17 +23,17 @@ export interface FireworksOptions {
   autoresize?: boolean
 }
 
-export interface Brightness extends MinMaxValues {
+export interface IBrightness extends MinMaxValues {
   decay?: MinMaxValues
 }
 
-export interface Mouse {
+export interface IMouse {
   click?: boolean
   move?: boolean
   max?: number
 }
 
-export interface Boundaries {
+export interface IBoundaries {
   visible?: boolean
   x?: number
   y?: number
@@ -41,7 +41,7 @@ export interface Boundaries {
   height?: number
 }
 
-export interface Sounds {
+export interface ISounds {
   enabled?: boolean
   files?: string[]
   volume?: MinMaxValues
