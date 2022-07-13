@@ -23,18 +23,18 @@ class Fireworks {
   private sound: Sound
   private resize: Resize
   private mouse: Mouse
-  private traces: Trace[]
-  private explosions: Explosion[]
+  private traces: Trace[] = []
+  private explosions: Explosion[] = []
 
   constructor(
     container: Element | HTMLCanvasElement,
     options: FireworksOptions = {}
   ) {
+    this.container = container
+
     if (container instanceof HTMLCanvasElement) {
-      this.container = container
       this.canvas = container
     } else {
-      this.container = container
       this.canvas = document.createElement('canvas')
       this.container.appendChild(this.canvas)
     }
