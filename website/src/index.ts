@@ -221,3 +221,28 @@ const updateGraph = () => {
 }
 
 requestAnimationFrame(updateGraph)
+
+/** fullscreen */
+declare global {
+  interface Element {
+    webkitRequestFullscreen?(): void
+    mozRequestFullScreen?(): void
+    msRequestFullscreen?(): void
+  }
+}
+
+document.addEventListener('keydown', (event) => {
+  if (event.code === 'F11') {
+    event.preventDefault()
+
+    if (fireworksContainer.requestFullscreen) {
+      fireworksContainer.requestFullscreen()
+    } else if (fireworksContainer.webkitRequestFullscreen) {
+      fireworksContainer.webkitRequestFullscreen()
+    } else if (fireworksContainer.mozRequestFullScreen) {
+      fireworksContainer.mozRequestFullScreen()
+    } else if (fireworksContainer.msRequestFullscreen) {
+      fireworksContainer.msRequestFullscreen()
+    }
+  }
+})
