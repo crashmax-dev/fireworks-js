@@ -2,6 +2,7 @@
 **/dist
 **/.svelte-kit
 **/.angular
+**/.turbo
 **/package
 *.tgz
 *.log
