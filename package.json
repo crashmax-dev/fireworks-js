@@ -11,7 +11,7 @@
     "build:website": "turbo run build --filter='./website'",
     "build:packages": "turbo run build --filter='./packages/*'",
     "build:examples": "turbo run build --filter='./examples/*'",
-    "publish:packages": "pnpm --parallel --filter='./packages/*' -r publish",
+    "publish:packages": "pnpm --filter='./packages/*' -r publish",
     "test": "ava",
     "test:watch": "ava --watch",
     "format": "prettier --check --ignore-unknown '**/*.{ts,tsx,js,jsx,vue}'",

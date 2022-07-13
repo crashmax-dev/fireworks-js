@@ -1,7 +1,7 @@
 {
   "name": "@fireworks-js/angular",
   "private": true,
-  "version": "0.0.0-beta.0",
+  "version": "0.0.0-beta.1",
   "typings": "./dist/ng-fireworks/index.d.ts",
   "exports": {
     "./package.json": {
@@ -20,8 +20,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "watch": "ng build --watch --configuration development",
-    "prepublishOnly": "pnpm build"
+    "watch": "ng build --watch --configuration development"
   },
   "dependencies": {
     "@angular/animations": "^14.0.0",
