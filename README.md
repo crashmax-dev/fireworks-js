@@ -1,11 +1,4 @@
-<br>
-<p align="center">
-  <a href="https://fireworks.js.org">
-    <img height="240" src="https://fireworks.js.org/images/fireworks_emoji.gif"/>
-    <br/>
-    <h1 align="center">fireworks-js</h1>
-  </a>
-</p>
+[![](https://fireworks.js.org/images/fireworks_banner.gif)](https://fireworks.js.org)
 
 <p align="center">
   <b>A simple fireworks library! | <a href="https://fireworks.js.org">fireworks.js.org</a></b>
@@ -23,9 +16,6 @@
   </a>
   <a href="https://bundlephobia.com/package/fireworks-js@latest">
     <img alt="npm bundle size" src="https://badgen.net/bundlephobia/minzip/fireworks-js">
-  </a>
-  <a href="https://www.codefactor.io/repository/github/crashmax-dev/fireworks-js">
-    <img alt="CodeFactor Grade" src="https://img.shields.io/codefactor/grade/github/crashmax-dev/fireworks-js">
   </a>
 </p>
 
