@@ -1,40 +1,34 @@
-import type { IMouse } from './types.js'
+import { opts } from './options.js'
 
 export class Mouse {
-  private el: HTMLElement
-  private mouse: IMouse
+  public active = false
+  public x: number
+  public y: number
 
-  hasMove = false
-  cursorX: number
-  cursorY: number
+  constructor(private readonly canvas: HTMLCanvasElement) {}
 
-  constructor(el: HTMLElement, mouse: IMouse) {
-    this.el = el
-    this.mouse = mouse
+  subscribe(): void {
+    this.canvas.addEventListener('mousedown', (event) => this.mouseDown(event))
+    this.canvas.addEventListener('mouseup', (event) => this.mouseUp(event))
+    this.canvas.addEventListener('mousemove', (event) => this.mouseMove(event))
   }
 
-  subscribeListeners(): void {
-    this.el.addEventListener('mousedown', (event) => this.mouseDown(event))
-    this.el.addEventListener('mouseup', (event) => this.mouseUp(event))
-    this.el.addEventListener('mousemove', (event) => this.mouseMove(event))
+  unsubscribe(): void {
+    this.canvas.removeEventListener('mousedown', this.mouseDown)
+    this.canvas.removeEventListener('mouseup', this.mouseUp)
+    this.canvas.removeEventListener('mousemove', this.mouseMove)
   }
 
-  unsubscribeListeners(): void {
-    this.el.removeEventListener('mousedown', this.mouseDown)
-    this.el.removeEventListener('mouseup', this.mouseUp)
-    this.el.removeEventListener('mousemove', this.mouseMove)
-  }
-
-  private useMouse(event: MouseEvent, hasMove: boolean): void {
-    if (this.mouse.click || this.mouse.move) {
-      this.cursorX = event.pageX - this.el.offsetLeft
-      this.cursorY = event.pageY - this.el.offsetTop
-      this.hasMove = hasMove
+  private useMouse(event: MouseEvent, active: boolean): void {
+    if (opts.mouse.click || opts.mouse.move) {
+      this.x = event.pageX - this.canvas.offsetLeft
+      this.y = event.pageY - this.canvas.offsetTop
+      this.active = active
     }
   }
 
   private mouseDown(event: MouseEvent): void {
-    this.useMouse(event, this.mouse.click!)
+    this.useMouse(event, opts.mouse.click)
   }
 
   private mouseUp(event: MouseEvent): void {
@@ -42,6 +36,6 @@ export class Mouse {
   }
 
   private mouseMove(event: MouseEvent): void {
-    this.useMouse(event, this.hasMove)
+    this.useMouse(event, this.active)
   }
 }

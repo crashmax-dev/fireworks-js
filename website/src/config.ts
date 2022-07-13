@@ -53,8 +53,7 @@ export const fireworksOptions: FireworksOptions = {
     x: 50,
     y: 50,
     width: fireworksContainer.clientWidth,
-    height: fireworksContainer.clientHeight,
-    visible: false
+    height: fireworksContainer.clientHeight
   },
   sound: {
     enabled: false,

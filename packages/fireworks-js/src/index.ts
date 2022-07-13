@@ -1,392 +1,242 @@
 import { Explosion } from './explosion.js'
 import { randomFloat, randomInt } from './helpers.js'
 import { Mouse } from './mouse.js'
+import { opts } from './options.js'
+import { Resize } from './resize.js'
 import { Sound } from './sound.js'
 import { Trace } from './trace.js'
-import {
-  IBoundaries,
-  IBrightness,
-  FireworksOptions,
-  LineStyle,
-  LineWidth,
-  MinMaxValues,
-  IMouse,
-  Sizes
-} from './types.js'
+import { FireworksOptions, IBoundaries, Sizes } from './types.js'
 
 declare const version: string
 
 class Fireworks {
-  [key: string]: unknown
+  private container: Element
+  private canvas: HTMLCanvasElement
+  private ctx: CanvasRenderingContext2D
+  private width: number
+  private height: number
 
-  private _container: Element
-  private _canvas: HTMLCanvasElement
-  private _ctx: CanvasRenderingContext2D
-  private _width: number
-  private _height: number
+  private tick = 0
+  private timestamp = performance.now()
+  private running = false
 
-  private hue: MinMaxValues
-  private rocketsPoint: MinMaxValues
-  private opacity: number
-  private acceleration: number
-  private friction: number
-  private gravity: number
-  private particles: number
-  private trace: number
-  private flickering: number
-  private intensity: number
-  private explosion: number
-  private boundaries: Required<IBoundaries>
-  private mouse: Required<IMouse>
-  private delay: MinMaxValues
-  private brightness: Required<IBrightness>
-  private traceSpeed: number
-  private lineWidth: LineWidth
-  private lineStyle: LineStyle
-  private autoresize: boolean
-
-  private _tick = 0
-  private _timestamp = performance.now()
-  private _version = version
-  private _running = false
-  private _delay: number
-
-  private _sound: Sound
-  private _mouse: Mouse
-  private _traces: Trace[]
-  private _explosions: Explosion[]
+  private sound: Sound
+  private resize: Resize
+  private mouse: Mouse
+  private traces: Trace[]
+  private explosions: Explosion[]
 
   constructor(
     container: Element | HTMLCanvasElement,
-    {
-      boundaries,
-      brightness,
-      delay,
-      hue,
-      mouse,
-      sound,
-      rocketsPoint,
-      lineWidth,
-      autoresize = true,
-      lineStyle = 'round',
-      flickering = 50,
-      trace = 3,
-      traceSpeed = 10,
-      intensity = 30,
-      explosion = 5,
-      gravity = 1.5,
-      opacity = 0.5,
-      particles = 50,
-      friction = 0.95,
-      acceleration = 1.05
-    }: FireworksOptions = {}
+    options: FireworksOptions = {}
   ) {
     if (container instanceof HTMLCanvasElement) {
-      this._container = container
-      this._canvas = container
+      this.container = container
+      this.canvas = container
     } else {
-      this._container = container
-      this._canvas = document.createElement('canvas')
-      this._container.appendChild(this._canvas)
+      this.container = container
+      this.canvas = document.createElement('canvas')
+      this.container.appendChild(this.canvas)
     }
 
-    this.trace = trace
-    this.explosion = explosion
-    this.gravity = gravity
-    this.opacity = opacity
-    this.particles = particles
-    this.friction = friction
-    this.acceleration = acceleration
-    this.flickering = flickering
-    this.intensity = intensity
-    this.traceSpeed = traceSpeed
-    this.lineStyle = lineStyle
-    this.autoresize = autoresize
+    this.ctx = this.canvas.getContext('2d')!
 
-    this.hue = {
-      min: 0,
-      max: 255,
-      ...hue
-    }
+    this.updateOptions(options)
+    this.updateSize()
 
-    this.rocketsPoint = {
-      min: 50,
-      max: 50,
-      ...rocketsPoint
-    }
-
-    this.lineWidth = {
-      explosion: {
-        min: 1,
-        max: 3
-      },
-      trace: {
-        min: 1,
-        max: 2
-      },
-      ...lineWidth
-    }
-
-    this.mouse = {
-      click: false,
-      move: false,
-      max: 1,
-      ...mouse
-    }
-
-    this.delay = {
-      min: 15,
-      max: 30,
-      ...delay
-    }
-
-    this.brightness = {
-      min: 50,
-      max: 80,
-      decay: {
-        min: 0.015,
-        max: 0.03
-      },
-      ...brightness
-    }
-
-    this.setSize()
-    this.setBoundaries({
-      visible: false,
-      x: 50,
-      y: 50,
-      ...boundaries
-    })
-
-    this._ctx = this._canvas.getContext('2d')!
-    this._sound = new Sound(sound)
-    this._mouse = new Mouse(this._canvas, this.mouse)
+    this.sound = new Sound()
+    this.resize = new Resize(this)
+    this.mouse = new Mouse(this.canvas)
   }
 
   get isRunning(): boolean {
-    return this._running
+    return this.running
   }
 
   get version(): string {
-    return this._version
+    return version
   }
 
   start(): void {
-    if (this._running) return
-    this._running = true
+    if (this.running) return
 
-    if (this.autoresize) {
-      window.addEventListener('resize', () => this.bindWindowResize())
-    }
-
-    this._mouse.subscribeListeners()
+    this.running = true
+    this.resize.subscribe()
+    this.mouse.subscribe()
     this.clear()
     this.render()
   }
 
   stop(): void {
-    if (!this._running) return
-    this._running = false
+    if (!this.running) return
 
-    if (this.autoresize) {
-      window.removeEventListener('resize', this.bindWindowResize)
-    }
-
-    this._mouse.unsubscribeListeners()
+    this.running = false
+    this.resize.unsubscribe()
+    this.mouse.unsubscribe()
     this.clear()
   }
 
   pause(): void {
-    this._running = !this._running
-    if (this._running) {
+    this.running = !this.running
+    if (this.running) {
       this.render()
     }
   }
 
   clear(): void {
-    if (!this._ctx) return
+    if (!this.ctx) return
 
-    this._traces = []
-    this._explosions = []
-    this._ctx.clearRect(0, 0, this._width, this._height)
+    this.traces = []
+    this.explosions = []
+    this.ctx.clearRect(0, 0, this.width, this.height)
   }
 
-  setOptions(options: FireworksOptions): void {
-    for (const [key, value] of Object.entries(options)) {
-      const hasOption = Object.prototype.hasOwnProperty.call(this, key)
-
-      if (typeof this[key] === 'function') {
-        throw new Error('You cannot change the methods of the class!')
-      }
-
-      if (hasOption) {
-        if (typeof this[key] === 'object') {
-          // @ts-ignore
-          Object.assign(this[key], value)
-        } else {
-          this[key] = value
-        }
-      }
-
-      if (key === 'sound') {
-        Object.assign(this._sound.options, value)
-      }
-    }
+  updateOptions(options: FireworksOptions): void {
+    opts.updateOptions(options)
   }
 
-  setSize({
-    width = this._container instanceof HTMLCanvasElement
-      ? this._canvas.width
-      : this._container.clientWidth,
-    height = this._container instanceof HTMLCanvasElement
-      ? this._canvas.height
-      : this._container.clientHeight
+  updateSize({
+    width = this.container instanceof HTMLCanvasElement
+      ? this.canvas.width
+      : this.container.clientWidth,
+    height = this.container instanceof HTMLCanvasElement
+      ? this.canvas.height
+      : this.container.clientHeight
   }: Partial<Sizes> = {}): void {
-    this._width = width
-    this._height = height
+    this.width = width
+    this.height = height
 
-    this._canvas.width = width
-    this._canvas.height = height
+    this.canvas.width = width
+    this.canvas.height = height
 
-    this.setBoundaries({
+    this.updateBoundaries({
+      ...opts.boundaries,
       width,
       height
     })
   }
 
-  setBoundaries(boundaries: Partial<IBoundaries>): void {
-    this.boundaries = {
-      ...this.boundaries,
-      ...boundaries
-    }
+  updateBoundaries(boundaries: Partial<IBoundaries>): void {
+    this.updateOptions({ boundaries })
   }
 
-  private bindWindowResize(): void {
-    this.setSize()
-  }
-
-  private render(timestamp = this._timestamp): void {
-    if (!this._ctx || !this._running) return
+  private render(timestamp = this.timestamp): void {
+    if (!this.ctx || !this.running) return
 
     requestAnimationFrame((timestamp) => this.render(timestamp))
 
-    this._ctx.globalCompositeOperation = 'destination-out'
-    this._ctx.fillStyle = `rgba(0, 0, 0, ${this.opacity})`
-    this._ctx.fillRect(0, 0, this._width, this._height)
-    this._ctx.globalCompositeOperation = 'lighter'
-    this._ctx.lineCap = this.lineStyle
-    this._ctx.lineJoin = 'round'
+    this.ctx.globalCompositeOperation = 'destination-out'
+    this.ctx.fillStyle = `rgba(0, 0, 0, ${opts.opacity})`
+    this.ctx.fillRect(0, 0, this.width, this.height)
+    this.ctx.globalCompositeOperation = 'lighter'
+    this.ctx.lineCap = opts.lineStyle
+    this.ctx.lineJoin = 'round'
 
-    this.drawBoundaries()
     this.initTrace()
     this.drawTrace()
     this.drawExplosion()
 
-    const timeDiff = timestamp - this._timestamp
-    this._timestamp = timestamp
-    this._tick += (timeDiff * (this.intensity * Math.PI)) / 1000
-  }
-
-  private drawBoundaries() {
-    if (this.boundaries.visible) {
-      this._ctx.beginPath()
-      this._ctx.lineWidth = 1
-      this._ctx.strokeStyle = 'red'
-      this._ctx.rect(
-        this.boundaries.x,
-        this.boundaries.y,
-        this.boundaries.width - this.boundaries.x * 2,
-        this.boundaries.height * 0.5
-      )
-      this._ctx.stroke()
-    }
+    const timeDiff = timestamp - this.timestamp
+    this.timestamp = timestamp
+    this.tick += (timeDiff * (opts.intensity * Math.PI)) / 1000
   }
 
   private initTrace(): void {
-    this._delay = randomInt(this.delay.min, this.delay.max)
+    const {
+      hue,
+      delay,
+      rocketsPoint,
+      boundaries,
+      trace,
+      traceSpeed,
+      acceleration,
+      mouse
+    } = opts
 
     if (
-      this._tick > this._delay ||
-      (this._mouse.hasMove && this.mouse.max > this._traces.length)
+      this.tick > randomInt(delay.min, delay.max) ||
+      (this.mouse.active && mouse.max > this.traces.length)
     ) {
-      this._traces.push(
+      this.traces.push(
         new Trace({
-          x:
-            (this._width *
-              randomInt(this.rocketsPoint.min, this.rocketsPoint.max)) /
-            100,
-          y: this._height,
+          x: (this.width * randomInt(rocketsPoint.min, rocketsPoint.max)) / 100,
+          y: this.height,
           dx:
-            (this._mouse.cursorX && this.mouse.move) || this._mouse.hasMove
-              ? this._mouse.cursorX
-              : randomInt(
-                this.boundaries.x,
-                this.boundaries.width - this.boundaries.x * 2
-              ),
+            (this.mouse.x && mouse.move) || this.mouse.active
+              ? this.mouse.x
+              : randomInt(boundaries.x, boundaries.width - boundaries.x * 2),
           dy:
-            (this._mouse.cursorY && this.mouse.move) || this._mouse.hasMove
-              ? this._mouse.cursorY
-              : randomInt(this.boundaries.y, this.boundaries.height * 0.5),
-          ctx: this._ctx,
-          hue: randomInt(this.hue.min, this.hue.max),
-          speed: this.traceSpeed,
-          acceleration: this.acceleration,
-          traceLength: this.trace
+            (this.mouse.y && mouse.move) || this.mouse.active
+              ? this.mouse.y
+              : randomInt(boundaries.y, boundaries.height * 0.5),
+          ctx: this.ctx,
+          hue: randomInt(hue.min, hue.max),
+          speed: traceSpeed,
+          acceleration,
+          traceLength: trace
         })
       )
 
-      this._tick = 0
+      this.tick = 0
     }
   }
 
   private drawTrace(): void {
-    let length = this._traces.length
-    this._ctx.lineWidth = randomFloat(
-      this.lineWidth.trace.min,
-      this.lineWidth.trace.max
+    this.ctx.lineWidth = randomFloat(
+      opts.lineWidth.trace.min,
+      opts.lineWidth.trace.max
     )
 
-    while (length--) {
-      this._traces[length]!.draw()
-      this._traces[length]!.update((x: number, y: number, hue: number) => {
+    let traceLength = this.traces.length
+    while (traceLength--) {
+      this.traces[traceLength]!.draw()
+      this.traces[traceLength]!.update((x: number, y: number, hue: number) => {
         this.initExplosion(x, y, hue)
-        this._sound.play()
-        this._traces.splice(length, 1)
+        this.sound.play()
+        this.traces.splice(traceLength, 1)
       })
     }
   }
 
   private initExplosion(x: number, y: number, hue: number): void {
-    let count = this.particles
+    const {
+      particles,
+      flickering,
+      lineWidth,
+      explosion,
+      brightness,
+      friction,
+      gravity
+    } = opts
 
-    while (count--) {
-      this._explosions.push(
+    let particlesLength = particles
+    while (particlesLength--) {
+      this.explosions.push(
         new Explosion({
           x,
           y,
-          ctx: this._ctx,
+          ctx: this.ctx,
           hue,
-          friction: this.friction,
-          gravity: this.gravity,
-          flickering: randomInt(0, 100) <= this.flickering,
+          friction,
+          gravity,
+          flickering: randomInt(0, 100) <= flickering,
           lineWidth: randomFloat(
-            this.lineWidth.explosion.min,
-            this.lineWidth.explosion.max
+            lineWidth.explosion.min,
+            lineWidth.explosion.max
           ),
-          explosionLength: Math.round(this.explosion),
-          brightness: this.brightness
+          explosionLength: Math.round(explosion),
+          brightness
         })
       )
     }
   }
 
   private drawExplosion(): void {
-    let length = this._explosions.length
-
+    let length = this.explosions.length
     while (length--) {
-      this._explosions[length]!.draw()
-      this._explosions[length]!.update(() => {
-        this._explosions.splice(length, 1)
+      this.explosions[length]!.draw()
+      this.explosions[length]!.update(() => {
+        this.explosions.splice(length, 1)
       })
     }
   }

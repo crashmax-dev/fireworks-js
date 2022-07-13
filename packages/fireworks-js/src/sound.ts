@@ -1,5 +1,5 @@
 import { randomFloat, randomInt } from './helpers.js'
-import type { ISounds } from './types.js'
+import { opts } from './options.js'
 
 declare global {
   interface Window {
@@ -8,46 +8,31 @@ declare global {
 }
 
 export class Sound {
-  public options: Required<ISounds>
-  private _buffer: AudioBuffer[] = []
-  private _audioContext: AudioContext
-  private onInit = true
+  private sounds: AudioBuffer[] = []
+  private audioContext: AudioContext
+  private onInit = false
 
-  constructor(options: ISounds | undefined) {
-    this.options = {
-      enabled: false,
-      files: [
-        'explosion0.mp3',
-        'explosion1.mp3',
-        'explosion2.mp3'
-      ],
-      volume: {
-        min: 4,
-        max: 8
-      },
-      ...options
-    }
-
+  constructor() {
     this.init()
   }
 
   private init(): void {
-    if (this.onInit && this.options.enabled) {
-      this.onInit = false
-      this._audioContext = new (window.AudioContext ||
+    if (!this.onInit && opts.sound.enabled) {
+      this.onInit = true
+      this.audioContext = new (window.AudioContext ||
         window.webkitAudioContext)()
-      void this.load()
+      this.loadSounds()
     }
   }
 
-  private async load(): Promise<void> {
-    for (const file of this.options.files) {
+  private async loadSounds(): Promise<void> {
+    for (const file of opts.sound.files) {
       const response = await (await fetch(file)).arrayBuffer()
 
-      this._audioContext
+      this.audioContext
         .decodeAudioData(response)
         .then((buffer) => {
-          this._buffer.push(buffer)
+          this.sounds.push(buffer)
         })
         .catch((err) => {
           throw err
@@ -56,18 +41,18 @@ export class Sound {
   }
 
   play(): void {
-    if (this.options.enabled && this._buffer.length) {
-      const source = this._audioContext.createBufferSource()
-      const buffer = this._buffer[randomInt(0, this._buffer.length - 1)]!
-      const volume = this._audioContext.createGain()
+    if (opts.sound.enabled && this.sounds.length) {
+      const source = this.audioContext.createBufferSource()
+      const sound = this.sounds[randomInt(0, this.sounds.length - 1)]!
+      const vol = this.audioContext.createGain()
 
-      source.buffer = buffer
-      volume.gain.value = randomFloat(
-        this.options.volume.min / 100,
-        this.options.volume.max / 100
+      source.buffer = sound
+      vol.gain.value = randomFloat(
+        opts.sound.volume.min / 100,
+        opts.sound.volume.max / 100
       )
-      volume.connect(this._audioContext.destination)
-      source.connect(volume)
+      vol.connect(this.audioContext.destination)
+      source.connect(vol)
       source.start(0)
     } else {
       this.init()

@@ -47,7 +47,7 @@ class Fireworks extends LitElement {
 
     this.resizeObserver = new ResizeObserver(([el]) => {
       const { height, width } = el.contentRect
-      this.fireworks!.setSize({ width, height })
+      this.fireworks!.updateSize({ width, height })
     })
     this.resizeObserver.observe(this)
   }

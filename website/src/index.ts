@@ -15,11 +15,11 @@ fireworks.start()
 const fireworksGetters = {
   get traces(): number {
     // @ts-expect-error
-    return fireworks._traces.length
+    return fireworks.traces.length
   },
   get particles(): number {
     // @ts-expect-error
-    return fireworks._explosions.length
+    return fireworks.explosions.length
   }
 }
 
@@ -156,7 +156,7 @@ sound.addInput(fireworksOptions.sound!, 'volume', {
 })
 
 tweakpane.on('change', () => {
-  fireworks.setOptions(fireworksOptions)
+  fireworks.updateOptions(fireworksOptions)
 })
 
 /** background */

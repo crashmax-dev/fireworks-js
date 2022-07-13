@@ -31,3 +31,58 @@ export function hsla(hue: number, lightness: number, alpha = 1): string {
 
   return `hsla(${hue}, 100%, ${lightness}%, ${alpha})`
 }
+
+/* https://github.com/voodoocreation/ts-deepmerge */
+interface IObject {
+  [key: string]: any
+  length?: never
+}
+
+type IUnionToIntersection<U> = (
+  U extends any ? (k: U) => void : never
+) extends (k: infer I) => void
+  ? I
+  : never
+
+const isObject = (obj: any) => {
+  if (typeof obj === 'object' && obj !== null) {
+    if (typeof Object.getPrototypeOf === 'function') {
+      const prototype = Object.getPrototypeOf(obj)
+      return prototype === Object.prototype || prototype === null
+    }
+
+    return Object.prototype.toString.call(obj) === '[object Object]'
+  }
+
+  return false
+}
+
+const PROTECTED_KEYS = [
+  '__proto__',
+  'constructor',
+  'prototype'
+]
+
+export const deepMerge = <T extends IObject[]>(
+  ...objects: T
+): IUnionToIntersection<T[number]> => {
+  return objects.reduce((result, current) => {
+    Object.keys(current).forEach((key) => {
+      if (PROTECTED_KEYS.includes(key)) {
+        return
+      }
+
+      if (Array.isArray(result[key]) && Array.isArray(current[key])) {
+        result[key] = false
+          ? Array.from(new Set((result[key] as unknown[]).concat(current[key])))
+          : current[key]
+      } else if (isObject(result[key]) && isObject(current[key])) {
+        result[key] = deepMerge(result[key] as IObject, current[key] as IObject)
+      } else {
+        result[key] = current[key]
+      }
+    })
+
+    return result
+  }, {}) as any
+}
