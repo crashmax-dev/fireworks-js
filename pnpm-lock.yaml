@@ -237,7 +237,7 @@ importers:
       '@angular/platform-browser-dynamic': ^14.0.0
       '@angular/router': ^14.0.0
       '@types/jasmine': ~4.0.0
-      fireworks-js: workspace:0.0.0-beta.11
+      fireworks-js: workspace:0.0.0-beta.12
       jasmine-core: ~4.1.0
       ng-packagr: ^14.0.0
       rxjs: ~7.5.0
@@ -269,7 +269,7 @@ importers:
 
   packages/lit:
     specifiers:
-      fireworks-js: workspace:0.0.0-beta.11
+      fireworks-js: workspace:0.0.0-beta.12
       lit: ^2.2.7
     dependencies:
       fireworks-js: link:../fireworks-js
@@ -277,19 +277,19 @@ importers:
 
   packages/preact:
     specifiers:
-      fireworks-js: workspace:0.0.0-beta.11
+      fireworks-js: workspace:0.0.0-beta.12
     dependencies:
       fireworks-js: link:../fireworks-js
 
   packages/react:
     specifiers:
-      fireworks-js: workspace:0.0.0-beta.11
+      fireworks-js: workspace:0.0.0-beta.12
     dependencies:
       fireworks-js: link:../fireworks-js
 
   packages/solid:
     specifiers:
-      fireworks-js: workspace:0.0.0-beta.11
+      fireworks-js: workspace:0.0.0-beta.12
       solid-js: ^1.4.7
     dependencies:
       fireworks-js: link:../fireworks-js
@@ -297,13 +297,13 @@ importers:
 
   packages/svelte:
     specifiers:
-      fireworks-js: workspace:0.0.0-beta.11
+      fireworks-js: workspace:0.0.0-beta.12
     dependencies:
       fireworks-js: link:../fireworks-js
 
   packages/vue:
     specifiers:
-      fireworks-js: workspace:0.0.0-beta.11
+      fireworks-js: workspace:0.0.0-beta.12
     dependencies:
       fireworks-js: link:../fireworks-js
 
