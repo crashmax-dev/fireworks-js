@@ -1,0 +1,46 @@
+name: 🐛 Bug Report
+description: Create a report to help us improve.
+labels: bug
+assignees: crashmax-dev
+
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: A clear and concise description of what the bug is.
+    validations:
+      required: true
+
+  - type: input
+    id: version
+    attributes:
+      label: fireworks-js version
+      placeholder: 2.x.x
+    validations:
+      required: true
+
+  - type: dropdown
+    id: package
+    attributes:
+      label: Which package are you using?
+      multiple: true
+      options:
+        - fireworks-js
+        - @fireworks-js/react
+        - @fireworks-js/preact
+        - @fireworks-js/solid
+        - @fireworks-js/vue
+        - @fireworks-js/svelte
+        - @fireworks-js/angular
+        - @fireworks-js/lit
+    validations:
+      required: true
+
+  - type: input
+    id: browser
+    attributes:
+      label: Browser
+      placeholder: Version 103.0.5060.114 (Official Build) (64-bit)
+    validations:
+      required: true
