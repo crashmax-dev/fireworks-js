@@ -15,8 +15,7 @@
     "clean": "del-cli ./**/node_modules ./**/dist ./**/.turbo",
     "test": "ava",
     "test:watch": "ava --watch",
-    "format": "prettier --check --ignore-unknown '**/*.{ts,tsx,js,jsx,vue}'",
-    "format:fix": "prettier --write --ignore-unknown '**/*.{ts,tsx,js,jsx,vue}'"
+    "format": "prettier --write --ignore-unknown '**/*.{ts,tsx,js,jsx,vue}'"
   },
   "repository": {
     "type": "git",
