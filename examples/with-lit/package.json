@@ -1,7 +1,7 @@
 {
   "name": "with-lit",
-  "version": "0.0.0",
   "private": true,
+  "version": "0.0.0",
   "scripts": {
     "dev": "vite",
     "build": "vite build && tsc",
