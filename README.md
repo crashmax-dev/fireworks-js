@@ -24,9 +24,6 @@
   <a href="https://bundlephobia.com/package/fireworks-js@latest">
     <img alt="npm bundle size" src="https://badgen.net/bundlephobia/minzip/fireworks-js">
   </a>
-  <a href="https://www.codefactor.io/repository/github/crashmax-dev/fireworks-js">
-    <img alt="CodeFactor Grade" src="https://img.shields.io/codefactor/grade/github/crashmax-dev/fireworks-js">
-  </a>
 </p>
 
 <p align="center">
@@ -37,7 +34,7 @@
 
  - 🔥 Zero [dependencies](https://www.npmjs.com/package/fireworks-js?activeTab=dependents)
  - ⚙️ Flexible [configuration](#options)
- - 📦 Lightweight ([~3.0kB gizpped](https://bundlephobia.com/package/fireworks-js))
+ - 📦 Lightweight ([~3.0kB gzipped](https://bundlephobia.com/package/fireworks-js))
  - ☁️ [Server-side rendering](#server-side-rendering-with-no-ssr) compatibility
  - 📜 Supports [TypeScript](https://www.typescriptlang.org) type definition
 
