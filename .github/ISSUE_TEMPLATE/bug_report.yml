@@ -12,14 +12,6 @@ body:
     validations:
       required: true
 
-  - type: input
-    id: version
-    attributes:
-      label: fireworks-js version
-      placeholder: 2.x.x
-    validations:
-      required: true
-
   - type: dropdown
     id: package
     attributes:
@@ -34,6 +26,14 @@ body:
         - @fireworks-js/svelte
         - @fireworks-js/angular
         - @fireworks-js/lit
+    validations:
+      required: true
+
+  - type: input
+    id: version
+    attributes:
+      label: fireworks-js version
+      placeholder: 2.x.x
     validations:
       required: true
 
