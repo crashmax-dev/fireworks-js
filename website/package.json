@@ -8,9 +8,9 @@
     "build": "vite build"
   },
   "dependencies": {
-    "@tweakpane/core": "^1.1.0",
-    "@tweakpane/plugin-essentials": "^0.1.4",
+    "@tweakpane/core": "1.1.0",
+    "@tweakpane/plugin-essentials": "0.1.4",
     "fireworks-js": "workspace:*",
-    "tweakpane": "^3.1.0"
+    "tweakpane": "3.1.0"
   }
 }

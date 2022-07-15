@@ -7,11 +7,12 @@
     "build": "vite build && tsc",
     "serve": "vite preview"
   },
-  "devDependencies": {
-    "typescript": "^4.7.4"
-  },
   "dependencies": {
     "@fireworks-js/lit": "workspace:*",
     "lit": "^2.2.7"
+  },
+  "devDependencies": {
+    "typescript": "4.7.4",
+    "vite": "3.0.0"
   }
 }

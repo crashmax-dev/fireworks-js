@@ -47,6 +47,10 @@
     "fireworks-js": "workspace:0.0.0-beta.12",
     "solid-js": "^1.4.7"
   },
+  "devDependencies": {
+    "solid-js": "1.4.7",
+    "vite-plugin-solid": "2.3.0"
+  },
   "peerDependencies": {
     "solid-js": "^1.x"
   }

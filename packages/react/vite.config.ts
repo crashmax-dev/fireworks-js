@@ -1,13 +1,10 @@
-import { dirname, resolve } from 'node:path'
-import { fileURLToPath } from 'node:url'
+import { resolve } from 'path'
 import { defineConfig } from 'vite'
 import banner from 'vite-plugin-banner'
 import dts from 'vite-plugin-dts'
 import tsConfigPaths from 'vite-tsconfig-paths'
 import react from '@vitejs/plugin-react'
 import { author, homepage, license, name, version } from './package.json'
-
-const workdir = dirname(fileURLToPath(import.meta.url))
 
 export default defineConfig({
   plugins: [
@@ -23,7 +20,7 @@ export default defineConfig({
     )],
   build: {
     lib: {
-      entry: resolve(workdir, 'src/index.tsx'),
+      entry: resolve(__dirname, 'src/index.tsx'),
       name: 'Fireworks',
       formats: [
         'es',

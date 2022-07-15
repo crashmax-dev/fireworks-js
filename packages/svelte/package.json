@@ -41,7 +41,16 @@
 		"prepublishOnly": "pnpm build"
 	},
 	"dependencies": {
-		"fireworks-js": "workspace:0.0.0-beta.12"
+		"fireworks-js": "workspace:0.0.0-beta.12",
+		"svelte": "3.49.0"
+	},
+	"devDependencies": {
+    "svelte-check": "2.8.0",
+    "svelte-preprocess": "4.10.7",
+    "svelte2tsx": "0.5.11",
+		"@sveltejs/kit": "1.0.0-next.360",
+    "@sveltejs/vite-plugin-svelte": "1.0.0-next.49",
+		"vite": "2.9.14"
 	},
 	"peerDependencies": {
 		"svelte": "^3.x"
