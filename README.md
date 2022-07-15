@@ -41,7 +41,7 @@
   - [@fireworks-js/lit](#fireworks-jslit)
 - [Documentation](#documentation)
   - [Options](#options)
-  - [Methods](#methods)
+  - [API](#api)
 - [Community](#community)
 
 ## Features
@@ -87,9 +87,6 @@ pnpm add fireworks-js
 | [@fireworks-js/lit](#fireworks-jslit) | [![](https://img.shields.io/npm/v/@fireworks-js/lit.svg)](https://npm.im/@fireworks-js/lit) | Web component |
 
 ## Usage
-
-> **Note**
->
 
 #### [`fireworks-js`](https://github.com/crashmax-dev/fireworks-js/tree/master/examples/basic)
 ```js
@@ -254,7 +251,7 @@ const fireworks = new Fireworks(container, {
 })
 ```
 
-### Methods
+### API
 
 #### `.start()`
 Start fireworks.
@@ -268,14 +265,17 @@ Start/stop fireworks.
 #### `.clear()`
 Cleaning the canvas from fireworks.
 
-#### `.updateOptions({ ...options })`
-Force update fireworks options.
+#### `.updateOptions(options)`
+Force update fireworks options.\
+Type: [`options`](https://github.com/crashmax-dev/fireworks-js/blob/6819ec8456ecb97140a8e1f41959ca2da5c17ddf/packages/fireworks-js/src/types.ts#L3-L25)
 
-#### `.updateSize({ width, height })`
-Force update canvas size.
+#### `.updateSize(sizes)`
+Force update canvas size.\
+Type: [`sizes`](https://github.com/crashmax-dev/fireworks-js/blob/6819ec8456ecb97140a8e1f41959ca2da5c17ddf/packages/fireworks-js/src/types.ts#L58-L61)
 
 #### `.updateBoundaries(boundaries)`
-Force update canvas boundaries.
+Force update canvas boundaries.\
+Type: [`boundaries`](https://github.com/crashmax-dev/fireworks-js/blob/6819ec8456ecb97140a8e1f41959ca2da5c17ddf/packages/fireworks-js/src/types.ts#L35-L40)
 
 ## Community
 
