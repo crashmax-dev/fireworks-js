@@ -1,0 +1,57 @@
+{
+  "name": "@fireworks-js/solid",
+  "version": "0.0.0-beta.2",
+  "type": "module",
+  "description": "A simple fireworks library!",
+  "homepage": "https://fireworks.js.org",
+  "types": "./dist/index.d.ts",
+  "module": "./dist/index.es.js",
+  "main": "./dist/index.cjs.js",
+  "main:umd": "./dist/index.umd.js",
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "import": "./dist/index.es.js",
+      "require": "./dist/index.cjs.js",
+      "default": "./dist/index.es.js"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/crashmax-dev/fireworks-js.git"
+  },
+  "keywords": [
+    "solid-js",
+    "canvas",
+    "fireworks",
+    "animation"
+  ],
+  "author": {
+    "name": "Vitalij Ryndin",
+    "email": "sys@crashmax.ru",
+    "url": "https://crashmax.ru"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/crashmax-dev/fireworks-js/issues"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "prepublishOnly": "pnpm build"
+  },
+  "dependencies": {
+    "fireworks-js": "workspace:0.0.0-beta.12",
+    "solid-js": "^1.4.7"
+  },
+  "devDependencies": {
+    "solid-js": "1.4.7",
+    "vite-plugin-solid": "2.3.0"
+  },
+  "peerDependencies": {
+    "solid-js": "^1.x"
+  }
+}

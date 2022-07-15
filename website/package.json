@@ -1,0 +1,16 @@
+{
+  "name": "website",
+  "private": true,
+  "version": "0.0.0",
+  "homepage": "https://fireworks.js.org",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build"
+  },
+  "dependencies": {
+    "@tweakpane/core": "1.1.0",
+    "@tweakpane/plugin-essentials": "0.1.4",
+    "fireworks-js": "workspace:*",
+    "tweakpane": "3.1.0"
+  }
+}

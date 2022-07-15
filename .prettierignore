@@ -1,0 +1,8 @@
+dist
+.svelte-kit
+node_modules
+*.log*
+.vscode
+.*rc
+.*ignore
+pnpm-lock.yaml

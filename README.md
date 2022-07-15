@@ -1,11 +1,4 @@
-<br>
-<p align="center">
-  <a href="https://fireworks.js.org">
-    <img height="240" src="https://fireworks.js.org/images/fireworks_emoji.gif"/>
-    <br/>
-    <h1 align="center">fireworks-js</h1>
-  </a>
-</p>
+[![](https://fireworks.js.org/images/fireworks_banner.gif)](https://fireworks.js.org)
 
 <p align="center">
   <b>A simple fireworks library! | <a href="https://fireworks.js.org">fireworks.js.org</a></b>
@@ -24,151 +17,271 @@
   <a href="https://bundlephobia.com/package/fireworks-js@latest">
     <img alt="npm bundle size" src="https://badgen.net/bundlephobia/minzip/fireworks-js">
   </a>
-  <a href="https://www.codefactor.io/repository/github/crashmax-dev/fireworks-js">
-    <img alt="CodeFactor Grade" src="https://img.shields.io/codefactor/grade/github/crashmax-dev/fireworks-js">
-  </a>
 </p>
 
-<p align="center">
-  <a href="#features">Features</a> | <a href="#demo">Demo</a> | <a href="#installation">Installation</a> | <a href="#usage">Usage</a> | <a href="#options">Options</a>
-</p>
+---
+
+## Table of Contents
+
+> **Warning**\
+> This readme refers to upcoming v2 version, [read here](https://github.com/crashmax-dev/fireworks-js/tree/v1) for v1 documentation.
+
+- [Features](#features)
+- [Browsers support](#browsers-support)
+- [Demo](#demo)
+- [Installation](#installation)
+- [Usage](#usage)
+  - [fireworks-js](#fireworks-js)
+  - [@fireworks-js/react](#fireworks-jsreact)
+  - [@fireworks-js/preact](#fireworks-jspreact)
+  - [@fireworks-js/solid](#fireworks-jssolid)
+  - [@fireworks-js/vue](#fireworks-jsvue)
+  - [@fireworks-js/svelte](#fireworks-jssvelte)
+  - [@fireworks-js/angular](#fireworks-jsangular)
+  - [@fireworks-js/lit](#fireworks-jslit)
+- [Documentation](#documentation)
+  - [Options](#options)
+  - [API](#api)
+- [Community](#community)
 
 ## Features
 
  - 🔥 Zero [dependencies](https://www.npmjs.com/package/fireworks-js?activeTab=dependents)
  - ⚙️ Flexible [configuration](#options)
- - 📦 Lightweight ([~3.0kB gizpped](https://bundlephobia.com/package/fireworks-js))
- - ☁️ [Server-side rendering](#server-side-rendering-with-no-ssr) compatibility
+ - 📦 Lightweight ([~3.0kB gzipped](https://bundlephobia.com/package/fireworks-js))
  - 📜 Supports [TypeScript](https://www.typescriptlang.org) type definition
+
+## Browsers support
+
+| [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/edge/edge_48x48.png" alt="IE / Edge" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)<br/>Edge | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/firefox/firefox_48x48.png" alt="Firefox" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)<br/>Firefox | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/chrome/chrome_48x48.png" alt="Chrome" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)<br/>Chrome | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/safari/safari_48x48.png" alt="Safari" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)<br/>Safari | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/safari-ios/safari-ios_48x48.png" alt="iOS Safari" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)<br/>iOS Safari | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/opera/opera_48x48.png" alt="Opera" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)<br/>Opera | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/yandex/yandex_48x48.png" alt="Yandex" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)<br/>Yandex |
+| --------- | --------- | --------- | --------- | --------- | --------- | --------- |
+| ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔
 
 ## Demo
 
-You can play with `fireworks-js` on [fireworks.js.org](https://fireworks.js.org) or [codesandbox.io](https://codesandbox.io/s/fireworks-js-qxihw)
-
-[![Edit fireworks-js](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/fireworks-js-qxihw)
+You can play with `fireworks-js` at [fireworks.js.org](https://fireworks.js.org) or [codesandbox.io](https://codesandbox.io/s/fireworks-js-react-bjeoqy?file=/src/App.tsx)
 
 ## Installation
 
-<!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./.github/markdown-autodocs/installation.sh) -->
-<!-- The below code snippet is automatically added from ./.github/markdown-autodocs/installation.sh -->
 ```sh
-# with npm:
 npm install fireworks-js
+```
 
-# or yarn:
+```sh
 yarn add fireworks-js
 ```
-<!-- MARKDOWN-AUTO-DOCS:END -->
+
+```sh
+pnpm add fireworks-js
+```
+
+| Package | Status | Description |
+| ------- | ------ | ----------- |
+| [fireworks-js](#fireworks-js) | [![](https://img.shields.io/npm/v/fireworks-js)](https://npm.im/fireworks-js) | Vanilla JS |
+| [@fireworks-js/react](#fireworks-jsreact) | [![](https://img.shields.io/npm/v/@fireworks-js/react.svg)](https://npm.im/@fireworks-js/react) | React component |
+| [@fireworks-js/preact](#fireworks-jspreact) | [![](https://img.shields.io/npm/v/@fireworks-js/preact.svg)](https://npm.im/@fireworks-js/preact) | Preact component |
+| [@fireworks-js/solid](#fireworks-jssolid) | [![](https://img.shields.io/npm/v/@fireworks-js/solid.svg)](https://npm.im/@fireworks-js/solid) | Solid component |
+| [@fireworks-js/vue](#fireworks-jsvue) | [![](https://img.shields.io/npm/v/@fireworks-js/vue.svg)](https://npm.im/@fireworks-js/vue) | Vue 3 component |
+| [@fireworks-js/svelte](#fireworks-jssvelte) | [![](https://img.shields.io/npm/v/@fireworks-js/svelte.svg)](https://npm.im/@fireworks-js/svelte) | Svelte component |
+| [@fireworks-js/angular](#fireworks-jsangular) | [![](https://img.shields.io/npm/v/@fireworks-js/angular.svg)](https://npm.im/@fireworks-js/angular) | Angular component |
+| [@fireworks-js/lit](#fireworks-jslit) | [![](https://img.shields.io/npm/v/@fireworks-js/lit.svg)](https://npm.im/@fireworks-js/lit) | Web component |
 
 ## Usage
 
-If you are using a module bundler like Webpack or Rollup, etc.., import `fireworks-js` into your project:
-<!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./.github/markdown-autodocs/usage.js) -->
-<!-- The below code snippet is automatically added from ./.github/markdown-autodocs/usage.js -->
+#### [`fireworks-js`](https://github.com/crashmax-dev/fireworks-js/tree/master/examples/basic)
 ```js
 import { Fireworks } from 'fireworks-js'
 
-const container = document.querySelector('.fireworks-container')
+const container = document.querySelector('.container')
 const fireworks = new Fireworks(container, { /* options */ })
-
 fireworks.start()
-fireworks.pause()
-fireworks.clear()
-
-// stop and clear fireworks
-fireworks.stop()
-
-// after initialization you can change the fireworks parameters
-fireworks.setOptions({ delay: { min: 10, max: 15 }})
 ```
-<!-- MARKDOWN-AUTO-DOCS:END -->
 
-## Using the CDN
+#### [`@fireworks-js/react`](https://github.com/crashmax-dev/fireworks-js/tree/master/examples/with-react)
 
-<!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./.github/markdown-autodocs/usage-cdn.html) -->
-<!-- The below code snippet is automatically added from ./.github/markdown-autodocs/usage-cdn.html -->
-```html
-<!-- jsdelivr  -->
-<script src="https://cdn.jsdelivr.net/npm/fireworks-js@latest/dist/fireworks.js"></script>
-
-<!-- unpkg -->
-<script src="https://unpkg.com/fireworks-js@latest/dist/fireworks.js"></script>
+```sh
+npm install @fireworks-js/react
 ```
-<!-- MARKDOWN-AUTO-DOCS:END -->
 
-## Usage in React (with hook [useFireworks](examples/react.tsx))
+#### [`@fireworks-js/preact`](https://github.com/crashmax-dev/fireworks-js/tree/master/examples/with-preact)
 
-<!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./.github/markdown-autodocs/usage-react.js) -->
-<!-- The below code snippet is automatically added from ./.github/markdown-autodocs/usage-react.js -->
+```sh
+npm install @fireworks-js/preact
+```
+
+#### [`@fireworks-js/solid`](https://github.com/crashmax-dev/fireworks-js/tree/master/examples/with-solid)
+
+```sh
+npm install @fireworks-js/solid
+```
+
+#### [`@fireworks-js/vue`](https://github.com/crashmax-dev/fireworks-js/tree/master/examples/with-vue)
+
+```sh
+npm install @fireworks-js/vue
+```
+
+#### [`@fireworks-js/svelte`](https://github.com/crashmax-dev/fireworks-js/tree/master/examples/with-svelte)
+
+```sh
+npm install @fireworks-js/svelte
+```
+
+#### [`@fireworks-js/angular`](https://github.com/crashmax-dev/fireworks-js/tree/master/examples/with-angular)
+
+```sh
+npm install @fireworks-js/angular
+```
+
+#### [`@fireworks-js/lit`](https://github.com/crashmax-dev/fireworks-js/tree/master/examples/with-lit)
+
+```sh
+npm install @fireworks-js/lit
+```
+
+## Documentation
+
+### Options
+
+> **Note**\
+> The options is optional, as are each of its properties.
+
+| Property           | Type                | Default                                                                       |
+| ------------------ | ------------------- | ----------------------------------------------------------------------------- |
+| `hue`              | object              | [hue](https://github.com/crashmax-dev/fireworks-js/blob/eedee4020e9c458fde83b60dfac6f2502d4593bb/packages/fireworks-js/src/options.ts#L49-L52)                                     |
+| `rocketsPoint`     | object              | [rocketsPoint](https://github.com/crashmax-dev/fireworks-js/blob/eedee4020e9c458fde83b60dfac6f2502d4593bb/packages/fireworks-js/src/options.ts#L54-L57)                                     |
+| `mouse`            | object              | [mouse](https://github.com/crashmax-dev/fireworks-js/blob/eedee4020e9c458fde83b60dfac6f2502d4593bb/packages/fireworks-js/src/options.ts#L70-L74)                                     |
+| `boundaries`       | object              | [boundaries](https://github.com/crashmax-dev/fireworks-js/blob/eedee4020e9c458fde83b60dfac6f2502d4593bb/packages/fireworks-js/src/options.ts#L104-L110)                                   |
+| `sound`            | object              | [sound](https://github.com/crashmax-dev/fireworks-js/blob/eedee4020e9c458fde83b60dfac6f2502d4593bb/packages/fireworks-js/src/options.ts#L91-L102)                                    |
+| `delay`            | object              | [delay](https://github.com/crashmax-dev/fireworks-js/blob/eedee4020e9c458fde83b60dfac6f2502d4593bb/packages/fireworks-js/src/options.ts#L76-L79)                                     |
+| `brightness`       | object              | [brightness](https://github.com/crashmax-dev/fireworks-js/blob/eedee4020e9c458fde83b60dfac6f2502d4593bb/packages/fireworks-js/src/options.ts#L81-L84)                                     |
+| `decay`            | object              | [decay](https://github.com/crashmax-dev/fireworks-js/blob/eedee4020e9c458fde83b60dfac6f2502d4593bb/packages/fireworks-js/src/options.ts#L86-L89)                                     |
+| `lineWidth`        | object              | [lineWidth](https://github.com/crashmax-dev/fireworks-js/blob/eedee4020e9c458fde83b60dfac6f2502d4593bb/packages/fireworks-js/src/options.ts#L59-L68)                                     |
+| `lineStyle`        | string              | round                                                                         |
+| `explosion`        | number              | 5                                                                             |
+| `opacity`          | number              | 0.5                                                                           |
+| `acceleration`     | number              | 1.05                                                                          |
+| `friction`         | number              | 0.95                                                                          |
+| `gravity`          | number              | 1.5                                                                           |
+| `particles`        | number              | 50                                                                            |
+| `trace`            | number              | 3                                                                             |
+| `flickering`       | number              | 50                                                                            |
+| `intensity`        | number              | 30                                                                            |
+| `traceSpeed`       | number              | 10                                                                            |
+| `intensity`        | number              | 30                                                                            |
+| `autoresize`       | boolean             | true                                                                          |
+
+The `hue`, `delay`, `decay`, `brightness`, `lineWidth.explosion`, `lineWidth.trace`, `sound.volume` and `rocketsPoint` options accept an object:
+
+| Property | Type    |
+| -------- | ------- |
+| `min`    | number  |
+| `max`    | number  |
+
+> **Note**\
+> The `min` and `max` properties are used to randomly select values from the range.
+
+The `mouse` options accept an object:
+
+| Property | Type    | Default |
+| -------- | ------- | ------- |
+| `click`  | boolean | false   |
+| `move`   | boolean | false   |
+| `max`    | number  | 1       |
+
+> **Note**\
+> The `max` property has no effect if `click` is false.
+
+The `sound` options accept an object:
+
+| Property   | Type      | Default             |
+| ---------- | --------- | ------------------- |
+| `enabled`  | boolean   | false               |
+| `files`    | string[]  | [files](https://github.com/crashmax-dev/fireworks-js/blob/eedee4020e9c458fde83b60dfac6f2502d4593bb/packages/fireworks-js/src/options.ts#L93-L97)  |
+| `volume`   | object    | [volume](https://github.com/crashmax-dev/fireworks-js/blob/eedee4020e9c458fde83b60dfac6f2502d4593bb/packages/fireworks-js/src/options.ts#L98-L101) |
+
 ```js
-import { Fireworks } from 'fireworks-js/dist/react'
-
-export const App = () => {
-  const options = {
-    speed: 3
+const fireworks = new Fireworks(container, {
+  autoresize: true,
+  opacity: 0.5,
+  acceleration: 1.05,
+  friction: 0.97,
+  gravity: 1.5,
+  particles: 50,
+  trace: 3,
+  traceSpeed: 10,
+  explosion: 5,
+  intensity: 30,
+  flickering: 50,
+  lineStyle: 'round',
+  hue: {
+    min: 0,
+    max: 360
+  },
+  delay: {
+    min: 15,
+    max: 30
+  },
+  rocketsPoint: {
+    min: 50,
+    max: 50
+  },
+  lineWidth: {
+    explosion: {
+      min: 1,
+      max: 3
+    },
+    trace: {
+      min: 1,
+      max: 2
+    }
+  },
+  brightness: {
+    min: 50,
+    max: 80
+  },
+  decay: {
+    min: 0.015,
+    max: 0.03
+  },
+  mouse: {
+    click: false,
+    move: false,
+    max: 1
   }
-
-  const style = {
-    top: 0,
-    left: 0,
-    width: '100%',
-    height: '100%',
-    position: 'fixed',
-    background: '#000'
-  }
-
-  return <Fireworks options={options} style={style} />
-}
+})
 ```
-<!-- MARKDOWN-AUTO-DOCS:END -->
 
-## Server-Side Rendering ([with-no-ssr](https://nextjs.org/docs/advanced-features/dynamic-import#with-no-ssr))
+### API
 
-<!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./.github/markdown-autodocs/usage-ssr.js) -->
-<!-- The below code snippet is automatically added from ./.github/markdown-autodocs/usage-ssr.js -->
-```js
-// components/Fireworks.tsx
-import { Fireworks } from 'fireworks-js/dist/react'
+#### `.start()`
+Start fireworks.
 
-export default () => <Fireworks />
+#### `.stop()`
+Stop fireworks.
 
-// pages/index.tsx
-import dynamic from 'next/dynamic'
+#### `.pause()`
+Start/stop fireworks.
 
-const FireworksWithNoSSR = dynamic(
-  () => import('../components/Fireworks'),
-  { ssr: false }
-)
-```
-<!-- MARKDOWN-AUTO-DOCS:END -->
+#### `.clear()`
+Cleaning the canvas from fireworks.
 
-## Options
+#### `.updateOptions(options)`
+Force update fireworks options.\
+Type: [`options`](https://github.com/crashmax-dev/fireworks-js/blob/6819ec8456ecb97140a8e1f41959ca2da5c17ddf/packages/fireworks-js/src/types.ts#L3-L25)
 
-<!-- MARKDOWN-AUTO-DOCS:START (JSON_TO_HTML_TABLE:src=./.github/markdown-autodocs/options.json) -->
-<table class="JSON-TO-HTML-TABLE"><thead><tr><th class="name-th">Name</th><th class="type-th">Type</th><th class="default-th">Default</th><th class="description-th">Description</th></tr></thead><tbody ><tr ><td class="name-td td_text">hue</td><td class="type-td td_text"><code>object</code></td><td class="default-td td_text"><code>{ min: 0, max: 360 }</code></td><td class="description-td td_text">-</td></tr>
-<tr ><td class="name-td td_text">rocketsPoint</td><td class="type-td td_text"><code>number</code></td><td class="default-td td_text"><code>50</code></td><td class="description-td td_text">-</td></tr>
-<tr ><td class="name-td td_text">opacity</td><td class="type-td td_text"><code>number</code></td><td class="default-td td_text"><code>0.5</code></td><td class="description-td td_text">-</td></tr>
-<tr ><td class="name-td td_text">acceleration</td><td class="type-td td_text"><code>number</code></td><td class="default-td td_text"><code>1.05</code></td><td class="description-td td_text">-</td></tr>
-<tr ><td class="name-td td_text">friction</td><td class="type-td td_text"><code>number</code></td><td class="default-td td_text"><code>0.95</code></td><td class="description-td td_text">-</td></tr>
-<tr ><td class="name-td td_text">gravity</td><td class="type-td td_text"><code>number</code></td><td class="default-td td_text"><code>1.5</code></td><td class="description-td td_text">-</td></tr>
-<tr ><td class="name-td td_text">particles</td><td class="type-td td_text"><code>number</code></td><td class="default-td td_text"><code>50</code></td><td class="description-td td_text">-</td></tr>
-<tr ><td class="name-td td_text">trace</td><td class="type-td td_text"><code>number</code></td><td class="default-td td_text"><code>3</code></td><td class="description-td td_text">-</td></tr>
-<tr ><td class="name-td td_text">explosion</td><td class="type-td td_text"><code>number</code></td><td class="default-td td_text"><code>5</code></td><td class="description-td td_text">-</td></tr>
-<tr ><td class="name-td td_text">autoresize</td><td class="type-td td_text"><code>boolean</code></td><td class="default-td td_text"><code>true</code></td><td class="description-td td_text">-</td></tr>
-<tr ><td class="name-td td_text">mouse</td><td class="type-td td_text"><code>object</code></td><td class="default-td td_text"><code>{ click: false, move: false, max: 3 }</code></td><td class="description-td td_text">-</td></tr>
-<tr ><td class="name-td td_text">boundaries</td><td class="type-td td_text"><code>object</code></td><td class="default-td td_text"><code>{ visible: false, x: 50, y: 50, width: container.clientWidth, height: container.clientHeight }</code></td><td class="description-td td_text">-</td></tr>
-<tr ><td class="name-td td_text">sound.enabled</td><td class="type-td td_text"><code>boolean</code></td><td class="default-td td_text"><code>false</code></td><td class="description-td td_text">-</td></tr>
-<tr ><td class="name-td td_text">sound.files</td><td class="type-td td_text"><code>string[]</code></td><td class="default-td td_text"><code>[ 'explosion0.mp3', 'explosion1.mp3', 'explosion2.mp3' ]</code></td><td class="description-td td_text">-</td></tr>
-<tr ><td class="name-td td_text">sound.volume</td><td class="type-td td_text"><code>object</code></td><td class="default-td td_text"><code>{ min: 1, max: 2 }</code></td><td class="description-td td_text">-</td></tr>
-<tr ><td class="name-td td_text">delay</td><td class="type-td td_text"><code>object</code></td><td class="default-td td_text"><code>{ min: 15, max: 30 }</code></td><td class="description-td td_text">-</td></tr>
-<tr ><td class="name-td td_text">brightness</td><td class="type-td td_text"><code>object</code></td><td class="default-td td_text"><code>{ min: 50, max: 80, decay }</code></td><td class="description-td td_text">-</td></tr>
-<tr ><td class="name-td td_text">brightness.decay</td><td class="type-td td_text"><code>object</code></td><td class="default-td td_text"><code>{ min: 0.015, max: 0.03 }</code></td><td class="description-td td_text">-</td></tr>
-<tr ><td class="name-td td_text">flickering</td><td class="type-td td_text"><code>number</code></td><td class="default-td td_text"><code>50</code></td><td class="description-td td_text">-</td></tr>
-<tr ><td class="name-td td_text">intensity</td><td class="type-td td_text"><code>number</code></td><td class="default-td td_text"><code>30</code></td><td class="description-td td_text">-</td></tr>
-<tr ><td class="name-td td_text">traceSpeed</td><td class="type-td td_text"><code>number</code></td><td class="default-td td_text"><code>10</code></td><td class="description-td td_text">-</td></tr>
-<tr ><td class="name-td td_text">lineWidth</td><td class="type-td td_text"><code>object</code></td><td class="default-td td_text"><code>{ explosion: { min: 0, max: 0 }, trace: { min: 0, max: 0 } }</code></td><td class="description-td td_text">-</td></tr>
-<tr ><td class="name-td td_text">lineStyle</td><td class="type-td td_text"><code>'round' | 'square'</code></td><td class="default-td td_text"><code>'round'</code></td><td class="description-td td_text">-</td></tr></tbody></table>
-<!-- MARKDOWN-AUTO-DOCS:END -->
+#### `.updateSize(sizes)`
+Force update canvas size.\
+Type: [`sizes`](https://github.com/crashmax-dev/fireworks-js/blob/6819ec8456ecb97140a8e1f41959ca2da5c17ddf/packages/fireworks-js/src/types.ts#L58-L61)
 
-## License
-MIT License © 2021 [Vitalij Ryndin](https://github.com/crashmax-dev)
+#### `.updateBoundaries(boundaries)`
+Force update canvas boundaries.\
+Type: [`boundaries`](https://github.com/crashmax-dev/fireworks-js/blob/6819ec8456ecb97140a8e1f41959ca2da5c17ddf/packages/fireworks-js/src/types.ts#L35-L40)
+
+## Community
+
+### Author
+- [crashmax](https://github.com/crashmax-dev)
+
+### License
+- MIT

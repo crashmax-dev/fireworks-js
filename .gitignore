@@ -1,4 +1,10 @@
-/node_modules
-/dist
-yarn.lock
+**/node_modules
+**/dist
+**/.svelte-kit
+**/.angular
+**/.turbo
+**/package
 *.tgz
+*.log
+.DS_Store
+Thumbs.db

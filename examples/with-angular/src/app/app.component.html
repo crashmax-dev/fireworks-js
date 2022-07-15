@@ -1,0 +1,2 @@
+<button (click)="toggleFireworks()" class="btn">{{ enabled ? 'Enabled' : 'Disabled' }}</button>
+<ng-fireworks [options]="options" class="fireworks" *ngIf="enabled"></ng-fireworks>

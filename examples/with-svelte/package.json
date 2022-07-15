@@ -1,0 +1,23 @@
+{
+  "name": "with-svelte",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "check": "svelte-check --tsconfig ./tsconfig.json"
+  },
+  "dependencies": {
+    "@fireworks-js/svelte": "workspace:*",
+    "svelte": "3.49.0"
+  },
+  "devDependencies": {
+    "@sveltejs/vite-plugin-svelte": "1.0.1",
+    "@tsconfig/svelte": "3.0.0",
+    "svelte-check": "2.8.0",
+    "svelte-preprocess": "4.10.7",
+    "typescript": "4.7.4",
+    "vite": "3.0.0"
+  }
+}
