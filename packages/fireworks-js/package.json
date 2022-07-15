@@ -13,7 +13,8 @@
     "dist/index.cjs.js",
     "dist/index.umd.js",
     "dist/index.d.ts",
-    "dist/types.d.ts"
+    "dist/types.d.ts",
+    "dist/fireworks.d.ts"
   ],
   "exports": {
     ".": {

@@ -49,7 +49,7 @@ tweakpane.addInput(fireworksOptions, 'brightness', {
   step: 1
 })
 
-tweakpane.addInput(fireworksOptions.brightness!, 'decay', {
+tweakpane.addInput(fireworksOptions, 'decay', {
   min: 0.001,
   max: 0.05
 })

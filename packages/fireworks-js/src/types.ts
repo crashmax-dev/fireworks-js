@@ -1,8 +1,8 @@
 export type LineStyle = 'round' | 'square'
 
 export interface IFireworksOptions {
-  hue: MinMaxValues
-  rocketsPoint: MinMaxValues
+  hue: MinMax
+  rocketsPoint: MinMax
   opacity: number
   acceleration: number
   friction: number
@@ -13,8 +13,9 @@ export interface IFireworksOptions {
   mouse: IMouse
   boundaries: IBoundaries
   sound: ISounds
-  delay: MinMaxValues
-  brightness: IBrightness
+  delay: MinMax
+  brightness: MinMax
+  decay: MinMax
   flickering: number
   intensity: number
   traceSpeed: number
@@ -24,10 +25,6 @@ export interface IFireworksOptions {
 }
 
 export type FireworksOptions = RecursivePartial<IFireworksOptions>
-
-export interface IBrightness extends MinMaxValues {
-  decay: MinMaxValues
-}
 
 export interface IMouse {
   click: boolean
@@ -45,15 +42,15 @@ export interface IBoundaries {
 export interface ISounds {
   enabled: boolean
   files: string[]
-  volume: MinMaxValues
+  volume: MinMax
 }
 
 export interface LineWidth {
-  explosion: MinMaxValues
-  trace: MinMaxValues
+  explosion: MinMax
+  trace: MinMax
 }
 
-export interface MinMaxValues {
+export interface MinMax {
   min: number
   max: number
 }
@@ -85,7 +82,8 @@ export interface ExplosionOptions {
   explosionLength: number
   flickering: boolean
   lineWidth: number
-  brightness: IBrightness
+  brightness: MinMax
+  decay: MinMax
 }
 
 export type RecursivePartial<T> = {

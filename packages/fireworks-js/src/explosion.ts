@@ -24,6 +24,7 @@ export class Explosion {
     y,
     ctx,
     hue,
+    decay,
     gravity,
     friction,
     brightness,
@@ -43,7 +44,7 @@ export class Explosion {
     this.angle = randomFloat(0, Math.PI * 2)
     this.speed = randomInt(1, 10)
     this.brightness = randomInt(brightness.min, brightness.max)
-    this.decay = randomFloat(brightness.decay.min, brightness.decay.max)
+    this.decay = randomFloat(decay.min, decay.max)
 
     while (this.explosionLength--) {
       this.coordinates.push([x, y])

@@ -12,7 +12,6 @@
     "build:packages": "turbo run build --filter='./packages/*'",
     "build:examples": "turbo run build --filter='./examples/*'",
     "publish:packages": "pnpm --filter='./packages/*' -r publish",
-    "clean": "del-cli ./**/node_modules ./**/dist ./**/.turbo",
     "test": "ava",
     "test:watch": "ava --watch",
     "format": "prettier --write --ignore-unknown '**/*.{ts,tsx,js,jsx,vue}'"

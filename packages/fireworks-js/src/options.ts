@@ -2,17 +2,16 @@ import { deepMerge } from './helpers.js'
 import type {
   FireworksOptions,
   IBoundaries,
-  IBrightness,
   IMouse,
   ISounds,
   LineStyle,
   LineWidth,
-  MinMaxValues
+  MinMax
 } from './types.js'
 
 class Options implements FireworksOptions {
-  public hue: MinMaxValues
-  public rocketsPoint: MinMaxValues
+  public hue: MinMax
+  public rocketsPoint: MinMax
   public opacity: number
   public acceleration: number
   public friction: number
@@ -23,8 +22,9 @@ class Options implements FireworksOptions {
   public mouse: IMouse
   public boundaries: IBoundaries
   public sound: ISounds
-  public delay: MinMaxValues
-  public brightness: IBrightness
+  public delay: MinMax
+  public brightness: MinMax
+  public decay: MinMax
   public flickering: number
   public intensity: number
   public traceSpeed: number
@@ -48,7 +48,7 @@ class Options implements FireworksOptions {
 
     this.hue = {
       min: 0,
-      max: 255
+      max: 360
     }
 
     this.rocketsPoint = {
@@ -80,11 +80,12 @@ class Options implements FireworksOptions {
 
     this.brightness = {
       min: 50,
-      max: 80,
-      decay: {
-        min: 0.015,
-        max: 0.03
-      }
+      max: 80
+    }
+
+    this.decay = {
+      min: 0.015,
+      max: 0.03
     }
 
     this.sound = {
