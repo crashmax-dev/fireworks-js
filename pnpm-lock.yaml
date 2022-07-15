@@ -222,7 +222,10 @@ importers:
       ng-packagr: 14.0.3_f73iy24czc7nxgufiaf4hpxsqq
 
   packages/fireworks-js:
-    specifiers: {}
+    specifiers:
+      vite: 3.0.0
+    devDependencies:
+      vite: 3.0.0
 
   packages/lit:
     specifiers:
@@ -311,11 +314,14 @@ importers:
       '@tweakpane/plugin-essentials': 0.1.4
       fireworks-js: workspace:*
       tweakpane: 3.1.0
+      vite: 3.0.0
     dependencies:
       '@tweakpane/core': 1.1.0
       '@tweakpane/plugin-essentials': 0.1.4_tweakpane@3.1.0
       fireworks-js: link:../packages/fireworks-js
       tweakpane: 3.1.0
+    devDependencies:
+      vite: 3.0.0
 
 packages:
 
