@@ -23,13 +23,19 @@ const fireworksGetters = {
   }
 }
 
+const isPcWidth = window.innerWidth > 1000
 const tweakpane = new Pane({
   document,
-  expanded: true,
+  expanded: isPcWidth,
   title: document.title
 })
 
 tweakpane.registerPlugin(EssentialsPlugin)
+
+tweakpane.on('fold', ({ expanded }) => {
+  if (isPcWidth) return
+  mainContainer.style.display = expanded ? 'none' : 'block'
+})
 
 /** options */
 tweakpane.addInput(fireworksOptions, 'hue', {
