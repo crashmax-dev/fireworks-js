@@ -18,14 +18,14 @@ body:
       label: Which package are you using?
       multiple: true
       options:
-        - fireworks-js
-        - @fireworks-js/react
-        - @fireworks-js/preact
-        - @fireworks-js/solid
-        - @fireworks-js/vue
-        - @fireworks-js/svelte
-        - @fireworks-js/angular
-        - @fireworks-js/lit
+        - "fireworks-js"
+        - "@fireworks-js/react"
+        - "@fireworks-js/preact"
+        - "@fireworks-js/solid"
+        - "@fireworks-js/vue"
+        - "@fireworks-js/svelte"
+        - "@fireworks-js/angular"
+        - "@fireworks-js/lit"
     validations:
       required: true
 
