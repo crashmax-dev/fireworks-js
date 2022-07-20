@@ -3,14 +3,12 @@ import { defineConfig } from 'vite'
 import banner from 'vite-plugin-banner'
 import dts from 'vite-plugin-dts'
 import solid from 'vite-plugin-solid'
-import tsConfigPaths from 'vite-tsconfig-paths'
 import { author, homepage, license, name, version } from './package.json'
 
 export default defineConfig({
   plugins: [
     solid(),
     dts({ insertTypesEntry: true }),
-    tsConfigPaths(),
     banner(
       `/**\n * name: ${name}` +
         `\n * version: ${version}` +

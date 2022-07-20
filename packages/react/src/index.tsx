@@ -1,12 +1,11 @@
 import { Fireworks as FireworksJs } from 'fireworks-js'
 import type { FireworksOptions } from 'fireworks-js'
 import React, { useEffect, useRef } from 'react'
-import type { CSSProperties } from 'react'
 
 type FireworksProps = {
   children?: React.ReactNode
   options?: FireworksOptions
-  style?: CSSProperties
+  style?: React.CSSProperties
 }
 
 const Fireworks = ({ children, options, style }: FireworksProps) => {
@@ -35,5 +34,5 @@ const Fireworks = ({ children, options, style }: FireworksProps) => {
 }
 
 export { Fireworks }
-export type { FireworksOptions }
 export default Fireworks
+export type { FireworksOptions }

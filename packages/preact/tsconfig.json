@@ -3,6 +3,7 @@
   "compilerOptions": {
     "noImplicitOverride": false,
     "useDefineForClassFields": false,
+    "sourceMap": false,
     "moduleResolution": "node",
     "jsx": "preserve",
     "jsxFactory": "h",

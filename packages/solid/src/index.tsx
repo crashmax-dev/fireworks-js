@@ -27,7 +27,7 @@ const Fireworks: ParentComponent<FireworksProps> = ({
 
   return (
     <div
-      ref={container!}
+      ref={container}
       style={style}
     >
       {children}
@@ -36,5 +36,5 @@ const Fireworks: ParentComponent<FireworksProps> = ({
 }
 
 export { Fireworks }
-export type { FireworksOptions }
 export default Fireworks
+export type { FireworksOptions }

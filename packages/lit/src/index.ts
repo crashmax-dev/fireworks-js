@@ -79,5 +79,5 @@ declare global {
 }
 
 export { Fireworks }
-export type { FireworksProperties }
 export default Fireworks
+export type { FireworksProperties }
