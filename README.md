@@ -103,6 +103,11 @@ fireworks.start()
 npm install @fireworks-js/react
 ```
 
+> **Warning**\
+> StrictMode in React 18 will lead useEffect called twice.\
+> Fireworks speed will be broken (in development mode).
+
+
 #### [`@fireworks-js/preact`](https://github.com/crashmax-dev/fireworks-js/tree/master/examples/with-preact)
 
 ```sh

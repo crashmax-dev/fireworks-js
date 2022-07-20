@@ -14,7 +14,9 @@ const Fireworks = ({ children, options, style }: FireworksProps) => {
   const fireworks = useRef<FireworksJs | null>(null)
 
   useEffect(() => {
-    fireworks.current = new FireworksJs(container.current!, options)
+    if (!fireworks.current) {
+      fireworks.current = new FireworksJs(container.current!, options)
+    }
     fireworks.current.start()
 
     return () => {
