@@ -7,7 +7,7 @@ import { author, homepage, license, name, version } from './package.json'
 
 export default defineConfig({
   plugins: [
-    react(),
+    react({ jsxRuntime: 'classic' }),
     dts({ insertTypesEntry: true }),
     banner(
       `/**\n * name: ${name}` +
@@ -15,8 +15,7 @@ export default defineConfig({
         `\n * author: ${author.name} (${author.url})` +
         `\n * homepage: ${homepage}` +
         `\n * license ${license}\n */`
-    )
-  ],
+    )],
   build: {
     lib: {
       entry: resolve(__dirname, 'src/index.tsx'),
