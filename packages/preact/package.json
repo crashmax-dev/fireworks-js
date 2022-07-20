@@ -52,7 +52,8 @@
   },
   "devDependencies": {
     "@preact/preset-vite": "2.3.0",
-    "preact": "10.10.0"
+    "preact": "10.10.0",
+    "vite": "3.0.2"
   },
   "peerDependencies": {
     "preact": "^8.x"
