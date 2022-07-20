@@ -14,7 +14,6 @@ const Fireworks = ({ children, options, style }: FireworksProps) => {
   const fireworks = useRef<FireworksJs | null>(null)
 
   useEffect(() => {
-    // React.StrictMode in React18+ will lead useEffect(() => {}, []) called twice.
     if (!fireworks.current) {
       fireworks.current = new FireworksJs(container.current!, options)
     }
