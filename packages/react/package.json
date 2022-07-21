@@ -38,7 +38,7 @@
     "url": "https://github.com/crashmax-dev/fireworks-js/issues"
   },
   "scripts": {
-    "dev": "vite",
+    "dev": "vite build --watch",
     "build": "vite build",
     "prepublishOnly": "pnpm build"
   },
