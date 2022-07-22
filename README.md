@@ -46,7 +46,7 @@
 
 ## Features
 
- - 🔥 Zero [dependencies](https://www.npmjs.com/package/fireworks-js?activeTab=dependents)
+ - 🔥 Zero [dependencies](https://www.npmjs.com/package/fireworks-js?activeTab=dependencies)
  - ⚙️ Flexible [configuration](#options)
  - 📦 Lightweight ([~3.0kB gzipped](https://bundlephobia.com/package/fireworks-js))
  - 📜 Supports [TypeScript](https://www.typescriptlang.org) type definition
