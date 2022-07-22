@@ -84,7 +84,7 @@ pnpm add fireworks-js
 | [@fireworks-js/vue](#fireworks-jsvue) | [![](https://img.shields.io/npm/v/@fireworks-js/vue.svg)](https://npm.im/@fireworks-js/vue) | Vue 3 component |
 | [@fireworks-js/svelte](#fireworks-jssvelte) | [![](https://img.shields.io/npm/v/@fireworks-js/svelte.svg)](https://npm.im/@fireworks-js/svelte) | Svelte component |
 | [@fireworks-js/angular](#fireworks-jsangular) | [![](https://img.shields.io/npm/v/@fireworks-js/angular.svg)](https://npm.im/@fireworks-js/angular) | Angular component |
-| [@fireworks-js/lit](#fireworks-jslit) | [![](https://img.shields.io/npm/v/@fireworks-js/lit.svg)](https://npm.im/@fireworks-js/lit) | Web component |
+| [@fireworks-js/web](#fireworks-jsweb) | [![](https://img.shields.io/npm/v/@fireworks-js/web.svg)](https://npm.im/@fireworks-js/web) | Web components |
 
 ## Usage
 
