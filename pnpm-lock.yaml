@@ -165,6 +165,17 @@ importers:
       typescript: 4.7.4
       vite: 3.0.2
 
+  examples/with-web-components:
+    specifiers:
+      '@fireworks-js/web': workspace:*
+      typescript: 4.7.4
+      vite: 3.0.2
+    dependencies:
+      '@fireworks-js/web': link:../../packages/web
+    devDependencies:
+      typescript: 4.7.4
+      vite: 3.0.2
+
   packages/angular:
     specifiers:
       '@angular-devkit/build-angular': ^14.0.5
