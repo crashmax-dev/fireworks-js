@@ -21,11 +21,13 @@
     "url": "git+https://github.com/crashmax-dev/fireworks-js.git"
   },
   "keywords": [
-    "lit",
     "react",
+    "preact",
+    "solid",
     "vue",
     "angular",
     "svelte",
+    "web-components",
     "canvas",
     "fireworks",
     "animation"

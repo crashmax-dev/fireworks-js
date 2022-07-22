@@ -38,7 +38,6 @@
   - [@fireworks-js/vue](#fireworks-jsvue)
   - [@fireworks-js/svelte](#fireworks-jssvelte)
   - [@fireworks-js/angular](#fireworks-jsangular)
-  - [@fireworks-js/lit](#fireworks-jslit)
 - [Documentation](#documentation)
   - [Options](#options)
   - [API](#api)
@@ -136,12 +135,6 @@ npm install @fireworks-js/svelte
 
 ```sh
 npm install @fireworks-js/angular
-```
-
-#### [`@fireworks-js/lit`](https://github.com/crashmax-dev/fireworks-js/tree/master/examples/with-lit)
-
-```sh
-npm install @fireworks-js/lit
 ```
 
 ## Documentation

@@ -78,19 +78,6 @@ importers:
       jasmine-core: 4.1.1
       typescript: 4.7.4
 
-  examples/with-lit:
-    specifiers:
-      '@fireworks-js/lit': workspace:*
-      lit: ^2.2.7
-      typescript: 4.7.4
-      vite: 3.0.2
-    dependencies:
-      '@fireworks-js/lit': link:../../packages/lit
-      lit: 2.2.8
-    devDependencies:
-      typescript: 4.7.4
-      vite: 3.0.2
-
   examples/with-preact:
     specifiers:
       '@fireworks-js/preact': workspace:*
@@ -222,17 +209,6 @@ importers:
   packages/fireworks-js:
     specifiers:
       vite: 3.0.2
-    devDependencies:
-      vite: 3.0.2
-
-  packages/lit:
-    specifiers:
-      fireworks-js: workspace:2.0.0
-      lit: 2.2.7
-      vite: 3.0.2
-    dependencies:
-      fireworks-js: link:../fireworks-js
-      lit: 2.2.7
     devDependencies:
       vite: 3.0.2
 
@@ -835,14 +811,14 @@ packages:
     dependencies:
       '@ampproject/remapping': 2.2.0
       '@babel/code-frame': 7.18.6
-      '@babel/generator': 7.17.7
+      '@babel/generator': 7.18.9
       '@babel/helper-compilation-targets': 7.18.9_@babel+core@7.17.8
       '@babel/helper-module-transforms': 7.18.9
       '@babel/helpers': 7.18.9
-      '@babel/parser': 7.17.8
+      '@babel/parser': 7.18.9
       '@babel/template': 7.18.6
-      '@babel/traverse': 7.17.3
-      '@babel/types': 7.17.0
+      '@babel/traverse': 7.18.9
+      '@babel/types': 7.18.9
       convert-source-map: 1.8.0
       debug: 4.3.4
       gensync: 1.0.0-beta.2
@@ -902,7 +878,7 @@ packages:
     resolution: {integrity: sha512-oLcVCTeIFadUoArDTwpluncplrYBmTCCZZgXCbgNGvOBBiSDDK3eWO4b/+eOTli5tKv1lg+a5/NAXg+nTcei1w==}
     engines: {node: '>=6.9.0'}
     dependencies:
-      '@babel/types': 7.17.0
+      '@babel/types': 7.18.9
       jsesc: 2.5.2
       source-map: 0.5.7
     dev: true
@@ -1215,7 +1191,7 @@ packages:
     engines: {node: '>=6.0.0'}
     hasBin: true
     dependencies:
-      '@babel/types': 7.17.0
+      '@babel/types': 7.18.9
     dev: true
 
   /@babel/parser/7.18.9:
@@ -2161,13 +2137,13 @@ packages:
     engines: {node: '>=6.9.0'}
     dependencies:
       '@babel/code-frame': 7.18.6
-      '@babel/generator': 7.17.7
+      '@babel/generator': 7.18.9
       '@babel/helper-environment-visitor': 7.18.9
       '@babel/helper-function-name': 7.18.9
       '@babel/helper-hoist-variables': 7.18.6
       '@babel/helper-split-export-declaration': 7.18.6
-      '@babel/parser': 7.17.8
-      '@babel/types': 7.17.0
+      '@babel/parser': 7.18.9
+      '@babel/types': 7.18.9
       debug: 4.3.4
       globals: 11.12.0
     transitivePeerDependencies:
@@ -2453,10 +2429,6 @@ packages:
   /@leichtgewicht/ip-codec/2.0.4:
     resolution: {integrity: sha512-Hcv+nVC0kZnQ3tD9GVu5xSMR4VVYOteQIr/hwFPVEvPdlXqgGEuRjiheChHgdM+JyqdgNcmzZOX/tnl0JOiI7A==}
     dev: true
-
-  /@lit/reactive-element/1.3.4:
-    resolution: {integrity: sha512-I1wz4uxOA52zSBhKmv4KQWLJpCyvfpnDg+eQR6mjpRgV+Ldi14HLPpSUpJklZRldz0fFmGCC/kVmuc/3cPFqCg==}
-    dev: false
 
   /@microsoft/api-extractor-model/7.22.1:
     resolution: {integrity: sha512-3Bx6VC8F4ti8XlhaOCynCpwGvdXGwHD2dGBpo2xpJT9gEmPQvpAL3Ni+5gaEX0eQ27zGILVTUZDqZSRYskk/Rw==}
@@ -3043,10 +3015,6 @@ packages:
     dependencies:
       '@types/node': 18.0.6
     dev: true
-
-  /@types/trusted-types/2.0.2:
-    resolution: {integrity: sha512-F5DIZ36YVLE+PN+Zwws4kJogq47hNgX3Nx6WyDJ3kcplxyke3XIzB8uK5n/Lpm1HBsbGzd6nmGehL8cPekP+Tg==}
-    dev: false
 
   /@types/ws/8.5.3:
     resolution: {integrity: sha512-6YOoWjruKj1uLf3INHH7D3qTXwFfEsg1kf3c0uDdSBJwfa/llkwIjrAGV7j7mVgGNbzTQ3HiHKKDXl6bJPD97w==}
@@ -6198,35 +6166,6 @@ packages:
   /lines-and-columns/1.2.4:
     resolution: {integrity: sha512-7ylylesZQ/PV29jhEDl3Ufjo6ZX7gCqJr5F7PKrqc93v7fzSymt1BpwEU8nAUXs8qzzvqhbjhK5QZg6Mt/HkBg==}
     dev: true
-
-  /lit-element/3.2.2:
-    resolution: {integrity: sha512-6ZgxBR9KNroqKb6+htkyBwD90XGRiqKDHVrW/Eh0EZ+l+iC+u+v+w3/BA5NGi4nizAVHGYvQBHUDuSmLjPp7NQ==}
-    dependencies:
-      '@lit/reactive-element': 1.3.4
-      lit-html: 2.2.7
-    dev: false
-
-  /lit-html/2.2.7:
-    resolution: {integrity: sha512-JhqiAwO1l03kRe68uBZ0i2x4ef2S5szY9vvP411nlrFZIpKK4/hwnhA/15bqbvxe1lV3ipBdhaOzHmyOk7QIRg==}
-    dependencies:
-      '@types/trusted-types': 2.0.2
-    dev: false
-
-  /lit/2.2.7:
-    resolution: {integrity: sha512-WXYujlKFwme5ZqXOZoWuRVZQAwy7scbcVT3wCbAOHefOxyscqjywWGlF2e6nnC9E64yP9l2ZQlN8wZcRlrjUMQ==}
-    dependencies:
-      '@lit/reactive-element': 1.3.4
-      lit-element: 3.2.2
-      lit-html: 2.2.7
-    dev: false
-
-  /lit/2.2.8:
-    resolution: {integrity: sha512-QjeNbi/H9LVIHR+u0OqsL+hs62a16m02JlJHYN48HcBuXyiPYR8JvzsTp5dYYS81l+b9Emp3UaGo82EheV0pog==}
-    dependencies:
-      '@lit/reactive-element': 1.3.4
-      lit-element: 3.2.2
-      lit-html: 2.2.7
-    dev: false
 
   /load-json-file/7.0.1:
     resolution: {integrity: sha512-Gnxj3ev3mB5TkVBGad0JM6dmLiQL+o0t23JPBZ9sd+yvSLk05mFoqKBw5N8gbbkU4TNXyqCgIrl/VM17OgUIgQ==}
