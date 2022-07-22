@@ -38,7 +38,7 @@
   - [@fireworks-js/vue](#fireworks-jsvue)
   - [@fireworks-js/svelte](#fireworks-jssvelte)
   - [@fireworks-js/angular](#fireworks-jsangular)
-  - [@fireworks-js/lit](#fireworks-jslit)
+  - [@fireworks-js/web](#fireworks-jsweb)
 - [Documentation](#documentation)
   - [Options](#options)
   - [API](#api)
@@ -138,10 +138,10 @@ npm install @fireworks-js/svelte
 npm install @fireworks-js/angular
 ```
 
-#### [`@fireworks-js/lit`](https://github.com/crashmax-dev/fireworks-js/tree/master/examples/with-lit)
+#### [`@fireworks-js/web`](https://github.com/crashmax-dev/fireworks-js/tree/master/examples/with-web-components)
 
 ```sh
-npm install @fireworks-js/lit
+npm install @fireworks-js/web
 ```
 
 ## Documentation
@@ -289,4 +289,4 @@ Type: [`boundaries`](https://github.com/crashmax-dev/fireworks-js/blob/6819ec845
 - [crashmax](https://github.com/crashmax-dev)
 
 ### License
-- MIT
+- [MIT](https://github.com/crashmax-dev/fireworks-js/blob/master/LICENSE)

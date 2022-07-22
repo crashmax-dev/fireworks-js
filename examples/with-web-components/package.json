@@ -1,15 +1,14 @@
 {
-  "name": "with-lit",
+  "name": "with-web-components",
   "private": true,
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && tsc",
-    "serve": "vite preview"
+    "build": "tsc && vite build",
+    "preview": "vite preview"
   },
   "dependencies": {
-    "@fireworks-js/lit": "workspace:*",
-    "lit": "^2.2.7"
+    "@fireworks-js/web": "workspace:*"
   },
   "devDependencies": {
     "typescript": "4.7.4",

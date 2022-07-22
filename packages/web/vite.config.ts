@@ -18,17 +18,14 @@ export default defineConfig({
   build: {
     lib: {
       entry: resolve(__dirname, 'src/index.ts'),
-      name: 'Fireworks',
-      formats: ['es'],
-      fileName: () => 'index.js'
+      name: 'fireworks-js',
+      formats: ['es', 'umd'],
+      fileName: (format) => `index.${format}.js`
     },
     rollupOptions: {
-      external: /^lit/,
+      treeshake: true,
       output: {
-        exports: 'named',
-        globals: {
-          lit: 'Lit'
-        }
+        exports: 'named'
       }
     }
   }
