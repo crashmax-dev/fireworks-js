@@ -8,14 +8,17 @@
   <a href="https://github.com/crashmax-dev/fireworks-js/actions">
     <img alt="GitHub Workflow Status" src="https://img.shields.io/github/workflow/status/crashmax-dev/fireworks-js/github-pages">
   </a>
+  <a href="https://github.com/crashmax-dev/fireworks-js/blob/master/LICENSE">
+    <img alt="GitHub" src="https://img.shields.io/github/license/crashmax-dev/fireworks-js?color=success">
+  </a>
   <a href="https://www.npmjs.com/package/fireworks-js">
-    <img alt="npm" src="https://img.shields.io/npm/v/fireworks-js">
+    <img alt="npm" src="https://img.shields.io/npm/v/fireworks-js?color=orange">
   </a>
   <a href="https://www.npmjs.com/package/fireworks-js">
     <img alt="npm" src="https://img.shields.io/npm/dt/fireworks-js?color=blue">
   </a>
   <a href="https://bundlephobia.com/package/fireworks-js@latest">
-    <img alt="npm bundle size" src="https://badgen.net/bundlephobia/minzip/fireworks-js">
+    <img alt="npm bundle size" src="https://img.shields.io/bundlephobia/minzip/fireworks-js">
   </a>
 </p>
 
