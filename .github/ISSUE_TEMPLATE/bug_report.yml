@@ -25,7 +25,7 @@ body:
         - "@fireworks-js/vue"
         - "@fireworks-js/svelte"
         - "@fireworks-js/angular"
-        - "@fireworks-js/lit"
+        - "@fireworks-js/web"
     validations:
       required: true
 

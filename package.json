@@ -11,9 +11,6 @@
     "build:website": "turbo run build --filter='./website'",
     "build:packages": "turbo run build --filter='./packages/*'",
     "build:examples": "turbo run build --filter='./examples/*'",
-    "publish:packages": "pnpm --filter='./packages/*' -r publish",
-    "test": "ava",
-    "test:watch": "ava --watch",
     "format": "prettier --write --ignore-unknown '**/*.{ts,tsx,js,jsx,vue}'"
   },
   "repository": {
@@ -46,7 +43,6 @@
     "@crashmax/prettier-config": "1.1.1",
     "@crashmax/tsconfig": "1.0.1",
     "@types/node": "18.0.6",
-    "ava": "4.3.1",
     "del-cli": "5.0.0",
     "tsx": "3.8.0",
     "turbo": "1.3.3",
