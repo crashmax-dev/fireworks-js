@@ -1,0 +1,1 @@
+import '@fireworks-js/web'
