@@ -46,8 +46,5 @@
     "build": "vite build",
     "preview": "vite priview",
     "prepublishOnly": "pnpm build"
-  },
-  "devDependencies": {
-    "vite": "3.0.2"
   }
 }
