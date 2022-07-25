@@ -1,8 +1,8 @@
-import { Component, Input, ViewChild, Inject, PLATFORM_ID } from '@angular/core'
-import { isPlatformServer } from '@angular/common'
 import { Fireworks } from 'fireworks-js'
-import type { OnDestroy, AfterViewInit, ElementRef } from '@angular/core'
 import type { FireworksOptions } from 'fireworks-js'
+import { isPlatformServer } from '@angular/common'
+import { Component, Inject, Input, PLATFORM_ID, ViewChild } from '@angular/core'
+import type { AfterViewInit, ElementRef, OnDestroy } from '@angular/core'
 
 export type FireworksProps = Omit<FireworksOptions, 'autoresize'>
 
@@ -24,10 +24,10 @@ export class NgFireworksComponent implements AfterViewInit, OnDestroy {
   public ngAfterViewInit(): void {
     if (this.isServer) return
 
-    this.fireworks = new Fireworks(
-      this.container.nativeElement,
-      { ...this.options, autoresize: false }
-    )
+    this.fireworks = new Fireworks(this.container.nativeElement, {
+      ...this.options,
+      autoresize: false
+    })
     this.fireworks.start()
   }
 

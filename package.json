@@ -11,7 +11,7 @@
     "build:website": "turbo run build --filter='./website'",
     "build:packages": "turbo run build --filter='./packages/*'",
     "build:examples": "turbo run build --filter='./examples/*'",
-    "format": "prettier --write --ignore-unknown '**/*.{ts,tsx,js,jsx,vue}'"
+    "format": "prettier --write --ignore-unknown '**/*.{ts,tsx,js,jsx,vue,css}'"
   },
   "repository": {
     "type": "git",
@@ -40,7 +40,7 @@
   },
   "packageManager": "pnpm@7.5.0",
   "devDependencies": {
-    "@crashmax/prettier-config": "1.1.1",
+    "@crashmax/prettier-config": "^1.1.2",
     "@crashmax/tsconfig": "1.0.1",
     "@types/node": "18.0.6",
     "del-cli": "5.0.0",
