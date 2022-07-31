@@ -11,7 +11,7 @@
     "build:website": "turbo run build --filter='./website'",
     "build:packages": "turbo run build --filter='./packages/*'",
     "build:examples": "turbo run build --filter='./examples/*'",
-    "format": "prettier --write --ignore-unknown '**/*.{ts,tsx,js,jsx,vue,css}'"
+    "format": "prettier --write --ignore-unknown **"
   },
   "repository": {
     "type": "git",
@@ -40,14 +40,14 @@
   },
   "packageManager": "pnpm@7.5.0",
   "devDependencies": {
-    "@crashmax/prettier-config": "^1.1.2",
+    "@crashmax/prettier-config": "^2.0.3",
     "@crashmax/tsconfig": "1.0.2",
-    "@types/node": "18.6.1",
+    "@types/node": "18.6.3",
     "del-cli": "5.0.0",
     "tsx": "3.8.0",
-    "turbo": "1.3.4",
+    "turbo": "1.4.0",
     "typescript": "4.7.4",
-    "vite": "3.0.3",
+    "vite": "3.0.4",
     "vite-plugin-banner": "0.3.0",
     "vite-plugin-dts": "1.4.0"
   }
