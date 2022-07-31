@@ -1,4 +1,4 @@
-name: GitHub Pages
+name: github-pages
 
 on:
   push:
@@ -8,43 +8,34 @@ on:
 jobs:
   cache-and-install:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Install Node.js
+      - name: Cache PNPM
+        uses: actions/cache@v3
+        with:
+          path: ~/.pnpm-store
+          key: ${{ runner.os }}-node-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - name: Setup Node
         uses: actions/setup-node@v3
         with:
           node-version: 16
 
-      - uses: pnpm/action-setup@v2.0.1
-        name: Install pnpm
-        id: pnpm-install
+      - name: Installing packages
+        uses: pnpm/action-setup@v2.2.2
         with:
-          version: 7
-          run_install: false
-
-      - name: Get pnpm store directory
-        id: pnpm-cache
-        run: |
-          echo "::set-output name=pnpm_cache_dir::$(pnpm store path)"
-
-      - uses: actions/cache@v3
-        name: Setup pnpm cache
-        with:
-          path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
-
-      - name: Install dependencies
-        run: pnpm install --no-frozen-lockfile
+          version: 7.x.x
+          run_install: |
+            - args: [--frozen-lockfile]
 
       - name: Build website
         run: pnpm build:website
 
-      - name: Deploy
+      - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@4.1.5
         with:
           branch: gh-pages
