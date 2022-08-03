@@ -1,6 +1,6 @@
 {
 	"name": "@fireworks-js/svelte",
-	"version": "2.0.0",
+	"version": "2.0.1",
 	"type": "module",
 	"description": "A simple fireworks library!",
 	"homepage": "https://fireworks.js.org",
@@ -52,6 +52,6 @@
 		"svelte2tsx": "0.5.12"
 	},
 	"peerDependencies": {
-		"svelte": "^3.x"
+		"svelte": ">=3.0.0"
 	}
 }

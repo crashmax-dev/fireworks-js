@@ -1,6 +1,6 @@
 {
   "name": "@fireworks-js/solid",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "type": "module",
   "description": "A simple fireworks library!",
   "homepage": "https://fireworks.js.org",
@@ -52,6 +52,6 @@
     "vite-plugin-solid": "2.3.0"
   },
   "peerDependencies": {
-    "solid-js": "^1.x"
+    "solid-js": ">=1.0.0"
   }
 }

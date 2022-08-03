@@ -1,6 +1,6 @@
 {
   "name": "@fireworks-js/preact",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "type": "module",
   "description": "A simple fireworks library!",
   "homepage": "https://fireworks.js.org",
@@ -55,6 +55,6 @@
     "preact": "10.10.0"
   },
   "peerDependencies": {
-    "preact": "^8.x"
+    "preact": ">=8.0.0"
   }
 }

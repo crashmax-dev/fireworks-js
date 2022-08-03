@@ -1,6 +1,6 @@
 {
   "name": "@fireworks-js/vue",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "type": "module",
   "description": "A simple fireworks library!",
   "homepage": "https://fireworks.js.org",
@@ -53,6 +53,6 @@
     "vue-tsc": "0.33.9"
   },
   "peerDependencies": {
-    "vue": "^2.7.0"
+    "vue": ">=2.7.0"
   }
 }
