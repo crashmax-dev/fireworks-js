@@ -46,8 +46,8 @@ export const fireworksOptions: FireworksOptions = {
     max: 80
   },
   decay: {
-    min: 0.001,
-    max: 0.05
+    min: 0.015,
+    max: 0.03
   },
   boundaries: {
     x: 50,
