@@ -1,7 +1,6 @@
 {
   "extends": "@crashmax/tsconfig",
   "compilerOptions": {
-    "moduleResolution": "node",
     "jsx": "preserve",
     "jsxImportSource": "solid-js",
     "outDir": "dist",
@@ -10,6 +9,6 @@
     ]
   },
   "include": [
-    "src/**/*"
+    "src"
   ]
 }

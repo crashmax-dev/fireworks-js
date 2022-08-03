@@ -1,7 +1,11 @@
 {
   "extends": "@crashmax/tsconfig",
   "compilerOptions": {
-    "useDefineForClassFields": false
+    "types": [
+      "vite/client"
+    ]
   },
-  "include": ["src/**/*"]
+  "include": [
+    "src"
+  ]
 }
