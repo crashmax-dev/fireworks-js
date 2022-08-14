@@ -27,7 +27,7 @@
     "@angular/core": "^14.0.0"
   },
   "dependencies": {
-    "fireworks-js": "workspace:2.0.0",
+    "fireworks-js": "workspace:2.0.1",
     "tslib": "2.4.0"
   }
 }
