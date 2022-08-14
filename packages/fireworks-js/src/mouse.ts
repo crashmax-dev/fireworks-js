@@ -5,12 +5,16 @@ export class Mouse {
   public x: number
   public y: number
 
-  constructor(private readonly canvas: HTMLCanvasElement) {}
+  constructor(private readonly canvas: HTMLCanvasElement) {
+    this.mouseDown = this.mouseDown.bind(this)
+    this.mouseUp = this.mouseMove.bind(this)
+    this.mouseMove = this.mouseMove.bind(this)
+  }
 
   subscribe(): void {
-    this.canvas.addEventListener('mousedown', (event) => this.mouseDown(event))
-    this.canvas.addEventListener('mouseup', (event) => this.mouseUp(event))
-    this.canvas.addEventListener('mousemove', (event) => this.mouseMove(event))
+    this.canvas.addEventListener('mousedown', this.mouseDown)
+    this.canvas.addEventListener('mouseup', this.mouseUp)
+    this.canvas.addEventListener('mousemove', this.mouseMove)
   }
 
   unsubscribe(): void {
