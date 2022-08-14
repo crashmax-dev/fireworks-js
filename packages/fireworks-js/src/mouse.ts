@@ -8,9 +8,9 @@ export class Mouse {
   constructor(private readonly canvas: HTMLCanvasElement) {}
 
   subscribe(): void {
-    this.canvas.addEventListener('mousedown', (event) => this.mouseDown(event))
-    this.canvas.addEventListener('mouseup', (event) => this.mouseUp(event))
-    this.canvas.addEventListener('mousemove', (event) => this.mouseMove(event))
+    this.canvas.addEventListener('mousedown', this.mouseDown)
+    this.canvas.addEventListener('mouseup', this.mouseUp)
+    this.canvas.addEventListener('mousemove', this.mouseMove)
   }
 
   unsubscribe(): void {
@@ -27,15 +27,15 @@ export class Mouse {
     }
   }
 
-  private mouseDown(event: MouseEvent): void {
+  private mouseDown = (event: MouseEvent): void =>{
     this.useMouse(event, opts.mouse.click)
   }
 
-  private mouseUp(event: MouseEvent): void {
+  private mouseUp = (event: MouseEvent): void  => {
     this.useMouse(event, false)
   }
 
-  private mouseMove(event: MouseEvent): void {
+  private mouseMove = (event: MouseEvent): void => {
     this.useMouse(event, this.active)
   }
 }

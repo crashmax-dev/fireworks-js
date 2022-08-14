@@ -6,7 +6,7 @@ export class Resize {
 
   subscribe(): void {
     if (opts.autoresize) {
-      window.addEventListener('resize', () => this.bindResize())
+      window.addEventListener('resize', this.bindResize)
     }
   }
 
@@ -16,7 +16,7 @@ export class Resize {
     }
   }
 
-  private bindResize(): void {
+  private bindResize = (): void => {
     this.fireworks.updateSize()
   }
 }
