@@ -7,7 +7,7 @@ export class Mouse {
 
   constructor(private readonly canvas: HTMLCanvasElement) {
     this.mouseDown = this.mouseDown.bind(this)
-    this.mouseUp = this.mouseMove.bind(this)
+    this.mouseUp = this.mouseUp.bind(this)
     this.mouseMove = this.mouseMove.bind(this)
   }
 
