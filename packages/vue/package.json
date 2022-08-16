@@ -1,6 +1,6 @@
 {
   "name": "@fireworks-js/vue",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "type": "module",
   "description": "A simple fireworks library!",
   "homepage": "https://fireworks.js.org",
@@ -45,7 +45,7 @@
     "prepublishOnly": "pnpm build"
   },
   "dependencies": {
-    "fireworks-js": "workspace:2.0.1"
+    "fireworks-js": "workspace:2.0.2"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "3.0.0",

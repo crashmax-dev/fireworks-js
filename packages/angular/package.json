@@ -1,7 +1,7 @@
 {
   "name": "@fireworks-js/angular",
   "private": true,
-  "version": "2.0.1",
+  "version": "2.0.2",
   "typings": "./dist/ng-fireworks/index.d.ts",
   "exports": {
     "./package.json": {
@@ -23,25 +23,25 @@
     "watch": "ng build --watch --configuration development"
   },
   "dependencies": {
-    "@angular/animations": "^14.0.0",
-    "@angular/common": "^14.0.0",
-    "@angular/compiler": "^14.0.0",
-    "@angular/core": "^14.0.0",
-    "@angular/forms": "^14.0.0",
-    "@angular/platform-browser": "^14.0.0",
-    "@angular/platform-browser-dynamic": "^14.0.0",
-    "@angular/router": "^14.0.0",
-    "fireworks-js": "workspace:2.0.1",
-    "rxjs": "~7.5.0",
+    "@angular/animations": "^14.1.2",
+    "@angular/common": "^14.1.2",
+    "@angular/compiler": "^14.1.2",
+    "@angular/core": "^14.1.2",
+    "@angular/forms": "^14.1.2",
+    "@angular/platform-browser": "^14.1.2",
+    "@angular/platform-browser-dynamic": "^14.1.2",
+    "@angular/router": "^14.1.2",
+    "fireworks-js": "workspace:2.0.2",
+    "rxjs": "~7.5.6",
     "tslib": "2.4.0",
-    "zone.js": "~0.11.4"
+    "zone.js": "~0.11.8"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "^14.0.5",
-    "@angular/cli": "~14.0.5",
-    "@angular/compiler-cli": "^14.0.0",
-    "@types/jasmine": "~4.0.0",
-    "jasmine-core": "~4.1.0",
-    "ng-packagr": "^14.0.0"
+    "@angular-devkit/build-angular": "^14.1.2",
+    "@angular/cli": "~14.0.7",
+    "@angular/compiler-cli": "^14.1.2",
+    "@types/jasmine": "~4.0.3",
+    "jasmine-core": "~4.1.1",
+    "ng-packagr": "^14.1.0"
   }
 }
