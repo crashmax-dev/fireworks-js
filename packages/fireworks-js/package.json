@@ -44,7 +44,6 @@
   "scripts": {
     "dev": "vite build --watch",
     "build": "vite build",
-    "preview": "vite priview",
     "prepublishOnly": "pnpm build"
   }
 }

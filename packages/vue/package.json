@@ -41,7 +41,6 @@
     "dev": "vite build --watch",
     "build": "del-cli dist && vite build && pnpm types",
     "types": "vue-tsc --declaration --emitDeclarationOnly",
-    "preview": "vite preview",
     "prepublishOnly": "pnpm build"
   },
   "dependencies": {

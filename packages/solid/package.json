@@ -40,7 +40,6 @@
   "scripts": {
     "dev": "vite build --watch",
     "build": "vite build",
-    "preview": "vite preview",
     "prepublishOnly": "pnpm build"
   },
   "dependencies": {
