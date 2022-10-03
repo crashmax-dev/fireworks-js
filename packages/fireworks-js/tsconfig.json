@@ -1,10 +1,5 @@
 {
   "extends": "@crashmax/tsconfig",
-  "compilerOptions": {
-    "types": [
-      "vite/client"
-    ]
-  },
   "include": [
     "src"
   ]
