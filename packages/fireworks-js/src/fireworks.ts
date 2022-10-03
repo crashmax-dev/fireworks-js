@@ -10,6 +10,7 @@ import { FireworksOptions, IBoundaries, Sizes } from './types.js'
 declare const version: string
 
 export class Fireworks {
+  private target: Element | HTMLCanvasElement
   private container: Element
   private canvas: HTMLCanvasElement
   private ctx: CanvasRenderingContext2D
@@ -30,19 +31,11 @@ export class Fireworks {
     container: Element | HTMLCanvasElement,
     options: FireworksOptions = {}
   ) {
+    this.target = container
     this.container = container
 
-    if (container instanceof HTMLCanvasElement) {
-      this.canvas = container
-    } else {
-      this.canvas = document.createElement('canvas')
-      this.container.appendChild(this.canvas)
-    }
-
-    this.ctx = this.canvas.getContext('2d')!
-
+    this.createCanvas(this.target)
     this.updateOptions(options)
-    this.updateSize()
 
     this.sound = new Sound()
     this.resize = new Resize(this)
@@ -60,6 +53,10 @@ export class Fireworks {
   start(): void {
     if (this.running) return
 
+    if (!this.canvas.isConnected) {
+      this.createCanvas(this.target)
+    }
+
     this.running = true
     this.resize.subscribe()
     this.mouse.subscribe()
@@ -67,13 +64,17 @@ export class Fireworks {
     this.render()
   }
 
-  stop(): void {
+  stop(dispose = false): void {
     if (!this.running) return
 
     this.running = false
     this.resize.unsubscribe()
     this.mouse.unsubscribe()
     this.clear()
+
+    if (dispose) {
+      this.canvas.remove()
+    }
   }
 
   pause(): void {
@@ -96,12 +97,8 @@ export class Fireworks {
   }
 
   updateSize({
-    width = this.container instanceof HTMLCanvasElement
-      ? this.canvas.width
-      : this.container.clientWidth,
-    height = this.container instanceof HTMLCanvasElement
-      ? this.canvas.height
-      : this.container.clientHeight
+    width = this.container.clientWidth,
+    height = this.container.clientHeight
   }: Partial<Sizes> = {}): void {
     this.width = width
     this.height = height
@@ -118,6 +115,22 @@ export class Fireworks {
 
   updateBoundaries(boundaries: Partial<IBoundaries>): void {
     this.updateOptions({ boundaries })
+  }
+
+  private createCanvas(el: Element | HTMLCanvasElement): void {
+    if (el instanceof HTMLCanvasElement) {
+      if (!el.isConnected) {
+        document.body.append(el)
+      }
+
+      this.canvas = el
+    } else {
+      this.canvas = document.createElement('canvas')
+      this.container.append(this.canvas)
+    }
+
+    this.ctx = this.canvas.getContext('2d')!
+    this.updateSize()
   }
 
   private render(timestamp = this.timestamp): void {
