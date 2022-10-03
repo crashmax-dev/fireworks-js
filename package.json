@@ -40,15 +40,15 @@
   },
   "packageManager": "pnpm@7.5.0",
   "devDependencies": {
-    "@crashmax/prettier-config": "^2.0.3",
+    "@crashmax/prettier-config": "^2.0.4",
     "@crashmax/tsconfig": "1.0.2",
-    "@types/node": "18.6.3",
+    "@types/node": "18.8.0",
     "del-cli": "5.0.0",
-    "tsx": "3.8.0",
-    "turbo": "1.4.0",
-    "typescript": "4.7.4",
-    "vite": "3.0.4",
-    "vite-plugin-banner": "0.3.0",
-    "vite-plugin-dts": "1.4.0"
+    "tsx": "3.9.0",
+    "turbo": "1.5.5",
+    "typescript": "4.8.4",
+    "vite": "3.1.4",
+    "vite-plugin-banner": "0.5.0",
+    "vite-plugin-dts": "1.6.4"
   }
 }
