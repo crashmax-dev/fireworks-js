@@ -16,7 +16,7 @@ export default defineConfig({
     )
   ],
   define: {
-    version: JSON.stringify(version)
+    __VERSION__: JSON.stringify(version)
   },
   build: {
     target: 'esnext',

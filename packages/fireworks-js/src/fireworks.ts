@@ -7,8 +7,6 @@ import { Sound } from './sound.js'
 import { Trace } from './trace.js'
 import { FireworksOptions, IBoundaries, Sizes } from './types.js'
 
-declare const version: string
-
 export class Fireworks {
   private target: Element | HTMLCanvasElement
   private container: Element
@@ -48,7 +46,7 @@ export class Fireworks {
   }
 
   get version(): string {
-    return version
+    return __VERSION__
   }
 
   start(): void {
