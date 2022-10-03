@@ -26,6 +26,7 @@ export class Fireworks {
   private mouse: Mouse
   private traces: Trace[] = []
   private explosions: Explosion[] = []
+  private waitStopRaf: (() => void) | null
 
   constructor(
     container: Element | HTMLCanvasElement,
@@ -75,6 +76,24 @@ export class Fireworks {
     if (dispose) {
       this.canvas.remove()
     }
+  }
+
+  async waitStop(dispose?: boolean): Promise<void> {
+    if (!this.running) return
+
+    return new Promise<void>((resolve) => {
+      this.waitStopRaf = () => {
+        if (!this.waitStopRaf) return
+        requestAnimationFrame(this.waitStopRaf)
+        if (!this.traces.length && !this.explosions.length) {
+          this.waitStopRaf = null
+          this.stop(dispose)
+          resolve()
+        }
+      }
+
+      this.waitStopRaf()
+    })
   }
 
   pause(): void {
@@ -155,6 +174,8 @@ export class Fireworks {
   }
 
   private initTrace(): void {
+    if (this.waitStopRaf) return
+
     const {
       hue,
       delay,
