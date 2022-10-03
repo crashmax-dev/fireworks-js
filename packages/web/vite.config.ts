@@ -16,6 +16,7 @@ export default defineConfig({
     )
   ],
   build: {
+    target: 'esnext',
     lib: {
       entry: resolve(__dirname, 'src/index.ts'),
       name: 'fireworks-js',
@@ -23,7 +24,6 @@ export default defineConfig({
       fileName: (format) => `index.${format}.js`
     },
     rollupOptions: {
-      treeshake: true,
       output: {
         exports: 'named'
       }

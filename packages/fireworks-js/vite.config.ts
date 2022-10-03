@@ -19,6 +19,7 @@ export default defineConfig({
     version: JSON.stringify(version)
   },
   build: {
+    target: 'esnext',
     lib: {
       entry: resolve(__dirname, 'src/index.ts'),
       name: 'Fireworks',

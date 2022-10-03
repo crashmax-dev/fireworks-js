@@ -17,6 +17,7 @@ export default defineConfig({
         `\n * license ${license}\n */`
     )],
   build: {
+    target: 'esnext',
     lib: {
       entry: resolve(__dirname, 'src/index.tsx'),
       name: 'Fireworks',
