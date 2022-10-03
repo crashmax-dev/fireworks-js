@@ -265,6 +265,11 @@ Stop fireworks.\
 Type: `boolean`\
 Default: `false`
 
+#### `.waitStop(dispose)`
+Asynchronous stopping of the fireworks.\
+Type: `boolean`\
+Default: `false`
+
 #### `.pause()`
 Start/stop fireworks.
 
