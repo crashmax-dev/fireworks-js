@@ -1,6 +1,6 @@
 {
   "name": "@fireworks-js/solid",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "type": "module",
   "description": "A simple fireworks library!",
   "homepage": "https://fireworks.js.org",
@@ -43,7 +43,7 @@
     "prepublishOnly": "pnpm build"
   },
   "dependencies": {
-    "fireworks-js": "workspace:2.1.0",
+    "fireworks-js": "workspace:2.2.0",
     "solid-js": "^1.4.8"
   },
   "devDependencies": {
