@@ -1,13 +1,10 @@
 import { NgModule } from '@angular/core'
-import {
-  FireworksComponent,
-  NgFireworksComponent
-} from './ng-fireworks.component'
-import type { FireworksProps } from './ng-fireworks.component'
+import { FireworksDirective } from './ng-fireworks.directive'
+
+export type { FireworksOptions } from 'fireworks-js'
 
 @NgModule({
-  declarations: [NgFireworksComponent, FireworksComponent],
-  exports: [NgFireworksComponent, FireworksComponent]
+  declarations: [FireworksDirective],
+  exports: [FireworksDirective]
 })
 export class NgFireworksModule {}
-export type { FireworksProps }

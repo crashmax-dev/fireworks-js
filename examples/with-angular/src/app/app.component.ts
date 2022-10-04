@@ -1,5 +1,8 @@
-import { Component } from '@angular/core'
-import type { FireworksProps } from '@fireworks-js/angular'
+import { Component, ViewChild } from '@angular/core'
+import type {
+  FireworksDirective,
+  FireworksOptions
+} from '@fireworks-js/angular'
 
 @Component({
   selector: 'app-root',
@@ -8,11 +11,17 @@ import type { FireworksProps } from '@fireworks-js/angular'
 })
 export class AppComponent {
   enabled = true
-  options: FireworksProps = {
+  options: FireworksOptions = {
     opacity: 0.5
   }
 
+  @ViewChild('fireworks') fireworks?: FireworksDirective
+
   public toggleFireworks(): void {
     this.enabled = !this.enabled
+  }
+
+  public waitStop(): void {
+    this.fireworks?.waitStop()
   }
 }
