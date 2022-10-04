@@ -1,6 +1,6 @@
 {
   "name": "@fireworks-js/monorepo",
-  "version": "2.2.1",
+  "version": "2.3.0",
   "private": true,
   "type": "module",
   "description": "A simple fireworks library!",
