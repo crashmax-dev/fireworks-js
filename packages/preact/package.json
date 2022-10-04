@@ -43,14 +43,13 @@
   "scripts": {
     "dev": "vite build --watch",
     "build": "vite build && tsc",
-    "types": "tsc",
     "prepublishOnly": "pnpm build"
   },
   "dependencies": {
     "fireworks-js": "workspace:2.2.1"
   },
   "devDependencies": {
-    "@preact/preset-vite": "2.3.0",
+    "@preact/preset-vite": "2.2.1",
     "preact": "10.10.0"
   },
   "peerDependencies": {

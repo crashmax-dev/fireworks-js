@@ -47,8 +47,7 @@ class Fireworks extends HTMLElement {
 
     const style = this.getAttribute('style')
     if (style) {
-      this.shadowRoot!.querySelector('style')!
-        .textContent = `div { ${style} }`
+      this.shadowRoot!.querySelector('style')!.textContent = `div { ${style} }`
     }
   }
 }

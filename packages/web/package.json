@@ -31,7 +31,6 @@
   "scripts": {
     "dev": "vite build --watch",
     "build": "del-cli dist && vite build && tsc",
-    "serve": "vite preview",
     "prepublishOnly": "pnpm build"
   },
   "dependencies": {
