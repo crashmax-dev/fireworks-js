@@ -6,7 +6,7 @@
   "description": "A simple fireworks library!",
   "homepage": "https://fireworks.js.org",
   "scripts": {
-    "dev": "turbo run dev --filter='./packages/fireworks-js'",
+    "dev": "turbo run dev --filter='./packages/*'",
     "build": "turbo run build --filter='./packages/*'",
     "dev:website": "turbo run dev --filter='./website'",
     "build:website": "turbo run build --filter='./website'",
@@ -43,7 +43,7 @@
   "devDependencies": {
     "@crashmax/prettier-config": "^2.0.4",
     "@crashmax/tsconfig": "1.0.2",
-    "@types/node": "18.8.0",
+    "@types/node": "18.8.1",
     "del-cli": "5.0.0",
     "tsx": "3.9.0",
     "turbo": "1.5.5",

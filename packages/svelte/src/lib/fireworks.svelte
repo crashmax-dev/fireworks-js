@@ -17,7 +17,7 @@
   })
 
   onDestroy(() => {
-    fireworks.stop()
+    fireworks?.stop()
   })
 </script>
 
