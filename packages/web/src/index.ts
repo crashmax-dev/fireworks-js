@@ -2,7 +2,7 @@ import { Fireworks as FireworksJs } from 'fireworks-js'
 import type { FireworksOptions } from 'fireworks-js'
 
 class Fireworks extends HTMLElement {
-  private fireworks!: FireworksJs
+  public fireworks: FireworksJs
   private options: FireworksOptions = {}
 
   static get observedAttributes() {
@@ -38,11 +38,8 @@ class Fireworks extends HTMLElement {
     const options = this.getAttribute('options')
     if (options) {
       try {
-        this.options = JSON.parse(options) as FireworksOptions
-
-        if (this.fireworks) {
-          this.fireworks.updateOptions(this.options)
-        }
+        this.options = JSON.parse(options)
+        this.fireworks?.updateOptions(this.options)
       } catch (err) {
         console.error('Attribute `options` failed parsed:', err)
       }
@@ -50,9 +47,8 @@ class Fireworks extends HTMLElement {
 
     const style = this.getAttribute('style')
     if (style) {
-      this.shadowRoot!.querySelector('style')!.textContent = `
-        div { ${style} }
-      `
+      this.shadowRoot!.querySelector('style')!
+        .textContent = `div { ${style} }`
     }
   }
 }
