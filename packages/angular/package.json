@@ -31,7 +31,7 @@
     "@angular/platform-browser": "^14.1.2",
     "@angular/platform-browser-dynamic": "^14.1.2",
     "@angular/router": "^14.1.2",
-    "fireworks-js": "workspace:2.2.0",
+    "fireworks-js": "workspace:2.2.1",
     "rxjs": "~7.5.6",
     "tslib": "2.4.0",
     "zone.js": "~0.11.8"

@@ -9,7 +9,6 @@
     "watch": "ng build --watch --configuration development"
   },
   "dependencies": {
-    "@fireworks-js/angular": "workspace:*",
     "@angular/animations": "^14.0.0",
     "@angular/common": "^14.0.0",
     "@angular/compiler": "^14.0.0",
@@ -18,6 +17,7 @@
     "@angular/platform-browser": "^14.0.0",
     "@angular/platform-browser-dynamic": "^14.0.0",
     "@angular/router": "^14.0.0",
+    "@fireworks-js/angular": "workspace:*",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
