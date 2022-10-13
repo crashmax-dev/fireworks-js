@@ -5,8 +5,12 @@
   "description": "A simple fireworks library!",
   "homepage": "https://fireworks.js.org",
   "types": "./dist/index.d.ts",
-  "module": "./dist/index.es.js",
   "main": "./dist/index.umd.js",
+  "module": "./dist/index.es.js",
+  "exports": {
+    "require": "./dist/index.umd.js",
+    "default": "./dist/index.es.js"
+  },
   "files": [
     "dist"
   ],

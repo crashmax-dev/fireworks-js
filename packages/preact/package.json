@@ -5,22 +5,15 @@
   "description": "A simple fireworks library!",
   "homepage": "https://fireworks.js.org",
   "types": "./dist/index.d.ts",
+  "main": "./dist/index.umd.js",
   "module": "./dist/index.es.js",
-  "main": "./dist/index.cjs.js",
-  "main:umd": "./dist/index.umd.js",
-  "files": [
-    "dist/index.es.js",
-    "dist/index.cjs.js",
-    "dist/index.umd.js",
-    "dist/index.d.ts"
-  ],
   "exports": {
-    ".": {
-      "import": "./dist/index.es.js",
-      "require": "./dist/index.cjs.js",
-      "default": "./dist/index.es.js"
-    }
+    "require": "./dist/index.umd.js",
+    "default": "./dist/index.es.js"
   },
+  "files": [
+    "dist"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/crashmax-dev/fireworks-js.git"

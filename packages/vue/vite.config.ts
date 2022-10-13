@@ -20,11 +20,7 @@ export default defineConfig({
     lib: {
       entry: resolve(__dirname, 'src/index.ts'),
       name: 'Fireworks',
-      formats: [
-        'es',
-        'cjs',
-        'umd'
-      ],
+      formats: ['es', 'umd'],
       fileName: (format) => `index.${format}.js`
     },
     rollupOptions: {
