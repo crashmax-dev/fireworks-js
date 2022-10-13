@@ -176,7 +176,7 @@ importers:
       '@angular/platform-browser-dynamic': ^14.1.2
       '@angular/router': ^14.1.2
       '@types/jasmine': ~4.0.3
-      fireworks-js: workspace:2.3.0
+      fireworks-js: workspace:2.3.1
       jasmine-core: ~4.1.1
       ng-packagr: ^14.1.0
       rxjs: ~7.5.6
@@ -209,7 +209,7 @@ importers:
   packages/preact:
     specifiers:
       '@preact/preset-vite': 2.3.0
-      fireworks-js: workspace:2.3.0
+      fireworks-js: workspace:2.3.1
       preact: 10.10.0
     dependencies:
       fireworks-js: link:../fireworks-js
@@ -222,7 +222,7 @@ importers:
       '@types/react': 18.0.15
       '@types/react-dom': 18.0.6
       '@vitejs/plugin-react': 2.0.0
-      fireworks-js: workspace:2.3.0
+      fireworks-js: workspace:2.3.1
       react: 18.2.0
       react-dom: 18.2.0
     dependencies:
@@ -236,7 +236,7 @@ importers:
 
   packages/solid:
     specifiers:
-      fireworks-js: workspace:2.3.0
+      fireworks-js: workspace:2.3.1
       solid-js: ^1.4.8
       vite-plugin-solid: 2.3.0
     dependencies:
@@ -250,7 +250,7 @@ importers:
       '@sveltejs/adapter-auto': next
       '@sveltejs/kit': next
       '@sveltejs/package': next
-      fireworks-js: workspace:2.3.0
+      fireworks-js: workspace:2.3.1
       svelte: ^3.44.0
       svelte-check: ^2.7.1
       svelte-preprocess: ^4.10.6
@@ -260,8 +260,8 @@ importers:
     dependencies:
       fireworks-js: link:../fireworks-js
     devDependencies:
-      '@sveltejs/adapter-auto': 1.0.0-next.80
-      '@sveltejs/kit': 1.0.0-next.508_svelte@3.50.1+vite@3.1.4
+      '@sveltejs/adapter-auto': 1.0.0-next.83
+      '@sveltejs/kit': 1.0.0-next.515_svelte@3.50.1+vite@3.1.4
       '@sveltejs/package': 1.0.0-next.1_qy6w2iv5hnh55blsjuu7uihyzm
       svelte: 3.50.1
       svelte-check: 2.9.1_svelte@3.50.1
@@ -273,7 +273,7 @@ importers:
   packages/vue:
     specifiers:
       '@vitejs/plugin-vue': 3.0.0
-      fireworks-js: workspace:2.3.0
+      fireworks-js: workspace:2.3.1
       vue: 3.2.27
       vue-tsc: 0.33.9
     dependencies:
@@ -285,7 +285,7 @@ importers:
 
   packages/web:
     specifiers:
-      fireworks-js: workspace:2.3.0
+      fireworks-js: workspace:2.3.1
     dependencies:
       fireworks-js: link:../fireworks-js
 
@@ -3066,35 +3066,35 @@ packages:
       - chokidar
     dev: true
 
-  /@sveltejs/adapter-auto/1.0.0-next.80:
-    resolution: {integrity: sha512-352WoZr9fQgxJqgNENvxRr2gsA+wTF6V9AVaQaaatDYd3RVEBaXTYOOalFaRLSa25mRUJaLYP2aaliqczMl23g==}
+  /@sveltejs/adapter-auto/1.0.0-next.83:
+    resolution: {integrity: sha512-6Km4x792PjHaN0H0odsy7JOj3jdDZqN1tA58B1b96xWUUUj87tw6XYC7VWRBjwo2wZqWkRat94IegrtAAhYVaA==}
     dependencies:
-      '@sveltejs/adapter-cloudflare': 1.0.0-next.38
-      '@sveltejs/adapter-netlify': 1.0.0-next.78
-      '@sveltejs/adapter-vercel': 1.0.0-next.77
+      '@sveltejs/adapter-cloudflare': 1.0.0-next.39
+      '@sveltejs/adapter-netlify': 1.0.0-next.81
+      '@sveltejs/adapter-vercel': 1.0.0-next.79
     transitivePeerDependencies:
       - encoding
       - supports-color
     dev: true
 
-  /@sveltejs/adapter-cloudflare/1.0.0-next.38:
-    resolution: {integrity: sha512-N6jdTomRZkdKlcNoguwYD7lpdXSt0beIyUJsp0MS/YLm/4gI83y698zFYInFKJ9t5e6DAnuEBSAXcg568z2oFA==}
+  /@sveltejs/adapter-cloudflare/1.0.0-next.39:
+    resolution: {integrity: sha512-95iRY3+mFVqEp4BqTJQGAyga7gSovIsm4SvhqsfBE/IQLkb2MnwLq2usRkXm9R6nby4w/jzEwgQM2ohsZD2HHA==}
     dependencies:
       '@cloudflare/workers-types': 3.16.0
       esbuild: 0.15.10
       worktop: 0.8.0-next.14
     dev: true
 
-  /@sveltejs/adapter-netlify/1.0.0-next.78:
-    resolution: {integrity: sha512-Yyn/j/0QcLK3Db442ducLUZmyvkO74j7Gdcwu9xN0fQN3kBlCJP9Itx5o4SySrPFGc4Q8cLJ5ELNg+mWduLBAA==}
+  /@sveltejs/adapter-netlify/1.0.0-next.81:
+    resolution: {integrity: sha512-jWZHw2uqUMJk8lFPzRm0xxmBZoDc430tbeCU9EtYhG+ypze2B6pJAlNTtcN3/J7wapHq19TgEK5oNt4LqORfNg==}
     dependencies:
       '@iarna/toml': 2.2.5
       esbuild: 0.15.10
       set-cookie-parser: 2.5.1
     dev: true
 
-  /@sveltejs/adapter-vercel/1.0.0-next.77:
-    resolution: {integrity: sha512-r4MqtP+lzx83HfcvI8PU0Yxzmxt6WQq9nzZETLboJouJzhSBUFIN5RmNZfEn6nNIlUwZbGQUEK/FxsRnnxI/Ig==}
+  /@sveltejs/adapter-vercel/1.0.0-next.79:
+    resolution: {integrity: sha512-Mitw34vS+wR/qxZm6qOUltf910N8gcekYZHaEVxO6HaE/9LyEZ/O03e9rRKwo4LAWrHXOkHMdUxvv1VcS9BqmQ==}
     dependencies:
       '@vercel/nft': 0.22.1
       esbuild: 0.15.10
@@ -3103,8 +3103,8 @@ packages:
       - supports-color
     dev: true
 
-  /@sveltejs/kit/1.0.0-next.508_svelte@3.50.1+vite@3.1.4:
-    resolution: {integrity: sha512-qUnuhuL82meE0lSwrsS/FIvtDoE83Au4SxVLCim3FzoCnJc7bFZ9vYRbRUYxAjfYKRMjKVUrp9iHFObn9LmnUg==}
+  /@sveltejs/kit/1.0.0-next.515_svelte@3.50.1+vite@3.1.4:
+    resolution: {integrity: sha512-Ck+T16bci7VWc4CNP61xvfMrbDHX1Q8aPZWgthnrSH8hsdx9w1MP80D9V4A98WX0cyhCQ02JzlTmxgf2UpYRbQ==}
     engines: {node: '>=16.14'}
     hasBin: true
     requiresBuild: true
@@ -3115,7 +3115,7 @@ packages:
       '@sveltejs/vite-plugin-svelte': 1.0.8_svelte@3.50.1+vite@3.1.4
       '@types/cookie': 0.5.1
       cookie: 0.5.0
-      devalue: 3.1.3
+      devalue: 4.0.0
       kleur: 4.1.5
       magic-string: 0.26.5
       mime: 3.0.0
@@ -5007,8 +5007,8 @@ packages:
     resolution: {integrity: sha512-T0NIuQpnTvFDATNuHN5roPwSBG83rFsuO+MXXH9/3N1eFbn4wcPjttvjMLEPWJ0RGUYgQE7cGgS3tNxbqCGM7g==}
     dev: true
 
-  /devalue/3.1.3:
-    resolution: {integrity: sha512-9KO89Cb+qjzf2CqdrH+NuLaqdk9GhDP5EhR4zlkR51dvuIaiqtlkDkGzLMShDemwUy21raSMdu+kpX8Enw3yGQ==}
+  /devalue/4.0.0:
+    resolution: {integrity: sha512-w25siwXyuMUqMr7jPlEjyNCp1vn0Jzj/fNg3qVt/r/Dpe8HjESh2V92L0jmh3uq4iJt0BvjH+Azk1pQzkcnDWA==}
     dev: true
 
   /dir-glob/3.0.1:
