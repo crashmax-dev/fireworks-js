@@ -92,6 +92,7 @@ pnpm add fireworks-js
 ## Usage
 
 #### [`fireworks-js`](https://github.com/crashmax-dev/fireworks-js/tree/master/examples/basic)
+
 ```js
 import { Fireworks } from 'fireworks-js'
 
@@ -100,11 +101,15 @@ const fireworks = new Fireworks(container, { /* options */ })
 fireworks.start()
 ```
 
+[![Edit @fireworks-js/react](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/p/sandbox/blissful-sanderson-dkvnx4)
+
 #### [`@fireworks-js/react`](https://github.com/crashmax-dev/fireworks-js/tree/master/examples/with-react)
 
 ```sh
 npm install @fireworks-js/react
 ```
+
+[![Edit @fireworks-js/react](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/fireworks-js-react-bjeoqy?fontsize=14&hidenavigation=1&theme=dark)
 
 #### [`@fireworks-js/preact`](https://github.com/crashmax-dev/fireworks-js/tree/master/examples/with-preact)
 
