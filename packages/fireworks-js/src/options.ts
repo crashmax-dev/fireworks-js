@@ -10,6 +10,7 @@ import type {
 } from './types.js'
 
 class Options implements FireworksOptions {
+  public fps: number
   public hue: MinMax
   public rocketsPoint: MinMax
   public opacity: number
@@ -33,6 +34,7 @@ class Options implements FireworksOptions {
   public autoresize: boolean
 
   constructor() {
+    this.fps = 60
     this.autoresize = true
     this.lineStyle = 'round'
     this.flickering = 50
@@ -74,8 +76,8 @@ class Options implements FireworksOptions {
     }
 
     this.delay = {
-      min: 15,
-      max: 30
+      min: 30,
+      max: 60
     }
 
     this.brightness = {

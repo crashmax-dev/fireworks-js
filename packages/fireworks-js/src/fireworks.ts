@@ -2,6 +2,7 @@ import { Explosion } from './explosion.js'
 import { randomFloat, randomInt } from './helpers.js'
 import { Mouse } from './mouse.js'
 import { opts } from './options.js'
+import { RequestAnimationFrame } from './raf.js'
 import { Resize } from './resize.js'
 import { Sound } from './sound.js'
 import { Trace } from './trace.js'
@@ -14,17 +15,14 @@ export class Fireworks {
   private ctx: CanvasRenderingContext2D
   private width: number
   private height: number
-
-  private tick = 0
-  private timestamp = performance.now()
-  private running = false
-
   private sound: Sound
   private resize: Resize
   private mouse: Mouse
   private traces: Trace[] = []
   private explosions: Explosion[] = []
   private waitStopRaf: (() => void) | null
+  private raf: RequestAnimationFrame
+  private running = false
 
   constructor(
     container: Element | HTMLCanvasElement,
@@ -39,6 +37,7 @@ export class Fireworks {
     this.sound = new Sound()
     this.resize = new Resize(this)
     this.mouse = new Mouse(this.canvas)
+    this.raf = new RequestAnimationFrame(this.render.bind(this))
   }
 
   get isRunning(): boolean {
@@ -59,8 +58,7 @@ export class Fireworks {
     this.running = true
     this.resize.subscribe()
     this.mouse.subscribe()
-    this.clear()
-    this.render()
+    this.raf.start()
   }
 
   stop(dispose = false): void {
@@ -69,6 +67,7 @@ export class Fireworks {
     this.running = false
     this.resize.unsubscribe()
     this.mouse.unsubscribe()
+    this.raf.stop()
     this.clear()
 
     if (dispose) {
@@ -97,7 +96,9 @@ export class Fireworks {
   pause(): void {
     this.running = !this.running
     if (this.running) {
-      this.render()
+      this.raf.start()
+    } else {
+      this.raf.stop()
     }
   }
 
@@ -150,10 +151,8 @@ export class Fireworks {
     this.updateSize()
   }
 
-  private render(timestamp = this.timestamp): void {
+  private render(): void {
     if (!this.ctx || !this.running) return
-
-    requestAnimationFrame((timestamp) => this.render(timestamp))
 
     this.ctx.globalCompositeOperation = 'destination-out'
     this.ctx.fillStyle = `rgba(0, 0, 0, ${opts.opacity})`
@@ -165,10 +164,6 @@ export class Fireworks {
     this.initTrace()
     this.drawTrace()
     this.drawExplosion()
-
-    const timeDiff = timestamp - this.timestamp
-    this.timestamp = timestamp
-    this.tick += (timeDiff * (opts.intensity * Math.PI)) / 1000
   }
 
   private initTrace(): void {
@@ -186,7 +181,7 @@ export class Fireworks {
     } = opts
 
     if (
-      this.tick > randomInt(delay.min, delay.max) ||
+      this.raf.tick > randomInt(delay.min, delay.max) ||
       (this.mouse.active && mouse.max > this.traces.length)
     ) {
       this.traces.push(
@@ -209,7 +204,7 @@ export class Fireworks {
         })
       )
 
-      this.tick = 0
+      this.raf.tick = 0
     }
   }
 
