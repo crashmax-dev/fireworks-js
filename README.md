@@ -173,7 +173,6 @@ npm install @fireworks-js/web
 | `traceSpeed`       | number              | 10                                                                            |
 | `intensity`        | number              | 30                                                                            |
 | `autoresize`       | boolean             | true                                                                          |
-| `fps`              | number              | 60                                                                            |
 
 The `hue`, `delay`, `decay`, `brightness`, `lineWidth.explosion`, `lineWidth.trace`, `sound.volume` and `rocketsPoint` options accept an object:
 
@@ -206,7 +205,6 @@ The `sound` options accept an object:
 
 ```js
 const fireworks = new Fireworks(container, {
-  fps: 60,
   autoresize: true,
   opacity: 0.5,
   acceleration: 1.05,

@@ -1,7 +1,6 @@
 export type LineStyle = 'round' | 'square'
 
 export interface IFireworksOptions {
-  fps: number
   hue: MinMax
   rocketsPoint: MinMax
   opacity: number
