@@ -1,6 +1,6 @@
 {
   "name": "@fireworks-js/react",
-  "version": "2.5.0",
+  "version": "2.5.1",
   "type": "module",
   "description": "A simple fireworks library!",
   "homepage": "https://fireworks.js.org",
@@ -39,7 +39,7 @@
     "prepublishOnly": "pnpm build"
   },
   "dependencies": {
-    "fireworks-js": "workspace:2.5.0"
+    "fireworks-js": "workspace:2.5.1"
   },
   "devDependencies": {
     "@types/react": "18.0.15",
