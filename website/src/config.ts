@@ -70,7 +70,7 @@ export const fireworksOptions: FireworksOptions = {
   mouse: {
     click: true,
     move: false,
-    max: 3
+    max: 1
   }
 }
 
