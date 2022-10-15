@@ -6,24 +6,24 @@ export class Mouse {
   public y: number
 
   constructor(private readonly canvas: HTMLCanvasElement) {
-    this.mouseDown = this.mouseDown.bind(this)
-    this.mouseUp = this.mouseUp.bind(this)
-    this.mouseMove = this.mouseMove.bind(this)
+    this.pointerDown = this.pointerDown.bind(this)
+    this.pointerUp = this.pointerUp.bind(this)
+    this.pointerMove = this.pointerMove.bind(this)
   }
 
   subscribe(): void {
-    this.canvas.addEventListener('mousedown', this.mouseDown)
-    this.canvas.addEventListener('mouseup', this.mouseUp)
-    this.canvas.addEventListener('mousemove', this.mouseMove)
+    this.canvas.addEventListener('pointerdown', this.pointerDown)
+    this.canvas.addEventListener('pointerup', this.pointerUp)
+    this.canvas.addEventListener('pointermove', this.pointerMove)
   }
 
   unsubscribe(): void {
-    this.canvas.removeEventListener('mousedown', this.mouseDown)
-    this.canvas.removeEventListener('mouseup', this.mouseUp)
-    this.canvas.removeEventListener('mousemove', this.mouseMove)
+    this.canvas.removeEventListener('pointerdown', this.pointerDown)
+    this.canvas.removeEventListener('pointerup', this.pointerUp)
+    this.canvas.removeEventListener('pointermove', this.pointerMove)
   }
 
-  private useMouse(event: MouseEvent, active: boolean): void {
+  private usePointer(event: PointerEvent, active: boolean): void {
     if (opts.mouse.click || opts.mouse.move) {
       this.x = event.pageX - this.canvas.offsetLeft
       this.y = event.pageY - this.canvas.offsetTop
@@ -31,15 +31,15 @@ export class Mouse {
     }
   }
 
-  private mouseDown(event: MouseEvent): void {
-    this.useMouse(event, opts.mouse.click)
+  private pointerDown(event: PointerEvent): void {
+    this.usePointer(event, opts.mouse.click)
   }
 
-  private mouseUp(event: MouseEvent): void {
-    this.useMouse(event, false)
+  private pointerUp(event: PointerEvent): void {
+    this.usePointer(event, false)
   }
 
-  private mouseMove(event: MouseEvent): void {
-    this.useMouse(event, this.active)
+  private pointerMove(event: PointerEvent): void {
+    this.usePointer(event, this.active)
   }
 }
