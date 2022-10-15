@@ -1,5 +1,5 @@
 import { Explosion } from './explosion.js'
-import { randomFloat, randomInt } from './helpers.js'
+import { floor, randomFloat, randomInt } from './helpers.js'
 import { Mouse } from './mouse.js'
 import { opts } from './options.js'
 import { RequestAnimationFrame } from './raf.js'
@@ -174,7 +174,7 @@ export class Fireworks {
       delay,
       rocketsPoint,
       boundaries,
-      trace,
+      traceLength,
       traceSpeed,
       acceleration,
       mouse
@@ -200,7 +200,7 @@ export class Fireworks {
           hue: randomInt(hue.min, hue.max),
           speed: traceSpeed,
           acceleration,
-          traceLength: trace
+          traceLength: floor(traceLength)
         })
       )
 
@@ -237,7 +237,7 @@ export class Fireworks {
       decay
     } = opts
 
-    let particlesLength = particles
+    let particlesLength = floor(particles)
     while (particlesLength--) {
       this.explosions.push(
         new Explosion({
@@ -252,7 +252,7 @@ export class Fireworks {
             lineWidth.explosion.min,
             lineWidth.explosion.max
           ),
-          explosionLength: Math.round(explosion),
+          explosionLength: floor(explosion),
           brightness,
           decay
         })

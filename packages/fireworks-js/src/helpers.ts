@@ -1,3 +1,7 @@
+export function floor(num: number): number {
+  return Math.abs(Math.floor(num))
+}
+
 export function randomFloat(min: number, max: number): number {
   return Math.random() * (max - min) + min
 }

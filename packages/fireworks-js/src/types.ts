@@ -9,7 +9,6 @@ export interface IFireworksOptions {
   friction: number
   gravity: number
   particles: number
-  trace: number
   explosion: number
   mouse: IMouse
   boundaries: IBoundaries
@@ -19,6 +18,7 @@ export interface IFireworksOptions {
   decay: MinMax
   flickering: number
   intensity: number
+  traceLength: number
   traceSpeed: number
   lineWidth: LineWidth
   lineStyle: LineStyle

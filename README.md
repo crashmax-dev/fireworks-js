@@ -167,7 +167,7 @@ npm install @fireworks-js/web
 | `friction`         | number              | 0.95                                                                          |
 | `gravity`          | number              | 1.5                                                                           |
 | `particles`        | number              | 50                                                                            |
-| `trace`            | number              | 3                                                                             |
+| `traceLength`      | number              | 3                                                                             |
 | `flickering`       | number              | 50                                                                            |
 | `intensity`        | number              | 30                                                                            |
 | `traceSpeed`       | number              | 10                                                                            |
@@ -213,7 +213,7 @@ const fireworks = new Fireworks(container, {
   friction: 0.97,
   gravity: 1.5,
   particles: 50,
-  trace: 3,
+  traceLength: 3,
   traceSpeed: 10,
   explosion: 5,
   intensity: 30,

@@ -18,7 +18,6 @@ class Options implements FireworksOptions {
   public friction: number
   public gravity: number
   public particles: number
-  public trace: number
   public explosion: number
   public mouse: IMouse
   public boundaries: IBoundaries
@@ -28,6 +27,7 @@ class Options implements FireworksOptions {
   public decay: MinMax
   public flickering: number
   public intensity: number
+  public traceLength: number
   public traceSpeed: number
   public lineWidth: LineWidth
   public lineStyle: LineStyle
@@ -38,7 +38,7 @@ class Options implements FireworksOptions {
     this.autoresize = true
     this.lineStyle = 'round'
     this.flickering = 50
-    this.trace = 3
+    this.traceLength = 3
     this.traceSpeed = 10
     this.intensity = 30
     this.explosion = 5

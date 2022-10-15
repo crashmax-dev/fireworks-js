@@ -21,11 +21,11 @@ fireworks.start()
 
 const fireworksGetters = {
   get traces(): number {
-    // @ts-expect-error
+    // @ts-ignore
     return fireworks.traces.length
   },
   get particles(): number {
-    // @ts-expect-error
+    // @ts-ignore
     return fireworks.explosions.length
   }
 }
@@ -104,6 +104,17 @@ tweakpane.addInput(fireworksOptions, 'opacity', {
   step: 0.1
 })
 
+tweakpane.addInput(fireworksOptions, 'particles', {
+  step: 1,
+  min: 1,
+  max: 200
+})
+
+tweakpane.addInput(fireworksOptions, 'traceLength', {
+  min: 1,
+  max: 10
+})
+
 tweakpane.addInput(fireworksOptions, 'traceSpeed', {
   min: 1,
   max: 100,
@@ -117,11 +128,13 @@ tweakpane.addInput(fireworksOptions, 'rocketsPoint', {
 })
 
 tweakpane.addInput(fireworksOptions.lineWidth!, 'explosion', {
-  min: 1,
+  label: 'lineWidth (explosion)',
+  min: 0,
   max: 10
 })
 
 tweakpane.addInput(fireworksOptions.lineWidth!, 'trace', {
+  label: 'lineWidth (trace)',
   min: 0,
   max: 10
 })
