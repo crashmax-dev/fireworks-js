@@ -9,7 +9,14 @@ import {
   mainContainer
 } from './config.js'
 
+declare global {
+  interface Window {
+    fireworks: Fireworks
+  }
+}
+
 const fireworks = new Fireworks(fireworksContainer, fireworksOptions)
+window.fireworks = fireworks
 fireworks.start()
 
 const fireworksGetters = {
