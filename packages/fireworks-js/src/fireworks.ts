@@ -40,14 +40,28 @@ export class Fireworks {
     this.raf = new RequestAnimationFrame(this.render.bind(this))
   }
 
+  /**
+   * 
+   * Return True if program is running or False if program is not running
+   * @return {boolean} Program running status
+   */
   get isRunning(): boolean {
     return this.running
   }
 
+  /**
+   * 
+   * Return current version
+   * @return {string} Current version
+   */
   get version(): string {
     return __VERSION__
   }
 
+  /**
+   * 
+   *  Starts a program
+   */
   start(): void {
     if (this.running) return
 
@@ -61,6 +75,11 @@ export class Fireworks {
     this.raf.start()
   }
 
+  /**
+   * 
+   * Stops a program
+   * @param {boolean} dispose - If dispose = True, then remove canvas 
+   */
   stop(dispose = false): void {
     if (!this.running) return
 
@@ -75,6 +94,12 @@ export class Fireworks {
     }
   }
 
+  /**
+   * 
+   * Waiting for the stop function
+   * @param {boolean} dispose - If dispose = True, then remove canvas 
+   * @returns {Promise<void>}
+   */
   async waitStop(dispose?: boolean): Promise<void> {
     if (!this.running) return
 
@@ -93,6 +118,10 @@ export class Fireworks {
     })
   }
 
+  /**
+    * 
+    * Pause program running
+    */
   pause(): void {
     this.running = !this.running
     if (this.running) {
@@ -102,6 +131,11 @@ export class Fireworks {
     }
   }
 
+
+  /**
+   * 
+   * Delete all fireworks and particles
+   */
   clear(): void {
     if (!this.ctx) return
 
@@ -110,10 +144,20 @@ export class Fireworks {
     this.ctx.clearRect(0, 0, this.width, this.height)
   }
 
+  /**
+   * 
+   * Updates options when changing 
+   */
   updateOptions(options: FireworksOptions): void {
     opts.updateOptions(options)
   }
 
+ /**
+  * 
+  * Update canvas size when changing
+  * @param {number} width - Client`s container width
+  * @param {number} height - Client`s container height
+  */
   updateSize({
     width = this.container.clientWidth,
     height = this.container.clientHeight
@@ -131,6 +175,10 @@ export class Fireworks {
     })
   }
 
+  /**
+   * 
+   * Update boundaries when changing
+   */
   updateBoundaries(boundaries: Partial<IBoundaries>): void {
     this.updateOptions({ boundaries })
   }
