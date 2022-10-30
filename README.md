@@ -154,30 +154,30 @@ npm install @fireworks-js/web
 > **Note**\
 > The options is optional, as are each of its properties.
 
-| Property           | Type                | Default                                                                       |
-| ------------------ | ------------------- | ----------------------------------------------------------------------------- |
-| `hue`              | object              | [hue](https://github.com/crashmax-dev/fireworks-js/blob/eedee4020e9c458fde83b60dfac6f2502d4593bb/packages/fireworks-js/src/options.ts#L49-L52)                                     |
-| `rocketsPoint`     | object              | [rocketsPoint](https://github.com/crashmax-dev/fireworks-js/blob/eedee4020e9c458fde83b60dfac6f2502d4593bb/packages/fireworks-js/src/options.ts#L54-L57)                                     |
-| `mouse`            | object              | [mouse](https://github.com/crashmax-dev/fireworks-js/blob/eedee4020e9c458fde83b60dfac6f2502d4593bb/packages/fireworks-js/src/options.ts#L70-L74)                                     |
-| `boundaries`       | object              | [boundaries](https://github.com/crashmax-dev/fireworks-js/blob/eedee4020e9c458fde83b60dfac6f2502d4593bb/packages/fireworks-js/src/options.ts#L104-L110)                                   |
-| `sound`            | object              | [sound](https://github.com/crashmax-dev/fireworks-js/blob/eedee4020e9c458fde83b60dfac6f2502d4593bb/packages/fireworks-js/src/options.ts#L91-L102)                                    |
-| `delay`            | object              | [delay](https://github.com/crashmax-dev/fireworks-js/blob/eedee4020e9c458fde83b60dfac6f2502d4593bb/packages/fireworks-js/src/options.ts#L76-L79)                                     |
-| `brightness`       | object              | [brightness](https://github.com/crashmax-dev/fireworks-js/blob/eedee4020e9c458fde83b60dfac6f2502d4593bb/packages/fireworks-js/src/options.ts#L81-L84)                                     |
-| `decay`            | object              | [decay](https://github.com/crashmax-dev/fireworks-js/blob/eedee4020e9c458fde83b60dfac6f2502d4593bb/packages/fireworks-js/src/options.ts#L86-L89)                                     |
-| `lineWidth`        | object              | [lineWidth](https://github.com/crashmax-dev/fireworks-js/blob/eedee4020e9c458fde83b60dfac6f2502d4593bb/packages/fireworks-js/src/options.ts#L59-L68)                                     |
-| `lineStyle`        | string              | round                                                                         |
-| `explosion`        | number              | 5                                                                             |
-| `opacity`          | number              | 0.5                                                                           |
-| `acceleration`     | number              | 1.05                                                                          |
-| `friction`         | number              | 0.95                                                                          |
-| `gravity`          | number              | 1.5                                                                           |
-| `particles`        | number              | 50                                                                            |
-| `traceLength`      | number              | 3                                                                             |
-| `flickering`       | number              | 50                                                                            |
-| `intensity`        | number              | 30                                                                            |
-| `traceSpeed`       | number              | 10                                                                            |
-| `intensity`        | number              | 30                                                                            |
-| `autoresize`       | boolean             | true                                                                          |
+| Property       | Description                                           | Type    | Default                                                                                                                                                 |
+| -------------- | ----------------------------------------------------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `hue`          | Hue is just another word for color                    | object  | [hue](https://github.com/crashmax-dev/fireworks-js/blob/eedee4020e9c458fde83b60dfac6f2502d4593bb/packages/fireworks-js/src/options.ts#L49-L52)          |
+| `rocketsPoint` | Fireworks launch position                             | object  | [rocketsPoint](https://github.com/crashmax-dev/fireworks-js/blob/eedee4020e9c458fde83b60dfac6f2502d4593bb/packages/fireworks-js/src/options.ts#L54-L57) |
+| `mouse`        | Choosing where fireworks are detonated with the mouse | object  | [mouse](https://github.com/crashmax-dev/fireworks-js/blob/eedee4020e9c458fde83b60dfac6f2502d4593bb/packages/fireworks-js/src/options.ts#L70-L74)        |
+| `boundaries`   | Boundaries of program window                          | object  | [boundaries](https://github.com/crashmax-dev/fireworks-js/blob/eedee4020e9c458fde83b60dfac6f2502d4593bb/packages/fireworks-js/src/options.ts#L104-L110) |
+| `sound`        | Enable and control explosion sounds                   | object  | [sound](https://github.com/crashmax-dev/fireworks-js/blob/eedee4020e9c458fde83b60dfac6f2502d4593bb/packages/fireworks-js/src/options.ts#L91-L102)       |
+| `delay`        | Delay between fireworks launches                      | object  | [delay](https://github.com/crashmax-dev/fireworks-js/blob/eedee4020e9c458fde83b60dfac6f2502d4593bb/packages/fireworks-js/src/options.ts#L76-L79)        |
+| `brightness`   | Brightness of fireworks                               | object  | [brightness](https://github.com/crashmax-dev/fireworks-js/blob/eedee4020e9c458fde83b60dfac6f2502d4593bb/packages/fireworks-js/src/options.ts#L81-L84)   |
+| `decay`        | Size of fireworks decay                               | object  | [decay](https://github.com/crashmax-dev/fireworks-js/blob/eedee4020e9c458fde83b60dfac6f2502d4593bb/packages/fireworks-js/src/options.ts#L86-L89)        |
+| `lineWidth`    | Firework`s rocket width                               | object  | [lineWidth](https://github.com/crashmax-dev/fireworks-js/blob/eedee4020e9c458fde83b60dfac6f2502d4593bb/packages/fireworks-js/src/options.ts#L59-L68)    |
+| `lineStyle`    | Firework`s rocket shape                               | string  | round                                                                                                                                                   |
+| `explosion`    | Explosion saturation                                  | number  | 5                                                                                                                                                       |
+| `opacity`      | Explosion`s opacity                                   | number  | 0.5                                                                                                                                                     |
+| `acceleration` | Firework`s rocket acceleration                        | number  | 1.05                                                                                                                                                    |
+| `friction`     | The force with which the explosion explodes           | number  | 0.95                                                                                                                                                    |
+| `gravity`      | Gravity applied to an explosion                       | number  | 1.5                                                                                                                                                     |
+| `particles`    |                                                       | number  | 50                                                                                                                                                      |
+| `traceLength`  |                                                       | number  | 3                                                                                                                                                       |
+| `flickering`   |                                                       | number  | 50                                                                                                                                                      |
+| `intensity`    |                                                       | number  | 30                                                                                                                                                      |
+| `traceSpeed`   |                                                       | number  | 10                                                                                                                                                      |
+| `intensity`    |                                                       | number  | 30                                                                                                                                                      |
+| `autoresize`   |                                                       | boolean | true                                                                                                                                                    |
 
 The `hue`, `delay`, `decay`, `brightness`, `lineWidth.explosion`, `lineWidth.trace`, `sound.volume` and `rocketsPoint` options accept an object:
 
