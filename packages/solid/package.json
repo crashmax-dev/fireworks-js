@@ -41,11 +41,11 @@
   },
   "dependencies": {
     "fireworks-js": "workspace:2.6.0",
-    "solid-js": "^1.4.8"
+    "solid-js": "^1.6.1"
   },
   "devDependencies": {
     "solid-js": "1.4.7",
-    "vite-plugin-solid": "2.3.0"
+    "vite-plugin-solid": "2.3.10"
   },
   "peerDependencies": {
     "solid-js": ">=1.0.0"
