@@ -1,15 +1,16 @@
 {
   "name": "fireworks-js",
-  "version": "2.5.1",
+  "version": "2.6.0",
   "type": "module",
   "description": "A simple fireworks library!",
   "homepage": "https://fireworks.js.org",
   "types": "./dist/index.d.ts",
-  "main": "./dist/index.umd.js",
+  "main": "./dist/index.cjs.js",
+  "umd:main": "./dist/index.umd.js",
   "module": "./dist/index.es.js",
   "exports": {
-    "require": "./dist/index.umd.js",
-    "default": "./dist/index.es.js"
+    "require": "./dist/index.cjs.js",
+    "import": "./dist/index.es.js"
   },
   "files": [
     "dist"
