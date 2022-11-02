@@ -1,6 +1,6 @@
 {
   "name": "@fireworks-js/preact",
-  "version": "2.6.0",
+  "version": "2.7.0",
   "type": "module",
   "description": "A simple fireworks library!",
   "homepage": "https://fireworks.js.org",
@@ -40,7 +40,7 @@
     "prepublishOnly": "pnpm build"
   },
   "dependencies": {
-    "fireworks-js": "workspace:2.6.0"
+    "fireworks-js": "workspace:2.7.0"
   },
   "devDependencies": {
     "@preact/preset-vite": "2.4.0",
