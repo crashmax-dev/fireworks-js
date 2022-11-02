@@ -1,12 +1,14 @@
 <template>
-  <button
-    @click="enabled = !enabled"
-    :style="{ position: 'absolute', zIndex: 1 }"
-  >
-    {{ enabled ? 'Enabled' : 'Disabled' }}
-  </button>
+  <div class="buttons">
+    <button @click="mounted = !mounted">
+      {{ mounted ? 'Mounted' : 'Unmounted' }}
+    </button>
+    <button @click="startFireworks">Start</button>
+  </div>
   <Fireworks
-    v-if="enabled"
+    ref="fw"
+    v-if="mounted"
+    :autostart="false"
     :options="options"
     :style="{
       top: 0,
@@ -20,10 +22,37 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 import { Fireworks } from '@fireworks-js/vue'
 import type { FireworksOptions } from '@fireworks-js/vue'
 
+const fw = ref<InstanceType<typeof Fireworks>>()
 const options = ref<FireworksOptions>({ opacity: 0.5 })
-const enabled = ref(true)
+const mounted = ref(true)
+
+async function startFireworks() {
+  const { fireworks } = fw.value!
+  fireworks?.start()
+  await new Promise((resolve) => setTimeout(resolve, 1000))
+  await fireworks?.waitStop()
+}
+
+watch(fw, () => {
+  if (fw.value) {
+    startFireworks()
+  }
+})
 </script>
+
+<style>
+body {
+  background-color: #000;
+}
+
+.buttons {
+  z-index: 1;
+  position: absolute;
+  display: flex;
+  gap: 4px;
+}
+</style>

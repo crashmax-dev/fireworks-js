@@ -43,8 +43,8 @@
     "fireworks-js": "workspace:2.6.0"
   },
   "devDependencies": {
-    "@preact/preset-vite": "2.3.0",
-    "preact": "10.10.0"
+    "@preact/preset-vite": "2.4.0",
+    "preact": "10.11.2"
   },
   "peerDependencies": {
     "preact": ">=8.0.0"

@@ -44,9 +44,9 @@
     "fireworks-js": "workspace:2.6.0"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "3.0.0",
-    "vue": "3.2.27",
-    "vue-tsc": "0.33.9"
+    "@vitejs/plugin-vue": "3.2.0",
+    "vue": "3.2.41",
+    "vue-tsc": "1.0.9"
   },
   "peerDependencies": {
     "vue": ">=2.7.0"
