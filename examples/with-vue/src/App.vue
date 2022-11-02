@@ -8,6 +8,7 @@
   <Fireworks
     ref="fw"
     v-if="mounted"
+    :autostart="false"
     :options="options"
     :style="{
       top: 0,
@@ -21,7 +22,7 @@
 </template>
 
 <script lang="ts" setup>
-import { onMounted, ref, watch } from 'vue'
+import { ref, watch } from 'vue'
 import { Fireworks } from '@fireworks-js/vue'
 import type { FireworksOptions } from '@fireworks-js/vue'
 
@@ -35,10 +36,6 @@ async function startFireworks() {
   await new Promise((resolve) => setTimeout(resolve, 1000))
   await fireworks?.waitStop()
 }
-
-onMounted(() => {
-  startFireworks()
-})
 
 watch(fw, () => {
   if (fw.value) {

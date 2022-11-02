@@ -4,6 +4,10 @@ import type { FireworksOptions } from 'fireworks-js'
 import { PropType, defineExpose, onMounted, onUnmounted, ref } from 'vue'
 
 const props = defineProps({
+  autostart: {
+    type: Boolean,
+    default: true
+  },
   options: {
     type: Object as PropType<FireworksOptions>,
     required: false
@@ -15,7 +19,9 @@ const container = ref<HTMLDivElement>()
 
 onMounted(() => {
   fireworks.value = new Fireworks(container.value!, props.options)
-  fireworks.value.start()
+  if (props.autostart) {
+    fireworks.value.start()
+  }
 })
 
 onUnmounted(() => {
