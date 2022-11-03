@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import { Fireworks } from '@fireworks-js/react'
 import type { FireworksHandlers } from '@fireworks-js/react'
 
@@ -6,12 +6,24 @@ export function App() {
   const ref = useRef<FireworksHandlers>(null)
 
   const toggle = () => {
-    ref.current!.isRunning ? ref.current!.stop() : ref.current!.start()
+    if (!ref.current) return
+    if (ref.current.isRunning) {
+      ref.current.stop()
+    } else {
+      ref.current.start()
+    }
   }
+
+  useEffect(() => {
+    // prevent stop
+    ref.current?.stop()
+  }, [])
 
   return (
     <>
-      <div style={{ position: 'absolute', zIndex: 1 }}>
+      <div
+        style={{ display: 'flex', gap: '4px', position: 'absolute', zIndex: 1 }}
+      >
         <button onClick={() => toggle()}>Toggle</button>
         <button onClick={() => ref.current!.clear()}>Clear</button>
       </div>
