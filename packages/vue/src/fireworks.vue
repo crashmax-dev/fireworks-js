@@ -1,7 +1,8 @@
 <script lang="ts" setup>
 import { Fireworks } from 'fireworks-js'
-import type { FireworksOptions } from 'fireworks-js'
-import { PropType, defineExpose, onMounted, onUnmounted, ref } from 'vue'
+import type { FireworksHandlers, FireworksOptions } from 'fireworks-js'
+import { defineExpose, onMounted, onUnmounted, ref } from 'vue'
+import type { PropType } from 'vue'
 
 const props = defineProps({
   autostart: {
@@ -14,8 +15,8 @@ const props = defineProps({
   }
 })
 
-const fireworks = ref<Fireworks>()
 const container = ref<HTMLDivElement>()
+const fireworks = ref<Fireworks>()
 
 onMounted(() => {
   fireworks.value = new Fireworks(container.value!, props.options)
@@ -28,9 +29,34 @@ onUnmounted(() => {
   fireworks.value!.stop()
 })
 
-defineExpose({
-  fireworks,
-  container
+defineExpose<FireworksHandlers>({
+  get isRunning() {
+    return fireworks.value!.isRunning
+  },
+  start() {
+    fireworks.value!.start()
+  },
+  stop() {
+    fireworks.value!.stop()
+  },
+  async waitStop() {
+    await fireworks.value!.waitStop()
+  },
+  pause() {
+    fireworks.value!.pause()
+  },
+  clear() {
+    fireworks.value!.clear()
+  },
+  updateOptions(options) {
+    fireworks.value!.updateOptions(options)
+  },
+  updateSize(size) {
+    fireworks.value!.updateSize(size)
+  },
+  updateBoundaries(boundaries) {
+    fireworks.value!.updateBoundaries(boundaries)
+  }
 })
 </script>
 
