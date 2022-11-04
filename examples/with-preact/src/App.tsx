@@ -5,17 +5,25 @@ import type { FireworksHandlers } from '@fireworks-js/preact'
 export function App() {
   const ref = useRef<FireworksHandlers>(null)
 
-  const toggle = () => {
-    ref.current!.isRunning ? ref.current!.stop() : ref.current!.start()
+  const toggleFireworks = () => {
+    if (!ref.current) return
+    if (ref.current.isRunning) {
+      ref.current.stop()
+    } else {
+      ref.current.start()
+    }
   }
 
   return (
     <>
-      <div style={{ position: 'absolute', zIndex: 1 }}>
-        <button onClick={() => toggle()}>Toggle</button>
+      <div
+        style={{ display: 'flex', gap: '4px', position: 'absolute', zIndex: 1 }}
+      >
+        <button onClick={() => toggleFireworks()}>Toggle</button>
         <button onClick={() => ref.current!.clear()}>Clear</button>
       </div>
       <Fireworks
+        autostart={false}
         ref={ref}
         options={{ opacity: 0.5 }}
         style={{
