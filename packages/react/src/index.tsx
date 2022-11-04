@@ -5,10 +5,11 @@ import React, { useEffect, useImperativeHandle, useRef } from 'react'
 interface FireworksProps extends React.HTMLAttributes<HTMLDivElement> {
   children?: React.ReactNode
   options?: FireworksOptions
+  autostart?: boolean
 }
 
 const Fireworks = React.forwardRef<FireworksHandlers, FireworksProps>(
-  ({ children, options, ...rest }, ref) => {
+  ({ children, options, autostart = true, ...rest }, ref) => {
     const container = useRef<HTMLDivElement>(null)
     const fireworks = useRef<FireworksJs | null>(null)
 
@@ -20,10 +21,10 @@ const Fireworks = React.forwardRef<FireworksHandlers, FireworksProps>(
         fireworks.current!.start()
       },
       stop() {
-        fireworks.current!.stop(true)
+        fireworks.current!.stop()
       },
       async waitStop() {
-        await fireworks.current!.waitStop(true)
+        await fireworks.current!.waitStop()
       },
       pause() {
         fireworks.current!.pause()
@@ -43,11 +44,16 @@ const Fireworks = React.forwardRef<FireworksHandlers, FireworksProps>(
     }))
 
     useEffect(() => {
-      fireworks.current = new FireworksJs(container.current!, options)
-      fireworks.current.start()
+      if (!fireworks.current) {
+        fireworks.current = new FireworksJs(container.current!, options)
+      }
+
+      if (autostart) {
+        fireworks.current.start()
+      }
 
       return () => {
-        fireworks.current!.stop(true)
+        fireworks.current!.stop()
       }
     }, [])
 

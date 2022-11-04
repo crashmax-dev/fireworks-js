@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useRef } from 'react'
 import { Fireworks } from '@fireworks-js/react'
 import type { FireworksHandlers } from '@fireworks-js/react'
 
@@ -13,11 +13,6 @@ export function App() {
       ref.current.start()
     }
   }
-
-  useEffect(() => {
-    // prevent stop
-    ref.current?.stop()
-  }, [])
 
   return (
     <>
