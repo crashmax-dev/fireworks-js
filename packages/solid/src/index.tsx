@@ -1,24 +1,32 @@
 import { Fireworks as FireworksJS } from 'fireworks-js'
-import type { FireworksOptions } from 'fireworks-js'
-import { onCleanup, onMount } from 'solid-js'
+import type { FireworksHandlers, FireworksOptions } from 'fireworks-js'
+import { mergeProps, onCleanup, onMount } from 'solid-js'
 import type { JSX, ParentComponent } from 'solid-js'
 
-type FireworksProps = {
+interface FireworksProps
+  extends Omit<JSX.HTMLAttributes<HTMLDivElement>, 'ref'> {
   options?: FireworksOptions
-  style?: JSX.CSSProperties
+  autostart?: boolean
+  ref?: (handlers: FireworksHandlers) => void
 }
 
-const Fireworks: ParentComponent<FireworksProps> = ({
-  options,
-  style,
-  children
-}) => {
+const Fireworks: ParentComponent<FireworksProps> = (props) => {
+  const { autostart, options, children, ref, ...rest } = mergeProps(
+    { autostart: true },
+    props
+  )
   let container: HTMLDivElement | undefined
   let fireworks: FireworksJS | undefined
 
   onMount(() => {
     fireworks = new FireworksJS(container!, options)
-    fireworks.start()
+    if (autostart) {
+      fireworks.start()
+    }
+
+    if (ref) {
+      ref(fireworks)
+    }
 
     onCleanup(() => {
       fireworks!.stop()
@@ -28,7 +36,7 @@ const Fireworks: ParentComponent<FireworksProps> = ({
   return (
     <div
       ref={container}
-      style={style}
+      {...rest}
     >
       {children}
     </div>
@@ -37,4 +45,4 @@ const Fireworks: ParentComponent<FireworksProps> = ({
 
 export { Fireworks }
 export default Fireworks
-export type { FireworksOptions }
+export type { FireworksOptions, FireworksHandlers }
