@@ -1,22 +1,15 @@
 import { Fireworks as FireworksJs } from 'fireworks-js'
-import type { FireworksOptions } from 'fireworks-js'
+import type { FireworksHandlers, FireworksOptions } from 'fireworks-js'
 import React, { useEffect, useImperativeHandle, useRef } from 'react'
 
 interface FireworksProps extends React.HTMLAttributes<HTMLDivElement> {
   children?: React.ReactNode
   options?: FireworksOptions
-}
-
-interface FireworksHandlers
-  extends Pick<
-    FireworksJs,
-    'isRunning' | 'start' | 'pause' | 'clear' | 'updateOptions' | 'updateSize'
-  > {
-  stop(): void
+  autostart?: boolean
 }
 
 const Fireworks = React.forwardRef<FireworksHandlers, FireworksProps>(
-  ({ children, options, ...rest }, ref) => {
+  ({ children, options, autostart = true, ...rest }, ref) => {
     const container = useRef<HTMLDivElement>(null)
     const fireworks = useRef<FireworksJs | null>(null)
 
@@ -30,6 +23,9 @@ const Fireworks = React.forwardRef<FireworksHandlers, FireworksProps>(
       stop() {
         fireworks.current!.stop()
       },
+      async waitStop() {
+        await fireworks.current!.waitStop()
+      },
       pause() {
         fireworks.current!.pause()
       },
@@ -41,15 +37,23 @@ const Fireworks = React.forwardRef<FireworksHandlers, FireworksProps>(
       },
       updateSize(size) {
         fireworks.current!.updateSize(size)
+      },
+      updateBoundaries(boundaries) {
+        fireworks.current!.updateBoundaries(boundaries)
       }
     }))
 
     useEffect(() => {
-      fireworks.current = new FireworksJs(container.current!, options)
-      fireworks.current.start()
+      if (!fireworks.current) {
+        fireworks.current = new FireworksJs(container.current!, options)
+      }
+
+      if (autostart) {
+        fireworks.current.start()
+      }
 
       return () => {
-        fireworks.current!.stop(true)
+        fireworks.current!.stop()
       }
     }, [])
 

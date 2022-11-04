@@ -1,3 +1,5 @@
+import type { Fireworks } from './fireworks.js'
+
 export type LineStyle = 'round' | 'square'
 
 export interface IFireworksOptions {
@@ -92,4 +94,19 @@ export type RecursivePartial<T> = {
     : T[P] extends object
     ? RecursivePartial<T[P]>
     : T[P]
+}
+
+export interface FireworksHandlers
+  extends Pick<
+    Fireworks,
+    | 'isRunning'
+    | 'start'
+    | 'pause'
+    | 'clear'
+    | 'updateOptions'
+    | 'updateBoundaries'
+    | 'updateSize'
+  > {
+  waitStop(): Promise<void>
+  stop(): void
 }

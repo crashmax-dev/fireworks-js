@@ -5,15 +5,22 @@
 
   let className = ''
   export { className as class }
+  export let autostart = true
   export let style: string = ''
   export let options: FireworksOptions = {}
 
   let container: HTMLDivElement
   let fireworks: Fireworks
 
+  export function fireworksInstance() {
+    return fireworks
+  }
+
   onMount(() => {
     fireworks = new Fireworks(container, options)
-    fireworks.start()
+    if (autostart) {
+      fireworks.start()
+    }
   })
 
   onDestroy(() => {

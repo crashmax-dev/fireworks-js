@@ -31,17 +31,13 @@ const options = ref<FireworksOptions>({ opacity: 0.5 })
 const mounted = ref(true)
 
 async function startFireworks() {
-  const { fireworks } = fw.value!
-  fireworks?.start()
+  if (!fw.value) return
+  fw.value.start()
   await new Promise((resolve) => setTimeout(resolve, 1000))
-  await fireworks?.waitStop()
+  await fw.value.waitStop()
 }
 
-watch(fw, () => {
-  if (fw.value) {
-    startFireworks()
-  }
-})
+watch(fw, () => startFireworks())
 </script>
 
 <style>

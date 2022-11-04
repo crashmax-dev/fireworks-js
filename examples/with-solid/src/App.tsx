@@ -1,19 +1,39 @@
 import { Show, createSignal } from 'solid-js'
-import { Fireworks } from '@fireworks-js/solid'
+import { Fireworks, FireworksHandlers } from '@fireworks-js/solid'
 
 export function App() {
   const [enabled, setEnabled] = createSignal(true)
+  let fireworks: FireworksHandlers
+
+  // https://github.com/solidjs/solid/issues/116#issuecomment-583247897
+  setTimeout(() => console.log(fireworks))
+
+  const toggleFireworks = () => {
+    if (fireworks.isRunning) {
+      fireworks.waitStop()
+    } else {
+      fireworks.start()
+    }
+  }
 
   return (
     <>
-      <button
-        onClick={() => setEnabled(!enabled())}
-        style={{ position: 'absolute', 'z-index': 1 }}
+      <div
+        style={{
+          display: 'flex',
+          gap: '4px',
+          position: 'absolute',
+          'z-index': 1
+        }}
       >
-        {enabled() ? 'Enabled' : 'Disabled'}
-      </button>
+        <button onClick={() => setEnabled(!enabled())}>
+          {enabled() ? 'Enabled' : 'Disabled'}
+        </button>
+        <button onClick={() => toggleFireworks()}>Toggle</button>
+      </div>
       <Show when={enabled()}>
         <Fireworks
+          ref={(ref) => (fireworks = ref)}
           options={{ opacity: 0.5 }}
           style={{
             top: 0,

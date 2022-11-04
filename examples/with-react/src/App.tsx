@@ -6,12 +6,19 @@ export function App() {
   const ref = useRef<FireworksHandlers>(null)
 
   const toggle = () => {
-    ref.current!.isRunning ? ref.current!.stop() : ref.current!.start()
+    if (!ref.current) return
+    if (ref.current.isRunning) {
+      ref.current.stop()
+    } else {
+      ref.current.start()
+    }
   }
 
   return (
     <>
-      <div style={{ position: 'absolute', zIndex: 1 }}>
+      <div
+        style={{ display: 'flex', gap: '4px', position: 'absolute', zIndex: 1 }}
+      >
         <button onClick={() => toggle()}>Toggle</button>
         <button onClick={() => ref.current!.clear()}>Clear</button>
       </div>
