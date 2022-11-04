@@ -1,6 +1,6 @@
 {
   "name": "@fireworks-js/svelte",
-  "version": "2.7.0",
+  "version": "2.8.0",
   "type": "module",
   "description": "A simple fireworks library!",
   "homepage": "https://fireworks.js.org",
@@ -39,7 +39,7 @@
     "prepublishOnly": "pnpm build"
   },
   "dependencies": {
-    "fireworks-js": "workspace:2.7.0"
+    "fireworks-js": "workspace:2.8.0"
   },
   "devDependencies": {
     "@sveltejs/adapter-auto": "1.0.0-next.86",
