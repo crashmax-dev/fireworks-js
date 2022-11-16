@@ -29,14 +29,16 @@ const launch = el(
   'button',
   {
     onclick: () => {
-      fireworks.launch(Number(fires.value))
+      fireworks.launch(Number(count.value))
     }
   },
   'Launch'
 )
 
-const fires = el('input', {
+const count = el('input', {
   value: '1',
+  min: '1',
+  max: '15',
   type: 'number',
   placeholder: 'count',
   style: {
@@ -56,7 +58,7 @@ const buttons = el(
   start,
   stop,
   launch,
-  fires
+  count
 )
 
 document.body.appendChild(buttons)
