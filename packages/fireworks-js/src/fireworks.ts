@@ -116,8 +116,8 @@ export class Fireworks {
     }
 
     if (!this.waitStopRaf) {
-      this.waitStop()
       this.start()
+      this.waitStop()
     }
   }
 
