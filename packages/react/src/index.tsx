@@ -20,6 +20,9 @@ const Fireworks = React.forwardRef<FireworksHandlers, FireworksProps>(
       start() {
         fireworks.current!.start()
       },
+      launch(count) {
+        fireworks.current!.launch(count)
+      },
       stop() {
         fireworks.current!.stop()
       },

@@ -36,6 +36,9 @@ defineExpose<FireworksHandlers>({
   start() {
     fireworks.value!.start()
   },
+  launch(count) {
+    fireworks.value!.launch(count)
+  },
   stop() {
     fireworks.value!.stop()
   },

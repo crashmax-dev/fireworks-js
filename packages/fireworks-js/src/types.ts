@@ -101,6 +101,7 @@ export interface FireworksHandlers
     Fireworks,
     | 'isRunning'
     | 'start'
+    | 'launch'
     | 'pause'
     | 'clear'
     | 'updateOptions'
