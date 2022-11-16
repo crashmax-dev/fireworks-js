@@ -28,9 +28,11 @@ importers:
 
   examples/basic:
     specifiers:
+      '@zero-dependency/dom': ^0.10.0
       fireworks-js: workspace:*
       typescript: ^4.8.4
     dependencies:
+      '@zero-dependency/dom': 0.10.0
       fireworks-js: link:../../packages/fireworks-js
     devDependencies:
       typescript: 4.8.4
@@ -4111,6 +4113,16 @@ packages:
   /@yarnpkg/lockfile/1.1.0:
     resolution: {integrity: sha512-GpSwvyXOcOOlV70vbnzjj4fW5xW/FdUF6nQEt1ENy7m4ZCczi1+/buVUPAqmGfqznsORNFzUMjctTIp8a9tuCQ==}
     dev: true
+
+  /@zero-dependency/dom/0.10.0:
+    resolution: {integrity: sha512-TrF8y+2EOaBpk9Vfv3Jju/WaiGWRfCPAYMeAWh6lHp9Vssc5fKH01qmvmlOMiwdz9alBd6N4L2272EdyZcvf9w==}
+    dependencies:
+      '@zero-dependency/emitter': 1.1.1
+    dev: false
+
+  /@zero-dependency/emitter/1.1.1:
+    resolution: {integrity: sha512-bPF9QeEQdOhe1Bfpm+mqOS4JrajPiHTj5vMvOSMvZp5jZzzgd8lC87JL93xWGgL8Qb3E98JZkmnYJX3JdmrEIA==}
+    dev: false
 
   /abab/2.0.6:
     resolution: {integrity: sha512-j2afSsaIENvHZN2B8GOpF566vZ5WVk5opAiMTvWgaQT8DkbOqsTfvNAvHoRGU2zzP8cPoqys+xHTRDWW8L+/BA==}
