@@ -8,6 +8,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@zero-dependency/dom": "^0.10.0",
     "fireworks-js": "workspace:*"
   },
   "devDependencies": {
