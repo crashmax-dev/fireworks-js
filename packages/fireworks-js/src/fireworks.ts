@@ -110,6 +110,17 @@ export class Fireworks {
     this.ctx.clearRect(0, 0, this.width, this.height)
   }
 
+  launch(count = 1): void {
+    for (let i = 0; i < count; i++) {
+      this.createTrace()
+    }
+
+    if (!this.waitStopRaf) {
+      this.waitStop()
+      this.start()
+    }
+  }
+
   updateOptions(options: FireworksOptions): void {
     opts.updateOptions(options)
   }
@@ -154,24 +165,23 @@ export class Fireworks {
   private render(): void {
     if (!this.ctx || !this.running) return
 
+    const { opacity, lineStyle, lineWidth } = opts
     this.ctx.globalCompositeOperation = 'destination-out'
-    this.ctx.fillStyle = `rgba(0, 0, 0, ${opts.opacity})`
+    this.ctx.fillStyle = `rgba(0, 0, 0, ${opacity})`
     this.ctx.fillRect(0, 0, this.width, this.height)
     this.ctx.globalCompositeOperation = 'lighter'
-    this.ctx.lineCap = opts.lineStyle
+    this.ctx.lineCap = lineStyle
     this.ctx.lineJoin = 'round'
+    this.ctx.lineWidth = randomFloat(lineWidth.trace.min, lineWidth.trace.max)
 
     this.initTrace()
     this.drawTrace()
     this.drawExplosion()
   }
 
-  private initTrace(): void {
-    if (this.waitStopRaf) return
-
+  private createTrace(): void {
     const {
       hue,
-      delay,
       rocketsPoint,
       boundaries,
       traceLength,
@@ -180,40 +190,40 @@ export class Fireworks {
       mouse
     } = opts
 
-    if (
-      this.raf.tick > randomInt(delay.min, delay.max) ||
-      (this.mouse.active && mouse.max > this.traces.length)
-    ) {
-      this.traces.push(
-        new Trace({
-          x: (this.width * randomInt(rocketsPoint.min, rocketsPoint.max)) / 100,
-          y: this.height,
-          dx:
-            (this.mouse.x && mouse.move) || this.mouse.active
-              ? this.mouse.x
-              : randomInt(boundaries.x, boundaries.width - boundaries.x * 2),
-          dy:
-            (this.mouse.y && mouse.move) || this.mouse.active
-              ? this.mouse.y
-              : randomInt(boundaries.y, boundaries.height * 0.5),
-          ctx: this.ctx,
-          hue: randomInt(hue.min, hue.max),
-          speed: traceSpeed,
-          acceleration,
-          traceLength: floor(traceLength)
-        })
-      )
+    this.traces.push(
+      new Trace({
+        x: (this.width * randomInt(rocketsPoint.min, rocketsPoint.max)) / 100,
+        y: this.height,
+        dx:
+          (this.mouse.x && mouse.move) || this.mouse.active
+            ? this.mouse.x
+            : randomInt(boundaries.x, boundaries.width - boundaries.x * 2),
+        dy:
+          (this.mouse.y && mouse.move) || this.mouse.active
+            ? this.mouse.y
+            : randomInt(boundaries.y, boundaries.height * 0.5),
+        ctx: this.ctx,
+        hue: randomInt(hue.min, hue.max),
+        speed: traceSpeed,
+        acceleration,
+        traceLength: floor(traceLength)
+      })
+    )
+  }
 
+  private initTrace(): void {
+    if (this.waitStopRaf) return
+
+    if (
+      this.raf.tick > randomInt(opts.delay.min, opts.delay.max) ||
+      (this.mouse.active && opts.mouse.max > this.traces.length)
+    ) {
+      this.createTrace()
       this.raf.tick = 0
     }
   }
 
   private drawTrace(): void {
-    this.ctx.lineWidth = randomFloat(
-      opts.lineWidth.trace.min,
-      opts.lineWidth.trace.max
-    )
-
     let traceLength = this.traces.length
     while (traceLength--) {
       this.traces[traceLength]!.draw()
