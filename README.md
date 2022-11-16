@@ -265,6 +265,11 @@ const fireworks = new Fireworks(container, {
 #### `.start()`
 Start fireworks.
 
+#### `.launch(count)`
+Launching a specified number of fireworks.\
+Type: `number`\
+Default `1`
+
 #### `.stop(dispose)`
 Stop fireworks.\
 Type: `boolean`\
