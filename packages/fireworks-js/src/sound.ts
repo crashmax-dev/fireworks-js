@@ -1,5 +1,5 @@
+import type { Fireworks } from './fireworks.js'
 import { randomFloat, randomInt } from './helpers.js'
-import { opts } from './options.js'
 
 declare global {
   interface Window {
@@ -12,12 +12,20 @@ export class Sound {
   private audioContext: AudioContext
   private onInit = false
 
-  constructor() {
+  constructor(private readonly fw: Fireworks) {
     this.init()
   }
 
+  private get isEnabled() {
+    return this.fw.options.sound.enabled
+  }
+
+  private get soundOptions() {
+    return this.fw.options.sound
+  }
+
   private init(): void {
-    if (!this.onInit && opts.sound.enabled) {
+    if (!this.onInit && this.isEnabled) {
       this.onInit = true
       this.audioContext = new (window.AudioContext ||
         window.webkitAudioContext)()
@@ -26,7 +34,7 @@ export class Sound {
   }
 
   private async loadSounds(): Promise<void> {
-    for (const file of opts.sound.files) {
+    for (const file of this.soundOptions.files) {
       const response = await (await fetch(file)).arrayBuffer()
 
       this.audioContext
@@ -41,15 +49,15 @@ export class Sound {
   }
 
   play(): void {
-    if (opts.sound.enabled && this.sounds.length) {
+    if (this.isEnabled && this.sounds.length) {
       const source = this.audioContext.createBufferSource()
       const sound = this.sounds[randomInt(0, this.sounds.length - 1)]!
       const vol = this.audioContext.createGain()
 
       source.buffer = sound
       vol.gain.value = randomFloat(
-        opts.sound.volume.min / 100,
-        opts.sound.volume.max / 100
+        this.soundOptions.volume.min / 100,
+        this.soundOptions.volume.max / 100
       )
       vol.connect(this.audioContext.destination)
       source.connect(vol)

@@ -1,14 +1,21 @@
-import { opts } from './options.js'
+import type { Fireworks } from './fireworks.js'
 
 export class Mouse {
   public active = false
   public x: number
   public y: number
 
-  constructor(private readonly canvas: HTMLCanvasElement) {
+  constructor(
+    private readonly fw: Fireworks,
+    private readonly canvas: HTMLCanvasElement
+  ) {
     this.pointerDown = this.pointerDown.bind(this)
     this.pointerUp = this.pointerUp.bind(this)
     this.pointerMove = this.pointerMove.bind(this)
+  }
+
+  private get mouseOptions() {
+    return this.fw.options.mouse
   }
 
   subscribe(): void {
@@ -24,7 +31,8 @@ export class Mouse {
   }
 
   private usePointer(event: PointerEvent, active: boolean): void {
-    if (opts.mouse.click || opts.mouse.move) {
+    const { click, move } = this.mouseOptions
+    if (click || move) {
       this.x = event.pageX - this.canvas.offsetLeft
       this.y = event.pageY - this.canvas.offsetTop
       this.active = active
@@ -32,7 +40,7 @@ export class Mouse {
   }
 
   private pointerDown(event: PointerEvent): void {
-    this.usePointer(event, opts.mouse.click)
+    this.usePointer(event, this.mouseOptions.click)
   }
 
   private pointerUp(event: PointerEvent): void {
