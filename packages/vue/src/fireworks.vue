@@ -33,6 +33,9 @@ defineExpose<FireworksHandlers>({
   get isRunning() {
     return fireworks.value!.isRunning
   },
+  get currentOptions() {
+    return fireworks.value!.currentOptions
+  },
   start() {
     fireworks.value!.start()
   },

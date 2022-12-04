@@ -107,6 +107,7 @@ export interface FireworksHandlers
     | 'updateOptions'
     | 'updateBoundaries'
     | 'updateSize'
+    | 'currentOptions'
   > {
   waitStop(): Promise<void>
   stop(): void
