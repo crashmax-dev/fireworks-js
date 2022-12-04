@@ -1,24 +1,26 @@
-import type { Fireworks } from './index.js'
-import { opts } from './options.js'
+import type { Options } from './options.js'
 
 export class Resize {
-  constructor(private readonly fireworks: Fireworks) {
+  constructor(
+    private readonly options: Options,
+    private readonly updateSize: () => void
+  ) {
     this.handleResize = this.handleResize.bind(this)
   }
 
-  subscribe(): void {
-    if (opts.autoresize) {
+  mount(): void {
+    if (this.options.autoresize) {
       window.addEventListener('resize', this.handleResize)
     }
   }
 
-  unsubscribe(): void {
-    if (opts.autoresize) {
+  unmount(): void {
+    if (this.options.autoresize) {
       window.removeEventListener('resize', this.handleResize)
     }
   }
 
   private handleResize(): void {
-    this.fireworks.updateSize()
+    this.updateSize()
   }
 }

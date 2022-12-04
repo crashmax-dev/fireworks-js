@@ -286,6 +286,9 @@ Start/stop fireworks.
 #### `.clear()`
 Cleaning the canvas from fireworks.
 
+#### `.currentOptions`
+Getting current fireworks options.
+
 #### `.updateOptions(options)`
 Force update fireworks options.\
 Type: [`options`](https://github.com/crashmax-dev/fireworks-js/blob/6819ec8456ecb97140a8e1f41959ca2da5c17ddf/packages/fireworks-js/src/types.ts#L3-L25)

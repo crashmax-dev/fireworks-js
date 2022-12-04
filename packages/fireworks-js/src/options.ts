@@ -9,7 +9,7 @@ import type {
   MinMax
 } from './types.js'
 
-class Options implements FireworksOptions {
+export class Options implements FireworksOptions {
   public hue: MinMax
   public rocketsPoint: MinMax
   public opacity: number
@@ -109,10 +109,7 @@ class Options implements FireworksOptions {
     }
   }
 
-  updateOptions<T extends FireworksOptions>(options: T): void {
+  update<T extends FireworksOptions>(options: T): void {
     Object.assign(this, deepMerge(this, options))
   }
 }
-
-const opts = new Options()
-export { opts }

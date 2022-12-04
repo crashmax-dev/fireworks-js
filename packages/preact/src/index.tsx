@@ -19,6 +19,9 @@ const Fireworks = React.forwardRef<FireworksHandlers, FireworksProps>(
       get isRunning() {
         return fireworks.current!.isRunning
       },
+      get currentOptions() {
+        return fireworks.current!.currentOptions
+      },
       start() {
         fireworks.current!.start()
       },

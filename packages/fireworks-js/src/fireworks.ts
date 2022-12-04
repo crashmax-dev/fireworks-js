@@ -1,12 +1,12 @@
 import { Explosion } from './explosion.js'
 import { floor, randomFloat, randomInt } from './helpers.js'
 import { Mouse } from './mouse.js'
-import { opts } from './options.js'
+import { Options } from './options.js'
 import { RequestAnimationFrame } from './raf.js'
 import { Resize } from './resize.js'
 import { Sound } from './sound.js'
 import { Trace } from './trace.js'
-import { FireworksOptions, IBoundaries, Sizes } from './types.js'
+import type { FireworksOptions, IBoundaries, Sizes } from './types.js'
 
 export class Fireworks {
   private target: Element | HTMLCanvasElement
@@ -15,14 +15,16 @@ export class Fireworks {
   private ctx: CanvasRenderingContext2D
   private width: number
   private height: number
-  private sound: Sound
-  private resize: Resize
-  private mouse: Mouse
   private traces: Trace[] = []
   private explosions: Explosion[] = []
   private waitStopRaf: (() => void) | null
-  private raf: RequestAnimationFrame
   private running = false
+
+  private readonly opts: Options
+  private readonly sound: Sound
+  private readonly resize: Resize
+  private readonly mouse: Mouse
+  private readonly raf: RequestAnimationFrame
 
   constructor(
     container: Element | HTMLCanvasElement,
@@ -31,13 +33,15 @@ export class Fireworks {
     this.target = container
     this.container = container
 
-    this.createCanvas(this.target)
-    this.updateOptions(options)
+    this.opts = new Options()
 
-    this.sound = new Sound()
-    this.resize = new Resize(this)
-    this.mouse = new Mouse(this.canvas)
-    this.raf = new RequestAnimationFrame(this.render.bind(this))
+    this.updateOptions(options)
+    this.createCanvas(this.target)
+
+    this.sound = new Sound(this.opts)
+    this.resize = new Resize(this.opts, this.updateSize.bind(this))
+    this.mouse = new Mouse(this.opts, this.canvas)
+    this.raf = new RequestAnimationFrame(this.opts, this.render.bind(this))
   }
 
   get isRunning(): boolean {
@@ -48,6 +52,10 @@ export class Fireworks {
     return __VERSION__
   }
 
+  get currentOptions(): Options {
+    return this.opts
+  }
+
   start(): void {
     if (this.running) return
 
@@ -56,18 +64,18 @@ export class Fireworks {
     }
 
     this.running = true
-    this.resize.subscribe()
-    this.mouse.subscribe()
-    this.raf.start()
+    this.resize.mount()
+    this.mouse.mount()
+    this.raf.mount()
   }
 
   stop(dispose = false): void {
     if (!this.running) return
 
     this.running = false
-    this.resize.unsubscribe()
-    this.mouse.unsubscribe()
-    this.raf.stop()
+    this.resize.unmount()
+    this.mouse.unmount()
+    this.raf.unmount()
     this.clear()
 
     if (dispose) {
@@ -96,9 +104,9 @@ export class Fireworks {
   pause(): void {
     this.running = !this.running
     if (this.running) {
-      this.raf.start()
+      this.raf.mount()
     } else {
-      this.raf.stop()
+      this.raf.unmount()
     }
   }
 
@@ -122,7 +130,7 @@ export class Fireworks {
   }
 
   updateOptions(options: FireworksOptions): void {
-    opts.updateOptions(options)
+    this.opts.update(options)
   }
 
   updateSize({
@@ -136,7 +144,7 @@ export class Fireworks {
     this.canvas.height = height
 
     this.updateBoundaries({
-      ...opts.boundaries,
+      ...this.opts.boundaries,
       width,
       height
     })
@@ -165,7 +173,7 @@ export class Fireworks {
   private render(): void {
     if (!this.ctx || !this.running) return
 
-    const { opacity, lineStyle, lineWidth } = opts
+    const { opacity, lineStyle, lineWidth } = this.opts
     this.ctx.globalCompositeOperation = 'destination-out'
     this.ctx.fillStyle = `rgba(0, 0, 0, ${opacity})`
     this.ctx.fillRect(0, 0, this.width, this.height)
@@ -188,7 +196,7 @@ export class Fireworks {
       traceSpeed,
       acceleration,
       mouse
-    } = opts
+    } = this.opts
 
     this.traces.push(
       new Trace({
@@ -214,9 +222,10 @@ export class Fireworks {
   private initTrace(): void {
     if (this.waitStopRaf) return
 
+    const { delay, mouse } = this.opts
     if (
-      this.raf.tick > randomInt(opts.delay.min, opts.delay.max) ||
-      (this.mouse.active && opts.mouse.max > this.traces.length)
+      this.raf.tick > randomInt(delay.min, delay.max) ||
+      (this.mouse.active && mouse.max > this.traces.length)
     ) {
       this.createTrace()
       this.raf.tick = 0
@@ -245,7 +254,7 @@ export class Fireworks {
       friction,
       gravity,
       decay
-    } = opts
+    } = this.opts
 
     let particlesLength = floor(particles)
     while (particlesLength--) {

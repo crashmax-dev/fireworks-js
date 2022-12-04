@@ -1,4 +1,4 @@
-import { opts } from './options.js'
+import type { Options } from './options.js'
 
 export class RequestAnimationFrame {
   public tick = 0
@@ -8,9 +8,12 @@ export class RequestAnimationFrame {
   private tolerance = 0.1
   private now: number
 
-  constructor(private readonly render: () => void) {}
+  constructor(
+    private readonly options: Options,
+    private readonly render: () => void
+  ) {}
 
-  start(): void {
+  mount(): void {
     this.now = performance.now()
     const interval = 1000 / this.fps
 
@@ -21,14 +24,14 @@ export class RequestAnimationFrame {
       if (delta >= interval - this.tolerance) {
         this.render()
         this.now = timestamp - (delta % interval)
-        this.tick += (delta * (opts.intensity * Math.PI)) / 1000
+        this.tick += (delta * (this.options.intensity * Math.PI)) / 1000
       }
     }
 
     this.rafId = requestAnimationFrame(raf)
   }
 
-  stop() {
+  unmount() {
     cancelAnimationFrame(this.rafId)
   }
 }
