@@ -18,13 +18,13 @@ export class Mouse {
     return this.fw.options.mouse
   }
 
-  subscribe(): void {
+  mount(): void {
     this.canvas.addEventListener('pointerdown', this.pointerDown)
     this.canvas.addEventListener('pointerup', this.pointerUp)
     this.canvas.addEventListener('pointermove', this.pointerMove)
   }
 
-  unsubscribe(): void {
+  unmount(): void {
     this.canvas.removeEventListener('pointerdown', this.pointerDown)
     this.canvas.removeEventListener('pointerup', this.pointerUp)
     this.canvas.removeEventListener('pointermove', this.pointerMove)

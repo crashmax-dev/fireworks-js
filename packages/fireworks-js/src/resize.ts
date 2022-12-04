@@ -5,13 +5,13 @@ export class Resize {
     this.handleResize = this.handleResize.bind(this)
   }
 
-  subscribe(): void {
+  mount(): void {
     if (this.fw.options.autoresize) {
       window.addEventListener('resize', this.handleResize)
     }
   }
 
-  unsubscribe(): void {
+  unmount(): void {
     if (this.fw.options.autoresize) {
       window.removeEventListener('resize', this.handleResize)
     }

@@ -63,18 +63,18 @@ export class Fireworks {
     }
 
     this.running = true
-    this.resize.subscribe()
-    this.mouse.subscribe()
-    this.raf.start()
+    this.resize.mount()
+    this.mouse.mount()
+    this.raf.mount()
   }
 
   stop(dispose = false): void {
     if (!this.running) return
 
     this.running = false
-    this.resize.unsubscribe()
-    this.mouse.unsubscribe()
-    this.raf.stop()
+    this.resize.unmount()
+    this.mouse.unmount()
+    this.raf.unmount()
     this.clear()
 
     if (dispose) {
@@ -103,9 +103,9 @@ export class Fireworks {
   pause(): void {
     this.running = !this.running
     if (this.running) {
-      this.raf.start()
+      this.raf.mount()
     } else {
-      this.raf.stop()
+      this.raf.unmount()
     }
   }
 

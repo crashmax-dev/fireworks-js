@@ -13,7 +13,7 @@ export class RequestAnimationFrame {
     private readonly render: () => void
   ) {}
 
-  start(): void {
+  mount(): void {
     this.now = performance.now()
     const interval = 1000 / this.fps
 
@@ -31,7 +31,7 @@ export class RequestAnimationFrame {
     this.rafId = requestAnimationFrame(raf)
   }
 
-  stop() {
+  unmount() {
     cancelAnimationFrame(this.rafId)
   }
 }
