@@ -1,4 +1,4 @@
-import type { Fireworks } from './fireworks.js'
+import type { Options } from './options.js'
 
 export class RequestAnimationFrame {
   public tick = 0
@@ -9,7 +9,7 @@ export class RequestAnimationFrame {
   private now: number
 
   constructor(
-    private readonly fw: Fireworks,
+    private readonly options: Options,
     private readonly render: () => void
   ) {}
 
@@ -24,7 +24,7 @@ export class RequestAnimationFrame {
       if (delta >= interval - this.tolerance) {
         this.render()
         this.now = timestamp - (delta % interval)
-        this.tick += (delta * (this.fw.options.intensity * Math.PI)) / 1000
+        this.tick += (delta * (this.options.intensity * Math.PI)) / 1000
       }
     }
 

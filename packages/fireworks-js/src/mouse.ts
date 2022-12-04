@@ -1,4 +1,4 @@
-import type { Fireworks } from './fireworks.js'
+import type { Options } from './options.js'
 
 export class Mouse {
   public active = false
@@ -6,7 +6,7 @@ export class Mouse {
   public y: number
 
   constructor(
-    private readonly fw: Fireworks,
+    private readonly options: Options,
     private readonly canvas: HTMLCanvasElement
   ) {
     this.pointerDown = this.pointerDown.bind(this)
@@ -15,7 +15,7 @@ export class Mouse {
   }
 
   private get mouseOptions() {
-    return this.fw.options.mouse
+    return this.options.mouse
   }
 
   mount(): void {

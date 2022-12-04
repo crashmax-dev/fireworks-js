@@ -6,7 +6,7 @@ import { RequestAnimationFrame } from './raf.js'
 import { Resize } from './resize.js'
 import { Sound } from './sound.js'
 import { Trace } from './trace.js'
-import { FireworksOptions, IBoundaries, Sizes } from './types.js'
+import type { FireworksOptions, IBoundaries, Sizes } from './types.js'
 
 export class Fireworks {
   private target: Element | HTMLCanvasElement
@@ -15,15 +15,16 @@ export class Fireworks {
   private ctx: CanvasRenderingContext2D
   private width: number
   private height: number
-  private opts: Options
-  private sound: Sound
-  private resize: Resize
-  private mouse: Mouse
   private traces: Trace[] = []
   private explosions: Explosion[] = []
   private waitStopRaf: (() => void) | null
-  private raf: RequestAnimationFrame
   private running = false
+
+  private readonly opts: Options
+  private readonly sound: Sound
+  private readonly resize: Resize
+  private readonly mouse: Mouse
+  private readonly raf: RequestAnimationFrame
 
   constructor(
     container: Element | HTMLCanvasElement,
@@ -37,10 +38,10 @@ export class Fireworks {
     this.updateOptions(options)
     this.createCanvas(this.target)
 
-    this.sound = new Sound(this)
-    this.resize = new Resize(this)
-    this.mouse = new Mouse(this, this.canvas)
-    this.raf = new RequestAnimationFrame(this, this.render.bind(this))
+    this.sound = new Sound(this.opts)
+    this.resize = new Resize(this.opts, this.updateSize.bind(this))
+    this.mouse = new Mouse(this.opts, this.canvas)
+    this.raf = new RequestAnimationFrame(this.opts, this.render.bind(this))
   }
 
   get isRunning(): boolean {
@@ -51,7 +52,7 @@ export class Fireworks {
     return __VERSION__
   }
 
-  get options(): Options {
+  get currentOptions(): Options {
     return this.opts
   }
 
