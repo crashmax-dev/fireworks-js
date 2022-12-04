@@ -41,7 +41,7 @@
   },
   "packageManager": "pnpm@7.5.0",
   "devDependencies": {
-    "@crashmax/prettier-config": "^2.0.4",
+    "@crashmax/prettier-config": "^2.1.0",
     "@crashmax/tsconfig": "1.0.2",
     "@types/node": "18.11.9",
     "del-cli": "5.0.0",

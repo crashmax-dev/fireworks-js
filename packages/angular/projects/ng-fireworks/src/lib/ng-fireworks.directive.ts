@@ -1,6 +1,6 @@
+import { Directive, ElementRef, Input } from '@angular/core'
 import { Fireworks } from 'fireworks-js'
 import type { FireworksOptions } from 'fireworks-js'
-import { Directive, ElementRef, Input } from '@angular/core'
 
 @Directive({
   selector: '[ngFireworks], ng-fireworks',

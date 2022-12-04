@@ -2,6 +2,7 @@ node_modules
 dist
 build
 logs
+coverage
 .next
 .turbo
 .github

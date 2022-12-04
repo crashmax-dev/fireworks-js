@@ -1,6 +1,6 @@
+import React, { useEffect, useImperativeHandle, useRef } from 'react'
 import { Fireworks as FireworksJs } from 'fireworks-js'
 import type { FireworksHandlers, FireworksOptions } from 'fireworks-js'
-import React, { useEffect, useImperativeHandle, useRef } from 'react'
 
 interface FireworksProps extends React.HTMLAttributes<HTMLDivElement> {
   children?: React.ReactNode

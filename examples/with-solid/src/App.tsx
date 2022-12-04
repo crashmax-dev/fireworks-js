@@ -1,5 +1,5 @@
-import { Show, createSignal } from 'solid-js'
 import { Fireworks, FireworksHandlers } from '@fireworks-js/solid'
+import { createSignal, Show } from 'solid-js'
 
 export function App() {
   const [enabled, setEnabled] = createSignal(true)
