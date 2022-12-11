@@ -5,16 +5,24 @@
 
   let fw: Fireworks
   let enabled = true
+  let count = 1
   let options: FireworksOptions = {
     opacity: 0.5
   }
 
+  function launchFireworks() {
+    if (enabled) toggleFireworks()
+    fw.fireworksInstance().launch(count)
+  }
+
   function toggleFireworks() {
     const fireworks = fw.fireworksInstance()
-    if (fireworks.isRunning) {
-      fireworks.waitStop()
-    } else {
+
+    enabled = !enabled
+    if (enabled) {
       fireworks.start()
+    } else {
+      fireworks.stop()
     }
   }
 
@@ -26,16 +34,21 @@
 
 <main>
   <div class="buttons">
-    <button on:click={() => (enabled = !enabled)}>
-      {enabled ? 'Enabled' : 'Disabled'}
-    </button>
     <button on:click={() => toggleFireworks()}>
-      Toggle
+      {enabled ? 'Stop' : 'Start'}
     </button>
+    <button on:click={() => launchFireworks()}>
+      Launch
+    </button>
+    <input
+      bind:value={count}
+      min="1"
+      max="15"
+      type="number"
+      placeholder="count"
+    />
   </div>
-  {#if enabled}
-    <Fireworks bind:this={fw} autostart={false} {options} class="fireworks" />
-  {/if}
+  <Fireworks bind:this={fw} autostart={enabled} {options} class="fireworks" />
 </main>
 
 <style>
