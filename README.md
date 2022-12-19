@@ -6,7 +6,7 @@
 
 <p align="center">
   <a href="https://github.com/crashmax-dev/fireworks-js/actions">
-    <img alt="GitHub Workflow Status" src="https://img.shields.io/github/workflow/status/crashmax-dev/fireworks-js/github-pages">
+    <img alt="GitHub Workflow Status" src="https://img.shields.io/github/actions/workflow/status/crashmax-dev/fireworks-js/gh-pages.yml?branch=master">
   </a>
   <a href="https://github.com/crashmax-dev/fireworks-js/blob/master/LICENSE">
     <img alt="GitHub" src="https://img.shields.io/github/license/crashmax-dev/fireworks-js?color=success">
