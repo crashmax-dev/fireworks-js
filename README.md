@@ -33,6 +33,7 @@
 - [Browsers support](#browsers-support)
 - [Demo](#demo)
 - [Installation](#installation)
+- [CDN](#cdn)
 - [Usage](#usage)
   - [fireworks-js](#fireworks-js)
   - [@fireworks-js/react](#fireworks-jsreact)
@@ -88,6 +89,23 @@ pnpm add fireworks-js
 | [@fireworks-js/svelte](#fireworks-jssvelte) | [![](https://img.shields.io/npm/v/@fireworks-js/svelte.svg)](https://npm.im/@fireworks-js/svelte) | Svelte component |
 | [@fireworks-js/angular](#fireworks-jsangular) | [![](https://img.shields.io/npm/v/@fireworks-js/angular.svg)](https://npm.im/@fireworks-js/angular) | Angular component |
 | [@fireworks-js/web](#fireworks-jsweb) | [![](https://img.shields.io/npm/v/@fireworks-js/web.svg)](https://npm.im/@fireworks-js/web) | Web components |
+
+# CDN
+
+```html
+<!-- jsDelivr  -->
+<script src="https://cdn.jsdelivr.net/npm/fireworks-js@2.x/dist/index.umd.js"></script>
+
+<!-- UNPKG -->
+<script src="https://unpkg.com/fireworks-js@2.x/dist/index.umd.js"></script>
+
+<!-- Usage -->
+<script>
+  const container = document.querySelector('.fireworks')
+  const fireworks = Fireworks.default(container)
+  fireworks.start()
+</script>
+```
 
 ## Usage
 
