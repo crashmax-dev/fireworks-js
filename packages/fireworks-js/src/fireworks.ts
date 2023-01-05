@@ -8,6 +8,8 @@ import { Sound } from './sound.js'
 import { Trace } from './trace.js'
 import type { FireworksOptions, IBoundaries, Sizes } from './types.js'
 
+declare const __VERSION__: string
+
 export class Fireworks {
   private target: Element | HTMLCanvasElement
   private container: Element
