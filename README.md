@@ -86,10 +86,10 @@ fireworks.setOptions({ delay: { min: 10, max: 15 }})
 <!-- The below code snippet is automatically added from ./.github/markdown-autodocs/usage-cdn.html -->
 ```html
 <!-- jsdelivr  -->
-<script src="https://cdn.jsdelivr.net/npm/fireworks-js@latest/dist/fireworks.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fireworks-js@1.x/dist/fireworks.js"></script>
 
 <!-- unpkg -->
-<script src="https://unpkg.com/fireworks-js@latest/dist/fireworks.js"></script>
+<script src="https://unpkg.com/fireworks-js@1.x/dist/fireworks.js"></script>
 ```
 <!-- MARKDOWN-AUTO-DOCS:END -->
 
