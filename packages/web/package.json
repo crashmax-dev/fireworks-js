@@ -1,6 +1,6 @@
 {
   "name": "@fireworks-js/web",
-  "version": "2.10.0",
+  "version": "2.10.1",
   "type": "module",
   "description": "A simple fireworks library!",
   "homepage": "https://fireworks.js.org",
@@ -40,6 +40,6 @@
     "prepublishOnly": "pnpm build"
   },
   "dependencies": {
-    "fireworks-js": "workspace:2.10.0"
+    "fireworks-js": "workspace:2.10.1"
   }
 }
