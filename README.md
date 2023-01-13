@@ -102,7 +102,7 @@ pnpm add fireworks-js
 <!-- Usage -->
 <script>
   const container = document.querySelector('.fireworks')
-  const fireworks = Fireworks.default(container)
+  const fireworks = new Fireworks.default(container)
   fireworks.start()
 </script>
 ```
