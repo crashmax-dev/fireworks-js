@@ -6,12 +6,12 @@
   "description": "A simple fireworks library!",
   "homepage": "https://fireworks.js.org",
   "scripts": {
-    "dev": "turbo run dev --filter='./packages/*'",
-    "build": "turbo run build --filter='./packages/*'",
-    "dev:website": "turbo run dev --filter='./website'",
-    "build:website": "turbo run build --filter='./website'",
-    "dev:examples": "turbo run dev --filter='./examples/*'",
-    "build:examples": "turbo run build --filter='./examples/*'",
+    "dev": "turbo run dev --filter=./packages/*",
+    "build": "turbo run build --filter=./packages/*",
+    "dev:website": "turbo run dev --filter=./website",
+    "build:website": "turbo run build --filter=./website",
+    "dev:examples": "turbo run dev --filter=./examples/*",
+    "build:examples": "turbo run build --filter=./examples/*",
     "format": "prettier --write --ignore-unknown **"
   },
   "repository": {
