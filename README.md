@@ -321,6 +321,10 @@ Type: [`boundaries`](https://github.com/crashmax-dev/fireworks-js/blob/6819ec845
 
 ## Community
 
+### Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=crashmax-dev/fireworks-js&type=Date)](https://star-history.com/#crashmax-dev/fireworks-js&Date)
+
 ### Author
 - [crashmax](https://github.com/crashmax-dev)
 
