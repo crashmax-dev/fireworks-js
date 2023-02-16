@@ -178,7 +178,7 @@ importers:
       '@angular/platform-browser-dynamic': ^14.1.2
       '@angular/router': ^14.1.2
       '@types/jasmine': ~4.0.3
-      fireworks-js: workspace:2.10.1
+      fireworks-js: workspace:2.10.2
       jasmine-core: ~4.1.1
       ng-packagr: ^14.1.0
       rxjs: ~7.5.6
@@ -211,7 +211,7 @@ importers:
   packages/preact:
     specifiers:
       '@preact/preset-vite': 2.4.0
-      fireworks-js: workspace:2.10.1
+      fireworks-js: workspace:2.10.2
       preact: 10.11.2
     dependencies:
       fireworks-js: link:../fireworks-js
@@ -224,7 +224,7 @@ importers:
       '@types/react': 18.0.24
       '@types/react-dom': 18.0.8
       '@vitejs/plugin-react': 2.2.0
-      fireworks-js: workspace:2.10.1
+      fireworks-js: workspace:2.10.2
       react: 18.2.0
       react-dom: 18.2.0
     dependencies:
@@ -238,7 +238,7 @@ importers:
 
   packages/solid:
     specifiers:
-      fireworks-js: workspace:2.10.1
+      fireworks-js: workspace:2.10.2
       solid-js: ^1.6.1
       vite-plugin-solid: 2.3.10
     dependencies:
@@ -252,7 +252,7 @@ importers:
       '@sveltejs/adapter-auto': 1.0.0-next.86
       '@sveltejs/kit': 1.0.0-next.531
       '@sveltejs/package': 1.0.0-next.5
-      fireworks-js: workspace:2.10.1
+      fireworks-js: workspace:2.10.2
       svelte: ^3.52.0
       svelte-check: ^2.9.2
       svelte-preprocess: ^4.10.6
@@ -275,7 +275,7 @@ importers:
   packages/vue:
     specifiers:
       '@vitejs/plugin-vue': 3.2.0
-      fireworks-js: workspace:2.10.1
+      fireworks-js: workspace:2.10.2
       vue: 3.2.41
       vue-tsc: 1.0.9
     dependencies:
@@ -287,7 +287,7 @@ importers:
 
   packages/web:
     specifiers:
-      fireworks-js: workspace:2.10.1
+      fireworks-js: workspace:2.10.2
     dependencies:
       fireworks-js: link:../fireworks-js
 

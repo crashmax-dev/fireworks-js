@@ -1,7 +1,7 @@
 {
   "name": "@fireworks-js/angular",
   "private": true,
-  "version": "2.10.1",
+  "version": "2.10.2",
   "typings": "./dist/ng-fireworks/index.d.ts",
   "exports": {
     "./package.json": {
@@ -31,7 +31,7 @@
     "@angular/platform-browser": "^14.1.2",
     "@angular/platform-browser-dynamic": "^14.1.2",
     "@angular/router": "^14.1.2",
-    "fireworks-js": "workspace:2.10.1",
+    "fireworks-js": "workspace:2.10.2",
     "rxjs": "~7.5.6",
     "tslib": "2.4.0",
     "zone.js": "~0.11.8"

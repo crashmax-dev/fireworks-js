@@ -1,6 +1,6 @@
 {
   "name": "@fireworks-js/angular",
-  "version": "2.10.1",
+  "version": "2.10.2",
   "description": "A simple fireworks library!",
   "homepage": "https://fireworks.js.org",
   "repository": {
@@ -27,7 +27,7 @@
     "@angular/core": "^14.0.0"
   },
   "dependencies": {
-    "fireworks-js": "workspace:2.10.1",
+    "fireworks-js": "workspace:2.10.2",
     "tslib": "2.5.0"
   }
 }
