@@ -90,3 +90,19 @@ export const deepMerge = <T extends IObject[]>(
     return result
   }, {}) as any
 }
+
+// https://github.com/zero-dependency/utils/blob/master/src/debounce.ts
+export function debounce<T extends (...args: any[]) => void>(
+  fn: T,
+  ms: number
+): (...args: Parameters<T>) => void {
+  let timeoutId: ReturnType<typeof setTimeout>
+
+  return (...args) => {
+    if (timeoutId) {
+      clearTimeout(timeoutId)
+    }
+
+    timeoutId = setTimeout(() => fn(...args), ms)
+  }
+}
