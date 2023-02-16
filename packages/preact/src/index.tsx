@@ -1,8 +1,8 @@
 import { Fireworks as FireworksJs } from 'fireworks-js'
-import type { FireworksHandlers, FireworksOptions } from 'fireworks-js'
-import type { ComponentChildren } from 'preact'
 import React from 'preact/compat'
 import { useEffect, useImperativeHandle, useRef } from 'preact/hooks'
+import type { FireworksHandlers, FireworksOptions } from 'fireworks-js'
+import type { ComponentChildren } from 'preact'
 
 interface FireworksProps extends React.HTMLAttributes<HTMLDivElement> {
   children?: ComponentChildren

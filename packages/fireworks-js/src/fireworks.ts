@@ -41,7 +41,11 @@ export class Fireworks {
     this.createCanvas(this.target)
 
     this.sound = new Sound(this.opts)
-    this.resize = new Resize(this.opts, this.updateSize.bind(this))
+    this.resize = new Resize(
+      this.opts,
+      this.updateSize.bind(this),
+      this.container
+    )
     this.mouse = new Mouse(this.opts, this.canvas)
     this.raf = new RequestAnimationFrame(this.opts, this.render.bind(this))
   }

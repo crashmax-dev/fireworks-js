@@ -1,6 +1,6 @@
 import { Fireworks } from '@fireworks-js/preact'
-import type { FireworksHandlers } from '@fireworks-js/preact'
 import { useRef } from 'preact/hooks'
+import type { FireworksHandlers } from '@fireworks-js/preact'
 
 export function App() {
   const ref = useRef<FireworksHandlers>(null)

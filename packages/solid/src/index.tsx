@@ -1,6 +1,6 @@
 import { Fireworks as FireworksJS } from 'fireworks-js'
-import type { FireworksHandlers, FireworksOptions } from 'fireworks-js'
 import { mergeProps, onCleanup, onMount } from 'solid-js'
+import type { FireworksHandlers, FireworksOptions } from 'fireworks-js'
 import type { JSX, ParentComponent } from 'solid-js'
 
 interface FireworksProps
