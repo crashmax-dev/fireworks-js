@@ -17,11 +17,11 @@ export class AppComponent {
 
   @ViewChild('fireworks') fireworks?: FireworksDirective
 
-  public toggleFireworks(): void {
+  toggleFireworks(): void {
     this.enabled = !this.enabled
   }
 
-  public waitStop(): void {
+  waitStop(): void {
     this.fireworks?.waitStop()
   }
 }

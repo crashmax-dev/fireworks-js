@@ -2,7 +2,7 @@ import { Fireworks as FireworksJs } from 'fireworks-js'
 import type { FireworksOptions } from 'fireworks-js'
 
 class Fireworks extends HTMLElement {
-  public fireworks: FireworksJs
+  fireworks: FireworksJs
   private options: FireworksOptions = {}
 
   static get observedAttributes() {

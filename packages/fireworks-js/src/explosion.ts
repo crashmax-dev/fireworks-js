@@ -1,5 +1,5 @@
 import { hsla, randomFloat, randomInt } from './helpers.js'
-import type { ExplosionOptions } from './types.js'
+import type { FireworksTypes } from './types.js'
 
 export class Explosion {
   private x: number
@@ -31,7 +31,7 @@ export class Explosion {
     flickering,
     lineWidth,
     explosionLength
-  }: ExplosionOptions) {
+  }: FireworksTypes.Explosion) {
     this.x = x
     this.y = y
     this.ctx = ctx

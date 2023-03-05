@@ -1,36 +1,28 @@
 import { deepMerge } from './helpers.js'
-import type {
-  FireworksOptions,
-  IBoundaries,
-  IMouse,
-  ISounds,
-  LineStyle,
-  LineWidth,
-  MinMax
-} from './types.js'
+import type { FireworksOptions, FireworksTypes } from './types.js'
 
-export class Options implements FireworksOptions {
-  public hue: MinMax
-  public rocketsPoint: MinMax
-  public opacity: number
-  public acceleration: number
-  public friction: number
-  public gravity: number
-  public particles: number
-  public explosion: number
-  public mouse: IMouse
-  public boundaries: IBoundaries
-  public sound: ISounds
-  public delay: MinMax
-  public brightness: MinMax
-  public decay: MinMax
-  public flickering: number
-  public intensity: number
-  public traceLength: number
-  public traceSpeed: number
-  public lineWidth: LineWidth
-  public lineStyle: LineStyle
-  public autoresize: boolean
+export class Options implements FireworksTypes.Options {
+  hue: FireworksTypes.MinMax
+  rocketsPoint: FireworksTypes.MinMax
+  opacity: number
+  acceleration: number
+  friction: number
+  gravity: number
+  particles: number
+  explosion: number
+  mouse: FireworksTypes.Mouse
+  boundaries: FireworksTypes.Boundaries
+  sound: FireworksTypes.Sounds
+  delay: FireworksTypes.MinMax
+  brightness: FireworksTypes.MinMax
+  decay: FireworksTypes.MinMax
+  flickering: number
+  intensity: number
+  traceLength: number
+  traceSpeed: number
+  lineWidth: FireworksTypes.LineWidth
+  lineStyle: FireworksTypes.LineStyle
+  autoresize: boolean
 
   constructor() {
     this.autoresize = true
@@ -102,6 +94,7 @@ export class Options implements FireworksOptions {
     }
 
     this.boundaries = {
+      debug: false,
       height: 0,
       width: 0,
       x: 50,

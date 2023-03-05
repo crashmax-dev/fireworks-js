@@ -1,5 +1,5 @@
 import { getDistance, hsla, randomInt } from './helpers.js'
-import type { TraceOptions } from './types.js'
+import type { FireworksTypes } from './types.js'
 
 export class Trace {
   private x: number
@@ -30,7 +30,7 @@ export class Trace {
     speed,
     traceLength,
     acceleration
-  }: TraceOptions) {
+  }: FireworksTypes.Trace) {
     this.x = x
     this.y = y
     this.sx = x

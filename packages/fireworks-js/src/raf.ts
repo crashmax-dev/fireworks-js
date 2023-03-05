@@ -1,7 +1,7 @@
 import type { Options } from './options.js'
 
 export class RequestAnimationFrame {
-  public tick = 0
+  tick = 0
 
   private rafId = 0
   private fps = 60

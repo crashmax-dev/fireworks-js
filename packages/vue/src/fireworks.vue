@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { Fireworks } from 'fireworks-js'
-import type { FireworksHandlers, FireworksOptions } from 'fireworks-js'
 import { defineExpose, onMounted, onUnmounted, ref } from 'vue'
+import type { FireworksHandlers, FireworksOptions } from 'fireworks-js'
 import type { PropType } from 'vue'
 
 const props = defineProps({

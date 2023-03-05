@@ -3,7 +3,21 @@ import { Fireworks } from 'fireworks-js'
 import './style.css'
 
 const app = document.querySelector<HTMLDivElement>('#app')!
-const fireworks = new Fireworks(app)
+const fireworks = new Fireworks(app, {
+  autoresize: true,
+  boundaries: {
+    width: app.clientWidth,
+    height: app.clientHeight
+  }
+})
+
+// const resizeObserver = new ResizeObserver((entries) => {
+//   console.log(entries)
+// })
+
+// resizeObserver.observe(app)
+
+fireworks.start()
 
 const start = el(
   'button',

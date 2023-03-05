@@ -6,7 +6,7 @@ import { RequestAnimationFrame } from './raf.js'
 import { Resize } from './resize.js'
 import { Sound } from './sound.js'
 import { Trace } from './trace.js'
-import type { FireworksOptions, IBoundaries, Sizes } from './types.js'
+import type { FireworksOptions, FireworksTypes } from './types.js'
 
 declare const __VERSION__: string
 
@@ -142,7 +142,7 @@ export class Fireworks {
   updateSize({
     width = this.container.clientWidth,
     height = this.container.clientHeight
-  }: Partial<Sizes> = {}): void {
+  }: Partial<FireworksTypes.Sizes> = {}): void {
     this.width = width
     this.height = height
 
@@ -156,7 +156,7 @@ export class Fireworks {
     })
   }
 
-  updateBoundaries(boundaries: Partial<IBoundaries>): void {
+  updateBoundaries(boundaries: Partial<FireworksTypes.Boundaries>): void {
     this.updateOptions({ boundaries })
   }
 

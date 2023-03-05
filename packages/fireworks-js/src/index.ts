@@ -1,6 +1,10 @@
 import { Fireworks } from './fireworks.js'
-import type { FireworksHandlers, FireworksOptions } from './types.js'
+import type {
+  FireworksHandlers,
+  FireworksOptions,
+  FireworksTypes
+} from './types.js'
 
 export { Fireworks }
 export default Fireworks
-export type { FireworksOptions, FireworksHandlers }
+export type { FireworksTypes, FireworksOptions, FireworksHandlers }
