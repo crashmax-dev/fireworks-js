@@ -27,6 +27,7 @@ export class Fireworks {
   private readonly resize: Resize
   private readonly mouse: Mouse
   private readonly raf: RequestAnimationFrame
+  private readonly events: FireworksTypes.Events = {}
 
   constructor(
     container: Element | HTMLCanvasElement,
@@ -160,6 +161,18 @@ export class Fireworks {
     this.updateOptions({ boundaries })
   }
 
+  addEventListener(type: keyof FireworksTypes.Events, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void {
+    if (!this.events[type]) {
+      this.events[type] = new Event(type)
+    }
+
+    this.canvas.addEventListener(type, listener, options)
+  }
+
+  removeEventListener(type: keyof FireworksTypes.Events, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void {
+    this.canvas.removeEventListener(type, listener, options)
+  }
+
   private createCanvas(el: Element | HTMLCanvasElement): void {
     if (el instanceof HTMLCanvasElement) {
       if (!el.isConnected) {
@@ -180,6 +193,7 @@ export class Fireworks {
     if (!this.ctx || !this.running) return
 
     const { opacity, lineStyle, lineWidth } = this.opts
+    const tracesStart = this.traces.length
     this.ctx.globalCompositeOperation = 'destination-out'
     this.ctx.fillStyle = `rgba(0, 0, 0, ${opacity})`
     this.ctx.fillRect(0, 0, this.width, this.height)
@@ -191,6 +205,10 @@ export class Fireworks {
     this.initTrace()
     this.drawTrace()
     this.drawExplosion()
+
+    if (tracesStart > this.traces.length && this.events.explosion) {
+      this.canvas.dispatchEvent(this.events.explosion)
+    }
   }
 
   private createTrace(): void {
