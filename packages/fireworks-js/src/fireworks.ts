@@ -161,7 +161,11 @@ export class Fireworks {
     this.updateOptions({ boundaries })
   }
 
-  addEventListener(type: keyof FireworksTypes.Events, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void {
+  addEventListener(
+    type: keyof FireworksTypes.Events,
+    listener: EventListenerOrEventListenerObject,
+    options?: boolean | AddEventListenerOptions
+  ): void {
     if (!this.events[type]) {
       this.events[type] = new Event(type)
     }
@@ -169,7 +173,11 @@ export class Fireworks {
     this.canvas.addEventListener(type, listener, options)
   }
 
-  removeEventListener(type: keyof FireworksTypes.Events, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void {
+  removeEventListener(
+    type: keyof FireworksTypes.Events,
+    listener: EventListenerOrEventListenerObject,
+    options?: boolean | EventListenerOptions
+  ): void {
     this.canvas.removeEventListener(type, listener, options)
   }
 
