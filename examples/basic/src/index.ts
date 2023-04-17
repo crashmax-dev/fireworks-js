@@ -4,27 +4,23 @@ import './style.css'
 
 const app = document.querySelector<HTMLDivElement>('#app')!
 const fireworks = new Fireworks(app, {
-  autoresize: true,
+  autoresize: false,
+  particles: 20,
   boundaries: {
+    debug: true,
+    x: 50,
+    y: 50,
     width: app.clientWidth,
     height: app.clientHeight
   }
 })
-
-// const resizeObserver = new ResizeObserver((entries) => {
-//   console.log(entries)
-// })
-
-// resizeObserver.observe(app)
 
 fireworks.start()
 
 const start = el(
   'button',
   {
-    onclick: () => {
-      fireworks.start()
-    }
+    onclick: () => fireworks.start()
   },
   'Start'
 )
@@ -32,19 +28,31 @@ const start = el(
 const stop = el(
   'button',
   {
-    onclick: () => {
-      fireworks.waitStop()
-    }
+    onclick: () => fireworks.waitStop()
   },
   'Stop'
 )
 
+const autoresize = el(
+  'button',
+  {
+    onclick: () => toggleAutoresize()
+  },
+  `Autoresize: ${fireworks.currentOptions.autoresize}`
+)
+
+function toggleAutoresize() {
+  const autoresizeValue = !fireworks.currentOptions.autoresize
+  fireworks.updateOptions({ autoresize: autoresizeValue })
+  autoresize.textContent = `Autoresize: ${autoresizeValue}`
+  fireworks.stop()
+  fireworks.start()
+}
+
 const launch = el(
   'button',
   {
-    onclick: () => {
-      fireworks.launch(Number(count.value))
-    }
+    onclick: () => fireworks.launch(Number(count.value))
   },
   'Launch'
 )
@@ -71,6 +79,7 @@ const buttons = el(
   },
   start,
   stop,
+  autoresize,
   launch,
   count
 )

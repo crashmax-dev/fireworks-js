@@ -149,11 +149,13 @@ export class Fireworks {
     this.canvas.width = width
     this.canvas.height = height
 
-    this.updateBoundaries({
-      ...this.opts.boundaries,
-      width,
-      height
-    })
+    if (this.opts.autoresize) {
+      this.updateBoundaries({
+        ...this.opts.boundaries,
+        width,
+        height
+      })
+    }
   }
 
   updateBoundaries(boundaries: Partial<FireworksTypes.Boundaries>): void {
@@ -176,6 +178,17 @@ export class Fireworks {
     this.updateSize()
   }
 
+  private drawBoundaries(): void {
+    const { boundaries } = this.opts
+    this.ctx.strokeStyle = 'red'
+    this.ctx.strokeRect(
+      boundaries.x,
+      boundaries.y,
+      boundaries.width - boundaries.x * 2,
+      boundaries.height - boundaries.y * 2
+    )
+  }
+
   private render(): void {
     if (!this.ctx || !this.running) return
 
@@ -187,6 +200,10 @@ export class Fireworks {
     this.ctx.lineCap = lineStyle
     this.ctx.lineJoin = 'round'
     this.ctx.lineWidth = randomFloat(lineWidth.trace.min, lineWidth.trace.max)
+
+    if (this.opts.boundaries.debug) {
+      this.drawBoundaries()
+    }
 
     this.initTrace()
     this.drawTrace()
@@ -215,7 +232,7 @@ export class Fireworks {
         dy:
           (this.mouse.y && mouse.move) || this.mouse.active
             ? this.mouse.y
-            : randomInt(boundaries.y, boundaries.height * 0.5),
+            : randomInt(boundaries.y, boundaries.height - boundaries.y * 2),
         ctx: this.ctx,
         hue: randomInt(hue.min, hue.max),
         speed: traceSpeed,
