@@ -16,6 +16,9 @@ export default defineConfig({
         `\n * homepage: ${homepage}` +
         `\n * license ${license}\n */`
     )],
+  esbuild: {
+    banner: '"use client";'
+  },
   build: {
     target: 'esnext',
     lib: {
