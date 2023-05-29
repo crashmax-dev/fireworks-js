@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { onMount, onDestroy } from 'svelte'
   import { Fireworks } from 'fireworks-js'
   import type { FireworksOptions } from 'fireworks-js'
 
@@ -9,25 +8,28 @@
   export let style: string = ''
   export let options: FireworksOptions = {}
 
-  let container: HTMLDivElement
   let fireworks: Fireworks
 
   export function fireworksInstance() {
     return fireworks
   }
 
-  onMount(() => {
+  function setup(container:HTMLDivElement, options: FireworksOptions) {
     fireworks = new Fireworks(container, options)
     if (autostart) {
       fireworks.start()
     }
-  })
-
-  onDestroy(() => {
-    fireworks?.stop()
-  })
+    return {
+      update(options: FireworksOptions) {
+        fireworks.updateOptions(options)
+      },
+      destroy() {
+        fireworks.stop()
+      }
+    }
+  }
 </script>
 
-<div bind:this={container} class={className} {style}>
+<div class={className} {style} use:setup={options}>
   <slot></slot>
 </div>
