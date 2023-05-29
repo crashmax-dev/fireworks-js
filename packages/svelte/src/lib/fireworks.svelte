@@ -14,7 +14,7 @@
     return fireworks
   }
 
-  function setup(container:HTMLDivElement, options: FireworksOptions) {
+  function setup(container: HTMLDivElement, options: FireworksOptions) {
     fireworks = new Fireworks(container, options)
     if (autostart) {
       fireworks.start()
@@ -30,6 +30,10 @@
   }
 </script>
 
-<div class={className} {style} use:setup={options}>
-  <slot></slot>
+<div
+  use:setup={options}
+  class={className}
+  {style}
+>
+  <slot />
 </div>
