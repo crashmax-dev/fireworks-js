@@ -4,7 +4,7 @@
   import { onMount } from 'svelte'
 
   let fw: Fireworks
-  let enabled = true
+  let mounted = true
   let options: FireworksOptions = {
     opacity: 0.5
   }
@@ -26,15 +26,16 @@
 
 <main>
   <div class="buttons">
-    <button on:click={() => (enabled = !enabled)}>
-      {enabled ? 'Enabled' : 'Disabled'}
-    </button>
-    <button on:click={() => toggleFireworks()}>
-      Toggle
+    <button on:click={() => (mounted = !mounted)}>
+      {mounted ? 'Mounted' : 'Unmounted'}
     </button>
   </div>
-  {#if enabled}
-    <Fireworks bind:this={fw} autostart={false} {options} class="fireworks" />
+  {#if mounted}
+    <Fireworks
+      bind:this={fw}
+      {options}
+      class="fireworks"
+    />
   {/if}
 </main>
 
