@@ -23,8 +23,8 @@
     "url": "https://github.com/crashmax-dev/fireworks-js/issues"
   },
   "peerDependencies": {
-    "@angular/common": "^14.0.0",
-    "@angular/core": "^14.0.0"
+    "@angular/common": "^12.0.0",
+    "@angular/core": "^12.0.0"
   },
   "dependencies": {
     "fireworks-js": "workspace:2.10.5",
