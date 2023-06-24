@@ -241,7 +241,7 @@ importers:
         specifier: ^14.1.2
         version: 14.2.4(@angular/common@14.2.4)(@angular/core@14.2.4)(@angular/platform-browser@14.2.4)(rxjs@7.5.7)
       fireworks-js:
-        specifier: workspace:2.10.5
+        specifier: workspace:2.10.6
         version: link:../fireworks-js
       rxjs:
         specifier: ~7.5.6
@@ -277,7 +277,7 @@ importers:
   packages/preact:
     dependencies:
       fireworks-js:
-        specifier: workspace:2.10.5
+        specifier: workspace:2.10.6
         version: link:../fireworks-js
     devDependencies:
       '@preact/preset-vite':
@@ -290,7 +290,7 @@ importers:
   packages/react:
     dependencies:
       fireworks-js:
-        specifier: workspace:2.10.5
+        specifier: workspace:2.10.6
         version: link:../fireworks-js
     devDependencies:
       '@types/react':
@@ -312,7 +312,7 @@ importers:
   packages/solid:
     dependencies:
       fireworks-js:
-        specifier: workspace:2.10.5
+        specifier: workspace:2.10.6
         version: link:../fireworks-js
       solid-js:
         specifier: ^1.6.1
@@ -325,7 +325,7 @@ importers:
   packages/svelte:
     dependencies:
       fireworks-js:
-        specifier: workspace:2.10.5
+        specifier: workspace:2.10.6
         version: link:../fireworks-js
     devDependencies:
       '@sveltejs/adapter-auto':
@@ -359,7 +359,7 @@ importers:
   packages/vue:
     dependencies:
       fireworks-js:
-        specifier: workspace:2.10.5
+        specifier: workspace:2.10.6
         version: link:../fireworks-js
     devDependencies:
       '@vitejs/plugin-vue':
@@ -375,7 +375,7 @@ importers:
   packages/web:
     dependencies:
       fireworks-js:
-        specifier: workspace:2.10.5
+        specifier: workspace:2.10.6
         version: link:../fireworks-js
 
   website:
