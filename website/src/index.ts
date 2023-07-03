@@ -8,6 +8,7 @@ import {
   mainContainer
 } from './config.js'
 import type { FpsGraphBladeApi } from '@tweakpane/plugin-essentials/dist/types/fps-graph/api/fps-graph'
+import '@r3-dev/brand'
 
 declare global {
   interface Window {
