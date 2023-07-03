@@ -5,6 +5,12 @@
 </p>
 
 <p align="center">
+  <a href="https://www.upwork.com/o/companies/~01e5f1563365e3c1b5/">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="https://r3-dev.github.io/brand/badge-light.svg">
+      <img src="https://r3-dev.github.io/brand/badge-dark.svg" />
+    </picture>
+  </a>
   <a href="https://github.com/crashmax-dev/fireworks-js/actions">
     <img alt="GitHub Workflow Status" src="https://img.shields.io/github/actions/workflow/status/crashmax-dev/fireworks-js/gh-pages.yml?branch=master">
   </a>
