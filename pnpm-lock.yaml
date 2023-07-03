@@ -1,5 +1,9 @@
 lockfileVersion: '6.0'
 
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
 importers:
 
   .:
@@ -380,6 +384,9 @@ importers:
 
   website:
     dependencies:
+      '@r3-dev/brand':
+        specifier: 1.2.0
+        version: 1.2.0
       '@tweakpane/core':
         specifier: 1.1.4
         version: 1.1.4
@@ -3358,6 +3365,10 @@ packages:
     transitivePeerDependencies:
       - supports-color
     dev: true
+
+  /@r3-dev/brand@1.2.0:
+    resolution: {integrity: sha512-QXAFLZ1VrdHvrHBnlzonlFrsOyhq71WwCdJoSLlLJVwZ/nKsBIHQeFZWc6Bj01CJ11sH6sJwfhujYEtxrXpjYg==}
+    dev: false
 
   /@rollup/plugin-json@4.1.0(rollup@2.79.1):
     resolution: {integrity: sha512-yfLbTdNS6amI/2OpmbiBoW12vngr5NW2jCJVZSBEz+H5KfUJZ2M7sDjk0U6GOOdCWFVScShte29o9NezJ53TPw==}
