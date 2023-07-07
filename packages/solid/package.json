@@ -11,7 +11,8 @@
   "module": "./dist/index.es.js",
   "exports": {
     "require": "./dist/index.cjs.js",
-    "import": "./dist/index.es.js"
+    "import": "./dist/index.es.js",
+    "types": "./dist/index.d.ts"
   },
   "files": [
     "dist"

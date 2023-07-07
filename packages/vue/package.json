@@ -5,14 +5,10 @@
   "description": "A simple fireworks library!",
   "homepage": "https://fireworks.js.org",
   "types": "./dist/index.d.ts",
-  "main": "./dist/index.cjs.js",
+  "main": "./dist/index.umd.js",
+  "module": "./dist/index.es.js",
   "jsdelivr": "./dist/index.umd.js",
   "unpkg": "./dist/index.umd.js",
-  "module": "./dist/index.es.js",
-  "exports": {
-    "require": "./dist/index.umd.js",
-    "default": "./dist/index.es.js"
-  },
   "files": [
     "dist"
   ],
@@ -50,6 +46,6 @@
     "vue-tsc": "1.0.9"
   },
   "peerDependencies": {
-    "vue": ">=2.7.0"
+    "vue": ">=3.0.0"
   }
 }
