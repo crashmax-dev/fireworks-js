@@ -1,0 +1,22 @@
+{
+  "$schema": "https://unpkg.com/@changesets/config@2.3.1/schema.json",
+  "changelog": "@changesets/cli/changelog",
+  "commit": false,
+  "fixed": [],
+  "linked": [],
+  "access": "public",
+  "baseBranch": "master",
+  "updateInternalDependencies": "patch",
+  "ignore": [
+    "website",
+    "basic",
+    "with-angular",
+    "with-preact",
+    "with-react",
+    "with-solid",
+    "with-svelte",
+    "with-vue",
+    "with-web-components",
+    "@fireworks-js/*"
+  ]
+}

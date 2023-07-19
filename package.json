@@ -5,6 +5,12 @@
   "type": "module",
   "description": "A simple fireworks library!",
   "homepage": "https://fireworks.js.org",
+  "packageManager": "pnpm@8.0.0",
+  "workspaces": [
+    "packages/*",
+    "examples/*",
+    "website"
+  ],
   "scripts": {
     "dev": "turbo run dev --filter=./packages/*",
     "build": "turbo run build --filter=./packages/*",
@@ -12,7 +18,8 @@
     "build:website": "turbo run build --filter=./website",
     "dev:examples": "turbo run dev --filter=./examples/*",
     "build:examples": "turbo run build --filter=./examples/*",
-    "format": "prettier --write --ignore-unknown **"
+    "format": "prettier --write --ignore-unknown **",
+    "changesets": "changeset"
   },
   "repository": {
     "type": "git",
@@ -39,8 +46,8 @@
   "bugs": {
     "url": "https://github.com/crashmax-dev/fireworks-js/issues"
   },
-  "packageManager": "pnpm@8.0.0",
   "devDependencies": {
+    "@changesets/cli": "2.26.2",
     "@crashmax/prettier-config": "2.2.1",
     "@crashmax/tsconfig": "1.0.2",
     "@types/node": "18.11.9",
