@@ -62,6 +62,12 @@ defineExpose<FireworksHandlers>({
   },
   updateBoundaries(boundaries) {
     fireworks.value!.updateBoundaries(boundaries)
+  },
+  addEventListener(type, listener, options) {
+    fireworks.value!.addEventListener(type, listener, options)
+  },
+  removeEventListener(type, listener, options) {
+    fireworks.value!.removeEventListener(type, listener, options)
   }
 })
 </script>

@@ -87,6 +87,10 @@ export namespace FireworksTypes {
     brightness: MinMax
     decay: MinMax
   }
+
+  export interface Events {
+    explosion?: Event
+  }
 }
 
 export type FireworksOptions = RecursivePartial<FireworksTypes.Options>
@@ -103,6 +107,8 @@ export interface FireworksHandlers
     | 'updateBoundaries'
     | 'updateSize'
     | 'currentOptions'
+    | 'addEventListener'
+    | 'removeEventListener'
   > {
   waitStop(): Promise<void>
   stop(): void
