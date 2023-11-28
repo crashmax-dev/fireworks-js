@@ -13,7 +13,6 @@ export class Sound {
   private onInit = false
 
   constructor(private readonly options: Options) {
-    this.init()
   }
 
   private get isEnabled() {
