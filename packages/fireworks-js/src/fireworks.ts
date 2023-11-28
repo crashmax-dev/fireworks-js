@@ -40,7 +40,7 @@ export class Fireworks {
     this.createCanvas(this.target)
     this.updateOptions(options)
 
-    this.sound = new Sound(this.opts)
+    this.sound = this.opts.soundClass || new Sound(this.opts)
     this.resize = new Resize(
       this.opts,
       this.updateSize.bind(this),
