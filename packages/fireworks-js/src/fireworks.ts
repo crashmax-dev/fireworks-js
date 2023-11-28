@@ -21,6 +21,8 @@ export class Fireworks {
   private explosions: Explosion[] = []
   private waitStopRaf: (() => void) | null
   private running = false
+  private maxFireworks: number
+  private startedSoFar: number
 
   private readonly opts: Options
   private readonly sound: Sound
@@ -62,7 +64,7 @@ export class Fireworks {
     return this.opts
   }
 
-  start(): void {
+  start(maxFireworks = -1): void {
     if (this.running) return
 
     if (!this.canvas.isConnected) {
@@ -70,6 +72,8 @@ export class Fireworks {
     }
 
     this.running = true
+    this.maxFireworks = maxFireworks;
+    this.startedSoFar = 0;
     this.resize.mount()
     this.mouse.mount()
     this.raf.mount()
@@ -226,7 +230,12 @@ export class Fireworks {
   }
 
   private initTrace(): void {
-    if (this.waitStopRaf) return
+    let maxReached = (this.maxFireworks >= 0 && this.startedSoFar >= this.maxFireworks);
+    if (maxReached) {
+      this.waitStop();
+    }
+    
+    if (this.waitStopRaf || maxReached) return
 
     const { delay, mouse } = this.opts
     if (
@@ -235,6 +244,7 @@ export class Fireworks {
     ) {
       this.createTrace()
       this.raf.tick = 0
+      this.startedSoFar++;
     }
   }
 
