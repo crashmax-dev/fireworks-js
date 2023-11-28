@@ -226,6 +226,7 @@ export class Fireworks {
   }
 
   private initTrace(): void {
+    this.sound.init();
     if (this.waitStopRaf) return
 
     const { delay, mouse } = this.opts
