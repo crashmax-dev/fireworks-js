@@ -37,7 +37,7 @@ jobs:
         run: pnpm install
 
       - name: Build apps and packages
-        run: pnpm build
+        run: pnpm build && pnpm build:website
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4.5.0
