@@ -16,7 +16,6 @@
     "with-solid",
     "with-svelte",
     "with-vue",
-    "with-web-components",
-    "@fireworks-js/*"
+    "with-web-components"
   ]
 }

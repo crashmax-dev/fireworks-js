@@ -1,6 +1,6 @@
 {
   "name": "@fireworks-js/solid",
-  "version": "2.10.7",
+  "version": "2.10.8",
   "type": "module",
   "description": "A simple fireworks library!",
   "homepage": "https://fireworks.js.org",
@@ -42,11 +42,11 @@
     "prepublishOnly": "pnpm build"
   },
   "dependencies": {
-    "fireworks-js": "workspace:*",
+    "fireworks-js": "workspace:2.10.8",
     "solid-js": "^1.8.18"
   },
   "devDependencies": {
-    "solid-js": "1.4.7",
+    "solid-js": "1.8.18",
     "vite-plugin-solid": "2.10.2"
   },
   "peerDependencies": {

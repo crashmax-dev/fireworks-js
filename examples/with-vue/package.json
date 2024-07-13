@@ -1,5 +1,6 @@
 {
   "name": "with-vue",
+  "type": "module",
   "private": true,
   "version": "0.0.0",
   "scripts": {
