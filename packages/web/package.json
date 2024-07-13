@@ -41,6 +41,6 @@
     "prepublishOnly": "pnpm build"
   },
   "dependencies": {
-    "fireworks-js": "workspace:2.10.7"
+    "fireworks-js": "workspace:*"
   }
 }

@@ -46,101 +46,101 @@ tweakpane.on('fold', ({ expanded }) => {
 })
 
 /** options */
-tweakpane.addInput(fireworksOptions, 'hue', {
+tweakpane.addBinding(fireworksOptions, 'hue', {
   min: 0,
   max: 360,
   step: 1
 })
 
-tweakpane.addInput(fireworksOptions, 'acceleration', {
+tweakpane.addBinding(fireworksOptions, 'acceleration', {
   min: 1,
   max: 2
 })
 
-tweakpane.addInput(fireworksOptions, 'brightness', {
+tweakpane.addBinding(fireworksOptions, 'brightness', {
   min: 1,
   max: 100,
   step: 1
 })
 
-tweakpane.addInput(fireworksOptions, 'decay', {
+tweakpane.addBinding(fireworksOptions, 'decay', {
   min: 0.001,
   max: 0.05
 })
 
-tweakpane.addInput(fireworksOptions, 'delay', {
+tweakpane.addBinding(fireworksOptions, 'delay', {
   min: 10,
   max: 100
 })
 
-tweakpane.addInput(fireworksOptions, 'explosion', {
+tweakpane.addBinding(fireworksOptions, 'explosion', {
   min: 1,
   max: 10,
   step: 1
 })
 
-tweakpane.addInput(fireworksOptions, 'flickering', {
+tweakpane.addBinding(fireworksOptions, 'flickering', {
   min: 0,
   max: 100
 })
 
-tweakpane.addInput(fireworksOptions, 'intensity', {
+tweakpane.addBinding(fireworksOptions, 'intensity', {
   min: 1,
   max: 60
 })
 
-tweakpane.addInput(fireworksOptions, 'friction', {
+tweakpane.addBinding(fireworksOptions, 'friction', {
   min: 0.5,
   max: 3
 })
 
-tweakpane.addInput(fireworksOptions, 'gravity', {
+tweakpane.addBinding(fireworksOptions, 'gravity', {
   min: 0,
   max: 10
 })
 
-tweakpane.addInput(fireworksOptions, 'opacity', {
+tweakpane.addBinding(fireworksOptions, 'opacity', {
   min: 0,
   max: 1,
   step: 0.1
 })
 
-tweakpane.addInput(fireworksOptions, 'particles', {
+tweakpane.addBinding(fireworksOptions, 'particles', {
   step: 1,
   min: 1,
   max: 200
 })
 
-tweakpane.addInput(fireworksOptions, 'traceLength', {
+tweakpane.addBinding(fireworksOptions, 'traceLength', {
   min: 1,
   max: 10
 })
 
-tweakpane.addInput(fireworksOptions, 'traceSpeed', {
+tweakpane.addBinding(fireworksOptions, 'traceSpeed', {
   min: 1,
   max: 100,
   step: 1
 })
 
-tweakpane.addInput(fireworksOptions, 'rocketsPoint', {
+tweakpane.addBinding(fireworksOptions, 'rocketsPoint', {
   min: 0,
   max: 100,
   step: 1
 })
 
-tweakpane.addInput(fireworksOptions.lineWidth!, 'explosion', {
+tweakpane.addBinding(fireworksOptions.lineWidth!, 'explosion', {
   label: 'lineWidth (explosion)',
   min: 0,
   max: 10
 })
 
-tweakpane.addInput(fireworksOptions.lineWidth!, 'trace', {
+tweakpane.addBinding(fireworksOptions.lineWidth!, 'trace', {
   label: 'lineWidth (trace)',
   min: 0,
   max: 10
 })
 
-tweakpane.addInput(fireworksOptions, 'lineStyle', {
+tweakpane.addBinding(fireworksOptions, 'lineStyle', {
   options: {
     round: 'round',
     square: 'square'
@@ -153,18 +153,18 @@ const mouse = tweakpane.addFolder({
   expanded: false
 })
 
-mouse.addInput(fireworksOptions.mouse!, 'click', {
+mouse.addBinding(fireworksOptions.mouse!, 'click', {
   label: 'mouse click'
 })
 
-mouse.addInput(fireworksOptions.mouse!, 'max', {
+mouse.addBinding(fireworksOptions.mouse!, 'max', {
   label: 'maximum rockets',
   min: 1,
   max: 15,
   step: 1
 })
 
-mouse.addInput(fireworksOptions.mouse!, 'move', {
+mouse.addBinding(fireworksOptions.mouse!, 'move', {
   label: 'follow mouse'
 })
 
@@ -174,9 +174,9 @@ const sound = tweakpane.addFolder({
   expanded: false
 })
 
-sound.addInput(fireworksOptions.sound!, 'enabled')
+sound.addBinding(fireworksOptions.sound!, 'enabled')
 
-sound.addInput(fireworksOptions.sound!, 'volume', {
+sound.addBinding(fireworksOptions.sound!, 'volume', {
   min: 0,
   max: 100,
   step: 1
@@ -192,27 +192,27 @@ const background = tweakpane.addFolder({
   expanded: false
 })
 
-background.addInput(backgroundConfig, 'container').on('change', ({ value }) => {
+background.addBinding(backgroundConfig, 'container').on('change', ({ value }) => {
   mainContainer.style.display = value ? 'none' : 'block'
 })
 
-background.addInput(backgroundConfig, 'color').on('change', ({ value }) => {
+background.addBinding(backgroundConfig, 'color').on('change', ({ value }) => {
   fireworksContainer.style.backgroundColor = value
 })
 
-background.addInput(backgroundConfig, 'image').on('change', ({ value }) => {
+background.addBinding(backgroundConfig, 'image').on('change', ({ value }) => {
   fireworksContainer.style.backgroundImage = `url(${value})`
 })
 
-background.addInput(backgroundConfig, 'size').on('change', ({ value }) => {
+background.addBinding(backgroundConfig, 'size').on('change', ({ value }) => {
   fireworksContainer.style.backgroundSize = value
 })
 
-background.addInput(backgroundConfig, 'position').on('change', ({ value }) => {
+background.addBinding(backgroundConfig, 'position').on('change', ({ value }) => {
   fireworksContainer.style.backgroundPosition = value
 })
 
-background.addInput(backgroundConfig, 'repeat').on('change', ({ value }) => {
+background.addBinding(backgroundConfig, 'repeat').on('change', ({ value }) => {
   fireworksContainer.style.backgroundRepeat = value
 })
 
@@ -227,18 +227,20 @@ const fpsGraph = monitors.addBlade({
   label: 'fps'
 }) as FpsGraphBladeApi
 
-monitors.addMonitor(fireworksGetters, 'particles', {
+monitors.addBinding(fireworksGetters, 'particles', {
   view: 'graph',
   label: 'particles',
   min: 0,
-  max: 5000
+  max: 5000,
+  readonly: true
 })
 
-monitors.addMonitor(fireworksGetters, 'traces', {
+monitors.addBinding(fireworksGetters, 'traces', {
   view: 'graph',
   label: 'traces',
   min: 0,
-  max: 50
+  max: 50,
+  readonly: true
 })
 
 const updateGraph = () => {

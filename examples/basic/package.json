@@ -8,10 +8,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@zero-dependency/dom": "^0.10.0",
+    "@zero-dependency/dom": "^1.8.4",
     "fireworks-js": "workspace:*"
   },
   "devDependencies": {
-    "typescript": "^4.8.4"
+    "typescript": "^5.5.3"
   }
 }

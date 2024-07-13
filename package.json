@@ -47,16 +47,16 @@
     "url": "https://github.com/crashmax-dev/fireworks-js/issues"
   },
   "devDependencies": {
-    "@changesets/cli": "2.26.2",
-    "@crashmax/prettier-config": "2.2.1",
-    "@crashmax/tsconfig": "1.0.2",
-    "@types/node": "18.11.9",
-    "del-cli": "5.0.0",
-    "tsx": "3.11.0",
-    "turbo": "1.6.3",
-    "typescript": "4.8.4",
-    "vite": "3.2.2",
-    "vite-plugin-banner": "0.6.1",
-    "vite-plugin-dts": "1.6.6"
+    "@changesets/cli": "2.27.7",
+    "@crashmax/prettier-config": "5.0.2",
+    "@crashmax/tsconfig": "2.1.0",
+    "@types/node": "20.14.10",
+    "del-cli": "5.1.0",
+    "tsx": "4.16.2",
+    "turbo": "2.0.6",
+    "typescript": "5.5.3",
+    "vite": "5.3.3",
+    "vite-plugin-banner": "0.7.1",
+    "vite-plugin-dts": "3.9.1"
   }
 }

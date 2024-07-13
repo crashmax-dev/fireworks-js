@@ -4,15 +4,18 @@
   "type": "module",
   "description": "A simple fireworks library!",
   "homepage": "https://fireworks.js.org",
-  "types": "./dist/index.d.ts",
-  "svelte": "./dist/index.js",
   "files": [
     "dist"
   ],
   "exports": {
-    "./package.json": "./package.json",
-    "./fireworks.svelte": "./dist/fireworks.svelte",
-    ".": "./dist/index.js"
+    ".": {
+      "types": "./dist/index.d.ts",
+      "svelte": "./dist/index.js"
+    },
+    "./fireworks.svelte": {
+      "types": "./dist/fireworks.svelte.d.ts",
+      "svelte": "./dist/fireworks.svelte"
+    }
   },
   "repository": {
     "type": "git",
@@ -35,21 +38,26 @@
   },
   "scripts": {
     "dev": "vite dev --port 8081 --open",
-    "build": "svelte-kit sync && svelte-package && del-cli dist/package.json dist/README.md",
-    "prepublishOnly": "pnpm build"
+    "build": "vite build && npm run package",
+    "prepublishOnly": "pnpm build",
+    "preview": "vite preview",
+    "package": "svelte-kit sync && svelte-package && publint",
+    "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json"
   },
+  "peerDependencies": {
+		"svelte": ">=3.0.0"
+	},
   "dependencies": {
     "fireworks-js": "workspace:2.10.7"
   },
   "devDependencies": {
-    "@sveltejs/adapter-auto": "1.0.0-next.86",
-    "@sveltejs/kit": "1.0.0-next.531",
-    "@sveltejs/package": "1.0.0-next.5",
-    "svelte": "^3.52.0",
-    "svelte-check": "^2.9.2",
-    "svelte-preprocess": "^4.10.6",
-    "tslib": "^2.4.1",
-    "typescript": "^4.7.4",
-    "vite": "^3.2.2"
-  }
+		"@sveltejs/adapter-auto": "^3.2.2",
+		"@sveltejs/kit": "2.5.18",
+		"@sveltejs/package": "2.3.2",
+		"@sveltejs/vite-plugin-svelte": "3.1.1",
+		"publint": "0.2.8",
+		"svelte": "4.2.18",
+		"svelte-check": "3.8.4",
+		"tslib": "2.6.3"
+	}
 }

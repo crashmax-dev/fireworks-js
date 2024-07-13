@@ -9,10 +9,10 @@
   },
   "dependencies": {
     "@fireworks-js/preact": "workspace:*",
-    "preact": "10.11.0"
+    "preact": "10.22.1"
   },
   "devDependencies": {
-    "@preact/preset-vite": "2.4.0",
-    "typescript": "4.8.4"
+    "@preact/preset-vite": "2.9.0",
+    "typescript": "5.5.3"
   }
 }

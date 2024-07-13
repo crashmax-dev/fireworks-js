@@ -11,6 +11,6 @@
     "@fireworks-js/web": "workspace:*"
   },
   "devDependencies": {
-    "typescript": "4.8.4"
+    "typescript": "5.5.3"
   }
 }

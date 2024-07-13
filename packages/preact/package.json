@@ -42,11 +42,11 @@
     "prepublishOnly": "pnpm build"
   },
   "dependencies": {
-    "fireworks-js": "workspace:2.10.7"
+    "fireworks-js": "workspace:*"
   },
   "devDependencies": {
-    "@preact/preset-vite": "2.4.0",
-    "preact": "10.11.2"
+    "@preact/preset-vite": "2.9.0",
+    "preact": "10.22.1"
   },
   "peerDependencies": {
     "preact": ">=8.0.0"

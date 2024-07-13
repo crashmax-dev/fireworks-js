@@ -9,9 +9,9 @@
   },
   "dependencies": {
     "@r3-dev/brand": "1.2.0",
-    "@tweakpane/core": "1.1.4",
-    "@tweakpane/plugin-essentials": "0.1.7",
+    "@tweakpane/core": "2.0.4",
+    "@tweakpane/plugin-essentials": "0.2.1",
     "fireworks-js": "workspace:*",
-    "tweakpane": "3.1.4"
+    "tweakpane": "4.0.4"
   }
 }
