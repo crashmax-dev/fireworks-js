@@ -1,6 +1,5 @@
 <script lang="ts">
-  import { Fireworks } from '@fireworks-js/svelte'
-  import type { FireworksOptions } from '@fireworks-js/svelte'
+  import { Fireworks, type FireworksOptions } from '@fireworks-js/svelte'
   import { onMount } from 'svelte'
 
   let fw: Fireworks
