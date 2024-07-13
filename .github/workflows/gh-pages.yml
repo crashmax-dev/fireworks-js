@@ -5,38 +5,42 @@ on:
     branches:
       - master
 
+permissions:
+  id-token: write
+  contents: write
+
+env:
+  TURBO_TELEMETRY_DISABLED: 1
+
 jobs:
   cache-and-install:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
-      - name: Cache PNPM
-        uses: actions/cache@v3
+      - name: Setup turborepo cache
+        uses: dtinth/setup-github-actions-caching-for-turbo@v1
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v3
         with:
-          path: ~/.pnpm-store
-          key: ${{ runner.os }}-node-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
+          version: 9
 
-      - name: Setup Node
-        uses: actions/setup-node@v3
+      - name: Install Node.js
+        uses: actions/setup-node@v4
         with:
-          node-version: 16
+          node-version: 20
+          cache: pnpm
 
-      - name: Installing packages
-        uses: pnpm/action-setup@v2.2.2
-        with:
-          version: 7.x.x
-          run_install: |
-            - args: [--frozen-lockfile]
+      - name: Install dependencies
+        run: pnpm install
 
-      - name: Build website
-        run: pnpm build:website
+      - name: Build apps and packages
+        run: pnpm build
 
       - name: Deploy to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@4.1.5
+        uses: JamesIves/github-pages-deploy-action@v4.5.0
         with:
           branch: gh-pages
           folder: ./website/dist
