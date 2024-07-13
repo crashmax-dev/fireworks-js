@@ -5,7 +5,7 @@
   "type": "module",
   "description": "A simple fireworks library!",
   "homepage": "https://fireworks.js.org",
-  "packageManager": "pnpm@8.0.0",
+  "packageManager": "pnpm@9.5.0",
   "workspaces": [
     "packages/*",
     "examples/*",
