@@ -17,6 +17,10 @@ const fireworks = new Fireworks(app, {
 
 // resizeObserver.observe(app)
 
+fireworks.addEventListener('explosion', () => {
+  console.log('One firework just exploded!')
+})
+
 fireworks.start()
 
 const start = el(

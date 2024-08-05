@@ -48,6 +48,12 @@ const Fireworks = React.forwardRef<FireworksHandlers, FireworksProps>(
       },
       updateBoundaries(boundaries) {
         fireworks.current!.updateBoundaries(boundaries)
+      },
+      addEventListener(type, listener, options) {
+        fireworks.current!.addEventListener(type, listener, options)
+      },
+      removeEventListener(type, listener, options) {
+        fireworks.current!.removeEventListener(type, listener, options)
       }
     }))
 
