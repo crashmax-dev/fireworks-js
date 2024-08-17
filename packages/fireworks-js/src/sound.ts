@@ -13,7 +13,6 @@ export class Sound {
   private onInit = false
 
   constructor(private readonly options: Options) {
-    this.init()
   }
 
   private get isEnabled() {
@@ -49,6 +48,7 @@ export class Sound {
   }
 
   play(): void {
+    this.init()
     if (this.isEnabled && this.buffers.length) {
       const bufferSource = this.audioContext.createBufferSource()
       const soundBuffer = this.buffers[randomInt(0, this.buffers.length - 1)]!
@@ -62,8 +62,6 @@ export class Sound {
       volume.connect(this.audioContext.destination)
       bufferSource.connect(volume)
       bufferSource.start(0)
-    } else {
-      this.init()
     }
   }
 }
